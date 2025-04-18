@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import WorkHistory from "@/components/WorkHistory";
 import YouTubeSection from "@/components/YouTubeSection";
 import SocialLinks from "@/components/SocialLinks";
-import PDFUploader from "@/components/PDFUploader";
+// Removed PDFUploader import
 
 const Index = () => {
   return (
@@ -15,7 +15,7 @@ const Index = () => {
         <WorkHistory />
         <YouTubeSection />
         <SocialLinks />
-        <PDFUploader />
+        {/* Removed PDFUploader component */}
       </main>
     </div>
   );
