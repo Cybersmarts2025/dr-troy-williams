@@ -1,13 +1,26 @@
 
-import { Facebook, Instagram, Linkedin, Youtube, Mail } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Mail, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 
 const SocialLinks = () => {
+  const websites = [
+    { name: "Database Records", url: "https://www.databaserecords.com" },
+    { name: "CyberSmarts AI", url: "https://www.cybersmarts.ai" },
+    { name: "Legal Smarts", url: "https://www.legalsmarts.net" },
+    { name: "Grant Smarts", url: "https://www.grantsmarts.net" },
+    { name: "Cyber OSINT", url: "https://www.cyberosint.net" },
+    { name: "Paper Shield", url: "https://www.papershield.net" },
+    { name: "Patriot Proof", url: "https://www.patriotproof.net" },
+    { name: "Dr. Troy Williams", url: "https://www.drtroywilliams.net" },
+  ];
+
   return (
     <section className="py-12 bg-gray-50" id="contact">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Connect With Me</h2>
-        <div className="flex flex-wrap justify-center gap-4">
+        
+        {/* Social Media Links */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           <Button 
             variant="outline" 
             size="lg" 
@@ -44,6 +57,25 @@ const SocialLinks = () => {
             <Mail className="h-5 w-5" />
             <span>Email</span>
           </Button>
+        </div>
+
+        {/* Websites Grid */}
+        <div className="mt-8">
+          <h3 className="text-2xl font-semibold text-center mb-6">My Websites</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+            {websites.map((site) => (
+              <Button 
+                key={site.url}
+                variant="outline" 
+                size="lg" 
+                className="gap-2 w-full"
+                onClick={() => window.open(site.url, "_blank")}
+              >
+                <Globe className="h-5 w-5" />
+                <span>{site.name}</span>
+              </Button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
