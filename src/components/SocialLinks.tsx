@@ -1,6 +1,6 @@
-
 import { Facebook, Instagram, Linkedin, Youtube, Mail, Globe } from "lucide-react";
 import { Button } from "./ui/button";
+import { useEffect } from "react";
 
 const SocialLinks = () => {
   const websites = [
@@ -14,8 +14,35 @@ const SocialLinks = () => {
     { name: "Dr. Troy Williams", url: "https://www.drtroywilliams.net" },
   ];
 
+  useEffect(() => {
+    const preventCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      return false;
+    };
+
+    const preventContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+      return false;
+    };
+
+    const section = document.getElementById('contact');
+    if (section) {
+      section.addEventListener('copy', preventCopy);
+      section.addEventListener('contextmenu', preventContextMenu);
+
+      return () => {
+        section.removeEventListener('copy', preventCopy);
+        section.removeEventListener('contextmenu', preventContextMenu);
+      };
+    }
+  }, []);
+
   return (
-    <section className="py-12 bg-gray-50" id="contact">
+    <section 
+      className="py-12 bg-gray-50 select-none" 
+      id="contact"
+      onSelectStart={(e) => e.preventDefault()}
+    >
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Connect With Me</h2>
         
