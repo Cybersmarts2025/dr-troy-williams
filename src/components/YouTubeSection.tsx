@@ -40,8 +40,16 @@ const YouTubeSection = () => {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                <p className="text-gray-600">YouTube Video 3</p>
+              <div className="aspect-video rounded-lg overflow-hidden">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src="https://www.youtube.com/embed/NBPKUVphRr0" 
+                  title="Featured Video 3"
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                />
               </div>
             </CardContent>
           </Card>
