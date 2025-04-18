@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -22,11 +22,26 @@ interface FormData {
 
 const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
   const [isUploading, setIsUploading] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const queryClient = useQueryClient();
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
+  useEffect(() => {
+    // Get current user
+    const getCurrentUser = async () => {
+      const { data } = await supabase.auth.getSession();
+      setUser(data.session?.user || null);
+    };
+    getCurrentUser();
+  }, []);
+
   const onSubmit = async (data: FormData) => {
     try {
+      if (!user) {
+        toast.error("You must be logged in to add a book");
+        return;
+      }
+
       setIsUploading(true);
       const coverFile = data.cover[0];
       
@@ -55,6 +70,7 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
           title: data.title,
           description: data.description,
           cover_url: coverUrl,
+          user_id: user.id
         });
 
       if (insertError) throw insertError;
