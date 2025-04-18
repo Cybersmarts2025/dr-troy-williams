@@ -1,5 +1,4 @@
-
-import { Book, GraduationCap, Briefcase, Flag, Brain } from "lucide-react";
+import { Book, GraduationCap, Briefcase, Flag, Brain, Shield } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const About = () => {
@@ -19,9 +18,27 @@ const About = () => {
               With over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation, I've built my career on one mission: protecting America through technology.
             </p>
             <p className="text-lg mb-8">
-              I'm Dr. Troy Williams — a Ph.D. in Artificial Intelligence, a licensed private investigator, a published author, and the founder of Cybersmarts.ai, a nonprofit organization advancing national AI security, ethical tech development, and digital sovereignty.
+              I'm Dr. Troy Williams — a Ph.D. in Artificial Intelligence, a <strong>Licensed Tennessee Private Investigator</strong>, a published author, and the founder of Cybersmarts.ai, a nonprofit organization advancing national AI security, ethical tech development, and digital sovereignty.
             </p>
           </div>
+
+          {/* Professional Credentials Card */}
+          <Card className="mb-12">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-6 w-6" />
+                Professional Credentials
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">My professional credentials include:</p>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>Licensed Tennessee Private Investigator</li>
+                <li>Ph.D. in Artificial Intelligence</li>
+                <li>Over 32 years of investigative and cybersecurity experience</li>
+              </ul>
+            </CardContent>
+          </Card>
 
           {/* Education */}
           <Card className="mb-12">

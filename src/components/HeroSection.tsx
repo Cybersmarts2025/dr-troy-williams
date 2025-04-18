@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const HeroSection = () => {
@@ -17,7 +16,7 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Dr. Troy Williams</h1>
             <h2 className="text-2xl text-gray-600 mb-4">Founder & Chief Intelligence Architect</h2>
             <p className="text-base text-gray-700 max-w-2xl mb-6">
-              Cybersmarts.ai LLC | Lebanon, Tennessee
+              Cybersmarts.ai LLC | Lebanon, Tennessee | Licensed Tennessee Private Investigator
             </p>
             <p className="text-base text-gray-700 max-w-2xl mb-6">
               Dr. Troy Williams is the Founder and Chief Intelligence Architect of Cybersmarts.ai, a Tennessee-based nonprofit dedicated to advancing national security through artificial intelligence, cybersecurity innovation, and proactive fraud prevention. Under his leadership, the organization has developed groundbreaking frameworks such as the Autonomous Intelligence Security Framework (AISF™) and the Proactive Prevention Platform (PPP™) — forming the foundation for secure, U.S.-only AI systems that prioritize ethics, legal compliance, and quantum-resilient infrastructure.
