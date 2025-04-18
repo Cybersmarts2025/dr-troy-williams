@@ -1,5 +1,5 @@
 
-import { Menu, Info } from "lucide-react";
+import { Menu, Info, Book } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,10 @@ const NavBar = () => {
           <Link to="/about" className="flex items-center gap-1 hover:text-blue-600 transition-colors">
             <Info className="h-4 w-4" />
             About
+          </Link>
+          <Link to="/books" className="flex items-center gap-1 hover:text-blue-600 transition-colors">
+            <Book className="h-4 w-4" />
+            Books
           </Link>
           <a href="#work" className="hover:text-blue-600 transition-colors">Work History</a>
           <a href="#videos" className="hover:text-blue-600 transition-colors">Videos</a>

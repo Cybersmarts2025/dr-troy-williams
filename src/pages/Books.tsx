@@ -1,84 +1,69 @@
 
-import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import { useState, useEffect } from "react";
-import BookUploadForm from "@/components/BookUploadForm";
-import BooksList from "@/components/BooksList";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "@/components/ui/sonner";
-import { Helmet } from "react-helmet";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Book } from "lucide-react";
+
+interface BookItem {
+  title: string;
+  description: string;
+  amazonUrl: string;
+}
+
+const books: BookItem[] = [
+  {
+    title: "The Future of AI in Cybersecurity",
+    description: "A comprehensive guide to understanding how artificial intelligence is revolutionizing cyber defense strategies and threat detection.",
+    amazonUrl: "https://amazon.com/author/troywilliams",
+  },
+  {
+    title: "Digital Investigation Techniques",
+    description: "Expert insights into modern digital forensics and investigation methodologies for cybersecurity professionals.",
+    amazonUrl: "https://amazon.com/author/troywilliams",
+  }
+];
 
 const Books = () => {
-  const [showUploadForm, setShowUploadForm] = useState(false);
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    // Get current user
-    const getCurrentUser = async () => {
-      const { data } = await supabase.auth.getSession();
-      setUser(data.session?.user || null);
-    };
-    getCurrentUser();
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user || null);
-      }
-    );
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const { data: books, isLoading } = useQuery({
-    queryKey: ['books'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('books')
-        .select('*')
-        .order('created_at', { ascending: false });
-      
-      if (error) throw error;
-      return data;
-    },
-    enabled: !!user // Only run query if user is logged in
-  });
-
-  const handleAddBookClick = () => {
-    if (!user) {
-      toast.error("Please log in to add books");
-      return;
-    }
-    setShowUploadForm(true);
-  };
-
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-20">
       <Helmet>
         <title>Books by Dr. Troy Williams - AI and Cybersecurity Publications</title>
-        <meta name="description" content="Explore books authored by Dr. Troy Williams on artificial intelligence, cybersecurity, and investigative ethics. Dr. Williams is a leading expert based in Lebanon, Tennessee." />
+        <meta 
+          name="description" 
+          content="Explore books authored by Dr. Troy Williams on artificial intelligence, cybersecurity, and investigative ethics. Essential reading for technology professionals." 
+        />
       </Helmet>
       
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Books by Dr. Troy Williams</h1>
-        <Button onClick={handleAddBookClick} className="gap-2">
-          <Plus className="h-4 w-4" />
-          Add Book
-        </Button>
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-4 flex items-center gap-2">
+          <Book className="h-8 w-8" />
+          Books by Dr. Troy Williams
+        </h1>
+        <p className="text-lg text-muted-foreground">
+          Discover my published works on artificial intelligence, cybersecurity, and digital investigation.
+        </p>
       </div>
 
-      {!user && (
-        <div className="p-4 mb-8 bg-yellow-50 text-yellow-800 rounded-lg">
-          Please log in to view and manage your books. The Row Level Security policies require authentication.
-        </div>
-      )}
-
-      {showUploadForm && (
-        <BookUploadForm onClose={() => setShowUploadForm(false)} />
-      )}
-
-      <BooksList books={books || []} isLoading={isLoading} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {books.map((book, index) => (
+          <Card key={index} className="flex flex-col">
+            <CardHeader>
+              <CardTitle>{book.title}</CardTitle>
+              <CardDescription>{book.description}</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              {/* Additional content like book cover could go here */}
+            </CardContent>
+            <CardFooter>
+              <Button asChild className="w-full">
+                <a href={book.amazonUrl} target="_blank" rel="noopener noreferrer">
+                  Buy on Amazon
+                </a>
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
