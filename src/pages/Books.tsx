@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -30,7 +31,7 @@ const Books = () => {
   });
 
   return (
-    <div className="container mx-auto px-4 py-20 bg-custom-background">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50 py-20">
       <Helmet>
         <title>Books by Dr. Troy Williams - AI and Cybersecurity Publications</title>
         <meta 
@@ -39,52 +40,54 @@ const Books = () => {
         />
       </Helmet>
       
-      <div className="mb-8 flex justify-between items-center">
-        <div>
-          <h1 className="text-4xl font-bold mb-4 flex items-center gap-2 text-custom-primary">
-            <Book className="h-8 w-8 text-custom-primary" />
-            Books by Dr. Troy Williams
-          </h1>
-          <p className="text-lg text-custom-secondary">
-            Discover my published works on artificial intelligence, cybersecurity, and digital investigation.
-          </p>
-        </div>
-        <Button 
-          onClick={() => setShowUploadForm(!showUploadForm)} 
-          className="flex items-center gap-2 bg-custom-accent hover:bg-orange-600 transition-colors duration-300"
-        >
-          <Plus className="h-4 w-4" />
-          Add Book
-        </Button>
-      </div>
-
-      {showUploadForm && <BookUploadForm onClose={() => setShowUploadForm(false)} />}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {dynamicBooks.map((book) => (
-          <Card 
-            key={book.id} 
-            className="flex flex-col bg-white border-2 border-custom-secondary shadow-lg hover:scale-105 transition-transform duration-300"
+      <div className="container mx-auto px-4">
+        <div className="mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="text-4xl font-bold mb-4 flex items-center gap-2 text-red-600">
+              <Book className="h-8 w-8" />
+              Books by Dr. Troy Williams
+            </h1>
+            <p className="text-lg text-blue-600">
+              Discover my published works on artificial intelligence, cybersecurity, and digital investigation.
+            </p>
+          </div>
+          <Button 
+            onClick={() => setShowUploadForm(!showUploadForm)} 
+            className="bg-orange-500 text-white hover:bg-orange-600 transition-colors duration-300"
           >
-            <CardHeader>
-              <CardTitle className="text-custom-primary">{book.title}</CardTitle>
-              <CardDescription className="text-custom-secondary">{book.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              {/* Additional content like book cover could go here */}
-            </CardContent>
-            <CardFooter>
-              <Button 
-                asChild 
-                className="w-full bg-custom-accent hover:bg-orange-600 transition-colors duration-300"
-              >
-                <a href={book.amazon_url} target="_blank" rel="noopener noreferrer">
-                  Buy on Amazon
-                </a>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
+            <Plus className="h-4 w-4 mr-2" />
+            Add Book
+          </Button>
+        </div>
+
+        {showUploadForm && <BookUploadForm onClose={() => setShowUploadForm(false)} />}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {dynamicBooks.map((book) => (
+            <Card 
+              key={book.id} 
+              className="bg-white border-2 border-blue-200 shadow-lg hover:scale-105 transition-transform duration-300"
+            >
+              <CardHeader>
+                <CardTitle className="text-red-600">{book.title}</CardTitle>
+                <CardDescription className="text-blue-600">{book.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                {/* Additional content like book cover could go here */}
+              </CardContent>
+              <CardFooter>
+                <Button 
+                  asChild 
+                  className="w-full bg-orange-500 text-white hover:bg-orange-600 transition-colors duration-300"
+                >
+                  <a href={book.amazon_url} target="_blank" rel="noopener noreferrer">
+                    Buy on Amazon
+                  </a>
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );
