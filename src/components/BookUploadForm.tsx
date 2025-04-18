@@ -15,8 +15,6 @@ interface BookUploadFormProps {
 }
 
 interface FormData {
-  title: string;
-  description: string;
   amazonUrl: string;
 }
 
@@ -29,11 +27,28 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
     try {
       setIsSubmitting(true);
       
+      // First fetch book details from the Amazon URL
+      const response = await fetch('https://dfnrhiovacznpnzevzfe.supabase.co/functions/v1/fetch-book-details', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${supabase.auth.session()?.access_token}`,
+        },
+        body: JSON.stringify({ amazonUrl: data.amazonUrl }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch book details');
+      }
+
+      const bookDetails = await response.json();
+      
+      // Then insert the book with the fetched details
       const { error } = await supabase
         .from('books')
         .insert({
-          title: data.title,
-          description: data.description,
+          title: bookDetails.title,
+          description: bookDetails.description,
           cover_url: data.amazonUrl,
           user_id: "00000000-0000-0000-0000-000000000000"
         });
@@ -61,25 +76,6 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
       </CardHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <label htmlFor="title" className="text-sm font-medium">Title</label>
-            <Input
-              id="title"
-              {...register("title", { required: "Title is required" })}
-            />
-            {errors.title && (
-              <p className="text-sm text-red-500">{errors.title.message}</p>
-            )}
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="description" className="text-sm font-medium">Description</label>
-            <Textarea
-              id="description"
-              {...register("description")}
-            />
-          </div>
-
           <div className="space-y-2">
             <label htmlFor="amazonUrl" className="text-sm font-medium">Amazon URL</label>
             <Input
