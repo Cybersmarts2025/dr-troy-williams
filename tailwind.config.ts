@@ -63,17 +63,16 @@ export default {
           ring: 'hsl(var(--sidebar-ring))'
         },
         custom: {
-          primary: '#9b87f5',
-          secondary: '#7E69AB',
-          accent: '#6E59A5',
-          background: '#1A1F2C',
-          softPurple: '#D6BCFA',
+          primary: '#ea384c',
+          secondary: '#1EAEDB',
+          accent: '#F97316',
+          background: '#fff',
         }
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #9b87f5 0%, #7E69AB 100%)',
-        'gradient-secondary': 'linear-gradient(to right, #d299c2 0%, #fef9d7 100%)',
-        'gradient-accent': 'linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #ea384c 0%, #c31431 100%)',
+        'gradient-secondary': 'linear-gradient(135deg, #1EAEDB 0%, #0096c7 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #F97316 0%, #ea580c 100%)',
       },
       boxShadow: {
         'soft-purple': '0 10px 15px -3px rgba(147, 39, 143, 0.2), 0 4px 6px -2px rgba(147, 39, 143, 0.1)',

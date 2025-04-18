@@ -1,13 +1,11 @@
-
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Book, Plus } from "lucide-react";
 import { useState } from "react";
-import BooksList from "@/components/BooksList";
-import BookUploadForm from "@/components/BookUploadForm";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import BookUploadForm from "@/components/BookUploadForm";
 
 const Books = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -32,7 +30,7 @@ const Books = () => {
   });
 
   return (
-    <div className="container mx-auto px-4 py-20 bg-gradient-to-br from-custom-background via-custom-background/90 to-custom-background/80">
+    <div className="container mx-auto px-4 py-20 bg-custom-background">
       <Helmet>
         <title>Books by Dr. Troy Williams - AI and Cybersecurity Publications</title>
         <meta 
@@ -43,17 +41,17 @@ const Books = () => {
       
       <div className="mb-8 flex justify-between items-center">
         <div>
-          <h1 className="text-4xl font-bold mb-4 flex items-center gap-2 text-custom-softPurple">
+          <h1 className="text-4xl font-bold mb-4 flex items-center gap-2 text-custom-primary">
             <Book className="h-8 w-8 text-custom-primary" />
             Books by Dr. Troy Williams
           </h1>
-          <p className="text-lg text-custom-secondary/80">
+          <p className="text-lg text-custom-secondary">
             Discover my published works on artificial intelligence, cybersecurity, and digital investigation.
           </p>
         </div>
         <Button 
           onClick={() => setShowUploadForm(!showUploadForm)} 
-          className="flex items-center gap-2 bg-custom-primary hover:bg-custom-secondary transition-colors duration-300"
+          className="flex items-center gap-2 bg-custom-accent hover:bg-orange-600 transition-colors duration-300"
         >
           <Plus className="h-4 w-4" />
           Add Book
@@ -66,11 +64,11 @@ const Books = () => {
         {dynamicBooks.map((book) => (
           <Card 
             key={book.id} 
-            className="flex flex-col bg-gradient-secondary shadow-soft-purple hover:scale-105 transition-transform duration-300"
+            className="flex flex-col bg-white border-2 border-custom-secondary shadow-lg hover:scale-105 transition-transform duration-300"
           >
             <CardHeader>
-              <CardTitle className="text-custom-accent">{book.title}</CardTitle>
-              <CardDescription className="text-custom-secondary/90">{book.description}</CardDescription>
+              <CardTitle className="text-custom-primary">{book.title}</CardTitle>
+              <CardDescription className="text-custom-secondary">{book.description}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
               {/* Additional content like book cover could go here */}
@@ -78,7 +76,7 @@ const Books = () => {
             <CardFooter>
               <Button 
                 asChild 
-                className="w-full bg-custom-primary hover:bg-custom-secondary animate-color-pulse"
+                className="w-full bg-custom-accent hover:bg-orange-600 transition-colors duration-300"
               >
                 <a href={book.amazon_url} target="_blank" rel="noopener noreferrer">
                   Buy on Amazon
