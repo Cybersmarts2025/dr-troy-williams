@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,12 +12,12 @@ const staticBooks = [
   {
     title: "The Future of AI in Cybersecurity",
     description: "A comprehensive guide to understanding how artificial intelligence is revolutionizing cyber defense strategies and threat detection.",
-    amazonUrl: "https://amazon.com/author/troywilliams",
+    amazon_url: "https://amazon.com/author/troywilliams",
   },
   {
     title: "Digital Investigation Techniques",
     description: "Expert insights into modern digital forensics and investigation methodologies for cybersecurity professionals.",
-    amazonUrl: "https://amazon.com/author/troywilliams",
+    amazon_url: "https://amazon.com/author/troywilliams",
   }
 ];
 
@@ -40,7 +39,7 @@ const Books = () => {
         id: book.id,
         title: book.title,
         description: book.description,
-        amazon_url: book.amazon_url
+        amazon_url: book.cover_url
       })) || [];
     },
   });
@@ -85,7 +84,7 @@ const Books = () => {
             </CardContent>
             <CardFooter>
               <Button asChild className="w-full">
-                <a href={book.amazonUrl} target="_blank" rel="noopener noreferrer">
+                <a href={book.amazon_url} target="_blank" rel="noopener noreferrer">
                   Buy on Amazon
                 </a>
               </Button>

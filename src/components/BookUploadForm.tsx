@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
@@ -34,8 +33,8 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
         .insert({
           title: data.title,
           description: data.description,
-          amazon_url: data.amazonUrl,
-          user_id: "00000000-0000-0000-0000-000000000000" // Default user ID since authentication is not implemented
+          cover_url: data.amazonUrl,
+          user_id: "00000000-0000-0000-0000-000000000000"
         });
 
       if (error) throw error;
