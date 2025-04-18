@@ -35,6 +35,7 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
           title: data.title,
           description: data.description,
           amazon_url: data.amazonUrl,
+          user_id: "00000000-0000-0000-0000-000000000000" // Default user ID since authentication is not implemented
         });
 
       if (error) throw error;

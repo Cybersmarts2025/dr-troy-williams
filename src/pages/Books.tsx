@@ -34,7 +34,14 @@ const Books = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      return data || [];
+      
+      // Transform the data to match our Book interface
+      return data.map(book => ({
+        id: book.id,
+        title: book.title,
+        description: book.description,
+        amazon_url: book.amazon_url
+      })) || [];
     },
   });
 
