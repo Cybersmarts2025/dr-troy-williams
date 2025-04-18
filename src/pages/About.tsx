@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 
 const About = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50">
       <Helmet>
         <title>About Dr. Troy Williams - AI Scientist | Cybersecurity Expert</title>
         <meta name="description" content="Learn about Dr. Troy Williams, a Ph.D. in Artificial Intelligence, Licensed Tennessee Private Investigator, and founder of Cybersmarts.ai dedicated to protecting America through technology." />
