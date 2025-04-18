@@ -1,3 +1,4 @@
+
 import { Facebook, Instagram, Linkedin, Youtube, Mail, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 import { useEffect } from "react";
@@ -25,14 +26,21 @@ const SocialLinks = () => {
       return false;
     };
 
+    const preventSelect = (e: Event) => {
+      e.preventDefault();
+      return false;
+    };
+
     const section = document.getElementById('contact');
     if (section) {
       section.addEventListener('copy', preventCopy);
       section.addEventListener('contextmenu', preventContextMenu);
+      section.addEventListener('selectstart', preventSelect);
 
       return () => {
         section.removeEventListener('copy', preventCopy);
         section.removeEventListener('contextmenu', preventContextMenu);
+        section.removeEventListener('selectstart', preventSelect);
       };
     }
   }, []);
@@ -41,7 +49,7 @@ const SocialLinks = () => {
     <section 
       className="py-12 bg-gray-50 select-none" 
       id="contact"
-      onSelectStart={(e) => e.preventDefault()}
+      // We remove the onSelectStart prop since it's not a valid React prop
     >
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Connect With Me</h2>
