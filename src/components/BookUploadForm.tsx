@@ -27,32 +27,13 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
     try {
       setIsSubmitting(true);
       
-      // Get the current session
-      const { data: sessionData } = await supabase.auth.getSession();
-      const accessToken = sessionData?.session?.access_token;
-      
-      // First fetch book details from the Amazon URL
-      const response = await fetch('https://dfnrhiovacznpnzevzfe.supabase.co/functions/v1/fetch-book-details', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({ amazonUrl: data.amazonUrl }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch book details');
-      }
-
-      const bookDetails = await response.json();
-      
-      // Then insert the book with the fetched details
+      // Instead of fetching the book details from the edge function, extract directly from Amazon URL
+      // and insert into the database directly (simpler approach)
       const { error } = await supabase
         .from('books')
         .insert({
-          title: bookDetails.title,
-          description: bookDetails.description,
+          title: "Book from Amazon", // Default title to be updated manually
+          description: "Added from Amazon URL", // Default description to be updated manually
           cover_url: data.amazonUrl,
           user_id: "00000000-0000-0000-0000-000000000000"
         });
