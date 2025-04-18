@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,72 +17,36 @@ interface BookUploadFormProps {
 interface FormData {
   title: string;
   description: string;
-  cover: FileList;
+  amazonUrl: string;
 }
 
 const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
-  const [isUploading, setIsUploading] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const queryClient = useQueryClient();
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
-  useEffect(() => {
-    // Get current user
-    const getCurrentUser = async () => {
-      const { data } = await supabase.auth.getSession();
-      setUser(data.session?.user || null);
-    };
-    getCurrentUser();
-  }, []);
-
   const onSubmit = async (data: FormData) => {
     try {
-      if (!user) {
-        toast.error("You must be logged in to add a book");
-        return;
-      }
-
-      setIsUploading(true);
-      const coverFile = data.cover[0];
+      setIsSubmitting(true);
       
-      // Upload cover image
-      let coverUrl = null;
-      if (coverFile) {
-        const fileExt = coverFile.name.split('.').pop();
-        const fileName = `${Math.random()}.${fileExt}`;
-        const { error: uploadError } = await supabase.storage
-          .from('book-covers')
-          .upload(fileName, coverFile);
-
-        if (uploadError) throw uploadError;
-
-        const { data: { publicUrl } } = supabase.storage
-          .from('book-covers')
-          .getPublicUrl(fileName);
-          
-        coverUrl = publicUrl;
-      }
-
-      // Create book record
-      const { error: insertError } = await supabase
+      const { error } = await supabase
         .from('books')
         .insert({
           title: data.title,
           description: data.description,
-          cover_url: coverUrl,
-          user_id: user.id
+          amazon_url: data.amazonUrl,
         });
 
-      if (insertError) throw insertError;
+      if (error) throw error;
 
       toast.success("Book added successfully");
       queryClient.invalidateQueries({ queryKey: ['books'] });
       onClose();
     } catch (error) {
-      console.error('Error uploading book:', error);
+      console.error('Error adding book:', error);
       toast.error("Failed to add book");
     } finally {
-      setIsUploading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -116,21 +80,29 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="cover" className="text-sm font-medium">Cover Image</label>
+            <label htmlFor="amazonUrl" className="text-sm font-medium">Amazon URL</label>
             <Input
-              id="cover"
-              type="file"
-              accept="image/*"
-              {...register("cover")}
+              id="amazonUrl"
+              type="url"
+              {...register("amazonUrl", { 
+                required: "Amazon URL is required",
+                pattern: {
+                  value: /^https?:\/\/(www\.)?amazon\./,
+                  message: "Must be a valid Amazon URL"
+                }
+              })}
             />
+            {errors.amazonUrl && (
+              <p className="text-sm text-red-500">{errors.amazonUrl.message}</p>
+            )}
           </div>
         </CardContent>
         <CardFooter className="justify-end space-x-2">
           <Button variant="outline" onClick={onClose} type="button">
             Cancel
           </Button>
-          <Button type="submit" disabled={isUploading}>
-            {isUploading ? "Adding..." : "Add Book"}
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Adding..." : "Add Book"}
           </Button>
         </CardFooter>
       </form>

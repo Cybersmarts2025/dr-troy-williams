@@ -5,7 +5,7 @@ interface Book {
   id: string;
   title: string;
   description: string | null;
-  cover_url: string | null;
+  amazon_url: string;
 }
 
 interface BooksListProps {
@@ -27,19 +27,20 @@ const BooksList = ({ books, isLoading }: BooksListProps) => {
       {books.map((book) => (
         <Card key={book.id}>
           <CardContent className="p-4">
-            {book.cover_url && (
-              <img
-                src={book.cover_url}
-                alt={book.title}
-                className="w-full h-48 object-cover rounded-md mb-4"
-              />
-            )}
             <h3 className="font-semibold text-lg mb-2">{book.title}</h3>
             {book.description && (
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-sm mb-4">
                 {book.description}
               </p>
             )}
+            <a 
+              href={book.amazon_url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline text-sm"
+            >
+              Buy on Amazon
+            </a>
           </CardContent>
         </Card>
       ))}

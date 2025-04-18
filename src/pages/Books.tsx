@@ -2,15 +2,14 @@
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Book } from "lucide-react";
+import { Book, Plus } from "lucide-react";
+import { useState } from "react";
+import BooksList from "@/components/BooksList";
+import BookUploadForm from "@/components/BookUploadForm";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
-interface BookItem {
-  title: string;
-  description: string;
-  amazonUrl: string;
-}
-
-const books: BookItem[] = [
+const staticBooks = [
   {
     title: "The Future of AI in Cybersecurity",
     description: "A comprehensive guide to understanding how artificial intelligence is revolutionizing cyber defense strategies and threat detection.",
@@ -24,6 +23,21 @@ const books: BookItem[] = [
 ];
 
 const Books = () => {
+  const [showUploadForm, setShowUploadForm] = useState(false);
+  
+  const { data: dynamicBooks = [], isLoading } = useQuery({
+    queryKey: ['books'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('books')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      return data || [];
+    },
+  });
+
   return (
     <div className="container mx-auto px-4 py-20">
       <Helmet>
@@ -34,18 +48,26 @@ const Books = () => {
         />
       </Helmet>
       
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4 flex items-center gap-2">
-          <Book className="h-8 w-8" />
-          Books by Dr. Troy Williams
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Discover my published works on artificial intelligence, cybersecurity, and digital investigation.
-        </p>
+      <div className="mb-8 flex justify-between items-center">
+        <div>
+          <h1 className="text-4xl font-bold mb-4 flex items-center gap-2">
+            <Book className="h-8 w-8" />
+            Books by Dr. Troy Williams
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            Discover my published works on artificial intelligence, cybersecurity, and digital investigation.
+          </p>
+        </div>
+        <Button onClick={() => setShowUploadForm(!showUploadForm)} className="flex items-center gap-2">
+          <Plus className="h-4 w-4" />
+          Add Book
+        </Button>
       </div>
 
+      {showUploadForm && <BookUploadForm onClose={() => setShowUploadForm(false)} />}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {books.map((book, index) => (
+        {staticBooks.map((book, index) => (
           <Card key={index} className="flex flex-col">
             <CardHeader>
               <CardTitle>{book.title}</CardTitle>
@@ -64,6 +86,9 @@ const Books = () => {
           </Card>
         ))}
       </div>
+
+      {/* Display dynamic books from Supabase */}
+      <BooksList books={dynamicBooks} isLoading={isLoading} />
     </div>
   );
 };
