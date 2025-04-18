@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
@@ -87,8 +88,8 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
               {...register("amazonUrl", { 
                 required: "Amazon URL is required",
                 pattern: {
-                  value: /^https?:\/\/(www\.)?amazon\./,
-                  message: "Must be a valid Amazon URL"
+                  value: /^https?:\/\/(www\.)?(amazon\.|a\.co)/,
+                  message: "Must be a valid Amazon URL (amazon.com or a.co)"
                 }
               })}
             />
