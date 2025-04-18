@@ -7,6 +7,7 @@ import BookUploadForm from "@/components/BookUploadForm";
 import BooksList from "@/components/BooksList";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
+import { Helmet } from "react-helmet";
 
 const Books = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -54,8 +55,13 @@ const Books = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Helmet>
+        <title>Books by Dr. Troy Williams - AI and Cybersecurity Publications</title>
+        <meta name="description" content="Explore books authored by Dr. Troy Williams on artificial intelligence, cybersecurity, and investigative ethics. Dr. Williams is a leading expert based in Lebanon, Tennessee." />
+      </Helmet>
+      
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">My Books</h1>
+        <h1 className="text-3xl font-bold">Books by Dr. Troy Williams</h1>
         <Button onClick={handleAddBookClick} className="gap-2">
           <Plus className="h-4 w-4" />
           Add Book
