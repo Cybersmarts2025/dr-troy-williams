@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { X } from "lucide-react";
@@ -27,15 +26,17 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
     try {
       setIsSubmitting(true);
       
-      // Instead of fetching the book details from the edge function, extract directly from Amazon URL
-      // and insert into the database directly (simpler approach)
+      const { data: { session } } = await supabase.auth.getSession();
+      const userId = session?.user?.id;
+
+      // Insert the book with the current user's ID
       const { error } = await supabase
         .from('books')
         .insert({
           title: "Book from Amazon", // Default title to be updated manually
           description: "Added from Amazon URL", // Default description to be updated manually
           cover_url: data.amazonUrl,
-          user_id: "00000000-0000-0000-0000-000000000000"
+          user_id: userId || "00000000-0000-0000-0000-000000000000"
         });
 
       if (error) throw error;
