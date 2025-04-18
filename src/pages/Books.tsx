@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,19 +8,6 @@ import BooksList from "@/components/BooksList";
 import BookUploadForm from "@/components/BookUploadForm";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-
-const staticBooks = [
-  {
-    title: "The Future of AI in Cybersecurity",
-    description: "A comprehensive guide to understanding how artificial intelligence is revolutionizing cyber defense strategies and threat detection.",
-    amazon_url: "https://amazon.com/author/troywilliams",
-  },
-  {
-    title: "Digital Investigation Techniques",
-    description: "Expert insights into modern digital forensics and investigation methodologies for cybersecurity professionals.",
-    amazon_url: "https://amazon.com/author/troywilliams",
-  }
-];
 
 const Books = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -34,7 +22,6 @@ const Books = () => {
 
       if (error) throw error;
       
-      // Transform the data to match our Book interface
       return data.map(book => ({
         id: book.id,
         title: book.title,
@@ -45,7 +32,7 @@ const Books = () => {
   });
 
   return (
-    <div className="container mx-auto px-4 py-20">
+    <div className="container mx-auto px-4 py-20 bg-gradient-to-br from-custom-background via-custom-background/90 to-custom-background/80">
       <Helmet>
         <title>Books by Dr. Troy Williams - AI and Cybersecurity Publications</title>
         <meta 
@@ -56,15 +43,18 @@ const Books = () => {
       
       <div className="mb-8 flex justify-between items-center">
         <div>
-          <h1 className="text-4xl font-bold mb-4 flex items-center gap-2">
-            <Book className="h-8 w-8" />
+          <h1 className="text-4xl font-bold mb-4 flex items-center gap-2 text-custom-softPurple">
+            <Book className="h-8 w-8 text-custom-primary" />
             Books by Dr. Troy Williams
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-custom-secondary/80">
             Discover my published works on artificial intelligence, cybersecurity, and digital investigation.
           </p>
         </div>
-        <Button onClick={() => setShowUploadForm(!showUploadForm)} className="flex items-center gap-2">
+        <Button 
+          onClick={() => setShowUploadForm(!showUploadForm)} 
+          className="flex items-center gap-2 bg-custom-primary hover:bg-custom-secondary transition-colors duration-300"
+        >
           <Plus className="h-4 w-4" />
           Add Book
         </Button>
@@ -73,17 +63,23 @@ const Books = () => {
       {showUploadForm && <BookUploadForm onClose={() => setShowUploadForm(false)} />}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {staticBooks.map((book, index) => (
-          <Card key={index} className="flex flex-col">
+        {dynamicBooks.map((book) => (
+          <Card 
+            key={book.id} 
+            className="flex flex-col bg-gradient-secondary shadow-soft-purple hover:scale-105 transition-transform duration-300"
+          >
             <CardHeader>
-              <CardTitle>{book.title}</CardTitle>
-              <CardDescription>{book.description}</CardDescription>
+              <CardTitle className="text-custom-accent">{book.title}</CardTitle>
+              <CardDescription className="text-custom-secondary/90">{book.description}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
               {/* Additional content like book cover could go here */}
             </CardContent>
             <CardFooter>
-              <Button asChild className="w-full">
+              <Button 
+                asChild 
+                className="w-full bg-custom-primary hover:bg-custom-secondary animate-color-pulse"
+              >
                 <a href={book.amazon_url} target="_blank" rel="noopener noreferrer">
                   Buy on Amazon
                 </a>
@@ -92,9 +88,6 @@ const Books = () => {
           </Card>
         ))}
       </div>
-
-      {/* Display dynamic books from Supabase */}
-      <BooksList books={dynamicBooks} isLoading={isLoading} />
     </div>
   );
 };
