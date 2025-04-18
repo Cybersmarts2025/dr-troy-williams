@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import WorkHistory from "@/components/WorkHistory";
 import YouTubeSection from "@/components/YouTubeSection";
 import SocialLinks from "@/components/SocialLinks";
+import PDFUploader from "@/components/PDFUploader";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
         <WorkHistory />
         <YouTubeSection />
         <SocialLinks />
+        <PDFUploader />
       </main>
     </div>
   );
