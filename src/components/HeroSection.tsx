@@ -15,18 +15,18 @@ const HeroSection = () => {
           </div>
           <div className="text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Dr. Troy Williams</h1>
-            <p className="text-xl text-gray-600 max-w-2xl mb-6">
-              Welcome to my official website.
+            <h2 className="text-2xl text-gray-600 mb-4">Founder & Chief Intelligence Architect</h2>
+            <p className="text-base text-gray-700 max-w-2xl mb-6">
+              Cybersmarts.ai LLC | Lebanon, Tennessee
             </p>
             <p className="text-base text-gray-700 max-w-2xl mb-6">
-              I am an AI scientist, cybersecurity engineer, published author, and national advocate for proactive digital defense. With over three decades of experience across private investigation, fraud prevention, and AI ethics, I've dedicated my life to building technology that protects America — not just reacts to threats.
+              Dr. Troy Williams is the Founder and Chief Intelligence Architect of Cybersmarts.ai, a Tennessee-based nonprofit dedicated to advancing national security through artificial intelligence, cybersecurity innovation, and proactive fraud prevention. Under his leadership, the organization has developed groundbreaking frameworks such as the Autonomous Intelligence Security Framework (AISF™) and the Proactive Prevention Platform (PPP™) — forming the foundation for secure, U.S.-only AI systems that prioritize ethics, legal compliance, and quantum-resilient infrastructure.
             </p>
             <p className="text-base text-gray-700 max-w-2xl mb-6">
-              This platform serves as a hub for my personal research, public initiatives, whitepapers, and ongoing mission to reshape the future of artificial intelligence, privacy, and national security through innovation, integrity, and truth.
+              At Cybersmarts.ai, Dr. Williams leads the design of national-scale AI systems, regulatory standards, and public education platforms aimed at protecting American citizens, law enforcement, and critical infrastructure from foreign cyber threats, data exploitation, and algorithmic manipulation.
             </p>
             <div className="italic text-gray-600 max-w-2xl">
-              <p className="mb-2">"I'm not ahead of the curve — I am the curve."</p>
-              <p>"Protecting America through technology."</p>
+              <p className="mb-2">"We don't react to threats. We outthink them."</p>
             </div>
           </div>
         </div>
