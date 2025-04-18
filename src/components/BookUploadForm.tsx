@@ -26,17 +26,14 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
     try {
       setIsSubmitting(true);
       
-      const { data: { session } } = await supabase.auth.getSession();
-      const userId = session?.user?.id;
-
-      // Insert the book with the current user's ID
+      // Insert the book with a fixed user_id since we're not using authentication yet
       const { error } = await supabase
         .from('books')
         .insert({
           title: "Book from Amazon", // Default title to be updated manually
           description: "Added from Amazon URL", // Default description to be updated manually
           cover_url: data.amazonUrl,
-          user_id: userId || "00000000-0000-0000-0000-000000000000"
+          user_id: "00000000-0000-0000-0000-000000000000" // Using a fixed UUID that should exist in the users table
         });
 
       if (error) throw error;
