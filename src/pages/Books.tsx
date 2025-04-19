@@ -42,8 +42,8 @@ const Books = () => {
       oldData.filter((book: any) => book.id !== deletedId)
     );
     
-    // Invalidate the query to force a refetch from the server
-    queryClient.invalidateQuery({ queryKey: ['books'] });
+    // Invalidate the query to force a refetch from the server - FIXED method name
+    queryClient.invalidateQueries({ queryKey: ['books'] });
   };
 
   return (
