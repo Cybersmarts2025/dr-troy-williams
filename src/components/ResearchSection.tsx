@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { motion } from "framer-motion";
 import { Book, FileText } from "lucide-react";
 import { SectionTitle } from "./social/SectionTitle";
 import { useContainerAnimation } from "@/hooks/useContainerAnimation";
+import { Link } from "react-router-dom";
 
 const ResearchSection = () => {
   const { container, item } = useContainerAnimation();
@@ -13,7 +13,8 @@ const ResearchSection = () => {
       title: "Autonomous Intelligence Security Framework (AISF™)",
       description: "A groundbreaking framework for proactive AI-driven security systems",
       year: "2024",
-      type: "Patent Pending"
+      type: "Patent Pending",
+      url: "/aisf"
     },
     {
       title: "Proactive Prevention Platform (PPP™)",
@@ -54,9 +55,17 @@ const ResearchSection = () => {
                 </span>
               </div>
               
-              <h3 className="text-lg font-semibold text-[#3C3B6E] mb-2">
-                {pub.title}
-              </h3>
+              {pub.url ? (
+                <Link to={pub.url}>
+                  <h3 className="text-lg font-semibold text-[#3C3B6E] mb-2 hover:text-[#B22234] transition-colors">
+                    {pub.title}
+                  </h3>
+                </Link>
+              ) : (
+                <h3 className="text-lg font-semibold text-[#3C3B6E] mb-2">
+                  {pub.title}
+                </h3>
+              )}
               
               <p className="text-gray-600 mb-4">
                 {pub.description}
