@@ -20,7 +20,8 @@ const ResearchSection = () => {
       title: "Proactive Prevention Platform (PPP™)",
       description: "Novel approach to fraud prevention using predictive AI models",
       year: "2023",
-      type: "Research Paper"
+      type: "Research Paper",
+      url: "/ppp"
     },
     {
       title: "AI-Driven Cybersecurity: The Future of Digital Defense",
