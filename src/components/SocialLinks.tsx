@@ -5,8 +5,11 @@ import { SocialButton } from "./social/SocialButton";
 import { WebsiteButton } from "./social/WebsiteButton";
 import { SectionTitle } from "./social/SectionTitle";
 import { socialLinks, websites } from "@/config/socialLinks";
+import { useContainerAnimation } from "@/hooks/useContainerAnimation";
 
 const SocialLinks = () => {
+  const { container } = useContainerAnimation();
+
   useEffect(() => {
     const preventCopy = (e: ClipboardEvent) => {
       e.preventDefault();
@@ -33,16 +36,6 @@ const SocialLinks = () => {
     }
   }, []);
   
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
   return (
     <section className="pt-16 pb-0 flag-overlay shield-bg select-none relative" id="contact">
       <div className="absolute inset-0 bg-gradient-to-b from-white to-[#3C3B6E]/10 z-0"></div>
