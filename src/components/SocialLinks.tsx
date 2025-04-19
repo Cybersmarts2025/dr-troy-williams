@@ -1,4 +1,3 @@
-
 import { Facebook, Instagram, Linkedin, Youtube, Mail, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 import { useEffect } from "react";
@@ -49,7 +48,6 @@ const SocialLinks = () => {
     <section 
       className="py-12 bg-gray-50 select-none" 
       id="contact"
-      // We remove the onSelectStart prop since it's not a valid React prop
     >
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Connect With Me</h2>
@@ -57,7 +55,7 @@ const SocialLinks = () => {
         {/* Social Media Links */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           <Button 
-            variant="outline" 
+            variant="patriotic" 
             size="lg" 
             className="gap-2"
             onClick={() => window.open("https://www.youtube.com/@cybersmarts2025", "_blank")}
@@ -66,7 +64,7 @@ const SocialLinks = () => {
             <span>YouTube</span>
           </Button>
           <Button 
-            variant="outline" 
+            variant="patriotic" 
             size="lg" 
             className="gap-2"
             onClick={() => window.open("https://www.linkedin.com/in/cybersmarts/", "_blank")}
@@ -75,7 +73,7 @@ const SocialLinks = () => {
             <span>LinkedIn</span>
           </Button>
           <Button 
-            variant="outline" 
+            variant="patriotic" 
             size="lg" 
             className="gap-2"
             onClick={() => window.open("https://www.facebook.com/verifiedsafe", "_blank")}
@@ -84,7 +82,7 @@ const SocialLinks = () => {
             <span>Facebook</span>
           </Button>
           <Button 
-            variant="outline" 
+            variant="patriotic" 
             size="lg" 
             className="gap-2"
             onClick={() => window.open("mailto:verifiedsafe8@gmail.com")}
@@ -101,7 +99,7 @@ const SocialLinks = () => {
             {websites.map((site) => (
               <Button 
                 key={site.url}
-                variant="outline" 
+                variant="patriotic" 
                 size="lg" 
                 className="gap-2 w-full"
                 onClick={() => window.open(site.url, "_blank")}
