@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "./ui/button";
 import { ArrowDown } from "lucide-react";
@@ -13,7 +12,6 @@ const HeroSection = () => {
 
   return (
     <section className="pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
-      {/* Flag background */}
       <div 
         className="absolute inset-0 bg-cover bg-center z-0 opacity-15"
         style={{ 
@@ -22,7 +20,6 @@ const HeroSection = () => {
         }}
       ></div>
       
-      {/* Shield circuit pattern overlay */}
       <div className="absolute inset-0 z-0 opacity-10"
         style={{ 
           backgroundImage: "url('/lovable-uploads/circuit-pattern.png')", 
@@ -31,7 +28,6 @@ const HeroSection = () => {
         }}
       ></div>
       
-      {/* Content with improved z-index */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-lg">
@@ -42,34 +38,34 @@ const HeroSection = () => {
             />
           </div>
           <div className="text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg">Dr. Troy Williams</h1>
-            <h2 className="text-2xl font-semibold text-[#F97316] mb-4 drop-shadow-md">Founder & Chief Intelligence Architect</h2>
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">Dr. Troy Williams</h1>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#F97316] mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">Founder & Chief Intelligence Architect</h2>
             
             <div className="space-y-4">
-              <p className="text-base font-semibold text-white bg-[#3C3B6E] px-4 py-2 rounded-lg shadow-md">
+              <p className="text-base font-semibold text-white bg-[#1A1F2C] px-4 py-3 rounded-lg shadow-lg border border-[#3C3B6E]/30">
                 Cybersmarts.ai LLC | Lebanon, Tennessee | Licensed Tennessee Private Investigator
               </p>
               
-              <p className="text-base text-white bg-[#3C3B6E]/80 px-4 py-3 rounded-lg shadow-md">
+              <p className="text-base text-white bg-[#1A1F2C] px-4 py-3 rounded-lg shadow-lg border border-[#3C3B6E]/30">
                 Dr. Troy Williams is the Founder and Chief Intelligence Architect of Cybersmarts.ai, a Tennessee-based nonprofit dedicated to advancing national security through artificial intelligence, cybersecurity innovation, and proactive fraud prevention.
               </p>
               
-              <p className="text-base text-white bg-[#3C3B6E]/80 px-4 py-3 rounded-lg shadow-md">
+              <p className="text-base text-white bg-[#1A1F2C] px-4 py-3 rounded-lg shadow-lg border border-[#3C3B6E]/30">
                 At Cybersmarts.ai, Dr. Williams leads the design of national-scale AI systems, regulatory standards, and public education platforms aimed at protecting American citizens, law enforcement, and critical infrastructure from foreign cyber threats.
               </p>
             </div>
             
-            <div className="italic text-[#F97316] font-semibold max-w-2xl text-lg bg-black/40 p-2 rounded mt-4">
-              <p className="mb-2">"We don't react to threats. We outthink them."</p>
+            <div className="italic text-[#F97316] font-bold text-xl bg-[#1A1F2C] p-4 rounded-lg shadow-lg mt-6 border border-[#3C3B6E]/30">
+              <p className="mb-0">"We don't react to threats. We outthink them."</p>
             </div>
             
             <Button 
               variant="usaBlue" 
               size="lg"
-              className="mt-6"
+              className="mt-8 text-lg font-semibold shadow-lg hover:scale-105 transition-transform"
               onClick={() => scrollToSection('work')}
             >
-              Explore <ArrowDown className="h-4 w-4" />
+              Explore <ArrowDown className="h-5 w-5" />
             </Button>
           </div>
         </div>
