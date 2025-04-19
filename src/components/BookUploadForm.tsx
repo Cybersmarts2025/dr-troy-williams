@@ -36,13 +36,15 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
       });
       
       if (!bookDetailsResponse.ok) {
-        throw new Error('Failed to fetch book details');
+        const errorData = await bookDetailsResponse.json();
+        console.error('Error from edge function:', errorData);
+        throw new Error(errorData.error || 'Failed to fetch book details');
       }
       
       const bookDetails = await bookDetailsResponse.json();
+      console.log('Book details received:', bookDetails);
       
-      // We need to provide a user_id value because it's required
-      // Using a placeholder UUID for now since we don't have authentication
+      // Insert the book with fallback values if needed
       const { error } = await supabase
         .from('books')
         .insert({
@@ -52,7 +54,10 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
           user_id: "00000000-0000-0000-0000-000000000000" // Using a placeholder UUID
         });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error inserting book:', error);
+        throw error;
+      }
 
       toast.success("Book added successfully");
       queryClient.invalidateQueries({ queryKey: ['books'] });

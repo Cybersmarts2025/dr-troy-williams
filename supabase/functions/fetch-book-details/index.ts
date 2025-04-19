@@ -3,31 +3,38 @@ import { serve } from "https://deno.land/std@0.204.0/http/server.ts";
 
 async function fetchBookDetails(amazonUrl: string) {
   try {
-    const response = await fetch(amazonUrl);
-    if (!response.ok) throw new Error('Failed to fetch book details');
+    // Since direct scraping from Amazon might be blocked, let's extract what we can from the URL
+    // and create a basic record with the amazonUrl itself
     
-    const html = await response.text();
+    // Extract ASIN (Amazon Standard Identification Number) if possible
+    const asinMatch = amazonUrl.match(/\/([A-Z0-9]{10})(?:\/|\?|$)/);
+    const asin = asinMatch ? asinMatch[1] : '';
     
-    // Extract title - look for product title meta tag
-    const titleMatch = html.match(/<meta property="og:title" content="([^"]+)"/);
-    const title = titleMatch ? titleMatch[1].split(':')[0].trim() : '';
+    // Build a basic title from the URL
+    const urlParts = amazonUrl.split('/');
+    let title = "Book from Amazon";
     
-    // Extract description - look for description meta tag
-    const descMatch = html.match(/<meta name="description" content="([^"]+)"/);
-    const description = descMatch ? descMatch[1] : '';
+    // Try to create a more descriptive title
+    if (asin) {
+      title = `Amazon Book (${asin})`;
+    }
     
-    // Extract image URL - look for image meta tag
-    const imageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
-    const imageUrl = imageMatch ? imageMatch[1] : '';
-    
-    // Extract author - this is trickier, often part of the title or in spans
-    const authorMatch = html.match(/by\s+([^|<]+)/i);
-    const author = authorMatch ? authorMatch[1].trim() : '';
-    
-    return { title, description, imageUrl, author, amazonUrl };
+    return { 
+      title, 
+      description: "Added from Amazon URL. Details couldn't be automatically extracted.", 
+      imageUrl: "", 
+      author: "", 
+      amazonUrl 
+    };
   } catch (error) {
-    console.error('Error fetching book details:', error);
-    throw new Error('Failed to fetch book details');
+    console.error('Error in fetchBookDetails:', error);
+    return { 
+      title: "Book from Amazon", 
+      description: "Added from Amazon URL", 
+      imageUrl: "", 
+      author: "", 
+      amazonUrl 
+    };
   }
 }
 
@@ -55,6 +62,7 @@ serve(async (req) => {
     }
 
     const bookDetails = await fetchBookDetails(amazonUrl);
+    console.log('Successfully processed book details:', bookDetails);
     
     return new Response(
       JSON.stringify(bookDetails),
