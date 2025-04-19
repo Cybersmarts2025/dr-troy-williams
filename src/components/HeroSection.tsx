@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "./ui/button";
 import { ArrowDown } from "lucide-react";
@@ -70,6 +69,12 @@ const HeroSection = () => {
             </Button>
           </div>
         </div>
+      </div>
+      
+      <div className="mt-12 text-center">
+        <p className="py-3 bg-gradient-to-r from-[#B22234] to-[#3C3B6E] text-white font-semibold">
+          I am not ahead of the curve I am the curve
+        </p>
       </div>
     </section>
   );
