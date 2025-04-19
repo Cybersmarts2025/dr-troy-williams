@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
 import WorkHistory from "@/components/WorkHistory";
 import YouTubeSection from "@/components/YouTubeSection";
+import ResearchSection from "@/components/ResearchSection";
 import SocialLinks from "@/components/SocialLinks";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
@@ -33,6 +34,7 @@ const Index = () => {
         </div>
         
         <WorkHistory />
+        <ResearchSection />
         <YouTubeSection />
         <SocialLinks />
       </main>
