@@ -3,50 +3,48 @@ import { serve } from "https://deno.land/std@0.204.0/http/server.ts";
 
 async function fetchBookDetails(amazonUrl: string) {
   try {
-    // Since direct scraping from Amazon might be blocked, let's extract what we can from the URL
-    // and create a basic record with the amazonUrl itself
-    
-    // Extract ASIN (Amazon Standard Identification Number) if possible
-    const asinMatch = amazonUrl.match(/\/([A-Z0-9]{10})(?:\/|\?|$)/);
-    const asin = asinMatch ? asinMatch[1] : '';
-    
-    // Build a basic title from the URL
-    const urlParts = amazonUrl.split('/');
-    let title = "Book from Amazon";
-    
-    // Try to create a more descriptive title
-    if (asin) {
-      title = `Amazon Book (${asin})`;
-    }
-    
+    const response = await fetch(amazonUrl);
+    const html = await response.text();
+
+    // Extract title
+    const titleMatch = html.match(/<span id="productTitle"[^>]*>([^<]+)<\/span>/);
+    const title = titleMatch ? titleMatch[1].trim() : "Book from Amazon";
+
+    // Extract description
+    const descriptionMatch = html.match(/<div id="bookDescription_feature_div"[^>]*>(.*?)<\/div>/s);
+    let description = descriptionMatch ? 
+      descriptionMatch[1]
+        .replace(/<[^>]+>/g, '')
+        .trim() : 
+      "No description available";
+
+    // Extract image URL
+    const imageMatch = html.match(/<img id="imgBlkFront"[^>]*src="([^"]+)"/);
+    const imageUrl = imageMatch ? imageMatch[1] : "";
+
     return { 
       title, 
-      description: "Added from Amazon URL. Details couldn't be automatically extracted.", 
-      imageUrl: "", 
-      author: "", 
+      description, 
+      imageUrl,
       amazonUrl 
     };
   } catch (error) {
-    console.error('Error in fetchBookDetails:', error);
+    console.error('Error fetching book details:', error);
     return { 
       title: "Book from Amazon", 
-      description: "Added from Amazon URL", 
+      description: "Failed to fetch book details", 
       imageUrl: "", 
-      author: "", 
       amazonUrl 
     };
   }
 }
 
 serve(async (req) => {
-  // Set CORS headers
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-    'Content-Type': 'application/json'
   };
 
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
@@ -57,7 +55,7 @@ serve(async (req) => {
     if (!amazonUrl) {
       return new Response(
         JSON.stringify({ error: 'Amazon URL is required' }),
-        { status: 400, headers: corsHeaders }
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -66,14 +64,14 @@ serve(async (req) => {
     
     return new Response(
       JSON.stringify(bookDetails),
-      { headers: corsHeaders }
+      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
 
   } catch (error) {
     console.error('Server error:', error);
     return new Response(
       JSON.stringify({ error: 'Failed to fetch book details' }),
-      { status: 500, headers: corsHeaders }
+      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
 });

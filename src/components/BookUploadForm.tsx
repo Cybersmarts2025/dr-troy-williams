@@ -27,30 +27,25 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
       setIsSubmitting(true);
       
       // First fetch the book details from our edge function
-      const bookDetailsResponse = await fetch('https://dfnrhiovacznpnzevzfe.supabase.co/functions/v1/fetch-book-details', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ amazonUrl: data.amazonUrl }),
+      const bookDetailsResponse = await supabase.functions.invoke('fetch-book-details', {
+        body: { amazonUrl: data.amazonUrl }
       });
       
-      if (!bookDetailsResponse.ok) {
-        const errorData = await bookDetailsResponse.json();
-        console.error('Error from edge function:', errorData);
-        throw new Error(errorData.error || 'Failed to fetch book details');
+      if (bookDetailsResponse.error) {
+        console.error('Error from edge function:', bookDetailsResponse.error);
+        throw new Error(bookDetailsResponse.error.message || 'Failed to fetch book details');
       }
       
-      const bookDetails = await bookDetailsResponse.json();
+      const bookDetails = bookDetailsResponse.data;
       console.log('Book details received:', bookDetails);
       
-      // Insert the book without a user_id since it's now optional
+      // Insert the book with the scraped details
       const { error } = await supabase
         .from('books')
         .insert({
-          title: bookDetails.title || "Book from Amazon",
-          description: bookDetails.description || "Added from Amazon URL",
-          cover_url: data.amazonUrl
+          title: bookDetails.title,
+          description: bookDetails.description,
+          cover_url: data.amazonUrl // Keep the Amazon URL for now
         });
 
       if (error) {
@@ -91,6 +86,7 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
                   message: "Must be a valid Amazon URL (amazon.com or a.co)"
                 }
               })}
+              placeholder="https://amazon.com/..."
             />
             {errors.amazonUrl && (
               <p className="text-sm text-red-500">{errors.amazonUrl.message}</p>

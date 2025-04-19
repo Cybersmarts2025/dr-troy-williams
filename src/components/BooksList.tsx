@@ -53,7 +53,7 @@ const BooksList = ({ books, isLoading, onDelete }: BooksListProps) => {
               <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-2">{book.title}</h3>
                 {book.description && (
-                  <p className="text-muted-foreground text-sm mb-4">
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
                     {book.description}
                   </p>
                 )}
