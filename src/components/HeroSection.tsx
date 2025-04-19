@@ -1,4 +1,7 @@
+
 import React from 'react';
+import { Button } from "./ui/button";
+import { ArrowDown, Shield } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
