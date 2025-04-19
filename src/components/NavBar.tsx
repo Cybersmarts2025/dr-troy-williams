@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { Menu, Info, Book, Briefcase, Video, Mail, Shield } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { navColors } from "@/config/colors";
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,18 +44,18 @@ const NavBar = () => {
           <Link 
             to="/" 
             className={`text-xl font-bold transition-colors flex items-center gap-2 ${
-              isScrolled ? 'text-[#8B5CF6]' : 'text-white drop-shadow-md'
+              isScrolled ? `text-[${navColors.logo.scrolled}]` : `text-${navColors.logo.default} drop-shadow-md`
             }`}
           >
-            <Shield className={`h-5 w-5 ${isScrolled ? 'text-[#8B5CF6]' : 'text-white'}`} />
+            <Shield className={`h-5 w-5 ${isScrolled ? `text-[${navColors.logo.scrolled}]` : `text-${navColors.logo.default}`}`} />
             <span>Dr. Troy Williams</span>
           </Link>
           
           <div className="hidden md:flex gap-3 items-center">
             <Link 
               to="/about" 
-              className={`flex items-center gap-1 hover:text-[#D946EF] transition-colors px-2 ${
-                isScrolled ? 'text-[#6E59A5]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[${navColors.links.about.hover}] transition-colors px-2 ${
+                isScrolled ? `text-[${navColors.links.about.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
               }`}
             >
               <Info className="h-4 w-4" />
@@ -63,8 +63,8 @@ const NavBar = () => {
             </Link>
             <Link 
               to="/books" 
-              className={`flex items-center gap-1 hover:text-[#0EA5E9] transition-colors px-2 ${
-                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[${navColors.links.books.hover}] transition-colors px-2 ${
+                isScrolled ? `text-[${navColors.links.books.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
               }`}
             >
               <Book className="h-4 w-4" />
@@ -72,8 +72,8 @@ const NavBar = () => {
             </Link>
             <button 
               onClick={() => scrollToSection('work')}
-              className={`flex items-center gap-1 hover:text-[#F97316] transition-colors px-2 ${
-                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[${navColors.links.work.hover}] transition-colors px-2 ${
+                isScrolled ? `text-[${navColors.links.work.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
               }`}
             >
               <Briefcase className="h-4 w-4" />
@@ -81,8 +81,8 @@ const NavBar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('videos')}
-              className={`flex items-center gap-1 hover:text-[#1EAEDB] transition-colors px-2 ${
-                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[${navColors.links.videos.hover}] transition-colors px-2 ${
+                isScrolled ? `text-[${navColors.links.videos.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
               }`}
             >
               <Video className="h-4 w-4" />
@@ -90,8 +90,8 @@ const NavBar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className={`flex items-center gap-1 hover:text-[#ea384c] transition-colors px-2 ${
-                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[${navColors.links.contact.hover}] transition-colors px-2 ${
+                isScrolled ? `text-[${navColors.links.contact.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
               }`}
             >
               <Mail className="h-4 w-4" />
@@ -110,7 +110,6 @@ const NavBar = () => {
         </div>
       </motion.nav>
       
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobile && isMobileMenuOpen && (
           <motion.div
@@ -163,7 +162,6 @@ const NavBar = () => {
         )}
       </AnimatePresence>
       
-      {/* Back to Top Button */}
       <AnimatePresence>
         {isScrolled && (
           <motion.button
