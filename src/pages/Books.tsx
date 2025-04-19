@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,6 +8,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import BookUploadForm from "@/components/BookUploadForm";
+import Footer from "@/components/Footer";
 
 const Books = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -90,6 +92,8 @@ const Books = () => {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

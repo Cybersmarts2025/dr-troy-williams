@@ -1,7 +1,9 @@
 
+import React from 'react';
 import { Book, GraduationCap, Briefcase, Flag, Brain, Shield } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import Footer from "@/components/Footer";
 
 const About = () => {
   return (
@@ -133,6 +135,8 @@ const About = () => {
           </Card>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };

@@ -1,7 +1,6 @@
-
+import React, { useState, useEffect } from 'react';
 import { Facebook, Linkedin, Youtube, Mail, Globe, Twitter, ExternalLink, Shield } from "lucide-react";
 import { Button } from "./ui/button";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 const SocialLinks = () => {
@@ -109,7 +108,6 @@ const SocialLinks = () => {
           <div className="h-0.5 bg-gradient-to-r from-transparent via-[#B22234] to-transparent flex-grow"></div>
         </motion.div>
         
-        {/* Social Media Links */}
         <motion.div 
           className="flex flex-wrap justify-center gap-4 mb-12"
           variants={container}
@@ -178,7 +176,6 @@ const SocialLinks = () => {
           </motion.div>
         </motion.div>
 
-        {/* Websites Grid */}
         <div className="mt-12">
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
@@ -219,33 +216,6 @@ const SocialLinks = () => {
           </motion.div>
         </div>
       </div>
-      
-      {/* Footer Banner */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        viewport={{ once: true }}
-        className="mt-16 bg-[#3C3B6E] text-white py-8 border-t-4 border-[#B22234]"
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center">
-            <div className="flex items-center gap-2 mb-4">
-              <Shield className="h-6 w-6 text-[#F97316]" />
-              <h3 className="text-xl font-bold">Dr. Troy Williams</h3>
-            </div>
-            
-            <p className="text-center mb-4 font-medium">
-              Protecting America Through Technology.<br />
-              <span className="text-[#F97316]">Built in Tennessee. By Americans. For Americans.</span>
-            </p>
-            
-            <div className="text-sm text-white/70 mt-4">
-              <p>© {new Date().getFullYear()} Dr. Troy Williams. All Rights Reserved.</p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 };
