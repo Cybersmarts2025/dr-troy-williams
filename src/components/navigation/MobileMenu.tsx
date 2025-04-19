@@ -19,7 +19,7 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
+          initial={{ opacity: a0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
@@ -28,7 +28,7 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
           <div className="container mx-auto py-4 px-4 flex flex-col gap-4">
             <Link 
               to="/about" 
-              className="flex items-center gap-2 py-3 px-4 text-[#3C3B6E] hover:bg-gray-100 rounded-md"
+              className="flex items-center gap-2 py-3 px-4 text-[#D946EF] hover:bg-gray-100 rounded-md font-medium"
               onClick={onClose}
             >
               <Info className="h-5 w-5" />
@@ -36,7 +36,7 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
             </Link>
             <Link 
               to="/books" 
-              className="flex items-center gap-2 py-3 px-4 text-[#3C3B6E] hover:bg-gray-100 rounded-md"
+              className="flex items-center gap-2 py-3 px-4 text-[#0EA5E9] hover:bg-gray-100 rounded-md font-medium"
               onClick={onClose}
             >
               <Book className="h-5 w-5" />
@@ -44,21 +44,21 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
             </Link>
             <button 
               onClick={() => handleNavigation('work')}
-              className="flex items-center gap-2 py-3 px-4 text-[#3C3B6E] hover:bg-gray-100 rounded-md text-left"
+              className="flex items-center gap-2 py-3 px-4 text-[#F97316] hover:bg-gray-100 rounded-md text-left font-medium"
             >
               <Briefcase className="h-5 w-5" />
               Work History
             </button>
             <button 
               onClick={() => handleNavigation('videos')}
-              className="flex items-center gap-2 py-3 px-4 text-[#3C3B6E] hover:bg-gray-100 rounded-md text-left"
+              className="flex items-center gap-2 py-3 px-4 text-[#1EAEDB] hover:bg-gray-100 rounded-md text-left font-medium"
             >
               <Video className="h-5 w-5" />
               Videos
             </button>
             <button 
               onClick={() => handleNavigation('contact')}
-              className="flex items-center gap-2 py-3 px-4 text-[#3C3B6E] hover:bg-gray-100 rounded-md text-left"
+              className="flex items-center gap-2 py-3 px-4 text-[#ea384c] hover:bg-gray-100 rounded-md text-left font-medium"
             >
               <Mail className="h-5 w-5" />
               Contact
