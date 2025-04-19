@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, Info, Book, Briefcase, Video, Mail, Shield } from "lucide-react";
 import { Button } from "./ui/button";
@@ -21,10 +20,8 @@ const NavBar = () => {
       setShowBackToTop(window.scrollY > 300);
     };
     
-    // Only add event listener if we're in a browser environment
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', handleScroll);
-      // Check initial scroll position
       handleScroll();
       
       return () => window.removeEventListener('scroll', handleScroll);
@@ -55,10 +52,14 @@ const NavBar = () => {
           <Link 
             to="/" 
             className={`text-xl font-bold transition-colors flex items-center gap-2 ${
-              isScrolled ? 'text-[#8B5CF6]' : 'text-white drop-shadow-md'
+              isScrolled 
+                ? 'text-[#3C3B6E] drop-shadow-sm' 
+                : 'text-white drop-shadow-md'
             }`}
           >
-            <Shield className={`h-5 w-5 ${isScrolled ? 'text-[#8B5CF6]' : 'text-white'}`} />
+            <Shield className={`h-5 w-5 ${
+              isScrolled ? 'text-[#3C3B6E]' : 'text-white'
+            }`} />
             <span>Dr. Troy Williams</span>
           </Link>
           
@@ -66,7 +67,9 @@ const NavBar = () => {
             <Link 
               to="/about" 
               className={`flex items-center gap-1 hover:text-[#D946EF] transition-colors px-2 ${
-                isScrolled ? 'text-[#6E59A5]' : 'text-white drop-shadow-sm'
+                isScrolled 
+                  ? 'text-[#6E59A5] hover:text-[#8B5CF6]' 
+                  : 'text-white hover:text-[#D946EF] drop-shadow-sm'
               }`}
             >
               <Info className="h-4 w-4" />
@@ -75,7 +78,9 @@ const NavBar = () => {
             <Link 
               to="/books" 
               className={`flex items-center gap-1 hover:text-[#0EA5E9] transition-colors px-2 ${
-                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
+                isScrolled 
+                  ? 'text-[#1A1F2C] hover:text-[#0EA5E9]' 
+                  : 'text-white hover:text-[#0EA5E9] drop-shadow-sm'
               }`}
             >
               <Book className="h-4 w-4" />
@@ -84,7 +89,9 @@ const NavBar = () => {
             <button 
               onClick={() => scrollToSection('work')}
               className={`flex items-center gap-1 hover:text-[#F97316] transition-colors px-2 ${
-                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
+                isScrolled 
+                  ? 'text-[#1A1F2C] hover:text-[#F97316]' 
+                  : 'text-white hover:text-[#F97316] drop-shadow-sm'
               }`}
             >
               <Briefcase className="h-4 w-4" />
@@ -93,7 +100,9 @@ const NavBar = () => {
             <button 
               onClick={() => scrollToSection('videos')}
               className={`flex items-center gap-1 hover:text-[#1EAEDB] transition-colors px-2 ${
-                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
+                isScrolled 
+                  ? 'text-[#1A1F2C] hover:text-[#1EAEDB]' 
+                  : 'text-white hover:text-[#1EAEDB] drop-shadow-sm'
               }`}
             >
               <Video className="h-4 w-4" />
@@ -102,7 +111,9 @@ const NavBar = () => {
             <button 
               onClick={() => scrollToSection('contact')}
               className={`flex items-center gap-1 hover:text-[#ea384c] transition-colors px-2 ${
-                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
+                isScrolled 
+                  ? 'text-[#1A1F2C] hover:text-[#ea384c]' 
+                  : 'text-white hover:text-[#ea384c] drop-shadow-sm'
               }`}
             >
               <Mail className="h-4 w-4" />
