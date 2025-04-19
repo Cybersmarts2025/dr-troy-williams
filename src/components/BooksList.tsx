@@ -36,6 +36,7 @@ const BooksList = ({ books, isLoading, onDelete }: BooksListProps) => {
       
       if (error) throw error;
       
+      // Call the parent component's onDelete handler to update the UI
       onDelete(id);
       toast.success("Book removed successfully");
     } catch (error) {

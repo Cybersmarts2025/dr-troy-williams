@@ -37,9 +37,13 @@ const Books = () => {
   });
 
   const handleDeleteBook = (deletedId: string) => {
+    // Update the cached query data to remove the deleted book
     queryClient.setQueryData(['books'], (oldData: any) => 
       oldData.filter((book: any) => book.id !== deletedId)
     );
+    
+    // Invalidate the query to force a refetch from the server
+    queryClient.invalidateQuery({ queryKey: ['books'] });
   };
 
   return (
