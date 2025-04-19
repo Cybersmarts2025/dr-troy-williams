@@ -23,7 +23,7 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed top-[60px] left-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-40 border-t border-gray-200 overflow-hidden"
+          className="fixed top-[60px] left-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-[98] border-t border-gray-200 overflow-hidden"
         >
           <div className="container mx-auto py-4 px-4 flex flex-col gap-4">
             <Link 

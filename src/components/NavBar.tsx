@@ -18,7 +18,7 @@ const NavBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
-      setShowBackToTop(window.scrollY > 300); // Show back to top after scrolling 300px
+      setShowBackToTop(window.scrollY > 300);
     };
     
     // Only add event listener if we're in a browser environment
@@ -45,7 +45,7 @@ const NavBar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 w-full backdrop-blur-sm z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 w-full backdrop-blur-sm z-[99] transition-all duration-300 ${
           isScrolled 
             ? 'bg-white/95 shadow-lg py-2' 
             : 'bg-transparent py-4'
