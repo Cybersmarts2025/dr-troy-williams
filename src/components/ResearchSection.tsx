@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from "framer-motion";
 import { Book, FileText } from "lucide-react";
@@ -27,7 +28,8 @@ const ResearchSection = () => {
       title: "AI-Driven Cybersecurity: The Future of Digital Defense",
       description: "Comprehensive analysis of AI applications in cybersecurity",
       year: "2023",
-      type: "Journal Publication"
+      type: "Journal Publication",
+      url: "/cybersecurity"
     }
   ];
 

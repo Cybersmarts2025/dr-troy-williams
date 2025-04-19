@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +11,7 @@ import Books from "./pages/Books";
 import AISF from "./pages/AISF";
 import NotFound from "./pages/NotFound";
 import PPP from "./pages/PPP";
+import Cybersecurity from "./pages/Cybersecurity";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,7 @@ const App = () => (
             <Route path="/books" element={<Books />} />
             <Route path="/aisf" element={<AISF />} />
             <Route path="/ppp" element={<PPP />} />
+            <Route path="/cybersecurity" element={<Cybersecurity />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
