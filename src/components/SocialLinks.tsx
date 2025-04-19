@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
@@ -37,7 +38,10 @@ const SocialLinks = () => {
   }, []);
   
   return (
-    <section className="pt-16 pb-0 flag-overlay shield-bg select-none relative" id="contact">
+    <section 
+      className="pt-16 pb-16 flag-overlay shield-bg select-none relative" // Increased bottom padding
+      id="contact"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-white to-[#3C3B6E]/10 z-0"></div>
       
       <div className="absolute inset-0 z-0 opacity-10"
@@ -63,13 +67,13 @@ const SocialLinks = () => {
           ))}
         </motion.div>
 
-        <div className="mt-12">
+        <div className="mt-16"> {/* Increased top margin */}
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.1 }}
-            className="text-2xl font-semibold text-center mb-6 text-[#3C3B6E]"
+            className="text-2xl font-semibold text-center mb-8 text-[#3C3B6E]" // Increased bottom margin
           >
             My Websites
           </motion.h3>
