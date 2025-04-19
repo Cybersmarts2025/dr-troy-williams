@@ -44,18 +44,18 @@ const NavBar = () => {
           <Link 
             to="/" 
             className={`text-xl font-bold transition-colors flex items-center gap-2 ${
-              isScrolled ? 'text-[#B22234]' : 'text-white drop-shadow-md'
+              isScrolled ? 'text-[#8B5CF6]' : 'text-white drop-shadow-md'
             }`}
           >
-            <Shield className={`h-5 w-5 ${isScrolled ? 'text-[#B22234]' : 'text-white'}`} />
+            <Shield className={`h-5 w-5 ${isScrolled ? 'text-[#8B5CF6]' : 'text-white'}`} />
             <span>Dr. Troy Williams</span>
           </Link>
           
           <div className="hidden md:flex gap-3 items-center">
             <Link 
               to="/about" 
-              className={`flex items-center gap-1 hover:text-[#B22234] transition-colors px-2 ${
-                isScrolled ? 'text-[#3C3B6E]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[#D946EF] transition-colors px-2 ${
+                isScrolled ? 'text-[#6E59A5]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Info className="h-4 w-4" />
@@ -63,8 +63,8 @@ const NavBar = () => {
             </Link>
             <Link 
               to="/books" 
-              className={`flex items-center gap-1 hover:text-[#B22234] transition-colors px-2 ${
-                isScrolled ? 'text-[#3C3B6E]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[#0EA5E9] transition-colors px-2 ${
+                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Book className="h-4 w-4" />
@@ -72,8 +72,8 @@ const NavBar = () => {
             </Link>
             <button 
               onClick={() => scrollToSection('work')}
-              className={`flex items-center gap-1 hover:text-[#B22234] transition-colors px-2 ${
-                isScrolled ? 'text-[#3C3B6E]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[#F97316] transition-colors px-2 ${
+                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Briefcase className="h-4 w-4" />
@@ -81,8 +81,8 @@ const NavBar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('videos')}
-              className={`flex items-center gap-1 hover:text-[#B22234] transition-colors px-2 ${
-                isScrolled ? 'text-[#3C3B6E]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[#1EAEDB] transition-colors px-2 ${
+                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Video className="h-4 w-4" />
@@ -90,8 +90,8 @@ const NavBar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className={`flex items-center gap-1 hover:text-[#B22234] transition-colors px-2 ${
-                isScrolled ? 'text-[#3C3B6E]' : 'text-white drop-shadow-sm'
+              className={`flex items-center gap-1 hover:text-[#ea384c] transition-colors px-2 ${
+                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Mail className="h-4 w-4" />
