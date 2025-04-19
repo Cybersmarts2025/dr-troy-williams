@@ -13,6 +13,14 @@ const Index = () => {
   // Force scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Force a reflow/repaint to ensure the navigation is visible
+    const navbar = document.querySelector('nav');
+    if (navbar) {
+      navbar.style.display = 'none';
+      void navbar.offsetHeight; // trigger reflow
+      navbar.style.display = '';
+    }
   }, []);
 
   return (
