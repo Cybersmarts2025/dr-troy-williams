@@ -1,3 +1,4 @@
+
 import { Facebook, Instagram, Linkedin, Youtube, Mail, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 import { useEffect } from "react";
@@ -99,7 +100,7 @@ const SocialLinks = () => {
             {websites.map((site) => (
               <Button 
                 key={site.url}
-                variant="patriotic" 
+                variant="secondary" 
                 size="lg" 
                 className="gap-2 w-full"
                 onClick={() => window.open(site.url, "_blank")}
