@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, Shield } from "lucide-react";
 import { Button } from "./ui/button";
@@ -52,15 +51,9 @@ const NavBar = () => {
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link 
             to="/" 
-            className={`text-xl font-bold transition-colors flex items-center gap-2 ${
-              isScrolled 
-                ? 'text-[#8B5CF6] drop-shadow-sm' 
-                : 'text-[#8B5CF6] drop-shadow-md'
-            }`}
+            className={`text-xl font-bold transition-colors flex items-center gap-2 text-[#ea384c]`}
           >
-            <Shield className={`h-5 w-5 ${
-              isScrolled ? 'text-[#8B5CF6]' : 'text-[#8B5CF6]'
-            }`} />
+            <Shield className={`h-5 w-5 text-[#ea384c]`} />
             <span>Dr. Troy Williams</span>
           </Link>
           

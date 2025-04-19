@@ -1,7 +1,4 @@
-
 import React from 'react';
-import { Button } from "./ui/button";
-import { ArrowDown, Shield, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
@@ -55,7 +52,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-5xl md:text-6xl font-extrabold mb-4 text-gradient-patriotic drop-shadow-lg"
+              className="text-5xl md:text-6xl font-extrabold mb-4 text-[#ea384c] drop-shadow-lg"
             >
               Dr. Troy Williams
             </motion.h1>
