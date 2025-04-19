@@ -12,11 +12,13 @@ import BackToTopButton from "./navigation/BackToTopButton";
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const isMobile = useIsMobile();
   
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      setShowBackToTop(window.scrollY > 300); // Show back to top after scrolling 300px
     };
     
     // Only add event listener if we're in a browser environment
@@ -127,7 +129,7 @@ const NavBar = () => {
         />
       )}
       
-      <BackToTopButton isVisible={isScrolled} />
+      <BackToTopButton isVisible={showBackToTop} />
     </>
   );
 };

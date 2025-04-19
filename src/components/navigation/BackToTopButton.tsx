@@ -7,7 +7,6 @@ interface BackToTopButtonProps {
 }
 
 const BackToTopButton = ({ isVisible }: BackToTopButtonProps) => {
-  // Added more explicit window check to ensure this only runs in browser environments
   const handleScrollToTop = () => {
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' });

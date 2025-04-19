@@ -10,6 +10,11 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
+  const handleNavigation = (sectionId: string) => {
+    onNavigate(sectionId);
+    onClose();
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -38,21 +43,21 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
               Books
             </Link>
             <button 
-              onClick={() => onNavigate('work')}
+              onClick={() => handleNavigation('work')}
               className="flex items-center gap-2 py-3 px-4 text-[#3C3B6E] hover:bg-gray-100 rounded-md text-left"
             >
               <Briefcase className="h-5 w-5" />
               Work History
             </button>
             <button 
-              onClick={() => onNavigate('videos')}
+              onClick={() => handleNavigation('videos')}
               className="flex items-center gap-2 py-3 px-4 text-[#3C3B6E] hover:bg-gray-100 rounded-md text-left"
             >
               <Video className="h-5 w-5" />
               Videos
             </button>
             <button 
-              onClick={() => onNavigate('contact')}
+              onClick={() => handleNavigation('contact')}
               className="flex items-center gap-2 py-3 px-4 text-[#3C3B6E] hover:bg-gray-100 rounded-md text-left"
             >
               <Mail className="h-5 w-5" />
