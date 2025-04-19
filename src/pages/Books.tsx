@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import BookUploadForm from "@/components/BookUploadForm";
 import Footer from "@/components/Footer";
+import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
+import NavBar from "@/components/NavBar";
 
 const Books = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -33,7 +34,7 @@ const Books = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50 py-20">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50">
       <Helmet>
         <title>Books by Dr. Troy Williams - AI and Cybersecurity Publications</title>
         <meta 
@@ -42,7 +43,13 @@ const Books = () => {
         />
       </Helmet>
       
-      <div className="container mx-auto px-4">
+      <NavBar />
+      
+      <div className="pt-20">
+        <PageBreadcrumb pageName="Books" />
+      </div>
+      
+      <div className="container mx-auto px-4 py-6">
         <div className="mb-8 flex justify-between items-center">
           <div>
             <h1 className="text-4xl font-bold mb-4 flex items-center gap-2 text-red-600">

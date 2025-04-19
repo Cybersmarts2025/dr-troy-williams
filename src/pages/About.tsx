@@ -1,9 +1,10 @@
-
 import React from 'react';
 import { Book, GraduationCap, Briefcase, Flag, Brain, Shield } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet-async";
 import Footer from "@/components/Footer";
+import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
+import NavBar from "@/components/NavBar";
 
 const About = () => {
   return (
@@ -13,7 +14,13 @@ const About = () => {
         <meta name="description" content="Learn about Dr. Troy Williams, a Ph.D. in Artificial Intelligence, Licensed Tennessee Private Investigator, and founder of Cybersmarts.ai dedicated to protecting America through technology." />
       </Helmet>
       
-      <main className="container mx-auto px-4 py-16">
+      <NavBar />
+      
+      <div className="pt-20">
+        <PageBreadcrumb pageName="About" />
+      </div>
+      
+      <main className="container mx-auto px-4 py-6">
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-16">
