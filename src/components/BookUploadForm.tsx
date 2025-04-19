@@ -26,8 +26,8 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
     try {
       setIsSubmitting(true);
       
-      // First fetch the book details from the Amazon URL
-      const bookDetailsResponse = await fetch('/api/fetch-book-details', {
+      // First fetch the book details directly from our Supabase Edge Function
+      const bookDetailsResponse = await fetch('https://dfnrhiovacznpnzevzfe.supabase.co/functions/v1/fetch-book-details', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

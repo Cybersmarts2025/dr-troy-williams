@@ -32,13 +32,25 @@ async function fetchBookDetails(amazonUrl: string) {
 }
 
 serve(async (req) => {
+  // Set CORS headers
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Content-Type': 'application/json'
+  };
+
+  // Handle CORS preflight requests
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+  
   try {
     const { amazonUrl } = await req.json();
     
     if (!amazonUrl) {
       return new Response(
         JSON.stringify({ error: 'Amazon URL is required' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: corsHeaders }
       );
     }
 
@@ -46,13 +58,14 @@ serve(async (req) => {
     
     return new Response(
       JSON.stringify(bookDetails),
-      { headers: { 'Content-Type': 'application/json' } }
+      { headers: corsHeaders }
     );
 
   } catch (error) {
+    console.error('Server error:', error);
     return new Response(
       JSON.stringify({ error: 'Failed to fetch book details' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      { status: 500, headers: corsHeaders }
     );
   }
 });
