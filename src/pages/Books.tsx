@@ -1,18 +1,21 @@
+
 import React from 'react';
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Book, Plus } from "lucide-react";
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import BookUploadForm from "@/components/BookUploadForm";
 import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import NavBar from "@/components/NavBar";
+import BooksList from "@/components/BooksList";
 
 const Books = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
+  const queryClient = useQueryClient();
   
   const { data: dynamicBooks = [], isLoading } = useQuery({
     queryKey: ['books'],
@@ -32,6 +35,12 @@ const Books = () => {
       })) || [];
     },
   });
+
+  const handleDeleteBook = (deletedId: string) => {
+    queryClient.setQueryData(['books'], (oldData: any) => 
+      oldData.filter((book: any) => book.id !== deletedId)
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50">
@@ -71,33 +80,11 @@ const Books = () => {
 
         {showUploadForm && <BookUploadForm onClose={() => setShowUploadForm(false)} />}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {dynamicBooks.map((book) => (
-            <Card 
-              key={book.id} 
-              className="bg-white border-2 border-blue-200 shadow-lg hover:scale-105 transition-transform duration-300"
-            >
-              <CardHeader>
-                <CardTitle className="text-red-600">{book.title}</CardTitle>
-                <CardDescription className="text-blue-600">{book.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                {/* Additional content like book cover could go here */}
-              </CardContent>
-              <CardFooter>
-                <Button 
-                  variant="patriotic"
-                  className="w-full"
-                  asChild 
-                >
-                  <a href={book.amazon_url} target="_blank" rel="noopener noreferrer">
-                    Buy on Amazon
-                  </a>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+        <BooksList 
+          books={dynamicBooks}
+          isLoading={isLoading}
+          onDelete={handleDeleteBook}
+        />
       </div>
 
       <Footer />
