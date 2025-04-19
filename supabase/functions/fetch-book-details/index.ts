@@ -16,7 +16,15 @@ async function fetchBookDetails(amazonUrl: string) {
     const descMatch = html.match(/<meta name="description" content="([^"]+)"/);
     const description = descMatch ? descMatch[1] : '';
     
-    return { title, description };
+    // Extract image URL - look for image meta tag
+    const imageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
+    const imageUrl = imageMatch ? imageMatch[1] : '';
+    
+    // Extract author - this is trickier, often part of the title or in spans
+    const authorMatch = html.match(/by\s+([^|<]+)/i);
+    const author = authorMatch ? authorMatch[1].trim() : '';
+    
+    return { title, description, imageUrl, author, amazonUrl };
   } catch (error) {
     console.error('Error fetching book details:', error);
     throw new Error('Failed to fetch book details');

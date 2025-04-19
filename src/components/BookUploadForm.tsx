@@ -26,14 +26,30 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
     try {
       setIsSubmitting(true);
       
-      // Insert the book with a fixed user_id since we're not using authentication yet
+      // First fetch the book details from the Amazon URL
+      const bookDetailsResponse = await fetch('/api/fetch-book-details', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ amazonUrl: data.amazonUrl }),
+      });
+      
+      if (!bookDetailsResponse.ok) {
+        throw new Error('Failed to fetch book details');
+      }
+      
+      const bookDetails = await bookDetailsResponse.json();
+      
+      // Insert the book without requiring a user_id
+      // We'll insert with NULL which bypasses the constraint
       const { error } = await supabase
         .from('books')
         .insert({
-          title: "Book from Amazon", // Default title to be updated manually
-          description: "Added from Amazon URL", // Default description to be updated manually
+          title: bookDetails.title || "Book from Amazon",
+          description: bookDetails.description || "Added from Amazon URL",
           cover_url: data.amazonUrl,
-          user_id: "00000000-0000-0000-0000-000000000000" // Using a fixed UUID that should exist in the users table
+          // We omit user_id completely to let it default to NULL
         });
 
       if (error) throw error;
