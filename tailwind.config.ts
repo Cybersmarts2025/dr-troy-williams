@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,19 +64,21 @@ export default {
           ring: 'hsl(var(--sidebar-ring))'
         },
         custom: {
-          primary: '#ea384c',
-          secondary: '#1EAEDB',
-          accent: '#F97316',
+          primary: '#B22234', // Deep American Red
+          secondary: '#3C3B6E', // Navy Blue
+          accent: '#F97316', // Orange
           background: '#fff',
         }
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #ea384c 0%, #c31431 100%)',
-        'gradient-secondary': 'linear-gradient(135deg, #1EAEDB 0%, #0096c7 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #B22234 0%, #9B0000 100%)',
+        'gradient-secondary': 'linear-gradient(135deg, #3C3B6E 0%, #2F2F53 100%)',
         'gradient-accent': 'linear-gradient(135deg, #F97316 0%, #ea580c 100%)',
+        'flag-pattern': 'url("/lovable-uploads/flag-background.jpg")',
+        'shield-pattern': 'url("/lovable-uploads/shield-pattern.png")',
       },
       boxShadow: {
-        'soft-purple': '0 10px 15px -3px rgba(147, 39, 143, 0.2), 0 4px 6px -2px rgba(147, 39, 143, 0.1)',
+        'soft-glow': '0 10px 15px -3px rgba(178, 34, 52, 0.2), 0 4px 6px -2px rgba(178, 34, 52, 0.1)',
       },
       keyframes: {
         'accordion-down': {
@@ -95,14 +98,22 @@ export default {
           }
         },
         'color-pulse': {
-          '0%, 100%': { backgroundColor: '#9b87f5' },
-          '50%': { backgroundColor: '#7E69AB' },
+          '0%, 100%': { backgroundColor: '#B22234' },
+          '50%': { backgroundColor: '#9B0000' },
+        },
+        'flag-wave': {
+          '0%': { transform: 'translateX(0) translateY(0)' },
+          '25%': { transform: 'translateX(-5px) translateY(5px)' },
+          '50%': { transform: 'translateX(0) translateY(0)' },
+          '75%': { transform: 'translateX(5px) translateY(-5px)' },
+          '100%': { transform: 'translateX(0) translateY(0)' },
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'color-pulse': 'color-pulse 2s ease-in-out infinite',
+        'flag-wave': 'flag-wave 15s ease-in-out infinite',
       }
     }
   },

@@ -4,18 +4,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 const WorkHistory = () => {
   return (
-    <section className="py-16" id="work">
+    <section className="py-16 relative shield-bg" id="work">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Work History</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-[#B22234]">Work History</h2>
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="border-2 border-[#3C3B6E]/20 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <CardHeader className="bg-gradient-to-r from-[#3C3B6E]/10 to-transparent">
+              <CardTitle className="flex items-center gap-2 text-[#B22234]">
                 <Briefcase className="h-5 w-5" />
                 <span>President & Director of Investigative Operations</span>
               </CardTitle>
-              <p className="text-sm text-gray-500">Information Systems Inc | Lebanon, Tennessee</p>
-              <p className="text-sm text-gray-500">1993 – Present (Ongoing Consultant / Oversight Role)</p>
+              <p className="text-sm text-[#3C3B6E]">Information Systems Inc | Lebanon, Tennessee</p>
+              <p className="text-sm text-[#3C3B6E]">1993 – Present (Ongoing Consultant / Oversight Role)</p>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 mb-2">
@@ -30,19 +30,19 @@ const WorkHistory = () => {
               <p className="text-gray-600 mb-2">
                 Dr. Williams maintained licensure as a Tennessee Private Investigator and played a direct role in sensitive investigations ranging from fraud detection and corporate risk to legal support services and digital forensics.
               </p>
-              <div className="italic text-gray-500 mt-2">
+              <div className="italic text-[#F97316] font-semibold mt-2">
                 "We built our reputation on trust, truth, and technology — long before AI ever made the headlines."
               </div>
             </CardContent>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+          <Card className="border-2 border-[#B22234]/20 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <CardHeader className="bg-gradient-to-r from-[#B22234]/10 to-transparent">
+              <CardTitle className="flex items-center gap-2 text-[#3C3B6E]">
                 <Briefcase className="h-5 w-5" />
                 <span>Founder & Chief Intelligence Architect</span>
               </CardTitle>
-              <p className="text-sm text-gray-500">Cybersmarts.ai LLC | Lebanon, Tennessee</p>
-              <p className="text-sm text-gray-500">Present</p>
+              <p className="text-sm text-[#B22234]">Cybersmarts.ai LLC | Lebanon, Tennessee</p>
+              <p className="text-sm text-[#B22234]">Present</p>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 mb-2">
@@ -54,7 +54,7 @@ const WorkHistory = () => {
               <p className="text-gray-600 mb-2">
                 At Cybersmarts.ai, Dr. Williams leads the design of national-scale AI systems, regulatory standards, and public education platforms aimed at protecting American citizens, law enforcement, and critical infrastructure from foreign cyber threats, data exploitation, and algorithmic manipulation.
               </p>
-              <div className="italic text-gray-500 mt-2">
+              <div className="italic text-[#F97316] font-semibold mt-2">
                 "We don't react to threats. We outthink them."
               </div>
             </CardContent>

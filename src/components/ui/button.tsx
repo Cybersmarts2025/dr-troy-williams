@@ -19,7 +19,9 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        patriotic: "bg-custom-accent text-white hover:bg-orange-600 transition-colors duration-300", // New variant
+        patriotic: "bg-gradient-to-r from-[#F97316] to-[#ea580c] text-white hover:from-[#ea580c] hover:to-[#c2410c] transition-all duration-300 shadow-md btn-glow", // Orange gradient with glow effect
+        usaRed: "bg-gradient-to-r from-[#B22234] to-[#9B0000] text-white hover:from-[#9B0000] hover:to-[#750000] transition-all duration-300 shadow-md btn-glow", // Red gradient with glow effect
+        usaBlue: "bg-gradient-to-r from-[#3C3B6E] to-[#303063] text-white hover:from-[#303063] hover:to-[#252557] transition-all duration-300 shadow-md btn-glow", // Blue gradient with glow effect
       },
       size: {
         default: "h-10 px-4 py-2",

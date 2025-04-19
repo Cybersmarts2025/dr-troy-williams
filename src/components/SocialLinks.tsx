@@ -47,16 +47,18 @@ const SocialLinks = () => {
 
   return (
     <section 
-      className="py-12 bg-gray-50 select-none" 
+      className="py-12 flag-overlay shield-bg select-none relative" 
       id="contact"
     >
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Connect With Me</h2>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#3C3B6E]/30 z-0"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-3xl font-bold text-center mb-8 text-[#B22234]">Connect With Me</h2>
         
         {/* Social Media Links */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           <Button 
-            variant="patriotic" 
+            variant="usaRed" 
             size="lg" 
             className="gap-2"
             onClick={() => window.open("https://www.youtube.com/@cybersmarts2025", "_blank")}
@@ -65,7 +67,7 @@ const SocialLinks = () => {
             <span>YouTube</span>
           </Button>
           <Button 
-            variant="patriotic" 
+            variant="usaRed" 
             size="lg" 
             className="gap-2"
             onClick={() => window.open("https://www.linkedin.com/in/cybersmarts/", "_blank")}
@@ -74,7 +76,7 @@ const SocialLinks = () => {
             <span>LinkedIn</span>
           </Button>
           <Button 
-            variant="patriotic" 
+            variant="usaRed" 
             size="lg" 
             className="gap-2"
             onClick={() => window.open("https://www.facebook.com/verifiedsafe", "_blank")}
@@ -83,7 +85,7 @@ const SocialLinks = () => {
             <span>Facebook</span>
           </Button>
           <Button 
-            variant="patriotic" 
+            variant="usaRed" 
             size="lg" 
             className="gap-2"
             onClick={() => window.open("mailto:verifiedsafe8@gmail.com")}
@@ -95,12 +97,12 @@ const SocialLinks = () => {
 
         {/* Websites Grid */}
         <div className="mt-8">
-          <h3 className="text-2xl font-semibold text-center mb-6">My Websites</h3>
+          <h3 className="text-2xl font-semibold text-center mb-6 text-[#3C3B6E]">My Websites</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {websites.map((site) => (
               <Button 
                 key={site.url}
-                variant="secondary" 
+                variant="usaBlue" 
                 size="lg" 
                 className="gap-2 w-full"
                 onClick={() => window.open(site.url, "_blank")}
@@ -110,6 +112,12 @@ const SocialLinks = () => {
               </Button>
             ))}
           </div>
+        </div>
+        
+        <div className="mt-12 text-center">
+          <p className="py-3 bg-gradient-to-r from-[#B22234] to-[#3C3B6E] text-white font-semibold">
+            Built in Tennessee. By Americans. For Americans.
+          </p>
         </div>
       </div>
     </section>
