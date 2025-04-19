@@ -41,15 +41,15 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
       
       const bookDetails = await bookDetailsResponse.json();
       
-      // Insert the book without requiring a user_id
-      // We'll insert with NULL which bypasses the constraint
+      // We need to provide a user_id value because it's required
+      // Using a placeholder UUID for now since we don't have authentication
       const { error } = await supabase
         .from('books')
         .insert({
           title: bookDetails.title || "Book from Amazon",
           description: bookDetails.description || "Added from Amazon URL",
           cover_url: data.amazonUrl,
-          // We omit user_id completely to let it default to NULL
+          user_id: "00000000-0000-0000-0000-000000000000" // Using a placeholder UUID
         });
 
       if (error) throw error;

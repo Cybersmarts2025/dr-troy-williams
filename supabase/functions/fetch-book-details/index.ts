@@ -1,5 +1,5 @@
 
-import { serve } from "https://deno.fresh.run/std@0.204.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.204.0/http/server.ts";
 
 async function fetchBookDetails(amazonUrl: string) {
   try {
