@@ -4,18 +4,34 @@ import HeroSection from "@/components/HeroSection";
 import WorkHistory from "@/components/WorkHistory";
 import YouTubeSection from "@/components/YouTubeSection";
 import SocialLinks from "@/components/SocialLinks";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#B22234]/5 via-white to-[#3C3B6E]/5">
+    <div className="min-h-screen bg-white overflow-x-hidden">
+      <Helmet>
+        <title>Dr. Troy Williams – AI Scientist | Cybersecurity Expert | U.S. Technology Authority</title>
+        <meta 
+          name="description" 
+          content="Discover the official profile of Dr. Troy Williams — AI researcher, cybersecurity engineer, private investigator, and founder of Cybersmarts.ai. Protecting America through technology." 
+        />
+      </Helmet>
+      
       <NavBar />
+      
       <main>
         <HeroSection />
-        <div className="section-divider"></div>
+        
+        <div className="py-4 bg-[#B22234] bg-opacity-10 border-y border-[#B22234]/30">
+          <div className="container mx-auto px-4">
+            <p className="text-center text-[#B22234] font-medium italic">
+              "Protecting America Through Technology. Built in Tennessee. By Americans. For Americans."
+            </p>
+          </div>
+        </div>
+        
         <WorkHistory />
-        <div className="section-divider"></div>
         <YouTubeSection />
-        <div className="section-divider"></div>
         <SocialLinks />
       </main>
     </div>

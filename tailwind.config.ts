@@ -76,9 +76,14 @@ export default {
         'gradient-accent': 'linear-gradient(135deg, #F97316 0%, #ea580c 100%)',
         'flag-pattern': 'url("/lovable-uploads/flag-background.jpg")',
         'shield-pattern': 'url("/lovable-uploads/shield-pattern.png")',
+        'circuit-pattern': 'url("/lovable-uploads/circuit-pattern.png")',
       },
       boxShadow: {
         'soft-glow': '0 10px 15px -3px rgba(178, 34, 52, 0.2), 0 4px 6px -2px rgba(178, 34, 52, 0.1)',
+        'patriotic-glow': '0 0 15px rgba(178, 34, 52, 0.6)',
+      },
+      dropShadow: {
+        'text': '0 2px 4px rgba(0, 0, 0, 0.3)',
       },
       keyframes: {
         'accordion-down': {
@@ -107,13 +112,43 @@ export default {
           '50%': { transform: 'translateX(0) translateY(0)' },
           '75%': { transform: 'translateX(5px) translateY(-5px)' },
           '100%': { transform: 'translateX(0) translateY(0)' },
-        }
+        },
+        'button-pulse': {
+          '0%, 100%': { boxShadow: '0 0 0 rgba(178, 34, 52, 0.4)' },
+          '50%': { boxShadow: '0 0 20px rgba(178, 34, 52, 0.6)' },
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        'bounce-subtle': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'rotate-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'ripple': {
+          '0%': { transform: 'scale(0)', opacity: '1' },
+          '100%': { transform: 'scale(4)', opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'color-pulse': 'color-pulse 2s ease-in-out infinite',
         'flag-wave': 'flag-wave 15s ease-in-out infinite',
+        'button-pulse': 'button-pulse 2s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'bounce-subtle': 'bounce-subtle 2s ease-in-out infinite',
+        'fade-in-up': 'fade-in-up 0.6s ease-out',
+        'rotate-slow': 'rotate-slow 15s linear infinite',
+        'ripple': 'ripple 0.6s ease-out',
       }
     }
   },

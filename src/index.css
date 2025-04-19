@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -91,6 +91,10 @@
     @apply border-border;
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Open Sans', sans-serif;
@@ -102,8 +106,13 @@
   }
 }
 
+/* Custom Utilities */
 .patriotic-gradient {
   @apply bg-gradient-to-r from-[#B22234] to-[#3C3B6E];
+}
+
+.text-gradient-patriotic {
+  @apply bg-gradient-to-r from-white via-white to-[#f4f4f4] bg-clip-text text-transparent drop-shadow-sm;
 }
 
 .flag-overlay {
@@ -142,14 +151,99 @@
   z-index: -1;
 }
 
+/* Button Effects */
 .btn-glow:hover {
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
   transform: translateY(-2px);
   transition: all 0.3s ease;
 }
 
+/* Section Dividers */
 .section-divider {
   height: 4px;
   background: linear-gradient(90deg, #B22234 0%, #FFFFFF 50%, #3C3B6E 100%);
   margin: 2rem 0;
+}
+
+/* Custom Animations */
+@keyframes flag-wave {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.02) translateY(-5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-flag-wave {
+  animation: flag-wave 15s ease-in-out infinite;
+}
+
+/* Hover Animation for Links */
+.hover-link {
+  position: relative;
+}
+
+.hover-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.hover-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
