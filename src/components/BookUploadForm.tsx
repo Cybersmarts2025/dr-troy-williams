@@ -26,7 +26,7 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
     try {
       setIsSubmitting(true);
       
-      // First fetch the book details directly from our Supabase Edge Function
+      // First fetch the book details from our edge function
       const bookDetailsResponse = await fetch('https://dfnrhiovacznpnzevzfe.supabase.co/functions/v1/fetch-book-details', {
         method: 'POST',
         headers: {
@@ -44,14 +44,13 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
       const bookDetails = await bookDetailsResponse.json();
       console.log('Book details received:', bookDetails);
       
-      // Insert the book with fallback values if needed
+      // Insert the book without a user_id since it's now optional
       const { error } = await supabase
         .from('books')
         .insert({
           title: bookDetails.title || "Book from Amazon",
           description: bookDetails.description || "Added from Amazon URL",
-          cover_url: data.amazonUrl,
-          user_id: "00000000-0000-0000-0000-000000000000" // Using a placeholder UUID
+          cover_url: data.amazonUrl
         });
 
       if (error) {

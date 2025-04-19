@@ -17,7 +17,7 @@ export type Database = {
           id: string
           title: string
           updated_at: string | null
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           cover_url?: string | null
@@ -26,7 +26,7 @@ export type Database = {
           id?: string
           title: string
           updated_at?: string | null
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           cover_url?: string | null
@@ -35,7 +35,7 @@ export type Database = {
           id?: string
           title?: string
           updated_at?: string | null
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
