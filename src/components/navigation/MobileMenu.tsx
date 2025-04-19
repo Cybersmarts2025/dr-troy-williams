@@ -19,7 +19,7 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: a0, height: 0 }}
+          initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
