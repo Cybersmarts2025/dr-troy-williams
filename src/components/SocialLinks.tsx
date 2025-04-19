@@ -39,7 +39,7 @@ const SocialLinks = () => {
   
   return (
     <section 
-      className="pt-16 pb-16 flag-overlay shield-bg select-none relative" // Increased bottom padding
+      className="pt-16 pb-16 flag-overlay shield-bg select-none relative"
       id="contact"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-white to-[#3C3B6E]/10 z-0"></div>
@@ -56,7 +56,7 @@ const SocialLinks = () => {
         <SectionTitle icon={Mail} title="Connect With Me" />
         
         <motion.div 
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-16" // Increased bottom margin
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -67,13 +67,13 @@ const SocialLinks = () => {
           ))}
         </motion.div>
 
-        <div className="mt-16"> {/* Increased top margin */}
+        <div className="mt-20"> {/* Increased top margin */}
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.1 }}
-            className="text-2xl font-semibold text-center mb-8 text-[#3C3B6E]" // Increased bottom margin
+            className="text-2xl font-semibold text-center mb-10 text-[#3C3B6E]" // Increased bottom margin
           >
             My Websites
           </motion.h3>
