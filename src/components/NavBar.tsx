@@ -21,7 +21,7 @@ const NavBar = () => {
           <a href="#videos" className="text-custom-secondary hover:text-custom-primary transition-colors">Videos</a>
           <a href="#contact" className="text-custom-secondary hover:text-custom-primary transition-colors">Contact</a>
         </div>
-        <Button variant="ghost" size="icon" className="md:hidden text-custom-primary">
+        <Button variant="patriotic" size="icon" className="md:hidden">
           <Menu className="h-6 w-6" />
         </Button>
       </div>

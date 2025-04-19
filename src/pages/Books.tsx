@@ -52,8 +52,8 @@ const Books = () => {
             </p>
           </div>
           <Button 
+            variant="patriotic"
             onClick={() => setShowUploadForm(!showUploadForm)} 
-            className="bg-orange-500 text-white hover:bg-orange-600 transition-colors duration-300"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add Book
@@ -77,8 +77,9 @@ const Books = () => {
               </CardContent>
               <CardFooter>
                 <Button 
+                  variant="patriotic"
+                  className="w-full"
                   asChild 
-                  className="w-full bg-orange-500 text-white hover:bg-orange-600 transition-colors duration-300"
                 >
                   <a href={book.amazon_url} target="_blank" rel="noopener noreferrer">
                     Buy on Amazon
