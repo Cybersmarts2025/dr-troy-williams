@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
 import WorkHistory from "@/components/WorkHistory";
@@ -10,6 +10,11 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
 const Index = () => {
+  // Force scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Helmet>

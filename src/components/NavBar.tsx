@@ -19,8 +19,14 @@ const NavBar = () => {
       setIsScrolled(window.scrollY > 10);
     };
     
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Only add event listener if we're in a browser environment
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      // Check initial scroll position
+      handleScroll();
+      
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
   
   const scrollToSection = (sectionId: string) => {
@@ -47,18 +53,18 @@ const NavBar = () => {
           <Link 
             to="/" 
             className={`text-xl font-bold transition-colors flex items-center gap-2 ${
-              isScrolled ? `text-[${navColors.logo.scrolled}]` : `text-${navColors.logo.default} drop-shadow-md`
+              isScrolled ? 'text-[#8B5CF6]' : 'text-white drop-shadow-md'
             }`}
           >
-            <Shield className={`h-5 w-5 ${isScrolled ? `text-[${navColors.logo.scrolled}]` : `text-${navColors.logo.default}`}`} />
+            <Shield className={`h-5 w-5 ${isScrolled ? 'text-[#8B5CF6]' : 'text-white'}`} />
             <span>Dr. Troy Williams</span>
           </Link>
           
           <div className="hidden md:flex gap-3 items-center">
             <Link 
               to="/about" 
-              className={`flex items-center gap-1 hover:text-[${navColors.links.about.hover}] transition-colors px-2 ${
-                isScrolled ? `text-[${navColors.links.about.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
+              className={`flex items-center gap-1 hover:text-[#D946EF] transition-colors px-2 ${
+                isScrolled ? 'text-[#6E59A5]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Info className="h-4 w-4" />
@@ -66,8 +72,8 @@ const NavBar = () => {
             </Link>
             <Link 
               to="/books" 
-              className={`flex items-center gap-1 hover:text-[${navColors.links.books.hover}] transition-colors px-2 ${
-                isScrolled ? `text-[${navColors.links.books.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
+              className={`flex items-center gap-1 hover:text-[#0EA5E9] transition-colors px-2 ${
+                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Book className="h-4 w-4" />
@@ -75,8 +81,8 @@ const NavBar = () => {
             </Link>
             <button 
               onClick={() => scrollToSection('work')}
-              className={`flex items-center gap-1 hover:text-[${navColors.links.work.hover}] transition-colors px-2 ${
-                isScrolled ? `text-[${navColors.links.work.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
+              className={`flex items-center gap-1 hover:text-[#F97316] transition-colors px-2 ${
+                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Briefcase className="h-4 w-4" />
@@ -84,8 +90,8 @@ const NavBar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('videos')}
-              className={`flex items-center gap-1 hover:text-[${navColors.links.videos.hover}] transition-colors px-2 ${
-                isScrolled ? `text-[${navColors.links.videos.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
+              className={`flex items-center gap-1 hover:text-[#1EAEDB] transition-colors px-2 ${
+                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Video className="h-4 w-4" />
@@ -93,8 +99,8 @@ const NavBar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className={`flex items-center gap-1 hover:text-[${navColors.links.contact.hover}] transition-colors px-2 ${
-                isScrolled ? `text-[${navColors.links.contact.scrolled}]` : `text-${navColors.default.text} ${navColors.default.shadow}`
+              className={`flex items-center gap-1 hover:text-[#ea384c] transition-colors px-2 ${
+                isScrolled ? 'text-[#1A1F2C]' : 'text-white drop-shadow-sm'
               }`}
             >
               <Mail className="h-4 w-4" />
