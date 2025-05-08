@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -10,9 +10,17 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
+  const location = useLocation();
+  
   const handleNavigation = (sectionId: string) => {
-    onNavigate(sectionId);
-    onClose();
+    if (location.pathname !== '/') {
+      // If not on homepage, navigate to home with section hash
+      window.location.href = `/#${sectionId}`;
+      onClose();
+    } else {
+      // If on homepage, use the scroll function
+      onNavigate(sectionId);
+    }
   };
 
   return (

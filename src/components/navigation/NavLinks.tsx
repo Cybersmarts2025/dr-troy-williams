@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText } from "lucide-react";
 import { navColors } from "@/config/colors";
 
@@ -12,6 +12,18 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
   // Use a more visible base color when not scrolled
   const baseTextColor = isScrolled ? "text-[#1A1F2C]" : "text-[#FFFFFF]";
   const baseShadow = isScrolled ? "" : "drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]";
+  const location = useLocation();
+  
+  // Function to handle section navigation across pages
+  const handleSectionClick = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      // If not on homepage, navigate to home with section hash
+      window.location.href = `/#${sectionId}`;
+    } else {
+      // If on homepage, use the scroll function
+      onSectionClick(sectionId);
+    }
+  };
   
   return (
     <div className="hidden md:flex gap-3 items-center">
@@ -60,7 +72,7 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         Blog
       </Link>
       <button 
-        onClick={() => onSectionClick('work')}
+        onClick={() => handleSectionClick('work')}
         className={`flex items-center gap-1 font-medium hover:text-[#F97316] transition-colors px-2 ${
           isScrolled 
             ? 'text-[#1A1F2C] hover:text-[#F97316]' 
@@ -71,7 +83,7 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         Work History
       </button>
       <button 
-        onClick={() => onSectionClick('videos')}
+        onClick={() => handleSectionClick('videos')}
         className={`flex items-center gap-1 font-medium hover:text-[#1EAEDB] transition-colors px-2 ${
           isScrolled 
             ? 'text-[#1A1F2C] hover:text-[#1EAEDB]' 
@@ -82,7 +94,7 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         Videos
       </button>
       <button 
-        onClick={() => onSectionClick('contact')}
+        onClick={() => handleSectionClick('contact')}
         className={`flex items-center gap-1 font-medium hover:text-[#ea384c] transition-colors px-2 ${
           isScrolled 
             ? 'text-[#1A1F2C] hover:text-[#ea384c]' 
