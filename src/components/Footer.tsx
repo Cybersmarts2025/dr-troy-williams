@@ -25,6 +25,7 @@ const Footer: React.FC<FooterProps> = ({
               variant="outline"
               className="bg-white text-[#B22234] hover:bg-gray-100 border-white"
               onClick={() => window.location.href = 'tel:+11234567890'}
+              aria-label="Contact by phone"
             >
               <Phone className="h-4 w-4 mr-2" /> Contact
             </Button>
@@ -33,6 +34,7 @@ const Footer: React.FC<FooterProps> = ({
               variant="outline"
               className="bg-white text-[#B22234] hover:bg-gray-100 border-white"
               onClick={() => window.location.href = 'mailto:verifiedsafe8@gmail.com'}
+              aria-label="Contact by email"
             >
               <Mail className="h-4 w-4 mr-2" /> Email
             </Button>
@@ -48,7 +50,8 @@ const Footer: React.FC<FooterProps> = ({
           <Button
             variant="outline"
             className="bg-transparent text-white border-white hover:bg-white/10"
-            onClick={() => window.open("/downloads/cv-troy-williams.pdf")}
+            onClick={() => window.location.href = "/downloads/cv-troy-williams.pdf"}
+            aria-label="Download Portfolio PDF"
           >
             <FileText className="h-4 w-4 mr-2" />
             Download Portfolio PDF

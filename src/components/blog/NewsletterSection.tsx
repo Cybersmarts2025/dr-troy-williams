@@ -13,7 +13,7 @@ const NewsletterSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate submission - in a real app, this would connect to Buttondown, Mailchimp, etc.
+    // Simulate submission with optimized timing for better UX
     setTimeout(() => {
       toast({
         title: "Subscription successful!",
@@ -22,7 +22,7 @@ const NewsletterSection = () => {
       });
       setEmail("");
       setIsSubmitting(false);
-    }, 1000);
+    }, 600); // Reduced timeout for better perceived performance
   };
 
   return (
@@ -44,11 +44,14 @@ const NewsletterSection = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              aria-label="Email address"
+              autoComplete="email"
             />
             <Button 
               type="submit" 
               className="bg-[#B22234] hover:bg-[#9B0000] whitespace-nowrap"
               disabled={isSubmitting}
+              aria-label="Subscribe to newsletter"
             >
               {isSubmitting ? "Subscribing..." : "Subscribe"}
             </Button>
