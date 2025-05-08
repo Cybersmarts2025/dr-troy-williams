@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from "@/components/NavBar";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
@@ -13,6 +13,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
+import UrlMetadataFetcher from "@/components/press/UrlMetadataFetcher";
+import { useToast } from "@/hooks/use-toast";
 
 // Types for our data
 interface MediaFeature {
@@ -38,8 +40,8 @@ const Press = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Media features data
-  const features: MediaFeature[] = [{
+  const { toast } = useToast();
+  const [features, setFeatures] = useState<MediaFeature[]>([{
     outlet: "USA Today",
     title: "AI in National Defense: The Next Frontier",
     date: "March 15, 2024",
@@ -60,7 +62,33 @@ const Press = () => {
     description: "How digital investigative techniques are revolutionizing private investigation and law enforcement.",
     link: "#",
     logo: "https://placehold.co/200x100/cccccc/333333?text=American+Investigator"
-  }];
+  }]);
+  
+  // Handle metadata fetched from the URL
+  const handleMetadataFetched = (metadata: { title: string; description: string; outlet?: string }) => {
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    
+    const newFeature: MediaFeature = {
+      outlet: metadata.outlet || "Media Outlet",
+      title: metadata.title,
+      date: formattedDate,
+      description: metadata.description || "No description available",
+      link: "#",
+      logo: `https://placehold.co/200x100/cccccc/333333?text=${encodeURIComponent(metadata.outlet || "Media")}`
+    };
+    
+    setFeatures(prevFeatures => [newFeature, ...prevFeatures]);
+    
+    toast({
+      title: "Feature Added",
+      description: `Added "${metadata.title}" to your media features`,
+    });
+  };
   
   // Awards and recognitions data
   const recognitions: Recognition[] = [{
@@ -124,6 +152,9 @@ const Press = () => {
         <section className="py-12">
           <div className="container mx-auto px-4">
             <SectionTitle icon={Newspaper} title="Media Features" />
+            
+            {/* Add the URL Metadata Fetcher component */}
+            <UrlMetadataFetcher onMetadataFetched={handleMetadataFetched} />
             
             <Card className="mb-6 shadow-sm">
               <CardHeader>
