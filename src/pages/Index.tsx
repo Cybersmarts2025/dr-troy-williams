@@ -10,6 +10,9 @@ import SocialLinks from "@/components/SocialLinks";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { PersonSchema, OrganizationSchema } from "@/utils/schemaMarkup";
+import { Button } from '@/components/ui/button';
+import { ArrowRight, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   // Force scroll to top when component mounts
@@ -68,6 +71,30 @@ const Index = () => {
         <TestimonialsSection />
         <ResearchSection />
         <YouTubeSection />
+        
+        {/* Blog Banner Section */}
+        <div className="bg-[#3C3B6E] text-white py-16">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-6 md:mb-0">
+                <h2 className="text-3xl font-bold mb-2 flex items-center gap-2">
+                  <FileText className="h-7 w-7" />
+                  AI & Cybersecurity Blog
+                </h2>
+                <p className="text-lg max-w-xl">
+                  Explore expert commentary on cybersecurity, AI policy, fraud trends, and defense technology.
+                </p>
+              </div>
+              <Button asChild size="lg" className="bg-white text-[#3C3B6E] hover:bg-gray-100">
+                <Link to="/blog" className="flex items-center gap-2">
+                  Visit the Blog
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+        
         <SocialLinks />
       </main>
 

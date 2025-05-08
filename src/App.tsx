@@ -13,6 +13,8 @@ import NotFound from "./pages/NotFound";
 import PPP from "./pages/PPP";
 import Cybersecurity from "./pages/Cybersecurity";
 import Press from "./pages/Press";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,8 @@ const App = () => (
             <Route path="/ppp" element={<PPP />} />
             <Route path="/cybersecurity" element={<Cybersecurity />} />
             <Route path="/press" element={<Press />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:postId" element={<BlogPost />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
