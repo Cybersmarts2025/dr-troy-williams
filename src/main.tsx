@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
@@ -26,4 +27,3 @@ if (typeof document !== 'undefined') {
   dnsLink.href = 'https://fonts.googleapis.com';
   document.head.appendChild(dnsLink);
 }
-
