@@ -3,3 +3,6 @@ project_id = "dfnrhiovacznpnzevzfe"
 
 [functions.fetch-book-details]
 verify_jwt = false
+
+[functions.generate-embeddings]
+verify_jwt = false
