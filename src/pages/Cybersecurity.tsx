@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import PageBreadcrumb from '@/components/navigation/PageBreadcrumb';
 import { Brain, ShieldCheck, Network, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 
 const Cybersecurity = () => {
   useEffect(() => {
@@ -34,6 +35,21 @@ const Cybersecurity = () => {
           content="Comprehensive analysis of AI applications in cybersecurity, exploring how artificial intelligence can proactively secure digital environments through intelligent automation." 
         />
       </Helmet>
+
+      {/* Schema.org markup for this webpage */}
+      <WebPageSchema 
+        name="AI-Driven Cybersecurity: The Future of Digital Defense"
+        description="Comprehensive analysis of AI applications in cybersecurity, exploring how artificial intelligence can proactively secure digital environments through intelligent automation."
+        url="https://drtroywilliams.com/cybersecurity"
+      />
+      
+      {/* Schema.org breadcrumb markup */}
+      <BreadcrumbListSchema 
+        items={[
+          { name: "Home", item: "https://drtroywilliams.com" },
+          { name: "Cybersecurity", item: "https://drtroywilliams.com/cybersecurity" }
+        ]}
+      />
 
       <PageBreadcrumb pageName="AI-Driven Cybersecurity" />
 

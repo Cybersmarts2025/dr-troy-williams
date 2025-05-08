@@ -8,6 +8,7 @@ import ResearchSection from "@/components/ResearchSection";
 import SocialLinks from "@/components/SocialLinks";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
+import { PersonSchema, OrganizationSchema } from "@/utils/schemaMarkup";
 
 const Index = () => {
   // Force scroll to top when component mounts
@@ -32,6 +33,22 @@ const Index = () => {
           content="Discover the official profile of Dr. Troy Williams — AI researcher, cybersecurity engineer, private investigator, and founder of Cybersmarts.ai. Protecting America through technology." 
         />
       </Helmet>
+      
+      {/* Schema.org markup for Dr. Troy Williams */}
+      <PersonSchema 
+        name="Dr. Troy Williams"
+        jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority"
+        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation."
+        alumniOf={["Capitol Technology University", "Western Governors University"]}
+        sameAs={["https://www.linkedin.com/in/troywilliams", "https://twitter.com/troywilliams"]}
+      />
+      
+      {/* Schema.org markup for Cybersmarts.ai organization */}
+      <OrganizationSchema 
+        name="Cybersmarts.ai"
+        description="A nonprofit organization advancing national AI security, ethical tech development, and digital sovereignty."
+        url="https://cybersmarts.ai"
+      />
       
       <NavBar />
       

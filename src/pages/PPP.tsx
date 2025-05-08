@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
+import { WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 
 const PPP = () => {
   return (
@@ -17,6 +18,21 @@ const PPP = () => {
           content="Discover the Proactive Prevention Platform (PPP™) - A novel approach to fraud prevention using predictive AI models by Dr. Troy Williams." 
         />
       </Helmet>
+      
+      {/* Schema.org markup for this webpage */}
+      <WebPageSchema 
+        name="PPP™ - Proactive Prevention Platform"
+        description="The Proactive Prevention Platform (PPP™) is a revolutionary AI-powered defense framework engineered to eliminate fraud before it occurs, developed by Dr. Troy Williams."
+        url="https://drtroywilliams.com/ppp"
+      />
+      
+      {/* Schema.org breadcrumb markup */}
+      <BreadcrumbListSchema 
+        items={[
+          { name: "Home", item: "https://drtroywilliams.com" },
+          { name: "PPP™", item: "https://drtroywilliams.com/ppp" }
+        ]}
+      />
       
       <NavBar />
       

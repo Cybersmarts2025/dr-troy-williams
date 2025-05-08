@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Book, GraduationCap, Briefcase, Flag, Brain, Shield } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -5,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import NavBar from "@/components/NavBar";
+import { PersonSchema, WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 
 const About = () => {
   return (
@@ -13,6 +15,30 @@ const About = () => {
         <title>About Dr. Troy Williams - AI Scientist | Cybersecurity Expert</title>
         <meta name="description" content="Learn about Dr. Troy Williams, a Ph.D. in Artificial Intelligence, Licensed Tennessee Private Investigator, and founder of Cybersmarts.ai dedicated to protecting America through technology." />
       </Helmet>
+      
+      {/* Schema.org markup for this webpage */}
+      <WebPageSchema 
+        name="About Dr. Troy Williams"
+        description="Learn about Dr. Troy Williams' background, education, and professional credentials in AI, cybersecurity, and private investigation."
+        url="https://drtroywilliams.com/about"
+      />
+      
+      {/* Schema.org breadcrumb markup */}
+      <BreadcrumbListSchema 
+        items={[
+          { name: "Home", item: "https://drtroywilliams.com" },
+          { name: "About", item: "https://drtroywilliams.com/about" }
+        ]}
+      />
+      
+      {/* Schema.org markup for Dr. Troy Williams with more detailed information */}
+      <PersonSchema 
+        name="Dr. Troy Williams"
+        jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority"
+        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator, a Ph.D. in Artificial Intelligence, and the founder of Cybersmarts.ai, he is dedicated to securing America's digital future."
+        alumniOf={["Capitol Technology University", "Western Governors University"]}
+        sameAs={["https://www.linkedin.com/in/troywilliams", "https://twitter.com/troywilliams"]}
+      />
       
       <NavBar />
       

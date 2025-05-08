@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
+import { WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 
 const AISF = () => {
   return (
@@ -17,6 +18,21 @@ const AISF = () => {
           content="Explore the Autonomous Intelligence Security Framework (AISF™) - A groundbreaking framework for proactive AI-driven security systems by Dr. Troy Williams." 
         />
       </Helmet>
+      
+      {/* Schema.org markup for this webpage */}
+      <WebPageSchema 
+        name="AISF™ - Autonomous Intelligence Security Framework"
+        description="The Autonomous Intelligence Security Framework (AISF™) is a pioneering research initiative led by Dr. Troy Williams to define a new national standard for artificial intelligence security, privacy, and operational integrity."
+        url="https://drtroywilliams.com/aisf"
+      />
+      
+      {/* Schema.org breadcrumb markup */}
+      <BreadcrumbListSchema 
+        items={[
+          { name: "Home", item: "https://drtroywilliams.com" },
+          { name: "AISF™", item: "https://drtroywilliams.com/aisf" }
+        ]}
+      />
       
       <NavBar />
       

@@ -11,6 +11,7 @@ import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import NavBar from "@/components/NavBar";
 import BooksList from "@/components/BooksList";
 import { Input } from "@/components/ui/input";
+import { WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 
 const Books = () => {
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -61,6 +62,21 @@ const Books = () => {
           content="Explore books authored by Dr. Troy Williams on artificial intelligence, cybersecurity, and investigative ethics. Essential reading for technology professionals." 
         />
       </Helmet>
+      
+      {/* Schema.org markup for this webpage */}
+      <WebPageSchema 
+        name="Books by Dr. Troy Williams"
+        description="Publications and books by Dr. Troy Williams on artificial intelligence, cybersecurity, and digital investigation methodologies."
+        url="https://drtroywilliams.com/books"
+      />
+      
+      {/* Schema.org breadcrumb markup */}
+      <BreadcrumbListSchema 
+        items={[
+          { name: "Home", item: "https://drtroywilliams.com" },
+          { name: "Books", item: "https://drtroywilliams.com/books" }
+        ]}
+      />
       
       <NavBar />
       
