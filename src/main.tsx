@@ -14,9 +14,9 @@ root.render(
   </React.StrictMode>
 );
 
-// Add preconnect hints for performance
+// Add preconnect hints for performance and SEO improvements
 if (typeof document !== 'undefined') {
-  // Add preconnect for external resources (adapt these to your specific resources)
+  // Add preconnect for external resources
   const link = document.createElement('link');
   link.rel = 'preconnect';
   link.href = 'https://fonts.googleapis.com';
@@ -26,4 +26,10 @@ if (typeof document !== 'undefined') {
   dnsLink.rel = 'dns-prefetch';
   dnsLink.href = 'https://fonts.googleapis.com';
   document.head.appendChild(dnsLink);
+  
+  // Add canonical URL handling to prevent duplicate content issues
+  const canonicalLink = document.createElement('link');
+  canonicalLink.rel = 'canonical';
+  canonicalLink.href = window.location.origin + window.location.pathname;
+  document.head.appendChild(canonicalLink);
 }
