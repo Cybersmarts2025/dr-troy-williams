@@ -12,6 +12,7 @@ import AISF from "./pages/AISF";
 import NotFound from "./pages/NotFound";
 import PPP from "./pages/PPP";
 import Cybersecurity from "./pages/Cybersecurity";
+import Press from "./pages/Press";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/aisf" element={<AISF />} />
             <Route path="/ppp" element={<PPP />} />
             <Route path="/cybersecurity" element={<Cybersecurity />} />
+            <Route path="/press" element={<Press />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

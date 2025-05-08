@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper } from "lucide-react";
 import { navColors } from "@/config/colors";
 
 interface NavLinksProps {
@@ -36,6 +36,17 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
       >
         <Book className="h-4 w-4" />
         Books
+      </Link>
+      <Link 
+        to="/press" 
+        className={`flex items-center gap-1 font-medium hover:text-[#10B981] transition-colors px-2 ${
+          isScrolled 
+            ? 'text-[#1A1F2C] hover:text-[#10B981]' 
+            : 'text-[#10B981] hover:text-white ' + baseShadow
+        }`}
+      >
+        <Newspaper className="h-4 w-4" />
+        Press
       </Link>
       <button 
         onClick={() => onSectionClick('work')}

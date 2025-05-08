@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface MobileMenuProps {
@@ -41,6 +41,14 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
             >
               <Book className="h-5 w-5" />
               Books
+            </Link>
+            <Link 
+              to="/press" 
+              className="flex items-center gap-2 py-3 px-4 text-[#10B981] hover:bg-gray-100 rounded-md font-medium"
+              onClick={onClose}
+            >
+              <Newspaper className="h-5 w-5" />
+              Press
             </Link>
             <button 
               onClick={() => handleNavigation('work')}

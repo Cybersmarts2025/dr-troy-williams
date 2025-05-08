@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -214,6 +213,62 @@ export const VideoObjectSchema = ({
     <Helmet>
       <script type="application/ld+json">
         {JSON.stringify(videoSchema)}
+      </script>
+    </Helmet>
+  );
+};
+
+// New schema for press articles
+interface NewsArticleSchemaProps {
+  headline: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  publisher: {
+    name: string;
+    logo?: string;
+  };
+  author?: string;
+  url?: string;
+}
+
+export const NewsArticleSchema = ({
+  headline,
+  description,
+  image,
+  datePublished,
+  publisher,
+  author = "Dr. Troy Williams",
+  url
+}: NewsArticleSchemaProps) => {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": headline,
+    "description": description,
+    "image": image,
+    "datePublished": datePublished,
+    "publisher": {
+      "@type": "Organization",
+      "name": publisher.name,
+      ...(publisher.logo && { 
+        "logo": {
+          "@type": "ImageObject",
+          "url": publisher.logo
+        } 
+      })
+    },
+    "author": {
+      "@type": "Person",
+      "name": author
+    },
+    ...(url && { "url": url })
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">
+        {JSON.stringify(articleSchema)}
       </script>
     </Helmet>
   );
