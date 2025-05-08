@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import NavBar from "@/components/NavBar";
@@ -185,24 +184,20 @@ const Blog = () => {
 
       {/* Schema.org markup for WebPage */}
       <WebPageSchema 
-        title="AI & Cybersecurity Blog | Dr. Troy Williams"
+        name="AI & Cybersecurity Blog | Dr. Troy Williams"
         description="Expert commentary and analysis on cybersecurity, AI policy, fraud prevention, and defense technology by Dr. Troy Williams."
       />
       
       {/* Schema.org markup for BreadcrumbList */}
       <BreadcrumbListSchema
-        itemListElement={[
+        items={[
           {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://legalsmarts.net"
+            name: "Home",
+            item: "https://legalsmarts.net"
           },
           {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Blog",
-            "item": "https://legalsmarts.net/blog"
+            name: "Blog",
+            item: "https://legalsmarts.net/blog"
           }
         ]}
       />

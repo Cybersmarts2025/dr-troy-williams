@@ -1,11 +1,10 @@
-
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link } from "react-router-dom";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
-import { Button } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Tag, ThumbsUp, Share2, ArrowLeft } from "lucide-react";
@@ -178,30 +177,24 @@ const BlogPost = () => {
       
       {/* Schema.org markup for WebPage */}
       <WebPageSchema 
-        title={`${post.title} | Dr. Troy Williams Blog`}
+        name={`${post.title} | Dr. Troy Williams Blog`}
         description={post.excerpt}
       />
       
       {/* Schema.org markup for BreadcrumbList */}
       <BreadcrumbListSchema
-        itemListElement={[
+        items={[
           {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://legalsmarts.net"
+            name: "Home",
+            item: "https://legalsmarts.net"
           },
           {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Blog",
-            "item": "https://legalsmarts.net/blog"
+            name: "Blog",
+            item: "https://legalsmarts.net/blog"
           },
           {
-            "@type": "ListItem",
-            "position": 3,
-            "name": post.title,
-            "item": `https://legalsmarts.net/blog/${post.id}`
+            name: post.title,
+            item: `https://legalsmarts.net/blog/${post.id}`
           }
         ]}
       />
