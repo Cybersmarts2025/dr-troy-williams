@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import NavBar from "@/components/NavBar";
 import { motion } from "framer-motion";
@@ -7,12 +8,38 @@ import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import { WebPageSchema, PersonSchema } from "@/utils/schemaMarkup";
 import { SectionTitle } from "@/components/social/SectionTitle";
 import { Newspaper, Award } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
+
+// Types for our data
+interface MediaFeature {
+  outlet: string;
+  title: string;
+  date: string;
+  description: string;
+  link: string;
+  logo: string;
+}
+
+interface Recognition {
+  title: string;
+  organization: string;
+  year: string;
+  description: string;
+  logo: string;
+}
+
 const Press = () => {
   // Force scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const features = [{
+
+  // Media features data
+  const features: MediaFeature[] = [{
     outlet: "USA Today",
     title: "AI in National Defense: The Next Frontier",
     date: "March 15, 2024",
@@ -34,7 +61,9 @@ const Press = () => {
     link: "#",
     logo: "https://placehold.co/200x100/cccccc/333333?text=American+Investigator"
   }];
-  const recognitions = [{
+  
+  // Awards and recognitions data
+  const recognitions: Recognition[] = [{
     title: "Top 50 Cybersecurity Experts",
     organization: "Security Magazine",
     year: "2023",
@@ -53,6 +82,7 @@ const Press = () => {
     description: "Recognized for leadership in advancing technology education and innovation.",
     logo: "https://placehold.co/120x120/cccccc/333333?text=Award"
   }];
+
   return <div className="min-h-screen bg-white">
       <Helmet>
         <title>Press & Media | Dr. Troy Williams - AI & Cybersecurity Expert</title>
@@ -95,6 +125,60 @@ const Press = () => {
           <div className="container mx-auto px-4">
             <SectionTitle icon={Newspaper} title="Media Features" />
             
+            <Card className="mb-6 shadow-sm">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-between">
+                  <span>How to Edit Media Features</span>
+                </CardTitle>
+                <CardDescription>
+                  To add or remove media features, modify the <code>features</code> array in the <code>src/pages/Press.tsx</code> file. 
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Field</TableHead>
+                      <TableHead>Description</TableHead>
+                      <TableHead>Example</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell><code>outlet</code></TableCell>
+                      <TableCell>Name of the media outlet</TableCell>
+                      <TableCell>"USA Today"</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>title</code></TableCell>
+                      <TableCell>Title of the article or feature</TableCell>
+                      <TableCell>"AI in National Defense"</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>date</code></TableCell>
+                      <TableCell>Date of publication</TableCell>
+                      <TableCell>"March 15, 2024"</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>description</code></TableCell>
+                      <TableCell>Short description of the content</TableCell>
+                      <TableCell>"Dr. Troy Williams discusses..."</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>link</code></TableCell>
+                      <TableCell>URL to the article</TableCell>
+                      <TableCell>"https://example.com/article"</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>logo</code></TableCell>
+                      <TableCell>URL to the outlet's logo image</TableCell>
+                      <TableCell>"https://example.com/logo.png"</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((item, index) => <motion.div key={index} initial={{
               opacity: 0,
@@ -132,6 +216,55 @@ const Press = () => {
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
             <SectionTitle icon={Award} title="Awards & Recognition" />
+            
+            <Card className="mb-6 shadow-sm bg-white">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-between">
+                  <span>How to Edit Awards & Recognitions</span>
+                </CardTitle>
+                <CardDescription>
+                  To add or remove awards and recognitions, modify the <code>recognitions</code> array in the <code>src/pages/Press.tsx</code> file.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Field</TableHead>
+                      <TableHead>Description</TableHead>
+                      <TableHead>Example</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell><code>title</code></TableCell>
+                      <TableCell>Title of the award</TableCell>
+                      <TableCell>"Top 50 Cybersecurity Experts"</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>organization</code></TableCell>
+                      <TableCell>Organization giving the award</TableCell>
+                      <TableCell>"Security Magazine"</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>year</code></TableCell>
+                      <TableCell>Year received</TableCell>
+                      <TableCell>"2023"</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>description</code></TableCell>
+                      <TableCell>Brief description of the award</TableCell>
+                      <TableCell>"Recognized for innovative approaches..."</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><code>logo</code></TableCell>
+                      <TableCell>URL to award image/logo</TableCell>
+                      <TableCell>"https://example.com/award.png"</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {recognitions.map((item, index) => <motion.div key={index} initial={{
