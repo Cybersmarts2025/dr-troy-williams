@@ -68,9 +68,9 @@ const Index = () => {
           </div>
         </div>
         
+        <MentoringSection />
         <WorkHistory />
         <TestimonialsSection />
-        <MentoringSection />
         <ResearchSection />
         <YouTubeSection />
         
