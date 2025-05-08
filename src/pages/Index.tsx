@@ -8,6 +8,7 @@ import ResearchSection from "@/components/ResearchSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import SocialLinks from "@/components/SocialLinks";
 import Footer from "@/components/Footer";
+import MentoringSection from "@/components/MentoringSection";
 import { Helmet } from "react-helmet-async";
 import { PersonSchema, OrganizationSchema } from "@/utils/schemaMarkup";
 import { Button } from '@/components/ui/button';
@@ -69,6 +70,7 @@ const Index = () => {
         
         <WorkHistory />
         <TestimonialsSection />
+        <MentoringSection />
         <ResearchSection />
         <YouTubeSection />
         
