@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { MobileMenu } from './navigation/MobileMenu';
+import MobileMenu from './navigation/MobileMenu'; // Fixed import statement
 import { cn } from "@/lib/utils";
 import { GlobalSearch } from './GlobalSearch';
 

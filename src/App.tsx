@@ -30,7 +30,7 @@ const queryClient = new QueryClient({
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <HelmetProvider>
+    <HelmetProvider context={{}}>
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
