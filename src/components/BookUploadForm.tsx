@@ -8,6 +8,7 @@ import { toast } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { X } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface BookUploadFormProps {
   onClose: () => void;
@@ -20,6 +21,7 @@ interface FormData {
 const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const queryClient = useQueryClient();
+  const { user } = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
@@ -39,13 +41,14 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
       const bookDetails = bookDetailsResponse.data;
       console.log('Book details received:', bookDetails);
       
-      // Insert the book with the scraped details
+      // Insert the book with the scraped details and user_id
       const { error } = await supabase
         .from('books')
         .insert({
           title: bookDetails.title,
           description: bookDetails.description,
-          cover_url: data.amazonUrl // Keep the Amazon URL for now
+          cover_url: data.amazonUrl, // Keep the Amazon URL for now
+          user_id: user?.id // Associate the book with the current user
         });
 
       if (error) {
