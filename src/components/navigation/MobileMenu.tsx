@@ -4,12 +4,13 @@ import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText } from "
 import { motion, AnimatePresence } from "framer-motion";
 
 interface MobileMenuProps {
-  isOpen: boolean;
+  children?: React.ReactNode; // Add children prop to interface
+  isOpen?: boolean;
   onClose: () => void;
-  onNavigate: (sectionId: string) => void;
+  onNavigate?: (sectionId: string) => void;
 }
 
-const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
+const MobileMenu = ({ children, isOpen = true, onClose, onNavigate = () => {} }: MobileMenuProps) => {
   const location = useLocation();
   
   const handleNavigation = (sectionId: string) => {
@@ -94,6 +95,8 @@ const MobileMenu = ({ isOpen, onClose, onNavigate }: MobileMenuProps) => {
               <Mail className="h-5 w-5" />
               Contact
             </button>
+            {/* Render children at the end of the menu */}
+            {children}
           </div>
         </motion.div>
       )}
