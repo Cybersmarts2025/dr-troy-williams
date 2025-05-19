@@ -1,10 +1,11 @@
 
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import MobileMenuItem from "./MobileMenuItem";
 
 interface MobileMenuProps {
-  children?: React.ReactNode; // Add children prop to interface
+  children?: React.ReactNode;
   isOpen?: boolean;
   onClose: () => void;
   onNavigate?: (sectionId: string) => void;
@@ -21,6 +22,7 @@ const MobileMenu = ({ children, isOpen = true, onClose, onNavigate = () => {} }:
     } else {
       // If on homepage, use the scroll function
       onNavigate(sectionId);
+      onClose();
     }
   };
 
@@ -35,66 +37,66 @@ const MobileMenu = ({ children, isOpen = true, onClose, onNavigate = () => {} }:
           className="fixed top-[60px] left-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-[9996] border-t border-gray-200 overflow-hidden"
         >
           <div className="container mx-auto py-4 px-4 flex flex-col gap-4">
-            <Link 
+            <MobileMenuItem 
               to="/about" 
-              className="flex items-center gap-2 py-3 px-4 text-[#D946EF] hover:bg-gray-100 rounded-md font-medium"
+              icon={Info} 
+              label="About" 
               onClick={onClose}
-            >
-              <Info className="h-5 w-5" />
-              About
-            </Link>
-            <Link 
+              color="#D946EF" 
+            />
+            
+            <MobileMenuItem 
               to="/books" 
-              className="flex items-center gap-2 py-3 px-4 text-[#0EA5E9] hover:bg-gray-100 rounded-md font-medium"
+              icon={Book} 
+              label="Books" 
               onClick={onClose}
-            >
-              <Book className="h-5 w-5" />
-              Books
-            </Link>
-            <Link 
+              color="#0EA5E9" 
+            />
+            
+            <MobileMenuItem 
               to="/press" 
-              className="flex items-center gap-2 py-3 px-4 text-[#10B981] hover:bg-gray-100 rounded-md font-medium"
+              icon={Newspaper} 
+              label="Press" 
               onClick={onClose}
-            >
-              <Newspaper className="h-5 w-5" />
-              Press
-            </Link>
-            <Link 
+              color="#10B981" 
+            />
+            
+            <MobileMenuItem 
               to="/blog" 
-              className="flex items-center gap-2 py-3 px-4 text-[#8B5CF6] hover:bg-gray-100 rounded-md font-medium"
+              icon={FileText} 
+              label="Blog" 
               onClick={onClose}
-            >
-              <FileText className="h-5 w-5" />
-              Blog
-            </Link>
-            <button 
+              color="#8B5CF6" 
+            />
+            
+            <MobileMenuItem 
+              icon={Briefcase} 
+              label="Work History" 
               onClick={() => handleNavigation('work')}
-              className="flex items-center gap-2 py-3 px-4 text-[#F97316] hover:bg-gray-100 rounded-md text-left font-medium"
-            >
-              <Briefcase className="h-5 w-5" />
-              Work History
-            </button>
-            <button 
+              color="#F97316" 
+            />
+            
+            <MobileMenuItem 
+              icon={Quote} 
+              label="Testimonials" 
               onClick={() => handleNavigation('testimonials')}
-              className="flex items-center gap-2 py-3 px-4 text-[#8B5CF6] hover:bg-gray-100 rounded-md text-left font-medium"
-            >
-              <Quote className="h-5 w-5" />
-              Testimonials
-            </button>
-            <button 
+              color="#8B5CF6" 
+            />
+            
+            <MobileMenuItem 
+              icon={Video} 
+              label="Videos" 
               onClick={() => handleNavigation('videos')}
-              className="flex items-center gap-2 py-3 px-4 text-[#1EAEDB] hover:bg-gray-100 rounded-md text-left font-medium"
-            >
-              <Video className="h-5 w-5" />
-              Videos
-            </button>
-            <button 
+              color="#1EAEDB" 
+            />
+            
+            <MobileMenuItem 
+              icon={Mail} 
+              label="Contact" 
               onClick={() => handleNavigation('contact')}
-              className="flex items-center gap-2 py-3 px-4 text-[#ea384c] hover:bg-gray-100 rounded-md text-left font-medium"
-            >
-              <Mail className="h-5 w-5" />
-              Contact
-            </button>
+              color="#ea384c" 
+            />
+            
             {/* Render children at the end of the menu */}
             {children}
           </div>

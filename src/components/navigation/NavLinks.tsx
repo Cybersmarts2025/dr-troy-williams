@@ -1,7 +1,8 @@
 
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText } from "lucide-react";
-import { navColors } from "@/config/colors";
+import NavLink from "./NavLink";
+import NavButton from "./NavButton";
 
 interface NavLinksProps {
   isScrolled: boolean;
@@ -27,83 +28,75 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
   
   return (
     <div className="hidden md:flex gap-3 items-center">
-      <Link 
+      <NavLink 
         to="/about" 
-        className={`flex items-center gap-1 font-medium hover:text-[#D946EF] transition-colors px-2 ${
-          isScrolled 
-            ? 'text-[#6E59A5] hover:text-[#8B5CF6]' 
-            : 'text-[#D946EF] hover:text-white ' + baseShadow
-        }`}
-      >
-        <Info className="h-4 w-4" />
-        About
-      </Link>
-      <Link 
+        icon={Info} 
+        label="About" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#D946EF" 
+        hoverColor="#D946EF" 
+      />
+      
+      <NavLink 
         to="/books" 
-        className={`flex items-center gap-1 font-medium hover:text-[#0EA5E9] transition-colors px-2 ${
-          isScrolled 
-            ? 'text-[#1A1F2C] hover:text-[#0EA5E9]' 
-            : 'text-[#0EA5E9] hover:text-white ' + baseShadow
-        }`}
-      >
-        <Book className="h-4 w-4" />
-        Books
-      </Link>
-      <Link 
+        icon={Book} 
+        label="Books" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#0EA5E9" 
+        hoverColor="#0EA5E9" 
+      />
+      
+      <NavLink 
         to="/press" 
-        className={`flex items-center gap-1 font-medium hover:text-[#10B981] transition-colors px-2 ${
-          isScrolled 
-            ? 'text-[#1A1F2C] hover:text-[#10B981]' 
-            : 'text-[#10B981] hover:text-white ' + baseShadow
-        }`}
-      >
-        <Newspaper className="h-4 w-4" />
-        Press
-      </Link>
-      <Link 
+        icon={Newspaper} 
+        label="Press" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#10B981" 
+        hoverColor="#10B981" 
+      />
+      
+      <NavLink 
         to="/blog" 
-        className={`flex items-center gap-1 font-medium hover:text-[#8B5CF6] transition-colors px-2 ${
-          isScrolled 
-            ? 'text-[#1A1F2C] hover:text-[#8B5CF6]' 
-            : 'text-[#8B5CF6] hover:text-white ' + baseShadow
-        }`}
-      >
-        <FileText className="h-4 w-4" />
-        Blog
-      </Link>
-      <button 
+        icon={FileText} 
+        label="Blog" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#8B5CF6" 
+        hoverColor="#8B5CF6" 
+      />
+      
+      <NavButton 
         onClick={() => handleSectionClick('work')}
-        className={`flex items-center gap-1 font-medium hover:text-[#F97316] transition-colors px-2 ${
-          isScrolled 
-            ? 'text-[#1A1F2C] hover:text-[#F97316]' 
-            : 'text-[#F97316] hover:text-white ' + baseShadow
-        }`}
-      >
-        <Briefcase className="h-4 w-4" />
-        Work History
-      </button>
-      <button 
+        icon={Briefcase} 
+        label="Work History" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#F97316" 
+        hoverColor="#F97316" 
+      />
+      
+      <NavButton 
         onClick={() => handleSectionClick('videos')}
-        className={`flex items-center gap-1 font-medium hover:text-[#1EAEDB] transition-colors px-2 ${
-          isScrolled 
-            ? 'text-[#1A1F2C] hover:text-[#1EAEDB]' 
-            : 'text-[#1EAEDB] hover:text-white ' + baseShadow
-        }`}
-      >
-        <Video className="h-4 w-4" />
-        Videos
-      </button>
-      <button 
+        icon={Video} 
+        label="Videos" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#1EAEDB" 
+        hoverColor="#1EAEDB" 
+      />
+      
+      <NavButton 
         onClick={() => handleSectionClick('contact')}
-        className={`flex items-center gap-1 font-medium hover:text-[#ea384c] transition-colors px-2 ${
-          isScrolled 
-            ? 'text-[#1A1F2C] hover:text-[#ea384c]' 
-            : 'text-[#ea384c] hover:text-white ' + baseShadow
-        }`}
-      >
-        <Mail className="h-4 w-4" />
-        Contact
-      </button>
+        icon={Mail} 
+        label="Contact" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#ea384c" 
+        hoverColor="#ea384c" 
+      />
     </div>
   );
 };
