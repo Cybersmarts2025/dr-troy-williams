@@ -153,7 +153,7 @@ const About = () => {
             </CardHeader>
             <CardContent>
               <p className="mb-4">
-                Dr. Troy Williams' work is not for sale to foreign governments or corporations. Everything he builds is protected, patented, and distributed only within the United States. He works privately — no public appearances — for the protection of the people and systems he serves in Tennessee and across America.
+                Dr. Troy Williams' work is not for sale to foreign governments or corporations. Everything he builds is protected, patented, and distributed only within the United States. He works privately for the protection of the people and systems he serves in Tennessee and across America.
               </p>
               <p className="mb-4">
                 Dr. Troy Williams mentors veterans, students, and professionals through the Tennessee Promise, WGU Alumni Network, and personal outreach — with the singular focus of developing the next generation of digital defenders.
