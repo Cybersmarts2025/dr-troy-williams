@@ -63,7 +63,7 @@ const Index = () => {
         <div className="py-4 bg-[#B22234] bg-opacity-10 border-y border-[#B22234]/30">
           <div className="container mx-auto px-4">
             <p className="text-center text-[#B22234] font-medium italic">
-              "Protecting America Through Technology. Built in Tennessee. By Americans. For Americans."
+              "Protecting America Through Technology™. Built in Tennessee. By Americans. For Americans."
             </p>
           </div>
         </div>

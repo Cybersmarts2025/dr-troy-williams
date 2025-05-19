@@ -131,7 +131,7 @@ const HeroSection = () => {
         className="mt-12 text-center"
       >
         <div className="py-4 bg-gradient-to-r from-[#B22234] to-[#3C3B6E] text-white font-semibold text-lg border-y-2 border-white/30 shadow-md">
-          <p className="mb-0">Protecting America Through Technology</p>
+          <p className="mb-0">Protecting America Through Technology™</p>
         </div>
       </motion.div>
     </section>
