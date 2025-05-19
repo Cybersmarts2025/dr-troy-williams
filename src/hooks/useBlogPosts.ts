@@ -9,10 +9,12 @@ export const useBlogPosts = () => {
     queryKey: ["blog-posts"],
     queryFn: async () => {
       try {
+        // Cast the result to unknown first, then to BlogPost[] to avoid TypeScript errors
+        // This is a workaround until the types.ts file is regenerated with the new table
         const { data, error } = await supabase
           .from("blog_posts")
           .select("*")
-          .order("created_at", { ascending: false });
+          .order("created_at", { ascending: false }) as any;
 
         if (error) throw error;
         
@@ -39,11 +41,12 @@ export const useBlogPost = (postId: string) => {
       
       try {
         // Try to get from database first
+        // Cast the result to unknown first, then to BlogPost to avoid TypeScript errors
         const { data, error } = await supabase
           .from("blog_posts")
           .select("*")
           .eq("id", postId)
-          .maybeSingle();
+          .maybeSingle() as any;
           
         if (error) throw error;
         

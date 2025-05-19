@@ -39,10 +39,11 @@ const BlogPostsList = () => {
   const { data: blogPosts, isLoading, error } = useQuery({
     queryKey: ["blog-posts"],
     queryFn: async () => {
-      const { data, error } = await supabase
+      // Use type assertion to avoid TypeScript errors until types.ts is regenerated
+      const { data, error } = await (supabase
         .from("blog_posts")
         .select("*")
-        .order("created_at", { ascending: false });
+        .order("created_at", { ascending: false }) as any);
 
       if (error) throw error;
       return data as BlogPost[];
@@ -52,10 +53,11 @@ const BlogPostsList = () => {
   // Delete blog post mutation
   const deletePostMutation = useMutation({
     mutationFn: async (postId: string) => {
-      const { error } = await supabase
+      // Use type assertion to avoid TypeScript errors until types.ts is regenerated
+      const { error } = await (supabase
         .from("blog_posts")
         .delete()
-        .eq("id", postId);
+        .eq("id", postId) as any);
       
       if (error) throw error;
       return postId;

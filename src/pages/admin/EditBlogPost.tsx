@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -18,11 +17,12 @@ const EditBlogPost = () => {
   const { data: post, isLoading, error } = useQuery({
     queryKey: ['blog-post', postId],
     queryFn: async () => {
-      const { data, error } = await supabase
+      // Use type assertion to avoid TypeScript errors until types.ts is regenerated
+      const { data, error } = await (supabase
         .from('blog_posts')
         .select('*')
         .eq('id', postId)
-        .single();
+        .single() as any);
         
       if (error) throw error;
       return data;

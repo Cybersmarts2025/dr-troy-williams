@@ -84,12 +84,12 @@ const BlogPostEditor: React.FC<BlogPostEditorProps> = ({ postId, initialData }) 
         author: "Dr. Troy Williams" // Default author
       };
       
-      let result;
+      let result: any;
       
       if (isEditing) {
-        // Update existing post
-        result = await supabase
-          .from('blog_posts')
+        // Update existing post - use type assertion to avoid TypeScript errors
+        result = await (supabase
+          .from("blog_posts") as any)
           .update(postData)
           .eq('id', postId);
       } else {
@@ -99,9 +99,9 @@ const BlogPostEditor: React.FC<BlogPostEditorProps> = ({ postId, initialData }) 
           .replace(/[^\w\s]/gi, '')
           .replace(/\s+/g, '-');
           
-        // Create new post
-        result = await supabase
-          .from('blog_posts')
+        // Create new post - use type assertion to avoid TypeScript errors
+        result = await (supabase
+          .from("blog_posts") as any)
           .insert([{ 
             ...postData, 
             id: slug
