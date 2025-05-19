@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -10,39 +10,58 @@ import BlogCategoryTabs from "@/components/blog/BlogCategoryTabs";
 import NewsletterSection from "@/components/blog/NewsletterSection";
 import CrossPostingSection from "@/components/blog/CrossPostingSection";
 import useBlogAnimations from "@/hooks/useBlogAnimations";
-import { BlogPost } from "@/types/blog";
-import { blogPosts, getCategoryCount, getBlogPostsByCategory } from "@/data/blogData";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
+import { getCategoryCount, getBlogPostsByCategory } from "@/data/blogData";
+import { useState } from "react";
 
 const Blog = () => {
   // State for filtering posts
   const [activeCategory, setActiveCategory] = useState("all");
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts);
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const { containerVariants, itemVariants } = useBlogAnimations();
+  
+  // Fetch blog posts using our custom hook
+  const { data: blogPosts, isLoading, error } = useBlogPosts();
   
   // Force scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Filter posts when category changes
+  // Filter posts when category or blogPosts changes
   useEffect(() => {
-    setFilteredPosts(getBlogPostsByCategory(activeCategory));
-  }, [activeCategory]);
+    if (blogPosts) {
+      if (activeCategory === "all") {
+        setFilteredPosts(blogPosts);
+      } else {
+        setFilteredPosts(blogPosts.filter(post => post.category === activeCategory));
+      }
+    }
+  }, [activeCategory, blogPosts]);
+
+  // Helper function to count posts by category
+  const getCategoryPostCount = (category) => {
+    if (!blogPosts) return 0;
+    if (category === "all") return blogPosts.length;
+    return blogPosts.filter(post => post.category === category).length;
+  };
 
   // Create schema.org markup for BlogPosting
-  const blogPostingSchemas = blogPosts.map(post => ({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.excerpt,
-    "author": {
-      "@type": "Person",
-      "name": "Dr. Troy Williams"
-    },
-    "datePublished": post.date,
-    "keywords": post.tags.join(", "),
-    "image": post.image
-  }));
+  const blogPostingSchemas = blogPosts 
+    ? blogPosts.map(post => ({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.excerpt,
+        "author": {
+          "@type": "Person",
+          "name": "Dr. Troy Williams"
+        },
+        "datePublished": post.date,
+        "keywords": post.tags.join(", "),
+        "image": post.image
+      }))
+    : [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -100,14 +119,25 @@ const Blog = () => {
         
         {/* Blog content */}
         <section className="container mx-auto px-4 py-12">
-          <BlogCategoryTabs 
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-            filteredPosts={filteredPosts}
-            getCategoryCount={getCategoryCount}
-            containerVariants={containerVariants}
-            itemVariants={itemVariants}
-          />
+          {isLoading ? (
+            <div className="text-center py-12">
+              <p className="text-xl">Loading blog posts...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-12">
+              <p className="text-xl text-red-500">Error loading blog posts</p>
+              <p className="text-gray-600">{(error as Error).message}</p>
+            </div>
+          ) : (
+            <BlogCategoryTabs 
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
+              filteredPosts={filteredPosts}
+              getCategoryCount={getCategoryPostCount}
+              containerVariants={containerVariants}
+              itemVariants={itemVariants}
+            />
+          )}
         </section>
         
         {/* Newsletter subscription */}

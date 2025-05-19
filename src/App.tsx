@@ -18,6 +18,10 @@ import Press from "./pages/Press";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Auth from "./pages/Auth";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminBlog from "./pages/admin/AdminBlog";
+import NewBlogPost from "./pages/admin/NewBlogPost";
+import EditBlogPost from "./pages/admin/EditBlogPost";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -47,6 +51,13 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:postId" element={<BlogPost />} />
               <Route path="/auth" element={<Auth />} />
+              
+              {/* Admin Routes */}
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/blog" element={<AdminBlog />} />
+              <Route path="/admin/blog/new" element={<NewBlogPost />} />
+              <Route path="/admin/blog/edit/:postId" element={<EditBlogPost />} />
+              
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
