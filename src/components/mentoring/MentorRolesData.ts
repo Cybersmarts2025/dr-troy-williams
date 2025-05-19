@@ -1,11 +1,12 @@
 
 import { GraduationCap, Users, Award } from "lucide-react";
+import React from 'react';
 
 export interface MentorRole {
   title: string;
   organization: string;
   description: string;
-  icon: React.ElementType;
+  icon: React.ElementType; // Changed from React.ElementType to match the MentorRoleProps
   url: string;
 }
 

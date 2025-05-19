@@ -26,7 +26,15 @@ const MentoringSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {mentorRoles.map((role, index) => (
-            <MentorRoleCard key={role.title} {...role} index={index} />
+            <MentorRoleCard 
+              key={role.title}
+              title={role.title}
+              organization={role.organization}
+              description={role.description}
+              icon={role.icon}
+              url={role.url}
+              index={index}
+            />
           ))}
         </div>
 

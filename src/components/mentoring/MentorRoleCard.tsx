@@ -9,7 +9,7 @@ interface MentorRoleProps {
   title: string;
   organization: string;
   description: string;
-  icon: LucideIcon;
+  icon: React.ElementType; // Changed from LucideIcon to React.ElementType
   url: string;
   index: number;
 }
