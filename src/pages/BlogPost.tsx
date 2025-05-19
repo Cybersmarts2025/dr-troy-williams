@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link } from "react-router-dom";
@@ -38,10 +37,10 @@ const BlogPost = () => {
     return <NotFound />;
   }
 
-  // Default values for author details if not present in the post
+  // Default values for author details
   const authorDetails = {
-    authorTitle: post.authorTitle || "AI Scientist and Cybersecurity Expert",
-    authorImage: post.authorImage || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
+    authorTitle: "AI Scientist and Cybersecurity Expert",
+    authorImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
   };
 
   return (
