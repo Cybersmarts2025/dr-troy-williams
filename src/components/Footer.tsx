@@ -17,7 +17,7 @@ const Footer: React.FC<FooterProps> = ({
         <div className="bg-[#B22234]/90 -mt-6 mb-6 py-4 px-6 rounded-lg shadow-md flex flex-col md:flex-row justify-between items-center">
           <div>
             <h3 className="text-xl font-bold mb-1">Media & Expert Testimony</h3>
-            <p className="text-sm text-white/80">Available for interviews, expert testimony, and speaking engagements</p>
+            <p className="text-sm text-white/80">Available for interviews and expert testimony</p>
           </div>
           <div className="flex gap-3 mt-4 md:mt-0">
             <Button

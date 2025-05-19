@@ -107,7 +107,7 @@ const MentoringSection = () => {
             Want to connect or collaborate?
           </h3>
           <p className="mb-6 text-gray-700">
-            Contact Dr. Williams for mentoring, speaking, or student support.
+            Contact Dr. Williams for mentoring or student support.
           </p>
           <Button 
             variant="usaRed" 
