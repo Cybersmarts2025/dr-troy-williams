@@ -19,7 +19,14 @@ const AwardCard = ({ item, index }: AwardCardProps) => {
       className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all flex items-start gap-4"
     >
       <div className="shrink-0">
-        <img src={item.logo} alt={item.title} className="w-16 h-16 object-contain" />
+        <img 
+          src={item.logo} 
+          alt={item.title} 
+          className="w-16 h-16 object-contain" 
+          loading="lazy"
+          width="64"
+          height="64"
+        />
       </div>
       <div>
         <h3 className="text-xl font-semibold mb-1">{item.title}</h3>

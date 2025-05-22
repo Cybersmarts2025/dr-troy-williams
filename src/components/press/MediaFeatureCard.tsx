@@ -19,7 +19,14 @@ const MediaFeatureCard = ({ item, index }: MediaFeatureCardProps) => {
       className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all"
     >
       <div className="p-4 bg-gray-100 flex items-center justify-center h-32">
-        <img src={item.logo} alt={`${item.outlet} logo`} className="max-h-20 max-w-full object-contain" />
+        <img 
+          src={item.logo} 
+          alt={`${item.outlet} logo`} 
+          className="max-h-20 max-w-full object-contain" 
+          loading="lazy"
+          width="160"
+          height="80"
+        />
       </div>
       <div className="p-6">
         <div className="flex justify-between items-center mb-2">

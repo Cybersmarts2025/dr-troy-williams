@@ -19,6 +19,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
         <img 
           src={post.image} 
           alt={post.title}
+          loading="lazy"
           className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
         />
         <div className="absolute top-0 right-0 bg-[#B22234] text-white px-3 py-1 m-2 rounded text-sm font-medium">

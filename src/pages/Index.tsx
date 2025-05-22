@@ -1,11 +1,7 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
-import WorkHistory from "@/components/WorkHistory";
-import YouTubeSection from "@/components/YouTubeSection";
-import ResearchSection from "@/components/ResearchSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import SocialLinks from "@/components/SocialLinks";
 import Footer from "@/components/Footer";
 import MentoringSection from "@/components/MentoringSection";
@@ -14,6 +10,19 @@ import { PersonSchema, OrganizationSchema } from "@/utils/schemaMarkup";
 import { Button } from '@/components/ui/button';
 import { ArrowRight, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+// Lazy load less critical components
+const WorkHistory = lazy(() => import("@/components/WorkHistory"));
+const YouTubeSection = lazy(() => import("@/components/YouTubeSection"));
+const ResearchSection = lazy(() => import("@/components/ResearchSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+
+// Loading fallback
+const SectionLoader = () => (
+  <div className="py-16 flex justify-center items-center">
+    <div className="w-16 h-16 border-4 border-[#3C3B6E] border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 const Index = () => {
   // Force scroll to top when component mounts
@@ -37,6 +46,7 @@ const Index = () => {
           name="description" 
           content="Discover the official profile of Dr. Troy Williams — AI researcher, cybersecurity engineer, private investigator, and founder of Cybersmarts.ai. Protecting America through technology." 
         />
+        <link rel="preload" as="image" href="/lovable-uploads/circuit-pattern.png" />
       </Helmet>
       
       {/* Schema.org markup for Dr. Troy Williams */}
@@ -69,10 +79,22 @@ const Index = () => {
         </div>
         
         <MentoringSection />
-        <WorkHistory />
-        <TestimonialsSection />
-        <ResearchSection />
-        <YouTubeSection />
+        
+        <Suspense fallback={<SectionLoader />}>
+          <WorkHistory />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <TestimonialsSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ResearchSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <YouTubeSection />
+        </Suspense>
         
         {/* Blog Banner Section */}
         <div className="bg-[#3C3B6E] text-white py-16">

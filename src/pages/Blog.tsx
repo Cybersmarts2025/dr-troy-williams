@@ -1,18 +1,27 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import { WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 import BlogHero from "@/components/blog/BlogHero";
-import BlogCategoryTabs from "@/components/blog/BlogCategoryTabs";
-import NewsletterSection from "@/components/blog/NewsletterSection";
-import CrossPostingSection from "@/components/blog/CrossPostingSection";
 import useBlogAnimations from "@/hooks/useBlogAnimations";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { getCategoryCount, getBlogPostsByCategory } from "@/data/blogData";
 import { useState } from "react";
+
+// Lazy load less critical components
+const BlogCategoryTabs = lazy(() => import("@/components/blog/BlogCategoryTabs"));
+const NewsletterSection = lazy(() => import("@/components/blog/NewsletterSection"));
+const CrossPostingSection = lazy(() => import("@/components/blog/CrossPostingSection"));
+
+// Loading component
+const SectionLoader = () => (
+  <div className="py-8 flex justify-center items-center">
+    <div className="w-12 h-12 border-4 border-[#3C3B6E] border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 const Blog = () => {
   // State for filtering posts
@@ -71,6 +80,7 @@ const Blog = () => {
           name="description" 
           content="Expert commentary and analysis on cybersecurity, AI policy, fraud prevention, and defense technology by Dr. Troy Williams." 
         />
+        <link rel="preload" href="/lovable-uploads/circuit-pattern.png" as="image" />
         {/* Output schema.org JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -121,7 +131,10 @@ const Blog = () => {
         <section className="container mx-auto px-4 py-12">
           {isLoading ? (
             <div className="text-center py-12">
-              <p className="text-xl">Loading blog posts...</p>
+              <div className="flex justify-center">
+                <div className="w-12 h-12 border-4 border-[#3C3B6E] border-t-transparent rounded-full animate-spin"></div>
+              </div>
+              <p className="text-xl mt-4">Loading blog posts...</p>
             </div>
           ) : error ? (
             <div className="text-center py-12">
@@ -129,22 +142,28 @@ const Blog = () => {
               <p className="text-gray-600">{(error as Error).message}</p>
             </div>
           ) : (
-            <BlogCategoryTabs 
-              activeCategory={activeCategory}
-              setActiveCategory={setActiveCategory}
-              filteredPosts={filteredPosts}
-              getCategoryCount={getCategoryPostCount}
-              containerVariants={containerVariants}
-              itemVariants={itemVariants}
-            />
+            <Suspense fallback={<SectionLoader />}>
+              <BlogCategoryTabs 
+                activeCategory={activeCategory}
+                setActiveCategory={setActiveCategory}
+                filteredPosts={filteredPosts}
+                getCategoryCount={getCategoryPostCount}
+                containerVariants={containerVariants}
+                itemVariants={itemVariants}
+              />
+            </Suspense>
           )}
         </section>
         
         {/* Newsletter subscription */}
-        <NewsletterSection />
+        <Suspense fallback={<SectionLoader />}>
+          <NewsletterSection />
+        </Suspense>
         
         {/* Cross-posting information */}
-        <CrossPostingSection />
+        <Suspense fallback={<SectionLoader />}>
+          <CrossPostingSection />
+        </Suspense>
       </main>
 
       <Footer />

@@ -2,10 +2,12 @@
 import { Card, CardContent } from "./ui/card";
 import { Youtube, Play } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const YouTubeSection = () => {
   const [hoveredVideo, setHoveredVideo] = useState<number | null>(null);
+  const [loadedVideos, setLoadedVideos] = useState<Record<string, boolean>>({});
+  const videoRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   const videos = [
     {
@@ -21,6 +23,35 @@ const YouTubeSection = () => {
       title: "National Security Framework"
     }
   ];
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const videoId = entry.target.getAttribute('data-video-id');
+          if (videoId) {
+            setLoadedVideos(prev => ({ ...prev, [videoId]: true }));
+          }
+        }
+      });
+    }, options);
+
+    videoRefs.current.forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      videoRefs.current.forEach(ref => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
   
   const container = {
     hidden: { opacity: 0 },
@@ -82,6 +113,8 @@ const YouTubeSection = () => {
               <Card className="bg-white/90 backdrop-blur-sm border-2 border-gray-200 shadow-lg overflow-hidden">
                 <CardContent className="p-0">
                   <div 
+                    ref={el => (videoRefs.current[index] = el)}
+                    data-video-id={video.id}
                     className="relative aspect-video overflow-hidden rounded-t-lg"
                     onMouseEnter={() => setHoveredVideo(index)}
                     onMouseLeave={() => setHoveredVideo(null)}
@@ -98,16 +131,23 @@ const YouTubeSection = () => {
                         <Play className="h-8 w-8" />
                       </motion.div>
                     </div>
-                    <iframe 
-                      width="100%" 
-                      height="100%" 
-                      src={`https://www.youtube.com/embed/${video.id}?controls=0&showinfo=0&rel=0&modestbranding=1`}
-                      title={video.title}
-                      frameBorder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen
-                      className="z-0"
-                    />
+                    {loadedVideos[video.id] ? (
+                      <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src={`https://www.youtube.com/embed/${video.id}?controls=0&showinfo=0&rel=0&modestbranding=1`}
+                        title={video.title}
+                        frameBorder="0" 
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen
+                        className="z-0"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                        <Youtube className="h-10 w-10 text-gray-400" />
+                      </div>
+                    )}
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-[#3C3B6E]">{video.title}</h3>
