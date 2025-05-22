@@ -17,16 +17,13 @@ const NavLink = ({ to, icon: Icon, label, isScrolled, baseShadow, color, hoverCo
   return (
     <Link 
       to={to} 
-      className={`flex items-center gap-1 font-medium transition-colors ${
+      className={`flex items-center gap-1 font-medium transition-colors hover:text-[${hoverColor}] ${
         isScrolled 
           ? `text-[#1A1F2C]`
           : `${baseShadow}`
       }`}
       style={{
-        color: isScrolled ? '#1A1F2C' : color,
-        ':hover': {
-          color: isScrolled ? hoverColor : 'white'
-        }
+        color: isScrolled ? '#1A1F2C' : color
       }}
     >
       <Icon className="h-4 w-4" />
