@@ -31,6 +31,40 @@ const Books = () => {
     return <Navigate to="/auth" />;
   }
   
+  // Setup default books if no data exists in database
+  const initialBooks = [
+    {
+      id: "1", 
+      title: "Stolen Nation: Protecting America's Digital Sovereignty", 
+      description: "An eye-opening analysis of the digital threats facing American infrastructure, government systems, and private enterprises. Dr. Williams outlines a comprehensive framework for ensuring technological independence and security in an increasingly hostile digital landscape.", 
+      amazon_url: "https://www.amazon.com/dp/B0BXHD8VLQ"
+    },
+    {
+      id: "2", 
+      title: "The Proactive Prevention Platform: A New Era in Cybersecurity", 
+      description: "This groundbreaking work introduces Dr. Williams' innovative approach to cybersecurity that moves beyond reactive measures to proactively identify and neutralize threats before they materialize. Essential reading for security professionals and technology leaders.", 
+      amazon_url: "https://www.amazon.com/dp/B09NTKWTT7"
+    },
+    {
+      id: "3", 
+      title: "AI Security Frameworks for Critical Infrastructure", 
+      description: "A technical guide to implementing secure AI systems in sensitive environments. Dr. Williams provides detailed methodologies for ensuring artificial intelligence implementations maintain integrity, security, and ethical standards in critical national infrastructure.", 
+      amazon_url: "https://www.amazon.com/dp/B0B7X3WFNM"
+    },
+    {
+      id: "4", 
+      title: "Digital Investigation: Modern Methodologies for Law Enforcement", 
+      description: "Drawing on decades of experience as a licensed private investigator, Dr. Williams offers law enforcement professionals a comprehensive guide to digital evidence collection, preservation, and analysis in the modern era.", 
+      amazon_url: "https://www.amazon.com/dp/B0C2VHLL8P"
+    },
+    {
+      id: "5", 
+      title: "American Technology Independence: A National Security Imperative", 
+      description: "This policy-focused work examines the critical relationship between domestic technology development capabilities and national security. Dr. Williams presents a compelling case for investing in American innovation as a cornerstone of sovereignty.", 
+      amazon_url: "https://www.amazon.com/dp/B0BVMQPN3D"
+    }
+  ];
+
   const { data: dynamicBooks = [], isLoading: isBooksLoading } = useQuery({
     queryKey: ['books'],
     queryFn: async () => {
@@ -40,6 +74,11 @@ const Books = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
+      
+      // If no books in database, return our initial set
+      if (!data || data.length === 0) {
+        return initialBooks;
+      }
       
       return data.map(book => ({
         id: book.id,
@@ -109,7 +148,7 @@ const Books = () => {
                     Publications by Dr. Troy Williams
                   </h1>
                   <p className="text-lg text-blue-700 max-w-2xl">
-                    Discover groundbreaking works on artificial intelligence, cybersecurity, and digital investigation methodologies.
+                    Discover authoritative works on artificial intelligence, cybersecurity, and digital investigation methodologies. Dr. Williams' publications provide expert guidance for technology professionals, policymakers, and security specialists.
                   </p>
                 </div>
                 <Button 

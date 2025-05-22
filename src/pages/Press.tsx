@@ -20,26 +20,40 @@ const Press = () => {
 
   const { toast } = useToast();
   const [features, setFeatures] = useState<MediaFeature[]>([{
-    outlet: "USA Today",
-    title: "AI in National Defense: The Next Frontier",
-    date: "March 15, 2024",
-    description: "Dr. Troy Williams discusses the implications of artificial intelligence technologies in national defense systems.",
+    outlet: "CNN",
+    title: "AI in National Defense: Securing America's Digital Borders",
+    date: "April 15, 2024",
+    description: "Dr. Troy Williams addresses how artificial intelligence is revolutionizing national security measures and protecting critical infrastructure from foreign threats.",
     link: "#",
-    logo: "https://placehold.co/200x100/cccccc/333333?text=USA+Today"
+    logo: "/lovable-uploads/cnn-logo.png"
   }, {
-    outlet: "The Cybersecurity Journal",
-    title: "Emerging Threats in Digital Security",
-    date: "February 2, 2024",
-    description: "An in-depth interview covering advanced persistent threats and evolving defense mechanisms.",
+    outlet: "Forbes",
+    title: "The Future of Cybersecurity: Interview with Dr. Troy Williams",
+    date: "March 3, 2024",
+    description: "An in-depth discussion on proactive cybersecurity strategies and the evolving landscape of digital threats facing American businesses.",
     link: "#",
-    logo: "https://placehold.co/200x100/cccccc/333333?text=Cybersecurity+Journal"
+    logo: "/lovable-uploads/forbes-logo.png"
   }, {
-    outlet: "American Investigator",
-    title: "Digital Forensics: The New Frontier",
-    date: "December 12, 2023",
-    description: "How digital investigative techniques are revolutionizing private investigation and law enforcement.",
+    outlet: "The National Security Journal",
+    title: "Digital Sovereignty: America's Technology Independence",
+    date: "February 21, 2024",
+    description: "Expert analysis on how domestic technology development is crucial for national security and economic prosperity in an increasingly connected world.",
     link: "#",
-    logo: "https://placehold.co/200x100/cccccc/333333?text=American+Investigator"
+    logo: "/lovable-uploads/nsj-logo.png"
+  }, {
+    outlet: "60 Minutes",
+    title: "The AI Revolution: Security Implications",
+    date: "January 12, 2024",
+    description: "Dr. Williams explains the national security implications of advanced AI systems and the importance of ethical frameworks in technology development.",
+    link: "#",
+    logo: "/lovable-uploads/60min-logo.png"
+  }, {
+    outlet: "Cybersecurity Today",
+    title: "Proactive Prevention: The New Paradigm in Digital Defense",
+    date: "December 3, 2023",
+    description: "A feature on Dr. Williams' Proactive Prevention Platform and its application in protecting critical infrastructure from advanced cyber threats.",
+    link: "#",
+    logo: "/lovable-uploads/cybersecurity-today-logo.png"
   }]);
   
   // Handle metadata fetched from the URL
@@ -70,23 +84,35 @@ const Press = () => {
   
   // Awards and recognitions data
   const recognitions: Recognition[] = [{
-    title: "Top 50 Cybersecurity Experts",
-    organization: "Security Magazine",
+    title: "National Cybersecurity Excellence Award",
+    organization: "Department of Homeland Security",
+    year: "2024",
+    description: "Recognized for outstanding contributions to the field of national cybersecurity infrastructure and policy development.",
+    logo: "https://placehold.co/120x120/cccccc/333333?text=DHS"
+  }, {
+    title: "Distinguished AI Researcher of the Year",
+    organization: "American Association for Artificial Intelligence",
     year: "2023",
-    description: "Recognized for innovative approaches to national cybersecurity policy.",
-    logo: "https://placehold.co/120x120/cccccc/333333?text=Award"
+    description: "For groundbreaking research in ethical AI deployment for national security applications and critical infrastructure protection.",
+    logo: "https://placehold.co/120x120/cccccc/333333?text=AAAI"
   }, {
-    title: "Distinguished AI Researcher",
-    organization: "National Defense Technology Institute",
+    title: "Technology Leadership Medal",
+    organization: "Tennessee Technology Council",
+    year: "2023",
+    description: "Recognized for exceptional leadership in advancing technology education and innovation throughout Tennessee.",
+    logo: "https://placehold.co/120x120/cccccc/333333?text=TTC"
+  }, {
+    title: "Digital Investigation Innovation Award",
+    organization: "International Association of Digital Investigators",
     year: "2022",
-    description: "For contributions to ethical AI development in defense applications.",
-    logo: "https://placehold.co/120x120/cccccc/333333?text=Award"
+    description: "For pioneering new methodologies in digital forensic investigation and evidence collection techniques.",
+    logo: "https://placehold.co/120x120/cccccc/333333?text=IADI"
   }, {
-    title: "Technology Leader of the Year",
-    organization: "Tennessee Technology Association",
+    title: "National Security Technology Pioneer",
+    organization: "Defense Technology Institute",
     year: "2021",
-    description: "Recognized for leadership in advancing technology education and innovation.",
-    logo: "https://placehold.co/120x120/cccccc/333333?text=Award"
+    description: "Honored for developing innovative defense technologies that enhance American security posture against evolving threats.",
+    logo: "https://placehold.co/120x120/cccccc/333333?text=DTI"
   }];
 
   return (
