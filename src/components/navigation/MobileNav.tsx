@@ -15,14 +15,14 @@ const MobileNav = ({ isOpen, toggleMenu, closeMenu, onSectionClick }: MobileNavP
   return (
     <>
       <button 
-        className="md:hidden text-gray-500 hover:text-gray-800"
+        className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
         onClick={toggleMenu}
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         {isOpen ? (
-          <X className="h-6 w-6" />
+          <X className="h-5 w-5 text-gray-700" />
         ) : (
-          <Menu className="h-6 w-6" />
+          <Menu className="h-5 w-5 text-gray-700" />
         )}
       </button>
 
