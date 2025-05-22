@@ -16,12 +16,12 @@ const MobileMenuItem = ({ icon: Icon, label, to, onClick, color }: MobileMenuIte
     return (
       <Link 
         to={to} 
-        className="flex items-center gap-2 py-3 px-4 hover:bg-gray-100 rounded-md font-medium"
+        className="flex items-center gap-3 py-4 px-5 hover:bg-gray-100 rounded-md font-medium w-full transition-colors"
         onClick={onClick}
         style={{ color }}
       >
-        <Icon className="h-5 w-5" />
-        {label}
+        <Icon className="h-5 w-5 flex-shrink-0" />
+        <span>{label}</span>
       </Link>
     );
   }
@@ -29,11 +29,11 @@ const MobileMenuItem = ({ icon: Icon, label, to, onClick, color }: MobileMenuIte
   return (
     <button 
       onClick={onClick}
-      className="flex items-center gap-2 py-3 px-4 hover:bg-gray-100 rounded-md text-left font-medium w-full"
+      className="flex items-center gap-3 py-4 px-5 hover:bg-gray-100 rounded-md text-left font-medium w-full transition-colors"
       style={{ color }}
     >
-      <Icon className="h-5 w-5" />
-      {label}
+      <Icon className="h-5 w-5 flex-shrink-0" />
+      <span>{label}</span>
     </button>
   );
 };

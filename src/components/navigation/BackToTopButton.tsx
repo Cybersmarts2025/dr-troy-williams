@@ -22,7 +22,7 @@ const BackToTopButton = ({ isVisible }: BackToTopButtonProps) => {
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
           onClick={handleScrollToTop}
-          className="fixed bottom-6 right-6 bg-[#B22234] text-white p-3 rounded-full shadow-lg hover:bg-[#9B0000] z-[9999] transition-colors"
+          className="fixed bottom-6 right-6 bg-[#B22234] text-white p-3 rounded-full shadow-lg hover:bg-[#9B0000] z-[9999] transition-colors focus:outline-none focus:ring-2 focus:ring-[#B22234] focus:ring-opacity-50"
           aria-label="Back to top"
         >
           <ChevronUp className="h-6 w-6" />
