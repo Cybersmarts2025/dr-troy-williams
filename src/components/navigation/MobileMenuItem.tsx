@@ -16,8 +16,9 @@ const MobileMenuItem = ({ icon: Icon, label, to, onClick, color }: MobileMenuIte
     return (
       <Link 
         to={to} 
-        className={`flex items-center gap-2 py-3 px-4 text-[${color}] hover:bg-gray-100 rounded-md font-medium`}
+        className="flex items-center gap-2 py-3 px-4 hover:bg-gray-100 rounded-md font-medium"
         onClick={onClick}
+        style={{ color }}
       >
         <Icon className="h-5 w-5" />
         {label}
@@ -28,7 +29,8 @@ const MobileMenuItem = ({ icon: Icon, label, to, onClick, color }: MobileMenuIte
   return (
     <button 
       onClick={onClick}
-      className={`flex items-center gap-2 py-3 px-4 text-[${color}] hover:bg-gray-100 rounded-md text-left font-medium`}
+      className="flex items-center gap-2 py-3 px-4 hover:bg-gray-100 rounded-md text-left font-medium w-full"
+      style={{ color }}
     >
       <Icon className="h-5 w-5" />
       {label}
