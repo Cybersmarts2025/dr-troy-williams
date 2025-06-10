@@ -68,7 +68,6 @@ const BlogPost = () => {
       <main className="pt-16">
         <PageBreadcrumb 
           pageName="Blog" 
-          subPage={post.title}
           pageLink="/blog"
         />
         
@@ -99,7 +98,7 @@ const BlogPost = () => {
               </div>
               <div className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />
-                <span>{post.readtime}</span>
+                <span>{post.readTime}</span>
               </div>
             </div>
 
