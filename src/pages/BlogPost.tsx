@@ -66,10 +66,7 @@ const BlogPost = () => {
       <NavBar />
       
       <main className="pt-16">
-        <PageBreadcrumb 
-          pageName="Blog" 
-          pageLink="/blog"
-        />
+        <PageBreadcrumb pageName="Blog" />
         
         <article className="container mx-auto px-4 py-12">
           {/* Hero Image */}
