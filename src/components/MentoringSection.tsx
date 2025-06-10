@@ -75,7 +75,7 @@ const MentoringSection = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <MentorRoleCard {...role} />
+              <MentorRoleCard {...role} index={index} />
             </motion.div>
           ))}
         </motion.div>
