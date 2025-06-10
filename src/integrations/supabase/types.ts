@@ -306,6 +306,48 @@ export type Database = {
         }
         Relationships: []
       }
+      testimonials: {
+        Row: {
+          category: string
+          created_at: string
+          email: string
+          id: string
+          is_approved: boolean
+          name: string
+          organization: string | null
+          rating: number
+          testimonial: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          email: string
+          id?: string
+          is_approved?: boolean
+          name: string
+          organization?: string | null
+          rating: number
+          testimonial: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          email?: string
+          id?: string
+          is_approved?: boolean
+          name?: string
+          organization?: string | null
+          rating?: number
+          testimonial?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
