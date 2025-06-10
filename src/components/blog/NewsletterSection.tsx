@@ -1,28 +1,21 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 import { Mail } from "lucide-react";
+import { useNewsletter } from "@/hooks/useNewsletter";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  const [name, setName] = useState("");
+  const { subscribe, isSubmitting } = useNewsletter();
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate submission with optimized timing for better UX
-    setTimeout(() => {
-      toast({
-        title: "Subscription successful!",
-        description: "Thank you for subscribing to our newsletter.",
-        duration: 5000,
-      });
+    await subscribe(email, name);
+    if (!isSubmitting) {
       setEmail("");
-      setIsSubmitting(false);
-    }, 600); // Reduced timeout for better perceived performance
+      setName("");
+    }
   };
 
   return (
@@ -36,11 +29,19 @@ const NewsletterSection = () => {
           Stay updated on the latest in AI, cybersecurity, and defense technology with insights from Dr. Troy Williams.
         </p>
         <form onSubmit={handleSubscribe} className="max-w-md mx-auto">
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col gap-4">
+            <input 
+              type="text" 
+              placeholder="Your name (optional)" 
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3C3B6E]"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoComplete="name"
+            />
             <input 
               type="email" 
               placeholder="Your email address" 
-              className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3C3B6E]"
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3C3B6E]"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -49,7 +50,7 @@ const NewsletterSection = () => {
             />
             <Button 
               type="submit" 
-              className="bg-[#B22234] hover:bg-[#9B0000] whitespace-nowrap"
+              className="bg-[#B22234] hover:bg-[#9B0000]"
               disabled={isSubmitting}
               aria-label="Subscribe to newsletter"
             >

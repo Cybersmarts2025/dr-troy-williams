@@ -19,6 +19,9 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Auth from "./pages/Auth";
 import UserProfile from "./pages/UserProfile";
+import Contact from "./pages/Contact";
+import Resources from "./pages/Resources";
+import Events from "./pages/Events";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBlog from "./pages/admin/AdminBlog";
 import NewBlogPost from "./pages/admin/NewBlogPost";
@@ -51,6 +54,9 @@ const App = () => (
               <Route path="/press" element={<Press />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:postId" element={<BlogPost />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/events" element={<Events />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/profile" element={<UserProfile />} />
               

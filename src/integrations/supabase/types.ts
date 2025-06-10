@@ -9,6 +9,42 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      blog_comments: {
+        Row: {
+          author_email: string
+          author_name: string
+          blog_post_id: string
+          content: string
+          created_at: string
+          id: string
+          is_approved: boolean
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          author_email: string
+          author_name: string
+          blog_post_id: string
+          content: string
+          created_at?: string
+          id?: string
+          is_approved?: boolean
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          author_email?: string
+          author_name?: string
+          blog_post_id?: string
+          content?: string
+          created_at?: string
+          id?: string
+          is_approved?: boolean
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author: string
@@ -87,6 +123,114 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          is_read: boolean
+          message: string
+          name: string
+          subject: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          is_read?: boolean
+          message: string
+          name: string
+          subject: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          is_read?: boolean
+          message?: string
+          name?: string
+          subject?: string
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          created_at: string
+          description: string | null
+          end_date: string | null
+          event_type: string
+          id: string
+          is_public: boolean
+          is_virtual: boolean
+          location: string | null
+          registration_link: string | null
+          registration_required: boolean
+          start_date: string
+          title: string
+          updated_at: string
+          virtual_link: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          event_type: string
+          id?: string
+          is_public?: boolean
+          is_virtual?: boolean
+          location?: string | null
+          registration_link?: string | null
+          registration_required?: boolean
+          start_date: string
+          title: string
+          updated_at?: string
+          virtual_link?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          event_type?: string
+          id?: string
+          is_public?: boolean
+          is_virtual?: boolean
+          location?: string | null
+          registration_link?: string | null
+          registration_required?: boolean
+          start_date?: string
+          title?: string
+          updated_at?: string
+          virtual_link?: string | null
+        }
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: {
+          email: string
+          id: string
+          is_active: boolean
+          name: string | null
+          subscribed_at: string
+          unsubscribe_token: string | null
+        }
+        Insert: {
+          email: string
+          id?: string
+          is_active?: boolean
+          name?: string | null
+          subscribed_at?: string
+          unsubscribe_token?: string | null
+        }
+        Update: {
+          email?: string
+          id?: string
+          is_active?: boolean
+          name?: string | null
+          subscribed_at?: string
+          unsubscribe_token?: string | null
+        }
+        Relationships: []
+      }
       publication_embeddings: {
         Row: {
           content: string | null
@@ -117,6 +261,48 @@ export type Database = {
           publication_id?: string
           title?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      resources: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          download_count: number
+          file_size: number | null
+          file_type: string
+          file_url: string
+          id: string
+          is_public: boolean
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          download_count?: number
+          file_size?: number | null
+          file_type: string
+          file_url: string
+          id?: string
+          is_public?: boolean
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          download_count?: number
+          file_size?: number | null
+          file_type?: string
+          file_url?: string
+          id?: string
+          is_public?: boolean
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }
