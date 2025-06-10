@@ -77,13 +77,20 @@ const ConsultationForm = () => {
     setIsSubmitting(true);
     try {
       const consultationData = {
-        ...data,
+        name: data.name,
+        email: data.email,
+        company: data.company || null,
+        phone: data.phone || null,
+        consultation_type: data.consultation_type,
+        budget_range: data.budget_range || null,
+        project_description: data.project_description,
+        timeline: data.timeline || null,
         user_id: user?.id || null,
       };
 
       const { error } = await supabase
         .from('consultation_requests')
-        .insert([consultationData]);
+        .insert(consultationData);
 
       if (error) throw error;
 

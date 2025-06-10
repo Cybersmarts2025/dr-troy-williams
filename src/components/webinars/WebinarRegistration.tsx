@@ -53,14 +53,17 @@ const WebinarRegistration: React.FC<WebinarRegistrationProps> = ({
     setIsSubmitting(true);
     try {
       const registrationData = {
-        ...data,
+        name: data.name,
+        email: data.email,
+        company: data.company || null,
+        questions: data.questions || null,
         webinar_id: webinarId,
         user_id: user?.id || null,
       };
 
       const { error } = await supabase
         .from('webinar_registrations')
-        .insert([registrationData]);
+        .insert(registrationData);
 
       if (error) throw error;
 

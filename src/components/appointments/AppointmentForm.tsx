@@ -63,14 +63,20 @@ const AppointmentForm = () => {
     setIsSubmitting(true);
     try {
       const appointmentData = {
-        ...data,
-        user_id: user?.id || null,
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        appointment_type: data.appointment_type,
         preferred_date: new Date(data.preferred_date + 'T' + data.preferred_time).toISOString(),
+        preferred_time: data.preferred_time,
+        duration_minutes: data.duration_minutes,
+        message: data.message || null,
+        user_id: user?.id || null,
       };
 
       const { error } = await supabase
         .from('appointments')
-        .insert([appointmentData]);
+        .insert(appointmentData);
 
       if (error) throw error;
 
