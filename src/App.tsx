@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,6 +27,9 @@ import NewBlogPost from "./pages/admin/NewBlogPost";
 import EditBlogPost from "./pages/admin/EditBlogPost";
 import TestimonialSubmission from "./pages/TestimonialSubmission";
 import Bookmarks from "./pages/Bookmarks";
+import Appointments from "./pages/Appointments";
+import Webinars from "./pages/Webinars";
+import Consultation from "./pages/Consultation";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -61,6 +63,11 @@ const App = () => (
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/profile" element={<UserProfile />} />
+                
+                {/* Business Feature Routes */}
+                <Route path="/appointments" element={<Appointments />} />
+                <Route path="/webinars" element={<Webinars />} />
+                <Route path="/consultation" element={<Consultation />} />
                 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminDashboard />} />

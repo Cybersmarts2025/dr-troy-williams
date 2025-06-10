@@ -9,6 +9,54 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      appointments: {
+        Row: {
+          appointment_type: string
+          created_at: string
+          duration_minutes: number
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string | null
+          preferred_date: string
+          preferred_time: string
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          appointment_type: string
+          created_at?: string
+          duration_minutes?: number
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          preferred_date: string
+          preferred_time: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          appointment_type?: string
+          created_at?: string
+          duration_minutes?: number
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          preferred_date?: string
+          preferred_time?: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       blog_comments: {
         Row: {
           author_email: string
@@ -119,6 +167,54 @@ export type Database = {
           id?: string
           title?: string
           updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      consultation_requests: {
+        Row: {
+          budget_range: string | null
+          company: string | null
+          consultation_type: string
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          project_description: string
+          status: string
+          timeline: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          budget_range?: string | null
+          company?: string | null
+          consultation_type: string
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          project_description: string
+          status?: string
+          timeline?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          budget_range?: string | null
+          company?: string | null
+          consultation_type?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          project_description?: string
+          status?: string
+          timeline?: string | null
+          updated_at?: string
           user_id?: string | null
         }
         Relationships: []
@@ -274,7 +370,9 @@ export type Database = {
           file_type: string
           file_url: string
           id: string
+          is_gated: boolean
           is_public: boolean
+          required_role: string | null
           title: string
           updated_at: string
         }
@@ -287,7 +385,9 @@ export type Database = {
           file_type: string
           file_url: string
           id?: string
+          is_gated?: boolean
           is_public?: boolean
+          required_role?: string | null
           title: string
           updated_at?: string
         }
@@ -300,7 +400,9 @@ export type Database = {
           file_type?: string
           file_url?: string
           id?: string
+          is_gated?: boolean
           is_public?: boolean
+          required_role?: string | null
           title?: string
           updated_at?: string
         }
@@ -343,6 +445,89 @@ export type Database = {
           organization?: string | null
           rating?: number
           testimonial?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      webinar_registrations: {
+        Row: {
+          company: string | null
+          email: string
+          id: string
+          name: string
+          questions: string | null
+          registered_at: string
+          user_id: string | null
+          webinar_id: string
+        }
+        Insert: {
+          company?: string | null
+          email: string
+          id?: string
+          name: string
+          questions?: string | null
+          registered_at?: string
+          user_id?: string | null
+          webinar_id: string
+        }
+        Update: {
+          company?: string | null
+          email?: string
+          id?: string
+          name?: string
+          questions?: string | null
+          registered_at?: string
+          user_id?: string | null
+          webinar_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "webinar_registrations_webinar_id_fkey"
+            columns: ["webinar_id"]
+            isOneToOne: false
+            referencedRelation: "webinars"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      webinars: {
+        Row: {
+          created_at: string
+          date: string
+          description: string | null
+          duration_minutes: number
+          id: string
+          is_public: boolean
+          max_attendees: number | null
+          meeting_link: string | null
+          registration_url: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          description?: string | null
+          duration_minutes?: number
+          id?: string
+          is_public?: boolean
+          max_attendees?: number | null
+          meeting_link?: string | null
+          registration_url?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          description?: string | null
+          duration_minutes?: number
+          id?: string
+          is_public?: boolean
+          max_attendees?: number | null
+          meeting_link?: string | null
+          registration_url?: string | null
           title?: string
           updated_at?: string
         }
