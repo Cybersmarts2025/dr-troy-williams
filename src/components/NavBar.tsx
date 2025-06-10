@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { GlobalSearch } from './GlobalSearch';
@@ -6,6 +5,7 @@ import Logo from './navigation/Logo';
 import DesktopNav from './navigation/DesktopNav';
 import MobileNav from './navigation/MobileNav';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -54,20 +54,26 @@ const NavBar = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-all duration-300 ${scrolled ? "py-2" : "py-4"}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 bg-background border-b shadow-md transition-all duration-300 ${scrolled ? "py-2" : "py-4"}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Logo />
 
         {/* Desktop navigation */}
-        <DesktopNav isScrolled={scrolled} onSectionClick={handleSectionClick} />
+        <div className="hidden md:flex items-center gap-4">
+          <DesktopNav isScrolled={scrolled} onSectionClick={handleSectionClick} />
+          <ThemeToggle />
+        </div>
 
         {/* Mobile menu button and navigation */}
-        <MobileNav 
-          isOpen={mobileMenuOpen} 
-          toggleMenu={toggleMobileMenu} 
-          closeMenu={closeMobileMenu}
-          onSectionClick={handleSectionClick}
-        />
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <MobileNav 
+            isOpen={mobileMenuOpen} 
+            toggleMenu={toggleMobileMenu} 
+            closeMenu={closeMobileMenu}
+            onSectionClick={handleSectionClick}
+          />
+        </div>
       </div>
     </header>
   );

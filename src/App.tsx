@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -25,6 +24,8 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBlog from "./pages/admin/AdminBlog";
 import NewBlogPost from "./pages/admin/NewBlogPost";
 import EditBlogPost from "./pages/admin/EditBlogPost";
+import TestimonialSubmission from "./pages/TestimonialSubmission";
+import Bookmarks from "./pages/Bookmarks";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,38 +39,43 @@ const queryClient = new QueryClient({
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/books" element={<Books />} />
-              <Route path="/aisf" element={<AISF />} />
-              <Route path="/ppp" element={<PPP />} />
-              <Route path="/cybersecurity" element={<Cybersecurity />} />
-              <Route path="/press" element={<Press />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:postId" element={<BlogPost />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/profile" element={<UserProfile />} />
-              
-              {/* Admin Routes */}
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/admin/blog" element={<AdminBlog />} />
-              <Route path="/admin/blog/new" element={<NewBlogPost />} />
-              <Route path="/admin/blog/edit/:postId" element={<EditBlogPost />} />
-              
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/books" element={<Books />} />
+                <Route path="/aisf" element={<AISF />} />
+                <Route path="/ppp" element={<PPP />} />
+                <Route path="/cybersecurity" element={<Cybersecurity />} />
+                <Route path="/press" element={<Press />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:postId" element={<BlogPost />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/profile" element={<UserProfile />} />
+                
+                {/* Admin Routes */}
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/admin/blog" element={<AdminBlog />} />
+                <Route path="/admin/blog/new" element={<NewBlogPost />} />
+                <Route path="/admin/blog/edit/:postId" element={<EditBlogPost />} />
+                
+                <Route path="/testimonial" element={<TestimonialSubmission />} />
+                <Route path="/bookmarks" element={<Bookmarks />} />
+                
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </HelmetProvider>
   </QueryClientProvider>
 );

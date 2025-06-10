@@ -1,5 +1,4 @@
-
-import React, { useEffect, lazy, Suspense } from "react";
+import React, { useEffect, lazy, Suspense, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -9,7 +8,7 @@ import BlogHero from "@/components/blog/BlogHero";
 import useBlogAnimations from "@/hooks/useBlogAnimations";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { getCategoryCount, getBlogPostsByCategory } from "@/data/blogData";
-import { useState } from "react";
+import BlogSearch, { SearchFilters } from "@/components/blog/BlogSearch";
 
 // Lazy load less critical components
 const BlogCategoryTabs = lazy(() => import("@/components/blog/BlogCategoryTabs"));
@@ -27,6 +26,14 @@ const Blog = () => {
   // State for filtering posts
   const [activeCategory, setActiveCategory] = useState("all");
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const [searchFilters, setSearchFilters] = useState<SearchFilters>({
+    query: '',
+    category: 'all',
+    tag: '',
+    author: '',
+    dateRange: 'all',
+    sortBy: 'newest'
+  });
   const { containerVariants, itemVariants } = useBlogAnimations();
   
   // Fetch blog posts using our custom hook
@@ -37,16 +44,76 @@ const Blog = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Filter posts when category or blogPosts changes
+  // Enhanced filtering function
+  const filterAndSortPosts = (posts: any[], filters: SearchFilters) => {
+    let filtered = posts;
+
+    // Text search
+    if (filters.query) {
+      filtered = filtered.filter(post => 
+        post.title.toLowerCase().includes(filters.query.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(filters.query.toLowerCase()) ||
+        post.content.toLowerCase().includes(filters.query.toLowerCase())
+      );
+    }
+
+    // Category filter
+    if (filters.category !== 'all') {
+      filtered = filtered.filter(post => post.category === filters.category);
+    }
+
+    // Author filter
+    if (filters.author) {
+      filtered = filtered.filter(post => post.author === filters.author);
+    }
+
+    // Date range filter
+    if (filters.dateRange !== 'all') {
+      const now = new Date();
+      filtered = filtered.filter(post => {
+        const postDate = new Date(post.date);
+        switch (filters.dateRange) {
+          case 'week':
+            return now.getTime() - postDate.getTime() <= 7 * 24 * 60 * 60 * 1000;
+          case 'month':
+            return now.getTime() - postDate.getTime() <= 30 * 24 * 60 * 60 * 1000;
+          case 'year':
+            return now.getTime() - postDate.getTime() <= 365 * 24 * 60 * 60 * 1000;
+          default:
+            return true;
+        }
+      });
+    }
+
+    // Sort posts
+    filtered.sort((a, b) => {
+      switch (filters.sortBy) {
+        case 'oldest':
+          return new Date(a.date).getTime() - new Date(b.date).getTime();
+        case 'popular':
+          return (b.likes || 0) - (a.likes || 0);
+        case 'title':
+          return a.title.localeCompare(b.title);
+        case 'newest':
+        default:
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+      }
+    });
+
+    return filtered;
+  };
+
+  // Update filtered posts when search filters or blog posts change
   useEffect(() => {
     if (blogPosts) {
-      if (activeCategory === "all") {
-        setFilteredPosts(blogPosts);
-      } else {
-        setFilteredPosts(blogPosts.filter(post => post.category === activeCategory));
-      }
+      const filtered = filterAndSortPosts(blogPosts, searchFilters);
+      setFilteredPosts(filtered);
     }
-  }, [activeCategory, blogPosts]);
+  }, [searchFilters, blogPosts]);
+
+  const handleSearch = (filters: SearchFilters) => {
+    setSearchFilters(filters);
+  };
 
   // Helper function to count posts by category
   const getCategoryPostCount = (category) => {
@@ -73,7 +140,7 @@ const Blog = () => {
     : [];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Helmet>
         <title>AI & Cybersecurity Blog | Dr. Troy Williams</title>
         <meta 
@@ -142,16 +209,19 @@ const Blog = () => {
               <p className="text-gray-600">{(error as Error).message}</p>
             </div>
           ) : (
-            <Suspense fallback={<SectionLoader />}>
-              <BlogCategoryTabs 
-                activeCategory={activeCategory}
-                setActiveCategory={setActiveCategory}
-                filteredPosts={filteredPosts}
-                getCategoryCount={getCategoryPostCount}
-                containerVariants={containerVariants}
-                itemVariants={itemVariants}
-              />
-            </Suspense>
+            <>
+              <BlogSearch onSearch={handleSearch} totalResults={filteredPosts.length} />
+              <Suspense fallback={<SectionLoader />}>
+                <BlogCategoryTabs 
+                  activeCategory={searchFilters.category}
+                  setActiveCategory={(category) => handleSearch({ ...searchFilters, category })}
+                  filteredPosts={filteredPosts}
+                  getCategoryCount={getCategoryPostCount}
+                  containerVariants={containerVariants}
+                  itemVariants={itemVariants}
+                />
+              </Suspense>
+            </>
           )}
         </section>
         

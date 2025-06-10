@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -7,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from '@/types/blog';
+import { BookmarkButton } from "@/components/ui/bookmark-button";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -50,14 +50,24 @@ const BlogCard = ({ post }: BlogCardProps) => {
         </div>
       </CardContent>
       <CardFooter className="flex justify-between items-center pt-4 border-t">
-        <div className="flex items-center gap-2 text-sm">
-          <User className="h-4 w-4 text-[#3C3B6E]" />
-          <span>{post.author}</span>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-sm">
+            <User className="h-4 w-4 text-[#3C3B6E]" />
+            <span>{post.author}</span>
+          </div>
+          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            <ThumbsUp className="h-4 w-4" />
+            <span>{post.likes}</span>
+          </div>
         </div>
-        <div className="flex items-center gap-1 text-sm text-gray-500">
-          <ThumbsUp className="h-4 w-4" />
-          <span>{post.likes}</span>
-        </div>
+        <BookmarkButton 
+          id={post.id}
+          title={post.title}
+          type="blog"
+          url={`/blog/${post.id}`}
+          variant="ghost"
+          size="icon"
+        />
       </CardFooter>
       <div className="px-6 pb-6">
         <Button asChild className="w-full bg-[#3C3B6E] hover:bg-[#2d2c52]">

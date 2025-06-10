@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -8,6 +7,8 @@ import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import CommentSection from "@/components/blog/CommentSection";
 import { useBlogPost } from "@/hooks/useBlogPosts";
 import { Calendar, Clock, User, Tag } from "lucide-react";
+import SocialShare from "@/components/blog/SocialShare";
+import { BookmarkButton } from "@/components/ui/bookmark-button";
 
 const BlogPost = () => {
   const { postId } = useParams<{ postId: string }>();
@@ -49,7 +50,7 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Helmet>
         <title>{post.title} | Dr. Troy Williams Blog</title>
         <meta name="description" content={post.excerpt} />
@@ -116,6 +117,16 @@ const BlogPost = () => {
             </div>
           </header>
 
+          {/* Article actions */}
+          <div className="flex justify-between items-center mb-8">
+            <BookmarkButton 
+              id={post.id}
+              title={post.title}
+              type="blog"
+              url={window.location.href}
+            />
+          </div>
+
           {/* Article Content */}
           <div className="prose prose-lg max-w-none mb-12">
             <div 
@@ -124,6 +135,13 @@ const BlogPost = () => {
             />
           </div>
         </article>
+
+        {/* Social sharing */}
+        <SocialShare 
+          title={post.title}
+          url={window.location.href}
+          excerpt={post.excerpt}
+        />
 
         {/* Comments Section */}
         <CommentSection postId={post.id} />
