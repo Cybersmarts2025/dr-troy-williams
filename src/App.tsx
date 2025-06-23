@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -25,6 +26,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBlog from "./pages/admin/AdminBlog";
 import NewBlogPost from "./pages/admin/NewBlogPost";
 import EditBlogPost from "./pages/admin/EditBlogPost";
+import ContentManager from "./pages/admin/ContentManager";
 import TestimonialSubmission from "./pages/TestimonialSubmission";
 import Bookmarks from "./pages/Bookmarks";
 import Appointments from "./pages/Appointments";
@@ -76,6 +78,7 @@ const App = () => (
                 <Route path="/admin/blog" element={<AdminBlog />} />
                 <Route path="/admin/blog/new" element={<NewBlogPost />} />
                 <Route path="/admin/blog/edit/:postId" element={<EditBlogPost />} />
+                <Route path="/admin/content" element={<ContentManager />} />
                 
                 <Route path="/testimonial" element={<TestimonialSubmission />} />
                 <Route path="/bookmarks" element={<Bookmarks />} />

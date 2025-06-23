@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AuthGuard from "@/components/AuthGuard";
-import { FileText, Users, Mail, Settings } from 'lucide-react';
+import { FileText, Users, Mail, Settings, Database, Upload } from 'lucide-react';
 
 const AdminDashboard = () => {
   return (
@@ -33,6 +33,21 @@ const AdminDashboard = () => {
               <CardContent>
                 <Button asChild className="w-full">
                   <Link to="/admin/blog">Manage Blog Posts</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center gap-2">
+                  <Database className="h-5 w-5 text-[#3C3B6E]" />
+                  Content Tools
+                </CardTitle>
+                <CardDescription>Bulk import, optimization, and backup tools</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild className="w-full">
+                  <Link to="/admin/content">Content Manager</Link>
                 </Button>
               </CardContent>
             </Card>
