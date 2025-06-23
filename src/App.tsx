@@ -30,8 +30,8 @@ import Bookmarks from "./pages/Bookmarks";
 import Appointments from "./pages/Appointments";
 import Webinars from "./pages/Webinars";
 import Consultation from "./pages/Consultation";
-import GoogleAnalytics from './components/GoogleAnalytics';
-import LiveChatWidget from './components/LiveChatWidget';
+import GoogleAnalytics from './components/analytics/GoogleAnalytics';
+import LiveChatWidget from './components/chat/LiveChatWidget';
 
 const queryClient = new QueryClient({
   defaultOptions: {
