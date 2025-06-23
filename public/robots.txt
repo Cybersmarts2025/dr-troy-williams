@@ -1,12 +1,12 @@
 
-# robots.txt for https://legalsmarts.net
+# robots.txt for https://www.DrTroyWilliams.net
 # Updated: 2025-05-08
 
 User-agent: *
 Allow: /
 
 # Main sitemap
-Sitemap: https://legalsmarts.net/sitemap.xml
+Sitemap: https://www.DrTroyWilliams.net/sitemap.xml
 
 # Common crawlers with specific directives
 User-agent: Googlebot

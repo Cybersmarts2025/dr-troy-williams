@@ -14,15 +14,18 @@ interface SocialShareProps {
 const SocialShare = ({ title, url, excerpt }: SocialShareProps) => {
   const { toast } = useToast();
 
+  // Ensure we use the correct domain for sharing
+  const fullUrl = url.startsWith('http') ? url : `https://www.DrTroyWilliams.net${url}`;
+
   const shareLinks = {
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
+    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(fullUrl)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`
   };
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(fullUrl);
       toast({
         title: "Link copied!",
         description: "The article link has been copied to your clipboard.",
@@ -42,7 +45,7 @@ const SocialShare = ({ title, url, excerpt }: SocialShareProps) => {
         await navigator.share({
           title,
           text: excerpt,
-          url,
+          url: fullUrl,
         });
       } catch (err) {
         // User cancelled sharing

@@ -47,6 +47,7 @@ const Index = () => {
           content="Discover the official profile of Dr. Troy Williams — AI researcher, cybersecurity engineer, private investigator, and founder of Cybersmarts.ai. Protecting America through technology." 
         />
         <link rel="preload" as="image" href="/lovable-uploads/circuit-pattern.png" />
+        <link rel="canonical" href="https://www.DrTroyWilliams.net/" />
       </Helmet>
       
       {/* Schema.org markup for Dr. Troy Williams */}
