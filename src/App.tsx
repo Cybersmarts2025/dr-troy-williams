@@ -30,6 +30,8 @@ import Bookmarks from "./pages/Bookmarks";
 import Appointments from "./pages/Appointments";
 import Webinars from "./pages/Webinars";
 import Consultation from "./pages/Consultation";
+import GoogleAnalytics from './components/GoogleAnalytics';
+import LiveChatWidget from './components/LiveChatWidget';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -81,6 +83,10 @@ const App = () => (
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
+              
+              {/* Global Components */}
+              <GoogleAnalytics trackingId="G-XXXXXXXXXX" />
+              <LiveChatWidget />
             </BrowserRouter>
           </TooltipProvider>
         </AuthProvider>

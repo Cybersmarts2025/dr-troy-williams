@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import AppointmentForm from "@/components/appointments/AppointmentForm";
+import EnhancedAppointmentForm from "@/components/appointments/EnhancedAppointmentForm";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 
 const Appointments = () => {
@@ -27,7 +27,7 @@ const Appointments = () => {
         <PageBreadcrumb pageName="Book Appointment" />
         
         <div className="container mx-auto px-4 py-16">
-          <AppointmentForm />
+          <EnhancedAppointmentForm />
         </div>
       </main>
 

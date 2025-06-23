@@ -3,35 +3,61 @@ import { useState } from 'react';
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 
+interface NewsletterPreferences {
+  topics: string[];
+  frequency: string;
+}
+
 export const useNewsletter = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const subscribe = async (email: string, name?: string) => {
+  const subscribe = async (email: string, name?: string, preferences?: NewsletterPreferences) => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      // Check if subscriber already exists
+      const { data: existingSubscriber } = await supabase
         .from('newsletter_subscribers')
-        .insert({ email, name });
+        .select('id')
+        .eq('email', email)
+        .single();
 
-      if (error) {
-        if (error.code === '23505') { // Unique constraint violation
-          toast({
-            title: "Already subscribed!",
-            description: "This email is already subscribed to our newsletter.",
-            duration: 5000,
-          });
-        } else {
-          throw error;
-        }
-      } else {
+      if (existingSubscriber) {
         toast({
-          title: "Subscription successful!",
-          description: "Thank you for subscribing to our newsletter.",
+          title: "Already subscribed!",
+          description: "This email is already subscribed to our newsletter.",
           duration: 5000,
         });
+        return;
       }
+
+      const subscriberData = {
+        email,
+        name: name || null,
+        preferences: preferences ? JSON.stringify(preferences) : null
+      };
+
+      const { error } = await supabase
+        .from('newsletter_subscribers')
+        .insert(subscriberData);
+
+      if (error) throw error;
+
+      toast({
+        title: "Subscription successful!",
+        description: "Thank you for subscribing to our intelligence briefings.",
+        duration: 5000,
+      });
+
+      // Track analytics event
+      if (window.gtag) {
+        window.gtag('event', 'newsletter_subscription', {
+          event_category: 'engagement',
+          event_label: preferences?.topics.join(',') || 'general'
+        });
+      }
+
     } catch (error) {
       console.error('Newsletter subscription error:', error);
       toast({
