@@ -88,7 +88,7 @@ const ContentImport = () => {
           excerpt: values[1]?.substring(0, 150) + '...' || 'Imported content excerpt',
           image: 'https://images.unsplash.com/photo-1677442135185-8034cb13c4b4?auto=format&fit=crop&w=800',
           tags: values[3]?.split(';') || ['imported'],
-          readTime: '5 min read',
+          readtime: '5 min read',
           date: new Date().toLocaleDateString('en-US', { 
             year: 'numeric', 
             month: 'long', 
