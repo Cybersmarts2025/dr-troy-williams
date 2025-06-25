@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import NavBar from "@/components/NavBar";
 import { Helmet } from "react-helmet-async";
@@ -8,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 
 // Import our new components
 import PressHero from "@/components/press/PressHero";
+import FeaturedPressRelease from "@/components/press/FeaturedPressRelease";
 import MediaFeaturesSection, { MediaFeature } from "@/components/press/MediaFeaturesSection";
 import AwardsSection, { Recognition } from "@/components/press/AwardsSection";
 import PressContactSection from "@/components/press/PressContactSection";
@@ -133,25 +133,30 @@ const Press = () => {
         sameAs={["https://www.linkedin.com/in/troywilliams", "https://twitter.com/troywilliams"]} 
       />
 
-      {/* Add schema markup for the first media feature */}
-      {features[0] && (
-        <NewsArticleSchema
-          headline={features[0].title}
-          description={features[0].description}
-          image={features[0].logo}
-          datePublished={features[0].date}
-          publisher={{
-            name: features[0].outlet
-          }}
-          url={features[0].link}
-        />
-      )}
+      {/* Add schema markup for the press release */}
+      <NewsArticleSchema
+        headline="Dr. Troy Williams, PhD, Pledges to Complete the Unfinished Work of AI and Cybersecurity Pioneers"
+        description="Tennessee-based AI scientist and cybersecurity expert commits to advancing the work of technology pioneers through sovereign, ethical innovation."
+        image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800"
+        datePublished="June 18, 2025"
+        publisher={{
+          name: "Cybersmarts.ai LLC"
+        }}
+        url="#"
+      />
       
       <NavBar />
       
       <main className="pt-20">
         {/* Hero Section */}
         <PressHero />
+        
+        {/* Featured Press Release */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <FeaturedPressRelease />
+          </div>
+        </section>
         
         {/* Featured Press Section */}
         <MediaFeaturesSection 

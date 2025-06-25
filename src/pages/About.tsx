@@ -54,6 +54,26 @@ const About = () => {
             <p className="text-xl text-gray-600 italic">"I'm not ahead of the curve — I am the curve."</p>
           </div>
 
+          {/* Legacy Statement Card - NEW */}
+          <Card className="mb-12 border-2 border-[#B22234] bg-gradient-to-br from-white to-red-50">
+            <CardHeader className="bg-gradient-to-r from-[#3C3B6E] to-[#B22234] text-white">
+              <CardTitle className="flex items-center gap-2">
+                <Flag className="h-6 w-6" />
+                <h2>Mission & Legacy</h2>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-8">
+              <blockquote className="text-lg italic text-[#1A1F2C] mb-4 leading-relaxed">
+                "I dedicate my life's work to defining a new era of sovereign, ethical technology—built not to follow fleeting trends but to lead with unyielding principles. My legacy is a future where fraud is not merely reacted to but proactively prevented, where national security stands fortified by American-made innovation, and where artificial intelligence serves humanity without ever compromising privacy, trust, or liberty."
+              </blockquote>
+              <p className="text-gray-700">
+                Dr. Williams is committed to completing the unfinished work of AI and cybersecurity pioneers, 
+                advancing the legacy of visionaries like Alan Turing, Claude Shannon, and John McCarthy through 
+                modern, sovereign technology solutions.
+              </p>
+            </CardContent>
+          </Card>
+
           {/* Introduction */}
           <div className="prose max-w-none mb-16">
             <p className="text-lg mb-8">
@@ -116,9 +136,18 @@ const About = () => {
               <p className="mb-4">
                 As Founder and Chief Intelligence Architect at Cybersmarts.ai in Lebanon, Tennessee, Dr. Troy Williams designed the Autonomous Intelligence Security Framework (AISF™) and Proactive Prevention Platform (PPP™) — two groundbreaking systems that power PatriotProof™, a U.S.-only fraud defense SaaS platform built for agencies, law enforcement, and enterprise clients.
               </p>
-              <p>
+              <p className="mb-4">
                 Cybersmarts.ai is more than a nonprofit — it's a national movement for ethical, secure, and sovereign artificial intelligence led by Dr. Troy Williams.
               </p>
+              <div className="bg-slate-100 p-4 rounded-lg">
+                <h4 className="font-bold mb-2">Revolutionary Platforms:</h4>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li><strong>PatriotProof™</strong> - U.S.-only fraud defense platform</li>
+                  <li><strong>AISF™</strong> - Autonomous Intelligence Security Framework</li>
+                  <li><strong>PPP™</strong> - Proactive Prevention Platform</li>
+                  <li><strong>FraudDNA™</strong> - Advanced fraud detection system</li>
+                </ul>
+              </div>
             </CardContent>
           </Card>
 

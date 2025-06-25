@@ -8,8 +8,9 @@ import MentoringSection from "@/components/MentoringSection";
 import { Helmet } from "react-helmet-async";
 import { PersonSchema, OrganizationSchema } from "@/utils/schemaMarkup";
 import { Button } from '@/components/ui/button';
-import { ArrowRight, FileText, Shield, Users, Award, Target } from 'lucide-react';
+import { ArrowRight, FileText, Shield, Users, Award, Target, Flag, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Lazy load less critical components
 const WorkHistory = lazy(() => import("@/components/WorkHistory"));
@@ -83,6 +84,88 @@ const Index = () => {
                 Leading the charge in national cybersecurity, AI governance, and digital sovereignty. 
                 Built in Tennessee. By Americans. For Americans.
               </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Legacy & Mission Preview Section - NEW */}
+        <div className="py-16 bg-gradient-to-br from-slate-50 to-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#3C3B6E] mb-4">
+                  Defining the Future of Technology
+                </h2>
+                <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                  Completing the unfinished work of AI and cybersecurity pioneers through sovereign, ethical innovation
+                </p>
+              </div>
+              
+              <Card className="border-2 border-[#B22234] bg-gradient-to-br from-white to-red-50 mb-8">
+                <CardHeader className="bg-gradient-to-r from-[#3C3B6E] to-[#B22234] text-white">
+                  <CardTitle className="text-2xl text-center">Mission Statement</CardTitle>
+                </CardHeader>
+                <CardContent className="p-8">
+                  <blockquote className="text-lg italic text-[#1A1F2C] leading-relaxed text-center mb-6">
+                    "I dedicate my life's work to defining a new era of sovereign, ethical technology—built not to follow fleeting trends but to lead with unyielding principles. My legacy is a future where fraud is not merely reacted to but proactively prevented, where national security stands fortified by American-made innovation."
+                  </blockquote>
+                  <div className="text-center">
+                    <Button asChild className="bg-[#B22234] hover:bg-[#9B0000] text-white">
+                      <Link to="/legacy" className="flex items-center gap-2">
+                        <Flag className="h-4 w-4" />
+                        Explore Full Legacy & Mission
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-[#B22234]">
+                      <Shield className="h-6 w-6" />
+                      Proactive Prevention
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-700">
+                      Revolutionary systems that prevent fraud and cyber threats before they occur, 
+                      using predictive AI and advanced threat intelligence.
+                    </p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-[#3C3B6E]">
+                      <Flag className="h-6 w-6" />
+                      Digital Sovereignty
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-700">
+                      Ensuring American technological independence through domestic innovation 
+                      and protection from foreign interference in critical systems.
+                    </p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-[#F97316]">
+                      <Brain className="h-6 w-6" />
+                      Ethical AI
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-700">
+                      Developing artificial intelligence that serves humanity while maintaining 
+                      privacy, transparency, and human oversight in all applications.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>

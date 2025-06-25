@@ -10,6 +10,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import AuthGuard from "./components/AuthGuard";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Legacy from "./pages/Legacy";
 import Books from "./pages/Books";
 import AISF from "./pages/AISF";
 import NotFound from "./pages/NotFound";
@@ -56,6 +57,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/legacy" element={<Legacy />} />
                 <Route path="/books" element={<Books />} />
                 <Route path="/aisf" element={<AISF />} />
                 <Route path="/ppp" element={<PPP />} />
