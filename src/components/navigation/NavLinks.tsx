@@ -1,6 +1,6 @@
 
 import { useLocation } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText, Flag } from "lucide-react";
 import NavLink from "./NavLink";
 import NavButton from "./NavButton";
 
@@ -36,6 +36,16 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         baseShadow={baseShadow} 
         color="#D946EF" 
         hoverColor="#D946EF" 
+      />
+      
+      <NavLink 
+        to="/legacy" 
+        icon={Flag} 
+        label="Legacy" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#B22234" 
+        hoverColor="#B22234" 
       />
       
       <NavLink 

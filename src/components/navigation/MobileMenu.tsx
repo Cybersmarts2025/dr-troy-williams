@@ -1,6 +1,6 @@
 
 import { useLocation } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText, Flag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import MobileMenuItem from "./MobileMenuItem";
 
@@ -43,6 +43,14 @@ const MobileMenu = ({ children, isOpen = true, onClose, onNavigate = () => {} }:
               label="About" 
               onClick={onClose}
               color="#D946EF" 
+            />
+            
+            <MobileMenuItem 
+              to="/legacy" 
+              icon={Flag} 
+              label="Legacy" 
+              onClick={onClose}
+              color="#B22234" 
             />
             
             <MobileMenuItem 
