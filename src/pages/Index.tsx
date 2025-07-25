@@ -110,8 +110,11 @@ const Index = () => {
                 </CardHeader>
                 <CardContent className="p-8">
                   <blockquote className="text-lg italic text-[#1A1F2C] leading-relaxed text-center mb-6">
-                    "I dedicate my life's work to defining a new era of sovereign, ethical technology—built not to follow fleeting trends but to lead with unyielding principles. My legacy is a future where fraud is not merely reacted to but proactively prevented, where national security stands fortified by American-made innovation."
+                    "I want my inventions to define a new era of sovereign, ethical technology—built not to follow trends, but to lead with principles. My legacy is a future where fraud is proactively prevented, national security is fortified through American-made innovation, and artificial intelligence serves humanity without compromising privacy, trust, or liberty. I intend to leave behind not just systems, but a resilient infrastructure of truth."
                   </blockquote>
+                  <p className="text-center text-[#1A1F2C] font-semibold">
+                    — Dr. Troy Williams, PhD
+                  </p>
                   <div className="text-center">
                     <Button asChild className="bg-[#B22234] hover:bg-[#9B0000] text-white">
                       <Link to="/legacy" className="flex items-center gap-2">
