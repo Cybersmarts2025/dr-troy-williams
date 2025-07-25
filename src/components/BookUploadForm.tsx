@@ -28,9 +28,9 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
     try {
       setIsSubmitting(true);
       
-      // First fetch the book details from our edge function
-      const bookDetailsResponse = await supabase.functions.invoke('fetch-book-details', {
-        body: { amazonUrl: data.amazonUrl }
+      // First fetch the book details from our edge function  
+      const bookDetailsResponse = await supabase.functions.invoke('scrape-amazon-book', {
+        body: { url: data.amazonUrl }
       });
       
       if (bookDetailsResponse.error) {
@@ -38,15 +38,15 @@ const BookUploadForm = ({ onClose }: BookUploadFormProps) => {
         throw new Error(bookDetailsResponse.error.message || 'Failed to fetch book details');
       }
       
-      const bookDetails = bookDetailsResponse.data;
-      console.log('Book details received:', bookDetails);
+      const bookData = bookDetailsResponse.data?.data || bookDetailsResponse.data;
+      console.log('Book details received:', bookData);
       
       // Insert the book with the scraped details and user_id
       const { error } = await supabase
         .from('books')
         .insert({
-          title: bookDetails.title,
-          description: bookDetails.description,
+          title: bookData.title || 'Unknown Title',
+          description: bookData.description || 'No description available',
           cover_url: data.amazonUrl, // Keep the Amazon URL for now
           user_id: user?.id // Associate the book with the current user
         });
