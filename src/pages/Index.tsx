@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import SocialLinks from "@/components/SocialLinks";
 import Footer from "@/components/Footer";
 import MentoringSection from "@/components/MentoringSection";
+import DissertationCallout from "@/components/DissertationCallout";
 import { Helmet } from "react-helmet-async";
 import { PersonSchema, OrganizationSchema } from "@/utils/schemaMarkup";
 import { Button } from '@/components/ui/button';
@@ -71,6 +72,8 @@ const Index = () => {
       
       <main>
         <HeroSection />
+        
+        <DissertationCallout />
         
         {/* Mission Statement Banner */}
         <div className="py-8 bg-gradient-to-r from-[#B22234] to-[#3C3B6E] text-white">
