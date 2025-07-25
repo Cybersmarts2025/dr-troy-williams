@@ -77,7 +77,7 @@ const Books = () => {
         id: book.id,
         title: book.title,
         description: book.description,
-        amazon_url: book.cover_url
+        amazon_url: book.cover_url || ''
       })) || [];
     },
   });
