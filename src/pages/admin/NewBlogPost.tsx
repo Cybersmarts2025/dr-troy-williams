@@ -5,11 +5,11 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import BlogPostEditor from "@/components/admin/BlogPostEditor";
-import AuthGuard from "@/components/AuthGuard";
+import AdminGuard from "@/components/AdminGuard";
 
 const NewBlogPost = () => {
   return (
-    <AuthGuard>
+    <AdminGuard>
       <div className="min-h-screen bg-white flex flex-col">
         <Helmet>
           <title>Create New Blog Post | Admin Dashboard</title>
@@ -31,7 +31,7 @@ const NewBlogPost = () => {
         </div>
         <Footer />
       </div>
-    </AuthGuard>
+    </AdminGuard>
   );
 };
 

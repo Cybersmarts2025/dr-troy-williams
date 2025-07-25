@@ -5,11 +5,11 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import BlogPostsList from "@/components/admin/BlogPostsList";
-import AuthGuard from "@/components/AuthGuard";
+import AdminGuard from "@/components/AdminGuard";
 
 const AdminBlog = () => {
   return (
-    <AuthGuard>
+    <AdminGuard>
       <div className="min-h-screen bg-white flex flex-col">
         <Helmet>
           <title>Blog Management | Admin Dashboard</title>
@@ -31,7 +31,7 @@ const AdminBlog = () => {
         </div>
         <Footer />
       </div>
-    </AuthGuard>
+    </AdminGuard>
   );
 };
 

@@ -6,12 +6,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from '@/components/ui/button';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import AuthGuard from "@/components/AuthGuard";
+import AdminGuard from "@/components/AdminGuard";
 import { FileText, Users, Mail, Settings, Database, Upload } from 'lucide-react';
 
 const AdminDashboard = () => {
   return (
-    <AuthGuard>
+    <AdminGuard>
       <div className="min-h-screen bg-white flex flex-col">
         <Helmet>
           <title>Admin Dashboard</title>
@@ -100,7 +100,7 @@ const AdminDashboard = () => {
         </div>
         <Footer />
       </div>
-    </AuthGuard>
+    </AdminGuard>
   );
 };
 

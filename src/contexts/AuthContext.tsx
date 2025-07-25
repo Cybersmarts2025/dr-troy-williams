@@ -8,6 +8,8 @@ interface AuthContextType {
   user: User | null;
   session: Session | null;
   isLoading: boolean;
+  userRole: string | null;
+  isAdmin: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
@@ -19,6 +21,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Function to fetch user role
+  const fetchUserRole = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId)
+        .single();
+
+      if (error) {
+        console.error('Error fetching user role:', error);
+        return null;
+      }
+
+      return data?.role || null;
+    } catch (error) {
+      console.error('Error fetching user role:', error);
+      return null;
+    }
+  };
 
   useEffect(() => {
     // First set up the auth state listener
@@ -27,6 +52,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setSession(currentSession);
         setUser(currentSession?.user ?? null);
         setIsLoading(false);
+
+        // Fetch user role when session changes
+        if (currentSession?.user) {
+          setTimeout(() => {
+            fetchUserRole(currentSession.user.id).then((role) => {
+              setUserRole(role);
+              setIsAdmin(role === 'admin');
+            });
+          }, 0);
+        } else {
+          setUserRole(null);
+          setIsAdmin(false);
+        }
       }
     );
 
@@ -35,6 +73,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setSession(currentSession);
       setUser(currentSession?.user ?? null);
       setIsLoading(false);
+
+      // Fetch user role for existing session
+      if (currentSession?.user) {
+        fetchUserRole(currentSession.user.id).then((role) => {
+          setUserRole(role);
+          setIsAdmin(role === 'admin');
+        });
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -42,9 +88,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signUp = async (email: string, password: string) => {
     try {
+      const redirectUrl = `${window.location.origin}/`;
+      
       const { error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          emailRedirectTo: redirectUrl
+        }
       });
 
       if (error) {
@@ -94,6 +145,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         user,
         session,
         isLoading,
+        userRole,
+        isAdmin,
         signIn,
         signUp,
         signOut

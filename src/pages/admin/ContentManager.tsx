@@ -3,12 +3,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import AuthGuard from "@/components/AuthGuard";
+import AdminGuard from "@/components/AdminGuard";
 import ContentManagement from "@/components/admin/ContentManagement";
 
 const ContentManager = () => {
   return (
-    <AuthGuard>
+    <AdminGuard>
       <div className="min-h-screen bg-white flex flex-col">
         <Helmet>
           <title>Content Management | Admin Dashboard</title>
@@ -20,7 +20,7 @@ const ContentManager = () => {
         </div>
         <Footer />
       </div>
-    </AuthGuard>
+    </AdminGuard>
   );
 };
 

@@ -18,7 +18,7 @@ interface UserAccountProps {
 }
 
 const UserAccount = ({ isMobile = false, onMobileClose }: UserAccountProps) => {
-  const { user, signOut } = useAuth();
+  const { user, signOut, isAdmin, userRole } = useAuth();
 
   const handleSignOut = () => {
     signOut();
@@ -32,6 +32,11 @@ const UserAccount = ({ isMobile = false, onMobileClose }: UserAccountProps) => {
       <div className="px-5 py-2 border-t border-gray-100">
         <div className="flex flex-col gap-2">
           <div className="text-sm text-gray-500">{user.email}</div>
+          {isAdmin && (
+            <div className="text-xs px-2 py-1 bg-red-100 text-red-800 rounded-md text-center">
+              Admin
+            </div>
+          )}
           <Button 
             variant="outline" 
             size="sm"
@@ -66,6 +71,14 @@ const UserAccount = ({ isMobile = false, onMobileClose }: UserAccountProps) => {
         <DropdownMenuItem className="text-sm">
           {user.email}
         </DropdownMenuItem>
+        {isAdmin && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="text-xs text-red-600 font-medium">
+              Admin Access
+            </DropdownMenuItem>
+          </>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuItem 
           className="text-red-500 cursor-pointer flex items-center gap-2"
