@@ -61,7 +61,7 @@ const About = () => {
               <div className="flex justify-center md:justify-end">
                 <div className="relative">
                   <img 
-                    src="/images/dr-troy-williams-phd-cybersecurity-expert.png"
+                    src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png"
                     alt="Dr. Troy Williams, PhD - Cybersecurity Engineer and AI Scientist"
                     title="Dr. Troy Williams, PhD - Founder of Cybersmarts.ai"
                     className="w-80 h-80 object-cover rounded-xl shadow-2xl border-4 border-white"
