@@ -24,15 +24,6 @@ const Books = () => {
   const queryClient = useQueryClient();
   const { user, isLoading } = useAuth();
   
-  // Show loading or redirect if not authenticated
-  if (isLoading) {
-    return <div className="flex items-center justify-center h-screen">Loading...</div>;
-  }
-  
-  if (!user) {
-    return <Navigate to="/auth" />;
-  }
-  
   // Setup default books if no data exists in database
   const initialBooks = [
     {
@@ -106,6 +97,15 @@ const Books = () => {
     book.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
     (book.description && book.description.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
+  // Show loading or redirect if not authenticated (after all hooks)
+  if (isLoading) {
+    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+  }
+  
+  if (!user) {
+    return <Navigate to="/auth" />;
+  }
 
   return (
     <AuthGuard>
