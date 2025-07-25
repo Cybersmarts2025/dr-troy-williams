@@ -6,11 +6,13 @@ import { Book as BookIcon, Plus, Search } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import BookUploadForm from "@/components/BookUploadForm";
+import { AmazonBookImporter } from "@/components/AmazonBookImporter";
 import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import NavBar from "@/components/NavBar";
 import BooksList from "@/components/BooksList";
 import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 import { useAuth } from '@/contexts/AuthContext';
 import AuthGuard from '@/components/AuthGuard';
@@ -164,25 +166,41 @@ const Books = () => {
             </div>
           </div>
 
-          {showUploadForm && <BookUploadForm onClose={() => setShowUploadForm(false)} />}
-          
-          <div className="mb-8 bg-white p-4 rounded-xl shadow-md border border-gray-100">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <Input
-                placeholder="Search books by title or description..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-gray-50 border-gray-200"
+          <Tabs defaultValue="list" className="space-y-6">
+            <TabsList className="grid w-full grid-cols-3 bg-white shadow-md">
+              <TabsTrigger value="list" className="data-[state=active]:bg-red-600 data-[state=active]:text-white">My Books</TabsTrigger>
+              <TabsTrigger value="upload" className="data-[state=active]:bg-red-600 data-[state=active]:text-white">Add New Book</TabsTrigger>
+              <TabsTrigger value="import" className="data-[state=active]:bg-red-600 data-[state=active]:text-white">Import from Amazon</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="list">
+              <div className="mb-8 bg-white p-4 rounded-xl shadow-md border border-gray-100">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <Input
+                    placeholder="Search books by title or description..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-10 bg-gray-50 border-gray-200"
+                  />
+                </div>
+              </div>
+              
+              <BooksList 
+                books={filteredBooks}
+                isLoading={isBooksLoading}
+                onDelete={handleDeleteBook}
               />
-            </div>
-          </div>
-
-          <BooksList 
-            books={filteredBooks}
-            isLoading={isBooksLoading}
-            onDelete={handleDeleteBook}
-          />
+            </TabsContent>
+            
+            <TabsContent value="upload">
+              <BookUploadForm onClose={() => {}} />
+            </TabsContent>
+            
+            <TabsContent value="import">
+              <AmazonBookImporter />
+            </TabsContent>
+          </Tabs>
         </div>
 
         <Footer />
