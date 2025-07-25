@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { sanitizeInput, isValidSearchQuery } from "@/utils/security";
 
 interface SearchResult {
   id: string;
@@ -26,33 +27,37 @@ const ResearchSearch = ({ onSearchResults }: ResearchSearchProps) => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!searchQuery.trim()) {
+    const sanitizedQuery = sanitizeInput(searchQuery);
+    if (!sanitizedQuery) {
       onSearchResults([]);
+      return;
+    }
+
+    if (!isValidSearchQuery(sanitizedQuery)) {
+      toast({
+        title: "Invalid search query",
+        description: "Please use only letters, numbers, and basic punctuation",
+        variant: "destructive"
+      });
       return;
     }
     
     setIsSearching(true);
     
     try {
-      // First get embedding for the search query
-      const embeddingResponse = await fetch("https://api.openai.com/v1/embeddings", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "text-embedding-3-small",
-          input: searchQuery
-        })
-      });
+      // Get embedding from secure backend
+      const { data: embeddingData, error: embeddingError } = await supabase.functions.invoke(
+        'generate-search-embedding',
+        {
+          body: { query: sanitizedQuery }
+        }
+      );
 
-      if (!embeddingResponse.ok) {
+      if (embeddingError || !embeddingData?.embedding) {
         throw new Error("Failed to generate query embedding");
       }
 
-      const embeddingData = await embeddingResponse.json();
-      const queryEmbedding = embeddingData.data[0].embedding;
+      const queryEmbedding = embeddingData.embedding;
 
       // Use the match_publications function to find similar publications
       const { data: searchResults, error } = await supabase.rpc(

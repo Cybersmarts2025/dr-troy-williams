@@ -6,3 +6,6 @@ verify_jwt = false
 
 [functions.generate-embeddings]
 verify_jwt = false
+
+[functions.generate-search-embedding]
+verify_jwt = false

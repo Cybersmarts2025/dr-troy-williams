@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/command';
 import { Search } from 'lucide-react';
 import { supabase } from "@/integrations/supabase/client";
+import { sanitizeInput, isValidSearchQuery } from "@/utils/security";
 
 interface SearchResult {
   id: string;
@@ -40,7 +41,13 @@ export function GlobalSearch() {
   }, []);
 
   useEffect(() => {
-    if (!query) {
+    const sanitizedQuery = sanitizeInput(query);
+    if (!sanitizedQuery) {
+      setResults([]);
+      return;
+    }
+
+    if (!isValidSearchQuery(sanitizedQuery)) {
       setResults([]);
       return;
     }
@@ -49,25 +56,19 @@ export function GlobalSearch() {
       setIsSearching(true);
       
       try {
-        // Generate embedding for search query
-        const embeddingResponse = await fetch("https://api.openai.com/v1/embeddings", {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            model: "text-embedding-3-small",
-            input: query
-          })
-        });
+        // Get embedding from secure backend
+        const { data: embeddingData, error: embeddingError } = await supabase.functions.invoke(
+          'generate-search-embedding',
+          {
+            body: { query: sanitizedQuery }
+          }
+        );
 
-        if (!embeddingResponse.ok) {
+        if (embeddingError || !embeddingData?.embedding) {
           throw new Error("Failed to generate query embedding");
         }
 
-        const embeddingData = await embeddingResponse.json();
-        const queryEmbedding = embeddingData.data[0].embedding;
+        const queryEmbedding = embeddingData.embedding;
 
         // Search using the embedding
         const { data, error } = await supabase.rpc(
