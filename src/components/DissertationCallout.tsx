@@ -14,7 +14,7 @@ const DissertationCallout = () => {
       className="py-12 bg-gradient-to-br from-blue-50 to-indigo-50"
     >
       <div className="container mx-auto px-4">
-        <Card className="max-w-5xl mx-auto border-2 border-gradient-to-r from-[#3C3B6E] to-[#B22234] bg-white shadow-2xl overflow-hidden">
+        <Card className="max-w-5xl mx-auto border-2 border-[#3C3B6E] bg-white shadow-2xl overflow-hidden">
           <div className="bg-gradient-to-r from-[#3C3B6E] to-[#B22234] p-1">
             <div className="bg-white rounded-t-lg p-8">
               <div className="flex items-start gap-4 mb-6">
