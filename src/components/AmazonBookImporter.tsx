@@ -24,38 +24,11 @@ interface BookData {
 export const AmazonBookImporter = () => {
   const { toast } = useToast();
   const { user } = useAuth();
-  const [apiKey, setApiKey] = useState(FirecrawlService.getApiKey() || '');
   const [amazonUrls, setAmazonUrls] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [importedBooks, setImportedBooks] = useState<BookData[]>([]);
   const [errors, setErrors] = useState<string[]>([]);
-
-  const handleSaveApiKey = async () => {
-    if (!apiKey.trim()) {
-      toast({
-        title: "Error",
-        description: "Please enter your Firecrawl API key",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    const isValid = await FirecrawlService.testApiKey(apiKey);
-    if (isValid) {
-      FirecrawlService.saveApiKey(apiKey);
-      toast({
-        title: "Success",
-        description: "API key saved and validated successfully",
-      });
-    } else {
-      toast({
-        title: "Error",
-        description: "Invalid API key. Please check and try again.",
-        variant: "destructive",
-      });
-    }
-  };
 
   const handleImportBooks = async () => {
     if (!user) {
@@ -153,32 +126,9 @@ export const AmazonBookImporter = () => {
           <Alert>
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              To use this feature, you need a Firecrawl API key. Get one from{' '}
-              <a href="https://firecrawl.dev" target="_blank" rel="noopener noreferrer" className="underline">
-                firecrawl.dev
-              </a>{' '}
-              and add it to your Supabase Edge Function Secrets as 'FIRECRAWL_API_KEY'.
+              Your Firecrawl API key is securely configured in Supabase. You can now import books directly from Amazon URLs.
             </AlertDescription>
           </Alert>
-
-          <div className="space-y-2">
-            <label htmlFor="apiKey" className="text-sm font-medium">
-              Firecrawl API Key (Temporary)
-            </label>
-            <div className="flex gap-2">
-              <Input
-                id="apiKey"
-                type="password"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                placeholder="Enter your Firecrawl API key"
-                className="flex-1"
-              />
-              <Button onClick={handleSaveApiKey} variant="outline">
-                Save Key
-              </Button>
-            </div>
-          </div>
 
           <div className="space-y-2">
             <label htmlFor="urls" className="text-sm font-medium">
@@ -205,7 +155,7 @@ export const AmazonBookImporter = () => {
 
           <Button
             onClick={handleImportBooks}
-            disabled={isLoading || !FirecrawlService.getApiKey()}
+            disabled={isLoading}
             className="w-full"
           >
             <Download className="h-4 w-4 mr-2" />
