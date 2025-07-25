@@ -49,9 +49,27 @@ const About = () => {
       <main className="container mx-auto px-4 py-6">
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4">About Dr. Troy Williams</h1>
-            <p className="text-xl text-gray-600 italic">"I'm not ahead of the curve — I am the curve."</p>
+          <div className="mb-16">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Text Content */}
+              <div className="text-center md:text-left">
+                <h1 className="text-4xl font-bold mb-4">About Dr. Troy Williams</h1>
+                <p className="text-xl text-gray-600 italic">"I'm not ahead of the curve — I am the curve."</p>
+              </div>
+              
+              {/* Professional Photo */}
+              <div className="flex justify-center md:justify-end">
+                <div className="relative">
+                  <img 
+                    src="/images/dr-troy-williams-phd-cybersecurity-expert.png"
+                    alt="Dr. Troy Williams, PhD - Cybersecurity Engineer and AI Scientist"
+                    title="Dr. Troy Williams, PhD - Founder of Cybersmarts.ai"
+                    className="w-80 h-80 object-cover rounded-xl shadow-2xl border-4 border-white"
+                  />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Legacy Statement Card - NEW */}
