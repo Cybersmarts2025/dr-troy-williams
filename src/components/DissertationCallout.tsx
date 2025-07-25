@@ -92,7 +92,7 @@ const DissertationCallout = () => {
                     asChild 
                     className="bg-[#3C3B6E] hover:bg-[#2d2c54] text-white flex items-center gap-2"
                   >
-                    <a href="https://ssrn.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5240753" target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="h-4 w-4" />
                       Read SSRN Abstract
                     </a>
