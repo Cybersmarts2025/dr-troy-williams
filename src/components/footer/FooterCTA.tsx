@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Mail, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ContactDialog from '@/components/ContactDialog';
 
 const FooterCTA = () => {
   return (
@@ -20,15 +21,11 @@ const FooterCTA = () => {
         >
           <Phone className="h-4 w-4 mr-2" /> Contact
         </Button>
-        <Button
+        <ContactDialog
           size="sm"
           variant="outline"
           className="bg-white text-[#B22234] hover:bg-gray-100 border-white hover:scale-105 transition-transform"
-          onClick={() => window.location.href = 'mailto:verifiedsafe8@gmail.com'}
-          aria-label="Contact by email"
-        >
-          <Mail className="h-4 w-4 mr-2" /> Email
-        </Button>
+        />
       </div>
     </div>
   );
