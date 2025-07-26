@@ -34,6 +34,7 @@ import Bookmarks from "./pages/Bookmarks";
 import Appointments from "./pages/Appointments";
 import Webinars from "./pages/Webinars";
 import Consultation from "./pages/Consultation";
+import Certifications from "./pages/Certifications";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -75,6 +76,7 @@ const App = () => (
                 <Route path="/appointments" element={<Appointments />} />
                 <Route path="/webinars" element={<Webinars />} />
                 <Route path="/consultation" element={<Consultation />} />
+                <Route path="/certifications" element={<Certifications />} />
                 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminDashboard />} />
