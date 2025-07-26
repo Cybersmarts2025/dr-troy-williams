@@ -6,6 +6,7 @@ import SocialLinks from "@/components/SocialLinks";
 import Footer from "@/components/Footer";
 import MentoringSection from "@/components/MentoringSection";
 import DissertationCallout from "@/components/DissertationCallout";
+import CertificationsSection from "@/components/CertificationsSection";
 import { Helmet } from "react-helmet-async";
 import { PersonSchema, OrganizationSchema } from "@/utils/schemaMarkup";
 import { Button } from '@/components/ui/button';
@@ -225,6 +226,8 @@ const Index = () => {
         </div>
         
         <MentoringSection />
+        
+        <CertificationsSection />
         
         <Suspense fallback={<SectionLoader />}>
           <WorkHistory />
