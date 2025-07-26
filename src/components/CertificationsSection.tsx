@@ -2,20 +2,27 @@ import React from 'react';
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award, Shield, Computer, Lock, Search, Users, Brain, GraduationCap, Building, Code, Globe } from "lucide-react";
+import { 
+  Award, Shield, Computer, Lock, Search, Users, Brain, GraduationCap, Building, Code, Globe,
+  MessageSquare, Sparkles, Languages, Bot, FileText, BookOpen, School, Bug, EyeOff,
+  Laptop, Network, Eye, Terminal, Radio, Smartphone, AlertTriangle, Cloud, Router,
+  Wifi, Calendar, Settings, Monitor, Cog, Server, Lightbulb, Cable, HardDrive, Zap,
+  MessageCircle, Briefcase, Scale
+} from "lucide-react";
 
 interface Certification {
   name: string;
   issuer: string;
   year: string;
-  status: "Active" | "Renewed" | "Continuing Education";
-  category: "Cybersecurity" | "Investigation" | "Technology" | "Leadership" | "AI/ML" | "Cloud" | "Education" | "Legal" | "Patents";
+  status: "Active" | "Renewed" | "Continuing Education" | "Expired" | "Patent Pending";
+  category: "Cybersecurity" | "Investigation" | "Technology" | "Leadership" | "AI/ML" | "Cloud" | "Education" | "Legal" | "Patents" | "Privacy" | "Research" | "Networking" | "Project Management" | "IT Operations" | "Professional Development";
   icon: React.ElementType;
+  credentialId?: string;
   description?: string;
 }
 
 const certifications: Certification[] = [
-  // Recent & Advanced Certifications (2024-2025)
+  // AI & Machine Learning
   {
     name: "Regulatory Compliance and AI",
     issuer: "Western Governors University",
@@ -23,35 +30,94 @@ const certifications: Certification[] = [
     status: "Active",
     category: "AI/ML",
     icon: Brain,
-    description: "Advanced coursework in AI regulatory frameworks and compliance requirements"
   },
+  {
+    name: "Artificial Intelligence in Defending Traffic Cases",
+    issuer: "SBI Seminars", 
+    year: "2025",
+    status: "Expired",
+    category: "Legal",
+    icon: Scale,
+    credentialId: "06122025",
+    description: "6-hour CLE-accredited training on AI technologies and traffic law defense strategies"
+  },
+  {
+    name: "Creating a Culture of Privacy",
+    issuer: "LinkedIn",
+    year: "2024", 
+    status: "Active",
+    category: "Privacy",
+    icon: Shield,
+    description: "Privacy issues and compliance"
+  },
+  {
+    name: "Introduction to Artificial Intelligence",
+    issuer: "LinkedIn",
+    year: "2024",
+    status: "Active", 
+    category: "AI/ML",
+    icon: Brain,
+    description: "Artificial Intelligence for Business · Artificial Intelligence (AI)"
+  },
+  {
+    name: "Prompt Engineering for ChatGPT",
+    issuer: "Vanderbilt University",
+    year: "2023",
+    status: "Active",
+    category: "AI/ML", 
+    icon: MessageSquare,
+    credentialId: "XMSC4NW8GCAY"
+  },
+  {
+    name: "Get Ready for Generative AI",
+    issuer: "LinkedIn",
+    year: "2023",
+    status: "Active",
+    category: "AI/ML",
+    icon: Sparkles,
+    description: "Generative AI · Artificial Intelligence for Business · Artificial Intelligence (AI) · Artificial Intelligence for Design"
+  },
+  {
+    name: "Advanced AI: Transformers for NLP Using Large Language Models",
+    issuer: "LinkedIn", 
+    year: "2023",
+    status: "Active",
+    category: "AI/ML",
+    icon: Languages,
+    description: "Natural Language Processing (NLP) · Generative AI · Transformer Models"
+  },
+  {
+    name: "Introducing Semantic Kernel: Building AI-Based Apps",
+    issuer: "LinkedIn",
+    year: "2023", 
+    status: "Active",
+    category: "AI/ML",
+    icon: Code,
+    description: "Artificial Intelligence (AI) · Software Development"
+  },
+  {
+    name: "What Is Generative AI?",
+    issuer: "LinkedIn",
+    year: "2023",
+    status: "Active",
+    category: "AI/ML", 
+    icon: Bot,
+    description: "Generative AI · Artificial Intelligence (AI)"
+  },
+
+  // Patents & Intellectual Property
   {
     name: "AI-Driven Cross-Channel Financial Fraud Detection System",
-    issuer: "USPTO Patent Application",
+    issuer: "USPTO",
     year: "2024",
-    status: "Active",
+    status: "Patent Pending",
     category: "Patents",
-    icon: Shield,
-    description: "Patent pending for quantum-resistant encryption and blockchain integration in fraud detection"
+    icon: FileText,
+    credentialId: "18943073",
+    description: "Quantum-resistant encryption and blockchain integration for financial fraud detection"
   },
-  {
-    name: "IA Doctorates",
-    issuer: "CITI Program",
-    year: "2024",
-    status: "Active",
-    category: "Education",
-    icon: GraduationCap,
-    description: "Institutional Animal Care and Use Committee training for doctoral research"
-  },
-  {
-    name: "IRB Members",
-    issuer: "CITI Program", 
-    year: "2024",
-    status: "Active",
-    category: "Education",
-    icon: GraduationCap,
-    description: "Institutional Review Board certification for human subjects research"
-  },
+
+  // Education & Academic
   {
     name: "Write & Cite: Academic Writing Readiness Course - Doctoral",
     issuer: "Capitol Technology University",
@@ -59,102 +125,38 @@ const certifications: Certification[] = [
     status: "Active",
     category: "Education",
     icon: GraduationCap,
-    description: "Advanced academic writing and APA 7 citation standards for doctoral research"
+    description: "APA 7 academic writing standards"
   },
   {
-    name: "Creating a Culture of Privacy",
-    issuer: "LinkedIn Learning",
+    name: "IA Doctorates",
+    issuer: "CITI Program",
     year: "2024",
     status: "Active",
-    category: "Legal",
-    icon: Lock,
-    description: "Privacy issues and organizational privacy culture development"
+    category: "Research",
+    icon: BookOpen,
+    credentialId: "61623143",
+    description: "Expires Apr 2029"
   },
   {
-    name: "Introduction to Artificial Intelligence",
-    issuer: "LinkedIn Learning",
+    name: "IRB Members", 
+    issuer: "CITI Program",
     year: "2024",
     status: "Active",
-    category: "AI/ML",
-    icon: Brain,
-    description: "Foundational AI concepts and business applications"
-  },
-  {
-    name: "Cyber Readiness Program",
-    issuer: "Cyber Readiness Institute",
-    year: "2024",
-    status: "Active",
-    category: "Cybersecurity",
-    icon: Shield,
-    description: "Comprehensive cybersecurity readiness and risk assessment program"
-  },
-  
-  // AI & Machine Learning Specializations (2023)
-  {
-    name: "Enterprise Design Thinking Practitioner", 
-    issuer: "IBM",
-    year: "2023",
-    status: "Active",
-    category: "Technology",
-    icon: Brain,
-    description: "IBM's enterprise-level design thinking methodology and practices"
-  },
-  {
-    name: "Prompt Engineering for ChatGPT",
-    issuer: "Vanderbilt University",
-    year: "2023",
-    status: "Active",
-    category: "AI/ML",
-    icon: Brain,
-    description: "Advanced prompt engineering techniques for large language models"
-  },
-  {
-    name: "Get Ready for Generative AI",
-    issuer: "LinkedIn Learning",
-    year: "2023",
-    status: "Active",
-    category: "AI/ML",
-    icon: Brain,
-    description: "Generative AI applications in business and design"
-  },
-  {
-    name: "Advanced AI: Transformers for NLP Using Large Language Models",
-    issuer: "LinkedIn Learning",
-    year: "2023",
-    status: "Active",
-    category: "AI/ML",
-    icon: Brain,
-    description: "Deep learning with transformer models and natural language processing"
-  },
-  {
-    name: "Introducing Semantic Kernel: Building AI-Based Apps",
-    issuer: "LinkedIn Learning",
-    year: "2023",
-    status: "Active",
-    category: "AI/ML",
-    icon: Code,
-    description: "Microsoft Semantic Kernel framework for AI application development"
-  },
-  {
-    name: "What Is Generative AI?",
-    issuer: "LinkedIn Learning",
-    year: "2023",
-    status: "Active",
-    category: "AI/ML",
-    icon: Brain,
-    description: "Foundational understanding of generative artificial intelligence"
+    category: "Research",
+    icon: Users,
+    credentialId: "61623147",
+    description: "Expires Apr 2029"
   },
   {
     name: "Social and Behavioral Research",
     issuer: "CITI Program",
     year: "2023",
     status: "Active",
-    category: "Education",
-    icon: GraduationCap,
-    description: "Ethics and methodology in social and behavioral research"
+    category: "Research", 
+    icon: Users,
+    credentialId: "55488516",
+    description: "Expires Apr 2026"
   },
-  
-  // Advanced Degrees & Project Management (2022-2023)
   {
     name: "Masters of Science - Information Technology Management",
     issuer: "Western Governors University",
@@ -162,202 +164,427 @@ const certifications: Certification[] = [
     status: "Active",
     category: "Education",
     icon: GraduationCap,
-    description: "Graduate degree in IT management and strategic technology leadership"
+    credentialId: "CeD.24RM-DU8B-TNSA",
+    description: "Information Technology · Project Management"
   },
   {
-    name: "Certified Associate in Project Management (CAPM)",
-    issuer: "Project Management Institute",
-    year: "2023",
-    status: "Active",
-    category: "Leadership",
-    icon: Users,
-    description: "PMI-certified project management fundamentals and practices"
-  },
-  
-  // Core Cybersecurity & Technology Certifications (2021)
-  {
-    name: "Bachelor Of Science - Cyber Security & Information Assurance", 
+    name: "Bachelor of Science - Cyber Security & Information Assurance", 
     issuer: "Western Governors University",
     year: "2021",
     status: "Active",
     category: "Education",
     icon: GraduationCap,
-    description: "Undergraduate degree in cybersecurity with 4.0 GPA and Capstone Excellence Award"
+    credentialId: "CeD.2432-33GA-TMSH",
+    description: "Cybersecurity with cum laude honors"
+  },
+  {
+    name: "Penn Foster Career School",
+    issuer: "Penn Foster",
+    year: "1992",
+    status: "Active",
+    category: "Education",
+    icon: School,
+    credentialId: "22716659"
+  },
+
+  // Cybersecurity & Information Security
+  {
+    name: "Cyber Readiness Program",
+    issuer: "Cyber Readiness Institute",
+    year: "2024",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Shield,
+    credentialId: "76959506769753"
+  },
+  {
+    name: "CISSP Cert Prep (2021): The Basics",
+    issuer: "LinkedIn",
+    year: "2021",
+    status: "Active", 
+    category: "Cybersecurity",
+    icon: Shield
   },
   {
     name: "EC-Council Certified Encryption Specialist (ECES)",
-    issuer: "EC-Council",
+    issuer: "EC-Council", 
     year: "2021",
     status: "Active",
     category: "Cybersecurity",
     icon: Lock,
-    description: "Advanced encryption technologies and cryptographic security implementation"
+    credentialId: "ECC1023459876"
   },
   {
     name: "CompTIA PenTest+",
     issuer: "CompTIA",
     year: "2021",
-    status: "Renewed",
+    status: "Active",
     category: "Cybersecurity",
-    icon: Shield,
-    description: "Penetration testing skills and vulnerability assessment methodologies"
+    icon: Bug
   },
   {
     name: "CompTIA Cybersecurity Analyst (CySA+)",
     issuer: "CompTIA",
-    year: "2021",
-    status: "Renewed",
+    year: "2021", 
+    status: "Active",
     category: "Cybersecurity",
-    icon: Shield,
-    description: "Cybersecurity analytics and threat detection capabilities"
-  },
-  {
-    name: "Google Professional Cloud Security Engineer",
-    issuer: "Google Cloud",
-    year: "2021",
-    status: "Active",
-    category: "Cloud",
-    icon: Globe,
-    description: "Google Cloud Platform security architecture and implementation"
-  },
-  {
-    name: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    year: "2021",
-    status: "Active",
-    category: "Cloud",
-    icon: Globe,
-    description: "AWS cloud fundamentals and basic security principles"
-  },
-  {
-    name: "Cisco Certified Network Associate (CCNA)",
-    issuer: "Cisco Systems",
-    year: "2021",
-    status: "Renewed",
-    category: "Technology",
-    icon: Computer,
-    description: "Network infrastructure design, implementation, and troubleshooting"
+    icon: Search
   },
   {
     name: "CompTIA Security+",
     issuer: "CompTIA",
     year: "2021",
-    status: "Renewed",
+    status: "Active",
     category: "Cybersecurity",
+    icon: Shield
+  },
+  {
+    name: "CompTIA Security+ ce Certification",
+    issuer: "CompTIA",
+    year: "2021",
+    status: "Expired",
+    category: "Cybersecurity", 
     icon: Shield,
-    description: "Core cybersecurity skills and risk management practices"
+    description: "Expired Apr 2024"
+  },
+  {
+    name: "Fundamentals of Information Security",
+    issuer: "uCertify",
+    year: "2021",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Shield
+  },
+  {
+    name: "Introduction To IT & Information Security",
+    issuer: "Cybrary",
+    year: "2021",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Computer
+  },
+  {
+    name: "Complete Cyber Security Course",
+    issuer: "StationX",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Shield
+  },
+  {
+    name: "ARP spoofing & Man In The Middle Attacks Execution & Detection",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Wifi
+  },
+  {
+    name: "Cyber Security Advanced Persistent Threat Defender Preview",
+    issuer: "Udemy", 
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: AlertTriangle
+  },
+  {
+    name: "Cybersecurity Awareness Training",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Eye
+  },
+  {
+    name: "Hacking Academy",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active", 
+    category: "Cybersecurity",
+    icon: Terminal
+  },
+  {
+    name: "How to Monitor & Intercept Transmitted Data",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Radio
+  },
+  {
+    name: "Intro to Ethical Hacking CEH",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Code
+  },
+  {
+    name: "Mobile Cybersecurity Awareness",
+    issuer: "Udemy", 
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Smartphone
+  },
+  {
+    name: "Symantec Certified Specialist - Cyber Security Services",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Shield
+  },
+  {
+    name: "The Complete Cyber Security Course Anonymous Browsing",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: EyeOff
+  },
+  {
+    name: "The Complete Cyber Security Course End Point Protection",
+    issuer: "Udemy", 
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Laptop
+  },
+  {
+    name: "The Complete Cyber Security Course Network Security",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Network
+  },
+  {
+    name: "WordPress Security - Secure, Protect and Backup Your Site",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Globe
+  },
+  {
+    name: "Beginners Are Building Their Own Fortune500 Grade Firewalls",
+    issuer: "Udemy",
+    year: "2017",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Shield
+  },
+  {
+    name: "Security Awareness Program", 
+    issuer: "Consumer Data Industry Association",
+    year: "2015",
+    status: "Active",
+    category: "Cybersecurity",
+    icon: Eye
+  },
+
+  // Cloud & Infrastructure
+  {
+    name: "Google Professional Cloud Security Engineer",
+    issuer: "Google",
+    year: "2021", 
+    status: "Active",
+    category: "Cloud",
+    icon: Cloud
+  },
+  {
+    name: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services (AWS)",
+    year: "2021",
+    status: "Active",
+    category: "Cloud",
+    icon: Cloud
+  },
+
+  // Networking
+  {
+    name: "Cisco Certified Network Associate Industrial (CCNA I)",
+    issuer: "Cisco",
+    year: "2021",
+    status: "Active",
+    category: "Networking",
+    icon: Router
+  },
+  {
+    name: "Cisco Certified Network Associate Industrial (CCNA)",
+    issuer: "CompTIA",
+    year: "2021",
+    status: "Active",
+    category: "Networking",
+    icon: Router
+  },
+  {
+    name: "CCNA",
+    issuer: "Cisco",
+    year: "2021",
+    status: "Expired",
+    category: "Networking",
+    icon: Router,
+    description: "Expired May 2024"
   },
   {
     name: "CompTIA Network+",
     issuer: "CompTIA",
     year: "2021",
-    status: "Renewed",
-    category: "Technology",
-    icon: Computer,
-    description: "Network technologies, infrastructure, and network operations"
+    status: "Active",
+    category: "Networking",
+    icon: Network
   },
   {
-    name: "CompTIA A+",
+    name: "CompTIA Network+ ce Certification",
     issuer: "CompTIA",
     year: "2021",
-    status: "Renewed",
-    category: "Technology",
-    icon: Computer,
-    description: "Hardware and software troubleshooting and technical support"
+    status: "Expired",
+    category: "Networking",
+    icon: Network,
+    description: "Expired Apr 2024"
+  },
+  {
+    name: "Fortinet Network Security Expert Level 1: Certified Associate",
+    issuer: "Fortinet",
+    year: "2021",
+    status: "Active", 
+    category: "Networking",
+    icon: Shield
+  },
+  {
+    name: "WIRELESS Wi-Fi Crash Course",
+    issuer: "Udemy",
+    year: "2019",
+    status: "Active",
+    category: "Networking",
+    icon: Wifi
+  },
+
+  // Project Management & IT Operations
+  {
+    name: "Certified Associate in Project Management (CAPM)",
+    issuer: "Project Management Institute",
+    year: "2023",
+    status: "Active",
+    category: "Project Management",
+    icon: Briefcase,
+    credentialId: "7674425"
   },
   {
     name: "CompTIA Project+",
     issuer: "CompTIA",
     year: "2021",
     status: "Active",
-    category: "Leadership",
-    icon: Users,
-    description: "Project management skills and business processes"
-  },
-  {
-    name: "Fortinet Network Security Expert Level 1",
-    issuer: "Fortinet",
-    year: "2021",
-    status: "Active",
-    category: "Cybersecurity",
-    icon: Shield,
-    description: "Fortinet security appliances and network protection strategies"
+    category: "Project Management",
+    icon: Calendar
   },
   {
     name: "ITIL IT Service Management",
-    issuer: "AXELOS",
+    issuer: "Cisco",
     year: "2021",
     status: "Active",
+    category: "IT Operations",
+    icon: Settings
+  },
+  {
+    name: "CompTIA A+",
+    issuer: "CompTIA", 
+    year: "2021",
+    status: "Active",
+    category: "IT Operations",
+    icon: Monitor
+  },
+  {
+    name: "CompTIA A+ ce Certification",
+    issuer: "CompTIA",
+    year: "2021",
+    status: "Expired",
+    category: "IT Operations",
+    icon: Monitor,
+    description: "Expired Apr 2024"
+  },
+  {
+    name: "CompTIA IT Operations Specialist – CIOS Stackable Certification",
+    issuer: "CompTIA",
+    year: "2021",
+    status: "Expired",
+    category: "IT Operations",
+    icon: Cog,
+    description: "Expired Apr 2024"
+  },
+  {
+    name: "CompTIA Secure Infrastructure Specialist – CSIS Stackable Certification",
+    issuer: "CompTIA",
+    year: "2021",
+    status: "Expired", 
+    category: "IT Operations",
+    icon: Server,
+    description: "Expired Apr 2024"
+  },
+
+  // Technology & Development
+  {
+    name: "Enterprise Design Thinking Practitioner",
+    issuer: "IBM",
+    year: "2023",
+    status: "Active",
     category: "Technology",
-    icon: Computer,
-    description: "IT service management best practices and frameworks"
-  },
-  
-  // Legacy Professional Certifications
-  {
-    name: "Certified Information Systems Security Professional (CISSP)",
-    issuer: "(ISC)² - International Information System Security Certification Consortium",
-    year: "2015",
-    status: "Continuing Education",
-    category: "Cybersecurity",
-    icon: Shield,
-    description: "Premier cybersecurity certification demonstrating expertise in security architecture and engineering"
+    icon: Lightbulb
   },
   {
-    name: "Certified Ethical Hacker (CEH)",
-    issuer: "EC-Council",
-    year: "2014",
-    status: "Renewed",
-    category: "Cybersecurity", 
-    icon: Lock,
-    description: "Advanced penetration testing and ethical hacking methodologies"
-  },
-  {
-    name: "Certified Fraud Examiner (CFE)",
-    issuer: "Association of Certified Fraud Examiners",
-    year: "2012",
+    name: "Tech Basics Cables & Connectors",
+    issuer: "Udemy",
+    year: "2017",
     status: "Active",
-    category: "Investigation",
-    icon: Search,
-    description: "Expert-level fraud prevention, detection, and investigation techniques"
+    category: "Technology",
+    icon: Cable
   },
   {
-    name: "Professional Certified Investigator (PCI)",
-    issuer: "ASIS International",
-    year: "2010",
+    name: "VMware Workstation Pro 12",
+    issuer: "Udemy",
+    year: "2017",
     status: "Active",
-    category: "Investigation",
-    icon: Search,
-    description: "Professional standards for private investigation and security consulting"
+    category: "Technology",
+    icon: HardDrive
   },
   {
-    name: "Project Management Professional (PMP)",
-    issuer: "Project Management Institute",
-    year: "2008",
-    status: "Continuing Education",
-    category: "Leadership",
-    icon: Users,
-    description: "Advanced project management methodologies and leadership principles"
+    name: "Basic Electricity and Electronics - Analog (BEE-A)",
+    issuer: "Whirlpool Corporation",
+    year: "1982",
+    status: "Active",
+    category: "Technology",
+    icon: Zap
   },
+
+  // Professional Development & Communication
   {
-    name: "Tennessee Licensed Private Investigator",
+    name: "Giving Your Elevator Pitch",
+    issuer: "LinkedIn",
+    year: "2022",
+    status: "Active",
+    category: "Professional Development",
+    icon: MessageCircle
+  },
+
+  // Legal & Investigation
+  {
+    name: "Tennessee Licensed Private Investigator #C545",
     issuer: "Tennessee Department of Commerce and Insurance",
     year: "1993",
     status: "Active",
-    category: "Investigation",
+    category: "Legal",
     icon: Search,
-    description: "State-licensed private investigator with over 30 years of active practice"
+    description: "Licensed Private Investigator"
   },
-  
-  // Specialized & Legal Training
   {
-    name: "Artificial Intelligence in Defending Traffic Cases",
-    issuer: "SBI Seminars",
-    year: "2025",
+    name: "Private Investigation Continuing Education",
+    issuer: "Integrity International Security Services Inc.",
+    year: "2024",
     status: "Active",
     category: "Legal",
-    icon: Brain,
-    description: "6-hour CLE-accredited training on AI applications in traffic law defense"
+    icon: BookOpen
   }
 ];
 
@@ -382,6 +609,18 @@ const CertificationsSection = () => {
         return "bg-amber-100 text-amber-800 border-amber-200";
       case "Patents":
         return "bg-emerald-100 text-emerald-800 border-emerald-200";
+      case "Privacy":
+        return "bg-pink-100 text-pink-800 border-pink-200";
+      case "Research":
+        return "bg-teal-100 text-teal-800 border-teal-200";
+      case "Networking":
+        return "bg-orange-100 text-orange-800 border-orange-200";
+      case "Project Management":
+        return "bg-violet-100 text-violet-800 border-violet-200";
+      case "IT Operations":
+        return "bg-cyan-100 text-cyan-800 border-cyan-200";
+      case "Professional Development":
+        return "bg-rose-100 text-rose-800 border-rose-200";
       default:
         return "bg-gray-100 text-gray-700 border-gray-200";
     }
@@ -395,6 +634,10 @@ const CertificationsSection = () => {
         return "bg-blue-100 text-blue-800 border-blue-200";
       case "Continuing Education":
         return "bg-yellow-100 text-yellow-800 border-yellow-200";
+      case "Expired":
+        return "bg-red-100 text-red-800 border-red-200";
+      case "Patent Pending":
+        return "bg-purple-100 text-purple-800 border-purple-200";
       default:
         return "bg-gray-100 text-gray-700 border-gray-200";
     }
@@ -403,22 +646,6 @@ const CertificationsSection = () => {
   return (
     <section id="certifications" className="py-16 bg-gradient-to-br from-slate-50 to-white">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#3C3B6E] mb-4">
-            Professional Certifications & Credentials
-          </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Comprehensive portfolio of industry certifications spanning cybersecurity, AI/ML, cloud technologies, 
-            fraud investigation, and advanced academic credentials—representing over three decades of continuous learning and expertise.
-          </p>
-        </motion.div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {certifications.map((cert, index) => (
             <motion.div
@@ -474,6 +701,17 @@ const CertificationsSection = () => {
                       </p>
                     </div>
                     
+                    {cert.credentialId && (
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 mb-1">
+                          Credential ID
+                        </p>
+                        <p className="text-sm text-gray-600 font-mono">
+                          {cert.credentialId}
+                        </p>
+                      </div>
+                    )}
+                    
                     {cert.description && (
                       <div>
                         <p className="text-sm font-semibold text-gray-900 mb-1">
@@ -508,7 +746,7 @@ const CertificationsSection = () => {
               </div>
               <p className="text-gray-700 text-lg leading-relaxed">
                 Maintaining active participation in professional development through industry conferences, 
-                advanced training programs, and continuing education requirements. With over 80 professional 
+                advanced training programs, and continuing education requirements. With 64 professional 
                 certifications and credentials, committed to staying at the forefront of emerging technologies, 
                 evolving threat landscapes, and regulatory compliance standards across multiple domains.
               </p>

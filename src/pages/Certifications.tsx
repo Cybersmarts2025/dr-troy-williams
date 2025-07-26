@@ -56,7 +56,7 @@ const Certifications = () => {
                 </h1>
               </div>
               <p className="text-xl md:text-2xl font-medium opacity-95">
-                Over 80 Industry Certifications & Credentials Spanning Three Decades of Excellence
+                64 Industry Certifications & Credentials Spanning Three Decades of Excellence
               </p>
               <p className="text-lg mt-4 opacity-90">
                 Demonstrating continuous commitment to professional development and expertise across 
@@ -91,7 +91,7 @@ const Certifications = () => {
                     Professional Highlights
                   </h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-600">
-                    <li>80+ Active Professional Certifications</li>
+                    <li>64+ Active Professional Certifications</li>
                     <li>30+ Years of Industry Experience</li>
                     <li>Multiple Advanced Degrees</li>
                     <li>Patent Holder in AI & Fraud Detection</li>
