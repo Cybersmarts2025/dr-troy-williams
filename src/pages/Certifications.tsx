@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import CertificationsSection from "@/components/CertificationsSection";
 import { Award } from "lucide-react";
+import { PersonSchema, WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 
 const Certifications = () => {
   return (
@@ -16,6 +17,30 @@ const Certifications = () => {
         />
         <link rel="canonical" href="https://www.DrTroyWilliams.net/certifications" />
       </Helmet>
+
+      {/* Schema Markup */}
+      <PersonSchema
+        name="Dr. Troy Williams"
+        jobTitle="AI Scientist & Cybersecurity Expert"
+        description="AI Scientist and Cybersecurity Expert with over 80 professional certifications spanning three decades of excellence in cybersecurity, artificial intelligence, cloud technologies, and investigative practices."
+        sameAs={[
+          "https://www.linkedin.com/in/drtroywilliams",
+          "https://twitter.com/drtroywilliams"
+        ]}
+      />
+      
+      <WebPageSchema
+        name="Professional Certifications - Dr. Troy Williams"
+        description="Comprehensive portfolio of Dr. Troy Williams' professional certifications spanning cybersecurity, AI/ML, cloud technologies, fraud investigation, and advanced academic credentials—representing over three decades of expertise."
+        url="https://www.DrTroyWilliams.net/certifications"
+      />
+      
+      <BreadcrumbListSchema
+        items={[
+          { name: "Home", item: "https://www.DrTroyWilliams.net" },
+          { name: "Certifications", item: "https://www.DrTroyWilliams.net/certifications" }
+        ]}
+      />
       
       <NavBar />
       
@@ -41,8 +66,52 @@ const Certifications = () => {
           </div>
         </div>
 
+        {/* Overview Section */}
+        <section className="py-12 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
+                Certification Portfolio Overview
+              </h2>
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-800">
+                    Core Expertise Areas
+                  </h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-600">
+                    <li>Cybersecurity & Information Assurance</li>
+                    <li>Artificial Intelligence & Machine Learning</li>
+                    <li>Cloud Computing Technologies</li>
+                    <li>Project Management & IT Operations</li>
+                    <li>Legal & Investigative Practices</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-4 text-gray-800">
+                    Professional Highlights
+                  </h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-600">
+                    <li>80+ Active Professional Certifications</li>
+                    <li>30+ Years of Industry Experience</li>
+                    <li>Multiple Advanced Degrees</li>
+                    <li>Patent Holder in AI & Fraud Detection</li>
+                    <li>Licensed Private Investigator</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Certifications Section */}
-        <CertificationsSection />
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+              Professional Certifications & Credentials
+            </h2>
+            <CertificationsSection />
+          </div>
+        </section>
       </main>
 
       <Footer />
