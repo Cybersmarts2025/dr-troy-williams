@@ -45,15 +45,25 @@ export const WebsitesContainer = () => {
       
       <ErrorBoundary>
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto"
+          className="max-w-4xl mx-auto"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {websites.map(site => (
-            <WebsiteButton key={site.url} {...site} />
-          ))}
+          {/* Top row - first 3 websites */}
+          <div className="flex justify-center gap-4 mb-4">
+            {websites.slice(0, 3).map(site => (
+              <WebsiteButton key={site.url} {...site} />
+            ))}
+          </div>
+          
+          {/* Bottom row - last 3 websites */}
+          <div className="flex justify-center gap-4">
+            {websites.slice(3, 6).map(site => (
+              <WebsiteButton key={site.url} {...site} />
+            ))}
+          </div>
         </motion.div>
       </ErrorBoundary>
     </div>
