@@ -12,9 +12,7 @@ export const websites = [
   { name: "Database Records", url: "https://www.databaserecords.com" },
   { name: "CyberSmarts AI", url: "https://www.cybersmarts.ai" },
   { name: "Legal Smarts", url: "https://www.legalsmarts.net" },
-  { name: "Grant Smarts", url: "https://www.grantsmarts.net" },
   { name: "Cyber OSINT", url: "https://www.cyberosint.net" },
-  { name: "Paper Shield", url: "https://www.papershield.net" },
   { name: "Patriot Proof", url: "https://www.patriotproof.net" },
   { name: "Dr. Troy Williams", url: "https://www.drtroywilliams.net" }
 ];
