@@ -18,7 +18,6 @@ const SocialShare = ({ title, url, excerpt }: SocialShareProps) => {
   const fullUrl = url.startsWith('http') ? url : `https://www.DrTroyWilliams.net${url}`;
 
   const shareLinks = {
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(fullUrl)}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`
   };
@@ -65,16 +64,6 @@ const SocialShare = ({ title, url, excerpt }: SocialShareProps) => {
           </div>
           
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => window.open(shareLinks.twitter, '_blank')}
-              className="flex items-center gap-2"
-            >
-              <Twitter className="h-4 w-4" />
-              Twitter
-            </Button>
-            
             <Button
               variant="outline"
               size="sm"

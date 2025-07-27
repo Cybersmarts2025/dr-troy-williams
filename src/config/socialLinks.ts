@@ -5,7 +5,6 @@ export const socialLinks = [
   { icon: Youtube, label: "YouTube", url: "https://www.youtube.com/@cybersmarts2025" },
   { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/cybersmarts/" },
   { icon: Facebook, label: "Facebook", url: "https://www.facebook.com/verifiedsafe" },
-  { icon: Twitter, label: "Twitter", url: "https://twitter.com/TroyWilliamsAI" },
   { icon: Mail, label: "Email", url: "mailto:verifiedsafe8@gmail.com" }
 ];
 
