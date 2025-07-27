@@ -337,7 +337,6 @@ export type Database = {
           content: string | null
           created_at: string | null
           description: string
-          embedding: string | null
           id: string
           publication_id: string
           title: string
@@ -347,7 +346,6 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           description: string
-          embedding?: string | null
           id?: string
           publication_id: string
           title: string
@@ -357,7 +355,6 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           description?: string
-          embedding?: string | null
           id?: string
           publication_id?: string
           title?: string
@@ -410,6 +407,30 @@ export type Database = {
           required_role?: string | null
           title?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      security_audit_log: {
+        Row: {
+          description: string
+          event_type: string
+          id: string
+          performed_at: string | null
+          performed_by: string | null
+        }
+        Insert: {
+          description: string
+          event_type: string
+          id?: string
+          performed_at?: string | null
+          performed_by?: string | null
+        }
+        Update: {
+          description?: string
+          event_type?: string
+          id?: string
+          performed_at?: string | null
+          performed_by?: string | null
         }
         Relationships: []
       }
@@ -564,29 +585,9 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      binary_quantize: {
-        Args: { "": string } | { "": unknown }
-        Returns: unknown
-      }
       get_current_user_role: {
         Args: Record<PropertyKey, never>
         Returns: Database["public"]["Enums"]["app_role"]
-      }
-      halfvec_avg: {
-        Args: { "": number[] }
-        Returns: unknown
-      }
-      halfvec_out: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      halfvec_send: {
-        Args: { "": unknown }
-        Returns: string
-      }
-      halfvec_typmod_in: {
-        Args: { "": unknown[] }
-        Returns: number
       }
       has_role: {
         Args: {
@@ -594,92 +595,6 @@ export type Database = {
           _role: Database["public"]["Enums"]["app_role"]
         }
         Returns: boolean
-      }
-      hnsw_bit_support: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      hnsw_halfvec_support: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      hnsw_sparsevec_support: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      hnswhandler: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      ivfflat_bit_support: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      ivfflat_halfvec_support: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      ivfflathandler: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      l2_norm: {
-        Args: { "": unknown } | { "": unknown }
-        Returns: number
-      }
-      l2_normalize: {
-        Args: { "": string } | { "": unknown } | { "": unknown }
-        Returns: string
-      }
-      match_publications: {
-        Args: {
-          query_embedding: string
-          match_threshold: number
-          match_count: number
-        }
-        Returns: {
-          id: string
-          publication_id: string
-          title: string
-          description: string
-          similarity: number
-        }[]
-      }
-      sparsevec_out: {
-        Args: { "": unknown }
-        Returns: unknown
-      }
-      sparsevec_send: {
-        Args: { "": unknown }
-        Returns: string
-      }
-      sparsevec_typmod_in: {
-        Args: { "": unknown[] }
-        Returns: number
-      }
-      vector_avg: {
-        Args: { "": number[] }
-        Returns: string
-      }
-      vector_dims: {
-        Args: { "": string } | { "": unknown }
-        Returns: number
-      }
-      vector_norm: {
-        Args: { "": string }
-        Returns: number
-      }
-      vector_out: {
-        Args: { "": string }
-        Returns: unknown
-      }
-      vector_send: {
-        Args: { "": string }
-        Returns: string
-      }
-      vector_typmod_in: {
-        Args: { "": unknown[] }
-        Returns: number
       }
     }
     Enums: {
