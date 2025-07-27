@@ -1,6 +1,9 @@
 
 project_id = "dfnrhiovacznpnzevzfe"
 
+[functions.admin-operations]
+verify_jwt = false
+
 [functions.fetch-book-details]
 verify_jwt = false
 

@@ -1,36 +1,33 @@
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/components/ui/sonner';
 
+/**
+ * SECURE: Admin operations now require proper server-side authorization
+ * These functions call the secure edge function instead of direct database access
+ */
+
 export const promoteUserToAdmin = async (userId: string): Promise<boolean> => {
   try {
-    // Check if user already has admin role
-    const { data: existingRole, error: roleCheckError } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', userId)
-      .eq('role', 'admin')
-      .single();
+    const { data, error } = await supabase.functions.invoke('admin-operations', {
+      body: {
+        operation: 'promote_user',
+        target_user_id: userId
+      }
+    });
 
-    if (existingRole) {
-      toast.info('User is already an admin');
-      return true;
-    }
-
-    // Add admin role
-    const { error: insertError } = await supabase
-      .from('user_roles')
-      .insert({
-        user_id: userId,
-        role: 'admin'
-      });
-
-    if (insertError) {
-      console.error('Error promoting user to admin:', insertError);
+    if (error) {
+      console.error('Error promoting user to admin:', error);
       toast.error('Failed to promote user to admin');
       return false;
     }
 
-    toast.success('User promoted to admin successfully');
+    if (data?.error) {
+      console.error('Server error:', data.error);
+      toast.error(data.error);
+      return false;
+    }
+
+    toast.success(data?.message || 'User promoted to admin successfully');
     return true;
   } catch (error) {
     console.error('Error promoting user to admin:', error);
@@ -41,20 +38,26 @@ export const promoteUserToAdmin = async (userId: string): Promise<boolean> => {
 
 export const revokeAdminAccess = async (userId: string): Promise<boolean> => {
   try {
-    // Remove admin role
-    const { error: deleteError } = await supabase
-      .from('user_roles')
-      .delete()
-      .eq('user_id', userId)
-      .eq('role', 'admin');
+    const { data, error } = await supabase.functions.invoke('admin-operations', {
+      body: {
+        operation: 'revoke_admin',
+        target_user_id: userId
+      }
+    });
 
-    if (deleteError) {
-      console.error('Error revoking admin access:', deleteError);
+    if (error) {
+      console.error('Error revoking admin access:', error);
       toast.error('Failed to revoke admin access');
       return false;
     }
 
-    toast.success('Admin access revoked successfully');
+    if (data?.error) {
+      console.error('Server error:', data.error);
+      toast.error(data.error);
+      return false;
+    }
+
+    toast.success(data?.message || 'Admin access revoked successfully');
     return true;
   } catch (error) {
     console.error('Error revoking admin access:', error);
