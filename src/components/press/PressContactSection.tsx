@@ -72,13 +72,71 @@ const PressContactSection = () => {
     setIsDownloading(true);
     
     try {
-      // Create download link for press kit
+      // Create press kit content
+      const pressKitContent = `Dr. Troy Williams, PhD – Press Kit
+
+==============================================
+BIOGRAPHY
+==============================================
+
+Dr. Troy Williams, PhD, is a cybersecurity engineer, AI scientist, and licensed private investigator with more than 30 years of experience in digital defense, fraud prevention, and sovereign AI development. As the Founder and President of Cybersmarts.ai, Dr. Williams is the inventor of several patented and trademarked systems, including PatriotProof™, FraudDNA™, AISF™, and PPP™. He has authored seven books and numerous whitepapers addressing AI ethics, cybersecurity resilience, and fraud detection. His work aligns with the highest compliance standards, including GDPR, HIPAA, SOC 2, and CCPA.
+
+==============================================
+AREAS OF EXPERTISE
+==============================================
+
+• Artificial Intelligence (AI) Ethics & Compliance
+• Fraud Detection & Prevention Systems
+• Quantum-Ready Cybersecurity Architecture
+• Zero Trust Frameworks & Behavioral Analytics
+• National Digital Defense Strategy
+• Investigative Intelligence & Forensics
+
+==============================================
+RECENT PUBLICATION
+==============================================
+
+Title: Enhancing Financial Security: A Quantitative Investigation with AI and Quantum Biometrics
+Platform: SSRN – Consumer Financial Fraud eJournal
+Date: July 25, 2025
+Recognition: Top Downloaded Paper on SSRN
+Link: https://ssrn.com/abstract=5240753
+
+==============================================
+CONTACT INFORMATION
+==============================================
+
+Media Relations: support@cybersmarts.ai
+Office Phone: (615) 547-9563
+Website: https://cybersmarts.ai
+Response Time: 24-48 hours
+
+==============================================
+HIGH-RESOLUTION PHOTOS
+==============================================
+
+High-resolution professional photos are available upon request. Please contact our media relations team for access to our complete media assets library.
+
+==============================================
+FEATURED TOPICS FOR EXPERT COMMENTARY
+==============================================
+
+• Artificial Intelligence in National Defense
+• Emerging Cybersecurity Threats and Countermeasures
+• Digital Investigation Methodologies
+• Technology Sovereignty and National Security
+• Ethical AI Development and Implementation`;
+
+      // Create blob and download
+      const blob = new Blob([pressKitContent], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = '/press-kit-dr-troy-williams.txt';
+      link.href = url;
       link.download = 'Dr-Troy-Williams-Press-Kit.txt';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
       
       toast({
         title: "Press Kit Downloaded",
