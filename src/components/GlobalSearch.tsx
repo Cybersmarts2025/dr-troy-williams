@@ -72,7 +72,7 @@ export function GlobalSearch() {
 
         // Search using the embedding
         const { data, error } = await supabase.rpc(
-          'match_publications', 
+          'match_publications' as any, 
           {
             query_embedding: queryEmbedding,
             match_threshold: 0.5,
@@ -81,7 +81,7 @@ export function GlobalSearch() {
         );
 
         if (error) throw error;
-        setResults(data || []);
+        setResults((data as SearchResult[]) || []);
       } catch (err) {
         console.error('Search error:', err);
         setResults([]);

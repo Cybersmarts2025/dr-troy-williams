@@ -61,7 +61,7 @@ const ResearchSearch = ({ onSearchResults }: ResearchSearchProps) => {
 
       // Use the match_publications function to find similar publications
       const { data: searchResults, error } = await supabase.rpc(
-        'match_publications', 
+        'match_publications' as any, 
         {
           query_embedding: queryEmbedding,
           match_threshold: 0.5,
@@ -73,9 +73,9 @@ const ResearchSearch = ({ onSearchResults }: ResearchSearchProps) => {
         throw error;
       }
 
-      onSearchResults(searchResults || []);
+      onSearchResults((searchResults as SearchResult[]) || []);
       
-      if (searchResults.length === 0) {
+      if ((searchResults as SearchResult[])?.length === 0) {
         toast({
           title: "No matching results",
           description: "Try different keywords or browse all publications",
