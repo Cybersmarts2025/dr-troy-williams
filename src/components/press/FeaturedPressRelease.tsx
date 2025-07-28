@@ -83,7 +83,7 @@ const FeaturedPressRelease = () => {
 
             <div className="bg-slate-100 p-4 rounded-lg">
               <h4 className="font-bold mb-2">Media Contact:</h4>
-              <p>Press Inquiries: <a href="mailto:press@cybersmarts.ai" className="text-[#B22234] hover:underline">press@cybersmarts.ai</a></p>
+              <p>Press Inquiries: <a href="mailto:support@cybersmarts.ai" className="text-[#B22234] hover:underline">support@cybersmarts.ai</a></p>
               <p>Official Website: <a href="https://www.cybersmarts.ai" className="text-[#B22234] hover:underline">www.cybersmarts.ai</a></p>
             </div>
           </div>
@@ -99,7 +99,7 @@ const FeaturedPressRelease = () => {
             <Button 
               variant="outline" 
               className="border-[#3C3B6E] text-[#3C3B6E] hover:bg-[#3C3B6E] hover:text-white"
-              onClick={() => window.open("mailto:press@cybersmarts.ai?subject=Press%20Inquiry")}
+              onClick={() => window.open("mailto:support@cybersmarts.ai?subject=Press%20Inquiry")}
             >
               <ExternalLink className="h-4 w-4 mr-2" />
               Contact Press Office
