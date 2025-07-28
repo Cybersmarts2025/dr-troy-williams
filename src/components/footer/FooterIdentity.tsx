@@ -3,12 +3,48 @@ import React from 'react';
 import { FileText, Shield, Award, Book, Flag, Newspaper, Users, Video } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/components/ui/use-toast';
 
 interface FooterIdentityProps {
   companyName: string;
 }
 
 const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
+  const { toast } = useToast();
+
+  const handleDownloadPortfolio = async () => {
+    try {
+      // Get the download URL from Supabase storage
+      const { data } = supabase.storage
+        .from('downloads')
+        .getPublicUrl('cv-troy-williams.pdf');
+      
+      if (data?.publicUrl) {
+        // Create a temporary link and trigger download
+        const link = document.createElement('a');
+        link.href = data.publicUrl;
+        link.download = 'Dr-Troy-Williams-Portfolio.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        toast({
+          title: "Download Started",
+          description: "Your portfolio download has started.",
+        });
+      } else {
+        throw new Error('Portfolio not available');
+      }
+    } catch (error) {
+      toast({
+        title: "Download Error",
+        description: "Portfolio file is not currently available. Please contact us directly.",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="mb-6 pb-6 border-b border-white/20">
       {/* Header Section */}
@@ -21,7 +57,7 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
         <Button
           variant="outline"
           className="bg-transparent text-white border-white hover:bg-white/10"
-          onClick={() => window.location.href = "/downloads/cv-troy-williams.pdf"}
+          onClick={handleDownloadPortfolio}
           aria-label="Download Portfolio PDF"
         >
           <FileText className="h-4 w-4 mr-2" />
