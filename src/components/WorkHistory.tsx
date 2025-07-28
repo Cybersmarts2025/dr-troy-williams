@@ -21,9 +21,8 @@ const WorkHistory = () => {
       
       <div className="absolute inset-0 z-0 opacity-5"
         style={{ 
-          backgroundImage: "url('/lovable-uploads/shield-pattern.png')", 
-          backgroundSize: "200px",
-          backgroundRepeat: "repeat"
+          background: "repeating-conic-gradient(#e2e8f0 0deg 45deg, transparent 45deg 90deg)", 
+          backgroundSize: "200px 200px"
         }}
       ></div>
       

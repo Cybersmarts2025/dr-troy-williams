@@ -147,7 +147,7 @@ const Blog = () => {
           name="description" 
           content="Expert commentary and analysis on cybersecurity, AI policy, fraud prevention, and defense technology by Dr. Troy Williams." 
         />
-        <link rel="preload" href="/lovable-uploads/circuit-pattern.png" as="image" />
+        
         {/* Output schema.org JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify({

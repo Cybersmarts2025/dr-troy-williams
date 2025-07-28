@@ -74,9 +74,8 @@ const YouTubeSection = () => {
       
       <div className="absolute inset-0 z-0 opacity-5"
         style={{ 
-          backgroundImage: "url('/lovable-uploads/circuit-pattern.png')", 
-          backgroundSize: "200px",
-          backgroundRepeat: "repeat"
+          background: "repeating-linear-gradient(45deg, #f1f5f9 0px, #f1f5f9 1px, transparent 1px, transparent 20px)", 
+          backgroundSize: "200px 200px"
         }}
       ></div>
       

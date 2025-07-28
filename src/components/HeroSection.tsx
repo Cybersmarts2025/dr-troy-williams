@@ -14,9 +14,8 @@ const HeroSection = () => {
   return <section className="min-h-screen pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden bg-gradient-to-br from-slate-50 to-white">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 z-0 opacity-5" style={{
-      backgroundImage: "url('/lovable-uploads/circuit-pattern.png')",
-      backgroundSize: "100px",
-      backgroundRepeat: "repeat"
+      background: "repeating-linear-gradient(45deg, #f1f5f9 0px, #f1f5f9 1px, transparent 1px, transparent 20px)",
+      backgroundSize: "100px 100px"
     }}></div>
       
       <div className="container mx-auto px-4 relative z-10">

@@ -25,35 +25,35 @@ const Press = () => {
     date: "April 15, 2024",
     description: "Dr. Troy Williams addresses how artificial intelligence is revolutionizing national security measures and protecting critical infrastructure from foreign threats.",
     link: "#",
-    logo: "/lovable-uploads/cnn-logo.png"
+    logo: "https://via.placeholder.com/200x100/cccccc/333333?text=CNN"
   }, {
     outlet: "Forbes",
     title: "The Future of Cybersecurity: Interview with Dr. Troy Williams",
     date: "March 3, 2024",
     description: "An in-depth discussion on proactive cybersecurity strategies and the evolving landscape of digital threats facing American businesses.",
     link: "#",
-    logo: "/lovable-uploads/forbes-logo.png"
+    logo: "https://via.placeholder.com/200x100/cccccc/333333?text=Forbes"
   }, {
     outlet: "The National Security Journal",
     title: "Digital Sovereignty: America's Technology Independence",
     date: "February 21, 2024",
     description: "Expert analysis on how domestic technology development is crucial for national security and economic prosperity in an increasingly connected world.",
     link: "#",
-    logo: "/lovable-uploads/nsj-logo.png"
+    logo: "https://via.placeholder.com/200x100/cccccc/333333?text=NSJ"
   }, {
     outlet: "60 Minutes",
     title: "The AI Revolution: Security Implications",
     date: "January 12, 2024",
     description: "Dr. Williams explains the national security implications of advanced AI systems and the importance of ethical frameworks in technology development.",
     link: "#",
-    logo: "/lovable-uploads/60min-logo.png"
+    logo: "https://via.placeholder.com/200x100/cccccc/333333?text=60+Minutes"
   }, {
     outlet: "Cybersecurity Today",
     title: "Proactive Prevention: The New Paradigm in Digital Defense",
     date: "December 3, 2023",
     description: "A feature on Dr. Williams' Proactive Prevention Platform and its application in protecting critical infrastructure from advanced cyber threats.",
     link: "#",
-    logo: "/lovable-uploads/cybersecurity-today-logo.png"
+    logo: "https://via.placeholder.com/200x100/cccccc/333333?text=Cybersecurity+Today"
   }]);
   
   // Handle metadata fetched from the URL

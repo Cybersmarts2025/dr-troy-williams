@@ -17,7 +17,7 @@ const SocialLinks = () => {
         className="pt-16 pb-16 flag-overlay shield-bg select-none relative"
         id="contact"
       >
-        <BackgroundOverlay shieldPatternUrl="/lovable-uploads/shield-pattern.png" />
+        <BackgroundOverlay shieldPatternUrl="" />
         
         <div className="container mx-auto px-4 relative z-10">
           <SectionTitle icon={Mail} title="Connect With Me" />

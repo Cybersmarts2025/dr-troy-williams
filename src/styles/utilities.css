@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/lovable-uploads/flag-background.jpg');
+  background: linear-gradient(45deg, #ef4444 25%, transparent 25%), linear-gradient(-45deg, #3b82f6 25%, transparent 25%);
   background-size: cover;
   background-position: center;
   opacity: 0.15;
@@ -37,7 +37,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/lovable-uploads/shield-pattern.png');
+  background: repeating-conic-gradient(#e2e8f0 0deg 45deg, transparent 45deg 90deg);
   background-size: 200px;
   background-repeat: repeat;
   opacity: 0.05;

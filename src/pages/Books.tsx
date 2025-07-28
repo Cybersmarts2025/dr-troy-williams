@@ -141,7 +141,7 @@ const Books = () => {
         
         <div className="container mx-auto px-4 py-8">
           <div className="relative mb-12">
-            <div className="absolute inset-0 bg-[url('/lovable-uploads/flag-background.jpg')] bg-cover bg-center opacity-5 rounded-2xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-blue-50 opacity-30 rounded-2xl"></div>
             <div className="relative z-10 p-8 rounded-2xl border border-red-200 bg-white/80 backdrop-blur-sm shadow-lg">
               <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
                 <div>
