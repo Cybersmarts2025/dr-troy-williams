@@ -71,18 +71,28 @@ const PressContactSection = () => {
   const handleDownload = () => {
     setIsDownloading(true);
     
-    // Simulate download
-    setTimeout(() => {
+    try {
+      // Create download link for press kit
+      const link = document.createElement('a');
+      link.href = '/press-kit-dr-troy-williams.txt';
+      link.download = 'Dr-Troy-Williams-Press-Kit.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
       toast({
         title: "Press Kit Downloaded",
         description: "Dr. Troy Williams press kit has been downloaded.",
       });
+    } catch (error) {
+      toast({
+        title: "Download Failed",
+        description: "There was a problem downloading the press kit. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
       setIsDownloading(false);
-      
-      // In a real app, you would trigger the actual download here
-      // For now we'll just log to console
-      console.log("Press kit download triggered");
-    }, 1500);
+    }
   };
 
   return (
