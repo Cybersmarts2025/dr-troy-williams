@@ -104,7 +104,7 @@ const PressContactSection = () => {
               <ul className="space-y-3">
                 <li className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2">
                   <span className="font-medium">Media Relations:</span>
-                  <a href="mailto:press@legalsmarts.net" className="text-blue-600 hover:underline break-all">press@legalsmarts.net</a>
+                  <a href="mailto:support@cybersmarts.ai" className="text-blue-600 hover:underline break-all">support@cybersmarts.ai</a>
                 </li>
                 <li className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2">
                   <span className="font-medium">Office Phone:</span>
