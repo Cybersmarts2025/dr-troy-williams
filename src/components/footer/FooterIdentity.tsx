@@ -88,6 +88,15 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
                 Publications
               </Link>
             </li>
+            <li>
+              <Link 
+                to="/ip" 
+                className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
+                title="View all technologies developed by Dr. Troy Williams, PhD and owned by Cybersmarts.ai LLC"
+              >
+                🔒 Trademarked Technologies
+              </Link>
+            </li>
           </ul>
         </div>
 

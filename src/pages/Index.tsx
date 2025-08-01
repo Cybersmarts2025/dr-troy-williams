@@ -44,10 +44,15 @@ const Index = () => {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Helmet>
         <title>Dr. Troy Williams – AI Scientist | Cybersecurity Expert | U.S. Technology Authority</title>
+        <meta name="author" content="Dr. Troy Williams, PhD" />
+        <meta name="copyright" content="© 2025 Cybersmarts.ai LLC. All rights reserved." />
         <meta 
           name="description" 
-          content="Discover the official profile of Dr. Troy Williams — AI researcher, cybersecurity engineer, private investigator, and founder of Cybersmarts.ai. Protecting America through technology." 
+          content="Dr. Troy Williams, PhD is the inventor of patented cybersecurity and AI platforms including AISF™, PPP™, FraudDNA™, and PatriotProof™. Protecting America through technology." 
         />
+        <meta property="og:title" content="Dr. Troy Williams, PhD | Inventor & Trademark Owner" />
+        <meta property="og:url" content="https://www.drtroywilliams.net" />
+        <meta property="og:description" content="AI Scientist, Cybersecurity Expert, and inventor of revolutionary fraud prevention technologies." />
         
         <link rel="canonical" href="https://www.DrTroyWilliams.net/" />
       </Helmet>
