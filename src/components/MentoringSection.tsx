@@ -54,7 +54,7 @@ const MentoringSection = () => {
           
           <div className="bg-white rounded-lg shadow-lg p-8 text-center border-t-4 border-[#F97316]">
             <TrendingUp className="h-12 w-12 text-[#F97316] mx-auto mb-4" />
-            <div className="text-3xl font-bold text-[#3C3B6E] mb-2">15+</div>
+            <div className="text-3xl font-bold text-[#3C3B6E] mb-2">3+</div>
             <div className="text-gray-700 font-medium">Partner Universities</div>
           </div>
         </motion.div>
