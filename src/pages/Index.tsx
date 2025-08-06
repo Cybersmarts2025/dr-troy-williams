@@ -9,7 +9,7 @@ import DissertationCallout from "@/components/DissertationCallout";
 import { Helmet } from "react-helmet-async";
 import { PersonSchema, OrganizationSchema } from "@/utils/schemaMarkup";
 import { Button } from '@/components/ui/button';
-import { ArrowRight, FileText, Shield, Users, Award, Target, Flag, Brain } from 'lucide-react';
+import { ArrowRight, FileText, Shield, Users, Award, Target, Flag, Brain, Search, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -131,7 +131,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                 <Card className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#B22234]">
@@ -173,6 +173,36 @@ const Index = () => {
                     <p className="text-gray-700">
                       Developing artificial intelligence that serves humanity while maintaining 
                       privacy, transparency, and human oversight in all applications.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-[#10B981]">
+                      <Search className="h-6 w-6" />
+                      FraudDNA™
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-700">
+                      Advanced biometric fraud detection system that identifies fraudulent patterns 
+                      using AI-driven behavioral analysis and genetic fraud fingerprinting.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-[#7C3AED]">
+                      <Lock className="h-6 w-6" />
+                      PatriotProof™
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-700">
+                      Quantum-ready security architecture designed to protect American infrastructure 
+                      from foreign cyber threats and ensure digital sovereignty.
                     </p>
                   </CardContent>
                 </Card>
