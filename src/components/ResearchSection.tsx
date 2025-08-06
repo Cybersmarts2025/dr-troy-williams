@@ -37,22 +37,6 @@ const ResearchSection = () => {
   // Default publications
   const defaultPublications = [
     {
-      id: "aisf",
-      title: "Autonomous Intelligence Security Framework (AISF™)",
-      description: "A groundbreaking framework for proactive AI-driven security systems",
-      year: "2024",
-      type: "Patent Pending",
-      url: "/aisf"
-    },
-    {
-      id: "ppp",
-      title: "Proactive Prevention Platform (PPP™)",
-      description: "Novel approach to fraud prevention using predictive AI models",
-      year: "2023",
-      type: "Research Paper",
-      url: "/ppp"
-    },
-    {
       id: "cybersecurity",
       title: "AI-Driven Cybersecurity: The Future of Digital Defense",
       description: "Comprehensive analysis of AI applications in cybersecurity",
