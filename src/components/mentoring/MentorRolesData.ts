@@ -12,7 +12,7 @@ export interface MentorRole {
 
 export const mentorRoles: MentorRole[] = [
   {
-    title: "Doctoral Mentor",
+    title: "Alumni Doctoral Mentor",
     organization: "University of the Cumberlands",
     description: "Guiding doctoral candidates through research and dissertation development in cybersecurity and information technology.",
     icon: GraduationCap,
