@@ -25,6 +25,14 @@ const YouTubeSection = () => {
     {
       id: "Bm3tTBlQmIo",
       title: "Video Presentation"
+    },
+    {
+      id: "KyhnCmispBA",
+      title: "Natural Language Processing (NLP) Explained: AI & Machine Learning in Action"
+    },
+    {
+      id: "WUHQP1RlcqU",
+      title: "Experimental Design in AI & Machine Learning: How to Conduct Reliable Research"
     }
   ];
 
