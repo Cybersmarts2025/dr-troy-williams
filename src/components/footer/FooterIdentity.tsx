@@ -2,7 +2,7 @@
 import React from 'react';
 import { FileText, Shield, Award, Book, Flag, Newspaper, Users, Video } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -12,6 +12,21 @@ interface FooterIdentityProps {
 
 const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
   const { toast } = useToast();
+  const location = useLocation();
+
+  // Function to handle section navigation
+  const handleSectionClick = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      // If not on homepage, navigate to home with section hash
+      window.location.href = `/#${sectionId}`;
+    } else {
+      // If on homepage, scroll to the section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const handleDownloadPortfolio = async () => {
     try {
@@ -159,10 +174,13 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
               </Link>
             </li>
             <li>
-              <a href="/#mentoring" className="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+              <button 
+                onClick={() => handleSectionClick('mentoring')} 
+                className="text-white/80 hover:text-white transition-colors flex items-center gap-2 text-left"
+              >
                 <Users className="h-4 w-4" />
                 Mentoring Programs
-              </a>
+              </button>
             </li>
           </ul>
         </div>
