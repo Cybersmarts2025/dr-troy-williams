@@ -5,11 +5,26 @@ import { PersonSchema } from '@/utils/schemaMarkup';
 
 const IntellectualProperty = () => {
   const trademarks = [
-    'Autonomous Intelligence Security Framework (AISF™)',
-    'Proactive Prevention Platform (PPP™)',
-    'FraudDNA™',
-    'PatriotProof™',
-    'Protecting America Through Technology™'
+    {
+      name: 'Autonomous Intelligence Security Framework (AISF™)',
+      description: 'A revolutionary AI-driven cybersecurity framework that autonomously detects, analyzes, and responds to security threats in real-time. AISF™ represents the next generation of proactive security systems that learn and adapt to emerging threats without human intervention.'
+    },
+    {
+      name: 'Proactive Prevention Platform (PPP™)',
+      description: 'An innovative fraud prevention platform utilizing predictive AI models to identify and prevent fraudulent activities before they occur. PPP™ leverages advanced machine learning algorithms to analyze patterns and predict potential security breaches with unprecedented accuracy.'
+    },
+    {
+      name: 'FraudDNA™',
+      description: 'A cutting-edge biometric identification and fraud detection system that creates unique digital fingerprints for transactions and user behaviors. FraudDNA™ provides forensic-level analysis to identify fraudulent patterns and authenticate legitimate users with precision.'
+    },
+    {
+      name: 'PatriotProof™',
+      description: 'A comprehensive security certification and validation system designed to ensure the highest levels of cybersecurity compliance for critical infrastructure and government systems. PatriotProof™ establishes rigorous standards for protecting American digital assets.'
+    },
+    {
+      name: 'Protecting America Through Technology™',
+      description: 'A holistic approach and mission statement encompassing all cybersecurity initiatives aimed at safeguarding American interests through advanced technological solutions. This trademark represents the overarching philosophy of using innovation to defend national security.'
+    }
   ];
 
   const schemaData = {
@@ -136,17 +151,20 @@ const IntellectualProperty = () => {
                 <h2 className="text-3xl font-bold text-foreground">Trademarked Technologies</h2>
               </div>
               
-              <div className="grid gap-6">
+              <div className="grid gap-8">
                 {trademarks.map((trademark, index) => (
                   <div 
                     key={index}
-                    className="bg-card p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow"
+                    className="bg-card p-8 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow"
                   >
-                    <h3 className="text-xl font-bold text-foreground flex items-center">
+                    <h3 className="text-xl font-bold text-foreground flex items-center mb-4">
                       <Shield className="h-5 w-5 text-primary mr-2" />
-                      {trademark}
+                      {trademark.name}
                     </h3>
-                    <p className="text-sm text-muted-foreground mt-2">
+                    <p className="text-muted-foreground leading-relaxed mb-3">
+                      {trademark.description}
+                    </p>
+                    <p className="text-sm text-muted-foreground font-medium">
                       Registered trademark of Cybersmarts.ai LLC
                     </p>
                   </div>
