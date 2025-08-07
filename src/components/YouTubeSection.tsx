@@ -12,15 +12,15 @@ const YouTubeSection = () => {
   const videos = [
     {
       id: "uuRhtT65pEs",
-      title: "Cybersecurity Briefing"
+      title: "Troy Williams Masters Information Technology Management"
     },
     {
       id: "0x06UBicpQg",
-      title: "AI Systems Development"
+      title: "Troy Williams: Achieving Unprecedented Success in Cyber Security!"
     },
     {
       id: "NBPKUVphRr0",
-      title: "National Security Framework"
+      title: "Date Check - Dont Take Chances Date Check Before You Get Involved"
     },
     {
       id: "Bm3tTBlQmIo",
