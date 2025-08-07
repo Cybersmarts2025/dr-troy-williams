@@ -131,10 +131,13 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
               </Link>
             </li>
             <li>
-              <a href="/#videos" className="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+              <button 
+                onClick={() => handleSectionClick('videos')} 
+                className="text-white/80 hover:text-white transition-colors flex items-center gap-2 text-left"
+              >
                 <Video className="h-4 w-4" />
                 Video Content
-              </a>
+              </button>
             </li>
           </ul>
         </div>
