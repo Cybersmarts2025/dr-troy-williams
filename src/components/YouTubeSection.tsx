@@ -21,6 +21,10 @@ const YouTubeSection = () => {
     {
       id: "NBPKUVphRr0",
       title: "National Security Framework"
+    },
+    {
+      id: "Bm3tTBlQmIo",
+      title: "Video Presentation"
     }
   ];
 
