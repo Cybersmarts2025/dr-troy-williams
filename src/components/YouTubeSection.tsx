@@ -21,30 +21,6 @@ const YouTubeSection = () => {
     {
       id: "NBPKUVphRr0",
       title: "National Security Framework"
-    },
-    {
-      id: "dQw4w9WgXcQ",
-      title: "Advanced Threat Intelligence"
-    },
-    {
-      id: "M7lc1UVf-VE",
-      title: "Zero Trust Architecture"
-    },
-    {
-      id: "2Vv-BfVoq4g",
-      title: "AI Ethics in Cybersecurity"
-    },
-    {
-      id: "jNQXAC9IVRw",
-      title: "Quantum Security Protocols"
-    },
-    {
-      id: "y6120QOlsfU",
-      title: "Fraud Prevention Strategies"
-    },
-    {
-      id: "kJQP7kiw5Fk",
-      title: "Digital Forensics Deep Dive"
     }
   ];
 
