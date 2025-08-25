@@ -213,7 +213,9 @@ const Blog = () => {
               <BlogSearch onSearch={handleSearch} totalResults={filteredPosts.length} />
               <BlogCategoryTabs 
                 activeCategory={searchFilters.category}
-                setActiveCategory={(category) => handleSearch({ ...searchFilters, category })}
+                setActiveCategory={(category) => {
+                  setSearchFilters(prev => ({ ...prev, category }));
+                }}
                 filteredPosts={filteredPosts}
                 getCategoryCount={getCategoryPostCount}
                 containerVariants={containerVariants}
