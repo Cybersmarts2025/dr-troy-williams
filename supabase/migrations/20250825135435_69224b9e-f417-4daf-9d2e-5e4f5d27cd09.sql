@@ -1,0 +1,1 @@
+UPDATE blog_posts SET category = 'National Security' WHERE id = 'tennessee-governor-recognition-2025';
