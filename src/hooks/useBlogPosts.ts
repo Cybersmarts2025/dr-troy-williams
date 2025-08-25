@@ -6,11 +6,7 @@ import { blogPosts as fallbackPosts } from "@/data/blogData";
 
 export const useBlogPosts = () => {
   return useQuery({
-    queryKey: ["blog-posts", Date.now()], // Force refresh every time
-    staleTime: 0, // Always fetch fresh data
-    gcTime: 0, // Don't cache the results (v5 uses gcTime instead of cacheTime)
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
+    queryKey: ["blog-posts"],
     queryFn: async () => {
       try {
         // Cast the result to unknown first, then to BlogPost[] to avoid TypeScript errors
@@ -20,13 +16,7 @@ export const useBlogPosts = () => {
           .select("*")
           .order("created_at", { ascending: false }) as any;
 
-        console.log("Blog posts fetched:", data?.length || 0, "posts");
-        console.log("First post:", data?.[0]?.title);
-
-        if (error) {
-          console.error("Blog posts fetch error:", error);
-          throw error;
-        }
+        if (error) throw error;
         
         if (data && data.length > 0) {
           return data as BlogPost[];
