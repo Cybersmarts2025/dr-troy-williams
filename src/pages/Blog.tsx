@@ -1,4 +1,4 @@
-import React, { useEffect, lazy, Suspense, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -10,10 +10,10 @@ import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { getCategoryCount, getBlogPostsByCategory } from "@/data/blogData";
 import BlogSearch, { SearchFilters } from "@/components/blog/BlogSearch";
 
-// Lazy load less critical components
-const BlogCategoryTabs = lazy(() => import("@/components/blog/BlogCategoryTabs"));
-const NewsletterSection = lazy(() => import("@/components/blog/NewsletterSection"));
-const CrossPostingSection = lazy(() => import("@/components/blog/CrossPostingSection"));
+// Import components directly instead of lazy loading to fix dynamic import issues
+import BlogCategoryTabs from "@/components/blog/BlogCategoryTabs";
+import NewsletterSection from "@/components/blog/NewsletterSection";
+import CrossPostingSection from "@/components/blog/CrossPostingSection";
 
 // Loading component
 const SectionLoader = () => (
@@ -211,29 +211,23 @@ const Blog = () => {
           ) : (
             <>
               <BlogSearch onSearch={handleSearch} totalResults={filteredPosts.length} />
-              <Suspense fallback={<SectionLoader />}>
-                <BlogCategoryTabs 
-                  activeCategory={searchFilters.category}
-                  setActiveCategory={(category) => handleSearch({ ...searchFilters, category })}
-                  filteredPosts={filteredPosts}
-                  getCategoryCount={getCategoryPostCount}
-                  containerVariants={containerVariants}
-                  itemVariants={itemVariants}
-                />
-              </Suspense>
+              <BlogCategoryTabs 
+                activeCategory={searchFilters.category}
+                setActiveCategory={(category) => handleSearch({ ...searchFilters, category })}
+                filteredPosts={filteredPosts}
+                getCategoryCount={getCategoryPostCount}
+                containerVariants={containerVariants}
+                itemVariants={itemVariants}
+              />
             </>
           )}
         </section>
         
         {/* Newsletter subscription */}
-        <Suspense fallback={<SectionLoader />}>
-          <NewsletterSection />
-        </Suspense>
+        <NewsletterSection />
         
         {/* Cross-posting information */}
-        <Suspense fallback={<SectionLoader />}>
-          <CrossPostingSection />
-        </Suspense>
+        <CrossPostingSection />
       </main>
 
       <Footer />
