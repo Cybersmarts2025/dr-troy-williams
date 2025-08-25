@@ -6,9 +6,11 @@ import { blogPosts as fallbackPosts } from "@/data/blogData";
 
 export const useBlogPosts = () => {
   return useQuery({
-    queryKey: ["blog-posts"],
+    queryKey: ["blog-posts", Date.now()], // Force refresh every time
     staleTime: 0, // Always fetch fresh data
     gcTime: 0, // Don't cache the results (v5 uses gcTime instead of cacheTime)
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
     queryFn: async () => {
       try {
         // Cast the result to unknown first, then to BlogPost[] to avoid TypeScript errors
