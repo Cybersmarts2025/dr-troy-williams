@@ -42,9 +42,6 @@ const BlogCategoryTabs = ({
           <TabsTrigger value="Policy & Governance" className="px-4 py-2">
             Policy & Governance <Badge variant="outline" className="ml-1">{getCategoryCount("Policy & Governance")}</Badge>
           </TabsTrigger>
-          <TabsTrigger value="Recognition" className="px-4 py-2">
-            Recognition <Badge variant="outline" className="ml-1">{getCategoryCount("Recognition")}</Badge>
-          </TabsTrigger>
         </TabsList>
       </div>
       
