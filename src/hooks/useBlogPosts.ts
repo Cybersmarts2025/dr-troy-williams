@@ -18,7 +18,13 @@ export const useBlogPosts = () => {
           .select("*")
           .order("created_at", { ascending: false }) as any;
 
-        if (error) throw error;
+        console.log("Blog posts fetched:", data?.length || 0, "posts");
+        console.log("First post:", data?.[0]?.title);
+
+        if (error) {
+          console.error("Blog posts fetch error:", error);
+          throw error;
+        }
         
         if (data && data.length > 0) {
           return data as BlogPost[];
