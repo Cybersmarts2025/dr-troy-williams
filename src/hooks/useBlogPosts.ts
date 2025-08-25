@@ -9,6 +9,7 @@ export const useBlogPosts = () => {
     queryKey: ["blog-posts"],
     queryFn: async () => {
       try {
+        console.log("🔍 Fetching blog posts from Supabase...");
         // Cast the result to unknown first, then to BlogPost[] to avoid TypeScript errors
         // This is a workaround until the types.ts file is regenerated with the new table
         const { data, error } = await supabase
@@ -16,17 +17,29 @@ export const useBlogPosts = () => {
           .select("*")
           .order("created_at", { ascending: false }) as any;
 
-        if (error) throw error;
+        console.log("📊 Blog posts raw data:", data);
+        console.log("❌ Blog posts error:", error);
+        console.log("📈 Blog posts count:", data?.length || 0);
+
+        if (error) {
+          console.error("💥 Blog posts fetch error:", error);
+          throw error;
+        }
         
         if (data && data.length > 0) {
+          console.log("✅ Blog posts loaded successfully:", data.length, "posts");
+          console.log("🔍 First post:", data[0]);
           return data as BlogPost[];
         }
         
         // Fallback to hardcoded data if no posts in database
+        console.log("📭 No blog posts found, using fallback data");
+        console.log("🔄 Fallback posts:", fallbackPosts.length, "posts");
         return fallbackPosts;
       } catch (error) {
-        console.error("Error fetching blog posts:", error);
+        console.error("💥 Blog posts query failed:", error);
         // Fallback to hardcoded data on error
+        console.log("🔄 Error fallback, using hardcoded posts");
         return fallbackPosts;
       }
     },

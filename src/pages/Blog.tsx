@@ -105,8 +105,11 @@ const Blog = () => {
 
   // Update filtered posts when search filters or blog posts change
   useEffect(() => {
+    console.log("🔄 Blog component - blogPosts:", blogPosts);
+    console.log("🔄 Blog component - searchFilters:", searchFilters);
     if (blogPosts) {
       const filtered = filterAndSortPosts(blogPosts, searchFilters);
+      console.log("🔄 Blog component - filtered posts:", filtered);
       setFilteredPosts(filtered);
     }
   }, [searchFilters, blogPosts]);
