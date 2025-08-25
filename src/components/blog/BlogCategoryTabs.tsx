@@ -30,17 +30,20 @@ const BlogCategoryTabs = ({
           <TabsTrigger value="all" className="px-4 py-2">
             All <Badge variant="outline" className="ml-1">{getCategoryCount("all")}</Badge>
           </TabsTrigger>
-          <TabsTrigger value="ai" className="px-4 py-2">
-            AI <Badge variant="outline" className="ml-1">{getCategoryCount("ai")}</Badge>
+          <TabsTrigger value="AI & Technology" className="px-4 py-2">
+            AI & Technology <Badge variant="outline" className="ml-1">{getCategoryCount("AI & Technology")}</Badge>
           </TabsTrigger>
-          <TabsTrigger value="cybersecurity" className="px-4 py-2">
-            Cybersecurity <Badge variant="outline" className="ml-1">{getCategoryCount("cybersecurity")}</Badge>
+          <TabsTrigger value="National Security" className="px-4 py-2">
+            National Security <Badge variant="outline" className="ml-1">{getCategoryCount("National Security")}</Badge>
           </TabsTrigger>
-          <TabsTrigger value="fraud" className="px-4 py-2">
-            Fraud <Badge variant="outline" className="ml-1">{getCategoryCount("fraud")}</Badge>
+          <TabsTrigger value="Fraud Prevention" className="px-4 py-2">
+            Fraud Prevention <Badge variant="outline" className="ml-1">{getCategoryCount("Fraud Prevention")}</Badge>
           </TabsTrigger>
-          <TabsTrigger value="defense" className="px-4 py-2">
-            Defense <Badge variant="outline" className="ml-1">{getCategoryCount("defense")}</Badge>
+          <TabsTrigger value="Policy & Governance" className="px-4 py-2">
+            Policy & Governance <Badge variant="outline" className="ml-1">{getCategoryCount("Policy & Governance")}</Badge>
+          </TabsTrigger>
+          <TabsTrigger value="Recognition" className="px-4 py-2">
+            Recognition <Badge variant="outline" className="ml-1">{getCategoryCount("Recognition")}</Badge>
           </TabsTrigger>
         </TabsList>
       </div>
