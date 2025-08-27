@@ -19,7 +19,7 @@ export const useTestimonials = (limit?: number) => {
     queryFn: async () => {
       let query = supabase
         .from("testimonials")
-        .select("*")
+        .select("id, name, title, organization, testimonial, rating, category, created_at")
         .eq("is_approved", true)
         .order("created_at", { ascending: false });
 
