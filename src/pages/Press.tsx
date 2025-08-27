@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import NavBar from "@/components/NavBar";
 import { Helmet } from "react-helmet-async";
@@ -84,6 +85,12 @@ const Press = () => {
   
   // Awards and recognitions data
   const recognitions: Recognition[] = [{
+    title: "Tennessee State Certificate of Appreciation",
+    organization: "State of Tennessee - Governor Bill Lee",
+    year: "2025",
+    description: "Formally recognized by Governor Bill Lee for outstanding service and contributions in cybersecurity, fraud prevention, and artificial intelligence innovation. This certificate acknowledges a career dedicated to advancing technologies that strengthen trust, privacy, and resilience in the digital age.",
+    logo: "/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png"
+  }, {
     title: "National Cybersecurity Excellence Award",
     organization: "Department of Homeland Security",
     year: "2024",
