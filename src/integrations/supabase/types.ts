@@ -638,6 +638,37 @@ export type Database = {
           updated_at: string
         }[]
       }
+      get_user_appointments: {
+        Args: { user_uuid?: string }
+        Returns: {
+          appointment_type: string
+          created_at: string
+          duration_minutes: number
+          id: string
+          preferred_date: string
+          preferred_time: string
+          status: string
+        }[]
+      }
+      get_user_consultation_requests: {
+        Args: { user_uuid?: string }
+        Returns: {
+          budget_range: string
+          consultation_type: string
+          created_at: string
+          id: string
+          status: string
+          timeline: string
+        }[]
+      }
+      get_user_webinar_registrations: {
+        Args: { user_uuid?: string }
+        Returns: {
+          id: string
+          registered_at: string
+          webinar_id: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
