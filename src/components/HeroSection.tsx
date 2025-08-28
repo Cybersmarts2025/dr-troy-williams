@@ -127,7 +127,7 @@ const HeroSection = () => {
           }} transition={{
             delay: 0.9,
             duration: 0.5
-          }} className="flex flex-wrap gap-4 justify-center lg:justify-start">
+          }} className="flex flex-wrap gap-4 justify-center lg:justify-start mb-4">
               <Button size="lg" className="bg-[#B22234] hover:bg-[#9B0000] text-white text-lg px-8 py-3 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105" onClick={() => scrollToSection('work')}>
                 <ArrowDown className="h-5 w-5 mr-2" />
                 Explore Expertise
