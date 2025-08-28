@@ -624,6 +624,17 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: Database["public"]["Enums"]["app_role"]
       }
+      get_public_blog_comments: {
+        Args: { post_id?: string }
+        Returns: {
+          author_name: string
+          blog_post_id: string
+          content: string
+          created_at: string
+          id: string
+          updated_at: string
+        }[]
+      }
       get_public_testimonials: {
         Args: Record<PropertyKey, never>
         Returns: {
@@ -675,6 +686,15 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      verify_security_policies: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          is_secure: boolean
+          policy_name: string
+          policy_type: string
+          table_name: string
+        }[]
       }
     }
     Enums: {
