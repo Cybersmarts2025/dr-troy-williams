@@ -582,42 +582,7 @@ export type Database = {
       }
     }
     Views: {
-      public_testimonials: {
-        Row: {
-          category: string | null
-          created_at: string | null
-          id: string | null
-          name: string | null
-          organization: string | null
-          rating: number | null
-          testimonial: string | null
-          title: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          category?: string | null
-          created_at?: string | null
-          id?: string | null
-          name?: string | null
-          organization?: string | null
-          rating?: number | null
-          testimonial?: string | null
-          title?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          category?: string | null
-          created_at?: string | null
-          id?: string | null
-          name?: string | null
-          organization?: string | null
-          rating?: number | null
-          testimonial?: string | null
-          title?: string | null
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       get_current_user_role: {
