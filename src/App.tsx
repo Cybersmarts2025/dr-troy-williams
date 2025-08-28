@@ -36,6 +36,7 @@ import Appointments from "./pages/Appointments";
 import Webinars from "./pages/Webinars";
 import Consultation from "./pages/Consultation";
 import Certifications from "./pages/Certifications";
+import AutoSecurity from "./pages/AutoSecurity";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -86,6 +87,7 @@ const App = () => (
                 <Route path="/admin/blog/new" element={<NewBlogPost />} />
                 <Route path="/admin/blog/edit/:postId" element={<EditBlogPost />} />
                 <Route path="/admin/content" element={<ContentManager />} />
+                <Route path="/auto-security" element={<AutoSecurity />} />
                 
                 <Route path="/testimonial" element={<TestimonialSubmission />} />
                 <Route path="/bookmarks" element={<Bookmarks />} />
