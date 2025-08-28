@@ -582,12 +582,61 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_testimonials: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          id: string | null
+          name: string | null
+          organization: string | null
+          rating: number | null
+          testimonial: string | null
+          title: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          id?: string | null
+          name?: string | null
+          organization?: string | null
+          rating?: number | null
+          testimonial?: string | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          id?: string | null
+          name?: string | null
+          organization?: string | null
+          rating?: number | null
+          testimonial?: string | null
+          title?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       get_current_user_role: {
         Args: Record<PropertyKey, never>
         Returns: Database["public"]["Enums"]["app_role"]
+      }
+      get_public_testimonials: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          category: string
+          created_at: string
+          id: string
+          name: string
+          organization: string
+          rating: number
+          testimonial: string
+          title: string
+          updated_at: string
+        }[]
       }
       has_role: {
         Args: {

@@ -17,24 +17,22 @@ export const useTestimonials = (limit?: number) => {
   return useQuery({
     queryKey: ["testimonials", limit],
     queryFn: async () => {
-      let query = supabase
-        .from("testimonials")
-        .select("id, name, title, organization, testimonial, rating, category, created_at")
-        .eq("is_approved", true)
-        .order("created_at", { ascending: false });
-
-      if (limit) {
-        query = query.limit(limit);
-      }
-
-      const { data, error } = await query;
-
+      // Use the secure function that excludes sensitive data
+      const { data, error } = await supabase.rpc('get_public_testimonials');
+      
       if (error) {
         console.error("Error fetching testimonials:", error);
         throw error;
       }
 
-      return data as Testimonial[];
+      let result = data || [];
+
+      // Apply limit if specified
+      if (limit && result.length > limit) {
+        result = result.slice(0, limit);
+      }
+
+      return result as Testimonial[];
     },
   });
 };
