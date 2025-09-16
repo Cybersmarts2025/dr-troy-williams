@@ -185,6 +185,14 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
                 Mentoring Programs
               </button>
             </li>
+            <li className="text-white/60 text-sm pt-2 border-t border-white/20">
+              <span className="text-white/80">Connect:</span>{' '}
+              <a href="https://www.linkedin.com/in/cybersmarts/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">LinkedIn</a>
+              {' · '}
+              <a href="https://www.researchgate.net/profile/Troy-Williams" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">ResearchGate</a>
+              {' · '}
+              <a href="https://www.wikidata.org/wiki/Q130718988" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">Wikidata</a>
+            </li>
           </ul>
         </div>
       </div>

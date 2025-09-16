@@ -140,6 +140,11 @@ const About = () => {
                 <li>Ph.D. in Artificial Intelligence</li>
                 <li>Over 32 years of investigative and cybersecurity experience in Lebanon, Tennessee</li>
               </ul>
+              <div className="mt-6 pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600">
+                  <strong>Verified identity:</strong> <a href="https://www.wikidata.org/wiki/Q130718988" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">Wikidata Profile</a>
+                </p>
+              </div>
             </CardContent>
           </Card>
 
