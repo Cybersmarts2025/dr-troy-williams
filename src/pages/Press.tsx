@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 
 // Import our new components
 import PressHero from "@/components/press/PressHero";
+import AsSeenInWidget from "@/components/press/AsSeenInWidget";
 import FeaturedPressRelease from "@/components/press/FeaturedPressRelease";
 import MediaFeaturesSection, { MediaFeature } from "@/components/press/MediaFeaturesSection";
 import AwardsSection, { Recognition } from "@/components/press/AwardsSection";
@@ -157,6 +158,13 @@ const Press = () => {
       <main className="pt-20">
         {/* Hero Section */}
         <PressHero />
+        
+        {/* As Seen In Widget */}
+        <section className="py-8 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <AsSeenInWidget />
+          </div>
+        </section>
         
         {/* Featured Press Release */}
         <section className="py-16 bg-white">

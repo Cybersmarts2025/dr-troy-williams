@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, FileText, Shield, Users, Award, Target, Flag, Brain, Search, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import AsSeenInWidget from '@/components/press/AsSeenInWidget';
 
 // Lazy load less critical components
 const WorkHistory = lazy(() => import("@/components/WorkHistory"));
@@ -130,6 +131,11 @@ const Index = () => {
                   </div>
                 </CardContent>
               </Card>
+              
+              {/* As Seen In Widget */}
+              <div className="py-8 bg-white rounded-lg shadow-sm border border-gray-100 mb-8">
+                <AsSeenInWidget />
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                 <Card className="hover:shadow-lg transition-shadow">
