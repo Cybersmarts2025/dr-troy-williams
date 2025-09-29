@@ -77,7 +77,7 @@ const CrossPostingSection = () => {
           </CardHeader>
           <CardFooter className="flex justify-center pt-2">
             <Button variant="outline" className="border-gray-800 text-gray-800 hover:bg-gray-50">
-              <a href="https://medium.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://medium.com/@verifiedsafe8" target="_blank" rel="noopener noreferrer">
                 Read on Medium
               </a>
             </Button>
