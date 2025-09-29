@@ -305,6 +305,107 @@ export type Database = {
         }
         Relationships: []
       }
+      mentorship_enrollments: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          enrolled_at: string
+          id: string
+          program_name: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          enrolled_at?: string
+          id?: string
+          program_name?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          enrolled_at?: string
+          id?: string
+          program_name?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      module_submissions: {
+        Row: {
+          created_at: string
+          enrollment_id: string
+          file_urls: string[] | null
+          grade_status: string
+          id: string
+          instructor_feedback: string | null
+          max_score: number
+          module_name: string
+          module_number: number
+          reviewed_at: string | null
+          reviewed_by: string | null
+          score: number | null
+          status: string
+          submission_content: string | null
+          submitted_at: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          enrollment_id: string
+          file_urls?: string[] | null
+          grade_status?: string
+          id?: string
+          instructor_feedback?: string | null
+          max_score?: number
+          module_name: string
+          module_number: number
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          score?: number | null
+          status?: string
+          submission_content?: string | null
+          submitted_at?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          enrollment_id?: string
+          file_urls?: string[] | null
+          grade_status?: string
+          id?: string
+          instructor_feedback?: string | null
+          max_score?: number
+          module_name?: string
+          module_number?: number
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          score?: number | null
+          status?: string
+          submission_content?: string | null
+          submitted_at?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "module_submissions_enrollment_id_fkey"
+            columns: ["enrollment_id"]
+            isOneToOne: false
+            referencedRelation: "mentorship_enrollments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       newsletter_subscribers: {
         Row: {
           email: string
@@ -433,6 +534,53 @@ export type Database = {
           performed_by?: string | null
         }
         Relationships: []
+      }
+      student_progress: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          enrollment_id: string
+          id: string
+          module_number: number
+          started_at: string | null
+          status: string
+          time_spent_minutes: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          enrollment_id: string
+          id?: string
+          module_number: number
+          started_at?: string | null
+          status?: string
+          time_spent_minutes?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          enrollment_id?: string
+          id?: string
+          module_number?: number
+          started_at?: string | null
+          status?: string
+          time_spent_minutes?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "student_progress_enrollment_id_fkey"
+            columns: ["enrollment_id"]
+            isOneToOne: false
+            referencedRelation: "mentorship_enrollments"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       testimonials: {
         Row: {
