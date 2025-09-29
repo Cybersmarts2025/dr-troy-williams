@@ -43,7 +43,7 @@ const About = () => {
           "sameAs": [
             "https://www.linkedin.com/in/cybersmarts/",
             "https://scholar.google.com/citations?user=troy-williams",
-            "https://www.researchgate.net/profile/Troy-Williams",
+            "https://www.researchgate.net/profile/Troy-Williams-14?ev=hdr_xprf",
             "https://ssrn.com/author=troy-williams"
           ],
           "description": "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator, a Ph.D. in Artificial Intelligence, and the founder of Cybersmarts.ai, he is dedicated to securing America's digital future.",

@@ -55,7 +55,7 @@ const CrossPostingSection = () => {
           </CardHeader>
           <CardFooter className="flex justify-center pt-2">
             <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50">
-              <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.researchgate.net/profile/Troy-Williams-14?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
                 Follow on ResearchGate
               </a>
             </Button>

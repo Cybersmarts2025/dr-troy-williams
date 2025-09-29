@@ -189,7 +189,7 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
               <span className="text-white/80">Connect:</span>{' '}
               <a href="https://www.linkedin.com/in/cybersmarts/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">LinkedIn</a>
               {' · '}
-              <a href="https://www.researchgate.net/profile/Troy-Williams" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">ResearchGate</a>
+              <a href="https://www.researchgate.net/profile/Troy-Williams-14?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">ResearchGate</a>
               {' · '}
               <a href="https://www.wikidata.org/wiki/Q136302603" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">Wikidata</a>
             </li>
