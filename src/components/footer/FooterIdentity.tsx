@@ -28,13 +28,6 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
     }
   };
 
-  const handleDownloadPortfolio = async () => {
-    toast({
-      title: "Portfolio Unavailable",
-      description: "Portfolio file is not currently available. Please contact us directly for access.",
-      variant: "destructive",
-    });
-  };
 
   return (
     <div className="mb-6 pb-6 border-b border-white/20">
@@ -46,13 +39,15 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
         </div>
         
         <Button
+          asChild
           variant="outline"
           className="bg-transparent text-white border-white hover:bg-white/10"
-          onClick={handleDownloadPortfolio}
-          aria-label="Download Portfolio PDF"
+          aria-label="View Portfolio"
         >
-          <FileText className="h-4 w-4 mr-2" />
-          Download Portfolio PDF
+          <Link to="/portfolio">
+            <FileText className="h-4 w-4 mr-2" />
+            View Portfolio
+          </Link>
         </Button>
       </div>
 
