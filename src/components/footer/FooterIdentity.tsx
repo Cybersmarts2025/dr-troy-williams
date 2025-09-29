@@ -68,6 +68,12 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
               </Link>
             </li>
             <li>
+              <Link to="/portfolio" className="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                <Award className="h-4 w-4" />
+                Portfolio
+              </Link>
+            </li>
+            <li>
               <Link to="/certifications" className="text-white/80 hover:text-white transition-colors flex items-center gap-2">
                 <Award className="h-4 w-4" />
                 Certifications
