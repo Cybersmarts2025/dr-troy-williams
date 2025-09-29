@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from "framer-motion";
-import { Shield, Clock, Award, CheckCircle, BookOpen, Users } from "lucide-react";
+import { Shield, Clock, Award, CheckCircle, BookOpen, Users, ChevronRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import ModuleContent from "@/components/mentoring/ModuleContent";
 
 const MentorshipProgram = () => {
   const rules = [
@@ -242,6 +244,41 @@ const MentorshipProgram = () => {
                       <p className="text-sm text-gray-600">
                         <strong>Rubric (10 pts):</strong> {module.rubric}
                       </p>
+                      
+                      <div className="flex gap-2 pt-2">
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              className="border-[#3C3B6E] text-[#3C3B6E] hover:bg-[#3C3B6E] hover:text-white"
+                            >
+                              <Play className="h-4 w-4 mr-1" />
+                              View Content
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle className="text-[#3C3B6E]">
+                                Module {module.id}: {module.title}
+                              </DialogTitle>
+                            </DialogHeader>
+                            <ModuleContent moduleId={module.id} />
+                          </DialogContent>
+                        </Dialog>
+                        
+                        {(module.id <= 2) && (
+                          <Badge variant="secondary" className="bg-green-100 text-green-700">
+                            Content Available
+                          </Badge>
+                        )}
+                        
+                        {(module.id > 2) && (
+                          <Badge variant="outline" className="text-gray-500 border-gray-300">
+                            Coming Soon
+                          </Badge>
+                        )}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
