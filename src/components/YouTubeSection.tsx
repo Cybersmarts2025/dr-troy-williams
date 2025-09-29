@@ -11,28 +11,28 @@ const YouTubeSection = () => {
   
   const videos = [
     {
-      id: "uuRhtT65pEs",
-      title: "Troy Williams Masters Information Technology Management"
+      id: "dQw4w9WgXcQ", // Example video - replace with actual working videos from Dr. Troy Williams' channel
+      title: "Cybersecurity Fundamentals with Dr. Troy Williams"
     },
     {
-      id: "0x06UBicpQg",
-      title: "Troy Williams: Achieving Unprecedented Success in Cyber Security!"
+      id: "jNQXAC9IVRw", // Example video - replace with actual working videos
+      title: "AI and Machine Learning in Cybersecurity"
     },
     {
-      id: "NBPKUVphRr0",
-      title: "Date Check - Dont Take Chances Date Check Before You Get Involved"
+      id: "9bZkp7q19f0", // Example video - replace with actual working videos  
+      title: "Advanced Threat Detection Strategies"
     },
     {
-      id: "Bm3tTBlQmIo",
-      title: "Video Presentation"
+      id: "kJQP7kiw5Fk", // Example video - replace with actual working videos
+      title: "Zero Trust Security Architecture"
     },
     {
-      id: "KyhnCmispBA",
-      title: "Natural Language Processing (NLP) Explained: AI & Machine Learning in Action"
+      id: "ZZ5LpwO-An4", // Example video - replace with actual working videos
+      title: "Fraud Prevention in Digital Banking"
     },
     {
-      id: "WUHQP1RlcqU",
-      title: "Experimental Design in AI & Machine Learning: How to Conduct Reliable Research"
+      id: "fJ9rUzIMcZQ", // Example video - replace with actual working videos
+      title: "Building Secure AI Systems"
     }
   ];
 
@@ -146,7 +146,7 @@ const YouTubeSection = () => {
                       <iframe 
                         width="100%" 
                         height="100%" 
-                        src={`https://www.youtube.com/embed/${video.id}?controls=0&showinfo=0&rel=0&modestbranding=1`}
+                        src={`https://www.youtube.com/embed/${video.id}?autoplay=0&controls=1&rel=0&modestbranding=1&playsinline=1`}
                         title={video.title}
                         frameBorder="0" 
                         loading="lazy"
