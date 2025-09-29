@@ -150,16 +150,6 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
                 Cybersecurity Consulting
               </Link>
             </li>
-            <li>
-              <Link to="/appointments" className="text-white/80 hover:text-white transition-colors">
-                Executive Briefings
-              </Link>
-            </li>
-            <li>
-              <Link to="/webinars" className="text-white/80 hover:text-white transition-colors">
-                Expert Webinars
-              </Link>
-            </li>
           </ul>
         </div>
 

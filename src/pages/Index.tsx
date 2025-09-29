@@ -309,27 +309,6 @@ const Index = () => {
                 </Button>
               </div>
               
-              <div className="bg-gradient-to-br from-[#3C3B6E]/5 to-[#3C3B6E]/10 border border-[#3C3B6E]/20 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-[#3C3B6E] rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-[#3C3B6E] mb-3">Executive Briefings</h3>
-                <p className="text-gray-700 mb-4">Strategic sessions for leadership teams and stakeholders</p>
-                <Button asChild variant="outline" className="border-[#3C3B6E] text-[#3C3B6E] hover:bg-[#3C3B6E] hover:text-white">
-                  <Link to="/appointments">Schedule Now</Link>
-                </Button>
-              </div>
-              
-              <div className="bg-gradient-to-br from-[#F97316]/5 to-[#F97316]/10 border border-[#F97316]/20 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-[#F97316] rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Award className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-[#3C3B6E] mb-3">Expert Webinars</h3>
-                <p className="text-gray-700 mb-4">Educational sessions on cutting-edge security topics</p>
-                <Button asChild variant="outline" className="border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white">
-                  <Link to="/webinars">View Schedule</Link>
-                </Button>
-              </div>
             </div>
           </div>
         </div>
