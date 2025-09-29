@@ -13,6 +13,7 @@ import { ArrowRight, FileText, Shield, Users, Award, Target, Flag, Brain, Search
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AsSeenInWidget from '@/components/press/AsSeenInWidget';
+import AIChatWidget from '@/components/ai/AIChatWidget';
 
 // Lazy load less critical components
 const WorkHistory = lazy(() => import("@/components/WorkHistory"));
@@ -360,9 +361,12 @@ const Index = () => {
         <SocialLinks />
       </main>
 
-      <Footer />
-    </div>
-  );
-};
+        <Footer />
+        
+        {/* AI Chat Widget */}
+        <AIChatWidget defaultChatType="general" />
+      </div>
+    );
+  };
 
 export default Index;

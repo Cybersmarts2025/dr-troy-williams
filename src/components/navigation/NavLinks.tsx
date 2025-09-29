@@ -1,6 +1,6 @@
 
 import { useLocation } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText, Flag, Award } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText, Flag, Award, Bot } from "lucide-react";
 import NavLink from "./NavLink";
 import NavButton from "./NavButton";
 
@@ -86,6 +86,16 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         baseShadow={baseShadow} 
         color="#6366F1" 
         hoverColor="#6366F1" 
+      />
+      
+      <NavLink 
+        to="/ai-tools" 
+        icon={Bot} 
+        label="AI Tools" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#3C3B6E" 
+        hoverColor="#3C3B6E" 
       />
       <NavButton 
         onClick={() => handleSectionClick('work')}
