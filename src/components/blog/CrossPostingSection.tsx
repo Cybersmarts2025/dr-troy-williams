@@ -31,7 +31,7 @@ const CrossPostingSection = () => {
           </CardHeader>
           <CardFooter className="flex justify-center pt-2">
             <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-              <a href="https://www.linkedin.com/in/troywilliams" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/cybersmarts/" target="_blank" rel="noopener noreferrer">
                 Connect on LinkedIn
               </a>
             </Button>

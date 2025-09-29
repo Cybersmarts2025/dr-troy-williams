@@ -65,7 +65,7 @@ const Index = () => {
         jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority"
         description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation."
         alumniOf={["Capitol Technology University", "Western Governors University"]}
-        sameAs={["https://www.linkedin.com/in/troywilliams", "https://twitter.com/troywilliams"]}
+        sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]}
       />
       
       {/* Schema.org markup for Cybersmarts.ai organization */}

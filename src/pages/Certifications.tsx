@@ -24,7 +24,7 @@ const Certifications = () => {
         jobTitle="AI Scientist & Cybersecurity Expert"
         description="AI Scientist and Cybersecurity Expert with over 80 professional certifications spanning three decades of excellence in cybersecurity, artificial intelligence, cloud technologies, and investigative practices."
         sameAs={[
-          "https://www.linkedin.com/in/drtroywilliams",
+          "https://www.linkedin.com/in/cybersmarts/",
           "https://twitter.com/drtroywilliams"
         ]}
       />

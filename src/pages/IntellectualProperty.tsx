@@ -38,7 +38,7 @@ const IntellectualProperty = () => {
     },
     "url": "https://www.drtroywilliams.net",
     "sameAs": [
-      "https://www.linkedin.com/in/drtroywilliams",
+      "https://www.linkedin.com/in/cybersmarts/",
       "https://www.researchgate.net/profile/Troy-Williams",
       "https://ssrn.com/author=5240753",
       "https://scholar.google.com/citations?user=drtroywilliams"

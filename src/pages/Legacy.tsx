@@ -41,7 +41,7 @@ const Legacy = () => {
         jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority"
         description="Dr. Troy Williams dedicates his life's work to defining a new era of sovereign, ethical technology built on unyielding principles."
         alumniOf={["Capitol Technology University", "Western Governors University"]}
-        sameAs={["https://www.linkedin.com/in/troywilliams", "https://twitter.com/troywilliams"]}
+        sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]}
       />
       
       <NavBar />
