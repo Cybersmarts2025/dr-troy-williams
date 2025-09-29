@@ -134,7 +134,7 @@ const Index = () => {
               </Card>
               
               {/* As Seen In Widget */}
-              <div className="py-8 bg-white rounded-lg shadow-sm border border-gray-100 mb-8">
+              <div className="py-4 bg-white rounded-lg shadow-sm border border-gray-100 mb-4">
                 <AsSeenInWidget />
               </div>
 
