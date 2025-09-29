@@ -178,7 +178,7 @@ const YouTubeSection = () => {
           className="text-center mt-10"
         >
           <a 
-            href="https://www.youtube.com/@cybersmarts2025" 
+            href="https://www.youtube.com/@DrTroyWilliamsPhD" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#B22234] text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#9B0000] transition-colors"

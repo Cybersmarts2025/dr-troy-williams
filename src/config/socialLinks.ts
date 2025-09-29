@@ -2,7 +2,7 @@
 import { Facebook, Linkedin, Youtube, Mail, Twitter, Globe } from "lucide-react";
 
 export const socialLinks = [
-  { icon: Youtube, label: "YouTube", url: "https://www.youtube.com/@cybersmarts2025" },
+  { icon: Youtube, label: "YouTube", url: "https://www.youtube.com/@DrTroyWilliamsPhD" },
   { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/cybersmarts/" },
   { icon: Facebook, label: "Facebook", url: "https://www.facebook.com/verifiedsafe" },
   { icon: Mail, label: "Email", url: "mailto:verifiedsafe8@gmail.com" }
