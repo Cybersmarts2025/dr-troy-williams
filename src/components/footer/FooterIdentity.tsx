@@ -29,35 +29,11 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
   };
 
   const handleDownloadPortfolio = async () => {
-    try {
-      // Get the download URL from Supabase storage
-      const { data } = supabase.storage
-        .from('downloads')
-        .getPublicUrl('cv-troy-williams.pdf');
-      
-      if (data?.publicUrl) {
-        // Create a temporary link and trigger download
-        const link = document.createElement('a');
-        link.href = data.publicUrl;
-        link.download = 'Dr-Troy-Williams-Portfolio.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        toast({
-          title: "Download Started",
-          description: "Your portfolio download has started.",
-        });
-      } else {
-        throw new Error('Portfolio not available');
-      }
-    } catch (error) {
-      toast({
-        title: "Download Error",
-        description: "Portfolio file is not currently available. Please contact us directly.",
-        variant: "destructive",
-      });
-    }
+    toast({
+      title: "Portfolio Unavailable",
+      description: "Portfolio file is not currently available. Please contact us directly for access.",
+      variant: "destructive",
+    });
   };
 
   return (
