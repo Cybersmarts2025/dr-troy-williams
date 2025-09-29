@@ -1,6 +1,6 @@
 
 import { useLocation } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText, Flag, Award, Bot } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText, Flag, Award, Bot, Users } from "lucide-react";
 import NavLink from "./NavLink";
 import NavButton from "./NavButton";
 
@@ -97,7 +97,18 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         color="#3C3B6E" 
         hoverColor="#3C3B6E" 
       />
-      <NavButton 
+      
+      <NavLink 
+        to="/mentorship" 
+        icon={Users} 
+        label="Mentorship" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#B22234" 
+        hoverColor="#B22234" 
+      />
+      
+      <NavButton
         onClick={() => handleSectionClick('work')}
         icon={Briefcase} 
         label="Work History" 

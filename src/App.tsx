@@ -38,6 +38,7 @@ import Consultation from "./pages/Consultation";
 import Certifications from "./pages/Certifications";
 import AutoSecurity from "./pages/AutoSecurity";
 import AITools from "./pages/AITools";
+import MentorshipProgram from "./pages/MentorshipProgram";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -82,6 +83,7 @@ const App = () => (
                 <Route path="/consultation" element={<Consultation />} />
                 <Route path="/certifications" element={<Certifications />} />
                 <Route path="/ai-tools" element={<AITools />} />
+                <Route path="/mentorship" element={<MentorshipProgram />} />
                 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminDashboard />} />
