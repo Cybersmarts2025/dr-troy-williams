@@ -22,6 +22,13 @@ const Press = () => {
 
   const { toast } = useToast();
   const [features, setFeatures] = useState<MediaFeature[]>([{
+    outlet: "Nashville Voyager Magazine",
+    title: "Inspiring Conversations with Dr. Troy Williams, PhD — Founder of Cybersmarts.ai LLC",
+    date: "October 14, 2025",
+    description: "Dr. Troy Williams shares the story behind Cybersmarts.ai LLC and his proprietary U.S.-built systems — PatriotProof™, FraudDNA™, AISF™, and PPP™ — engineered to Protect America Through Technology™.",
+    link: "https://nashvillevoyager.com/interview/inspiring-conversations-with-dr-troy-williams-of-cybersmarts-ai-llc",
+    logo: "https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
+  }, {
     outlet: "CNN",
     title: "AI in National Defense: Securing America's Digital Borders",
     date: "April 15, 2024",
@@ -141,6 +148,20 @@ const Press = () => {
         sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]} 
       />
 
+      {/* Add schema markup for Nashville Voyager feature */}
+      <NewsArticleSchema
+        headline="Inspiring Conversations with Dr. Troy Williams, PhD — Founder of Cybersmarts.ai LLC"
+        description="Exclusive Nashville Voyager interview with Dr. Troy Williams, PhD — Founder and President of Cybersmarts.ai LLC — published October 14, 2025, covering AI ethics, cybersecurity innovation, and America's technological resilience."
+        image="https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
+        datePublished="October 14, 2025"
+        author="Dr. Troy Williams"
+        publisher={{
+          name: "Nashville Voyager Magazine",
+          logo: "https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
+        }}
+        url="https://nashvillevoyager.com/interview/inspiring-conversations-with-dr-troy-williams-of-cybersmarts-ai-llc"
+      />
+      
       {/* Add schema markup for the press release */}
       <NewsArticleSchema
         headline="Dr. Troy Williams, PhD, Pledges to Complete the Unfinished Work of AI and Cybersecurity Pioneers"
