@@ -58,11 +58,9 @@ const Auth = () => {
     setIsSendingReset(true);
 
     try {
-      const redirectUrl = `${window.location.origin}/auth`;
-      
-      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
-        redirectTo: redirectUrl,
-      });
+      // Let Supabase use the Site URL configured in the dashboard
+      // This avoids localhost issues when sending from development
+      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail);
 
       if (error) {
         toast.error(error.message);
