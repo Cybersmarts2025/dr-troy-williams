@@ -39,9 +39,9 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
     if (isOpen && messages.length === 0) {
       // Add welcome message based on chat type
       const welcomeMessages = {
-        general: "👋 Hi! I'm Dr. Troy Williams' AI assistant. I can help answer your cybersecurity questions, explain security concepts, or provide guidance on fraud prevention and AI safety. What would you like to know?",
-        research: "🔬 Welcome to the research assistant! I can help analyze cybersecurity papers, explain methodologies, summarize findings, or assist with literature reviews. What research topic interests you?",
-        consultation: "📅 Hello! I'm here to help you understand Dr. Williams' consultation services and assess your cybersecurity needs. Whether you need a security audit, BEC prevention strategy, or expert guidance, I can help determine the best approach. What challenges are you facing?"
+        general: "👋 Hi! I'm Dr. Troy Williams' AI assistant. I provide step-by-step, example-rich answers tailored to your context. For more depth, say ‘deep dive’. What would you like to explore?",
+        research: "🔬 Welcome! I provide detailed research analysis with key findings, methods, limitations, and next steps. Share a link or topic, or say ‘deep dive’ for a thorough review.",
+        consultation: "📅 Hello! I’ll ask a few quick questions, then outline recommended services, timelines, and immediate actions. Tell me your goals, timeline, and constraints."
       };
 
       setMessages([{
