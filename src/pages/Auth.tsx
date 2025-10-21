@@ -61,7 +61,7 @@ const Auth = () => {
       // Use production URL instead of localhost
       const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
       const redirectUrl = isLocalhost 
-        ? 'https://drtroywilliams.com/auth' 
+        ? 'https://drtroywilliams.net/auth' 
         : `${window.location.origin}/auth`;
       
       const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
