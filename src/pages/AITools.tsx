@@ -110,21 +110,6 @@ const AITools = () => {
               Leverage advanced AI technology to enhance your cybersecurity knowledge, 
               research capabilities, and decision-making processes.
             </p>
-            
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              <Badge className="bg-green-500 text-white px-4 py-2 text-sm">
-                <Zap className="h-4 w-4 mr-2" />
-                Free Until Oct 6, 2025
-              </Badge>
-              <Badge className="bg-blue-500 text-white px-4 py-2 text-sm">
-                <Sparkles className="h-4 w-4 mr-2" />
-                Powered by Gemini 2.5
-              </Badge>
-              <Badge className="bg-purple-500 text-white px-4 py-2 text-sm">
-                <Shield className="h-4 w-4 mr-2" />
-                Cybersecurity Focused
-              </Badge>
-            </div>
           </div>
         </section>
 
