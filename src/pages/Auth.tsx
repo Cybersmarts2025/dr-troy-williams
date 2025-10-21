@@ -58,9 +58,15 @@ const Auth = () => {
     setIsSendingReset(true);
 
     try {
-      // Let Supabase use the Site URL configured in the dashboard
-      // This avoids localhost issues when sending from development
-      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail);
+      // Use production URL instead of localhost
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const redirectUrl = isLocalhost 
+        ? 'https://drtroywilliams.com/auth' 
+        : `${window.location.origin}/auth`;
+      
+      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
+        redirectTo: redirectUrl,
+      });
 
       if (error) {
         toast.error(error.message);
