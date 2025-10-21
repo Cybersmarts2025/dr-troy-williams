@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         .from('user_roles')
         .select('role')
         .eq('user_id', userId)
-        .single();
+        .maybeSingle(); // Changed from .single() to prevent errors when no role exists
 
       if (error) {
         console.error('Error fetching user role:', error);
@@ -88,10 +88,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signUp = async (email: string, password: string) => {
     try {
-      const redirectUrl = `${window.location.origin}/`;
+      // Determine secure redirect URL
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const redirectUrl = isLocalhost 
+        ? 'https://drtroywilliams.net/' 
+        : `${window.location.origin}/`;
       
       const { error } = await supabase.auth.signUp({
-        email,
+        email: email.trim().toLowerCase(), // Normalize email
         password,
         options: {
           emailRedirectTo: redirectUrl
@@ -104,7 +108,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       toast.success("Registration successful! Please check your email for verification.");
     } catch (error: any) {
-      toast.error(error.message || "Failed to sign up");
+      // Sanitize error messages to avoid exposing sensitive information
+      const userMessage = error.message?.includes('already registered') 
+        ? 'An account with this email already exists. Please sign in instead.'
+        : error.message || "Failed to sign up. Please try again.";
+      
+      toast.error(userMessage);
       throw error;
     }
   };
@@ -112,7 +121,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signIn = async (email: string, password: string) => {
     try {
       const { error } = await supabase.auth.signInWithPassword({
-        email,
+        email: email.trim().toLowerCase(), // Normalize email
         password,
       });
 
@@ -122,7 +131,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       toast.success("Signed in successfully!");
     } catch (error: any) {
-      toast.error(error.message || "Failed to sign in");
+      // Sanitize error messages for security
+      const userMessage = error.message?.includes('Invalid login credentials')
+        ? 'Invalid email or password. Please try again.'
+        : error.message || "Failed to sign in. Please try again.";
+      
+      toast.error(userMessage);
       throw error;
     }
   };

@@ -3,16 +3,18 @@ import { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Helmet } from 'react-helmet-async';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Eye, EyeOff, Lock, Mail, AlertCircle } from 'lucide-react';
 import { WebPageSchema } from '@/utils/schemaMarkup';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { validateAuthInput, validatePasswordResetInput } from '@/utils/authValidation';
 
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
@@ -26,6 +28,7 @@ const Auth = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [resetEmail, setResetEmail] = useState('');
   const [isSendingReset, setIsSendingReset] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const { user, isLoading, signIn, signUp } = useAuth();
   const navigate = useNavigate();
 
@@ -36,18 +39,28 @@ const Auth = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setValidationErrors([]);
     setIsSubmitting(true);
 
     try {
+      // Validate inputs before submission
+      const validation = validateAuthInput(email, password);
+      
+      if (!validation.isValid) {
+        setValidationErrors(validation.errors);
+        setIsSubmitting(false);
+        return;
+      }
+
       if (activeTab === 'login') {
-        await signIn(email, password);
+        await signIn(validation.data!.email, validation.data!.password);
         navigate('/');
       } else {
-        await signUp(email, password);
+        await signUp(validation.data!.email, validation.data!.password);
       }
     } catch (error: any) {
-      // Error handling is already done in AuthContext with toast messages
-      console.error('Authentication error:', error);
+      // Error handling is done in AuthContext
+      console.error('Authentication error');
     } finally {
       setIsSubmitting(false);
     }
@@ -55,16 +68,26 @@ const Auth = () => {
 
   const handleForgotPassword = async (e: React.FormEvent) => {
     e.preventDefault();
+    setValidationErrors([]);
     setIsSendingReset(true);
 
     try {
+      // Validate email input
+      const validation = validatePasswordResetInput(resetEmail);
+      
+      if (!validation.isValid) {
+        setValidationErrors(validation.errors);
+        setIsSendingReset(false);
+        return;
+      }
+
       // Use production URL instead of localhost
       const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
       const redirectUrl = isLocalhost 
         ? 'https://drtroywilliams.net/auth' 
         : `${window.location.origin}/auth`;
       
-      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
+      const { error } = await supabase.auth.resetPasswordForEmail(validation.data!.email, {
         redirectTo: redirectUrl,
       });
 
@@ -76,7 +99,7 @@ const Auth = () => {
         setResetEmail('');
       }
     } catch (error: any) {
-      console.error('Password reset error:', error);
+      console.error('Password reset error');
       toast.error('Failed to send reset email. Please try again.');
     } finally {
       setIsSendingReset(false);
@@ -108,6 +131,11 @@ const Auth = () => {
               <CardTitle className="text-center text-2xl font-bold text-red-600">
                 {activeTab === 'login' ? 'Welcome Back' : 'Create Account'}
               </CardTitle>
+              {activeTab === 'signup' && (
+                <CardDescription className="text-center text-sm text-gray-600 mt-2">
+                  Password must be at least 12 characters with uppercase, lowercase, number, and special character
+                </CardDescription>
+              )}
             </CardHeader>
             
             <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -118,6 +146,19 @@ const Auth = () => {
               
               <form onSubmit={handleSubmit}>
                 <CardContent className="space-y-4">
+                  {validationErrors.length > 0 && (
+                    <Alert variant="destructive">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        <ul className="list-disc pl-4 space-y-1">
+                          {validationErrors.map((error, idx) => (
+                            <li key={idx} className="text-sm">{error}</li>
+                          ))}
+                        </ul>
+                      </AlertDescription>
+                    </Alert>
+                  )}
+                  
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-sm font-medium">
                       Email Address
