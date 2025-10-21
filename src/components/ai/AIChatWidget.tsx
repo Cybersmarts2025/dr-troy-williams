@@ -320,7 +320,7 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
             </div>
             
             <div className="text-xs text-gray-500 mt-2 text-center">
-              Powered by Lovable AI • Using Gemini 2.5 Flash (Free until Oct 6)
+              Powered by Lovable AI • Using Gemini 2.5 Flash
             </div>
           </div>
         </CardContent>

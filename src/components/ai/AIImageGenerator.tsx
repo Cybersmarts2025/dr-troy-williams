@@ -215,7 +215,7 @@ const AIImageGenerator: React.FC = () => {
                 technology, and business contexts.
               </p>
               <p className="text-blue-600 text-xs mt-2">
-                <strong>Free until Oct 6, 2025</strong> • High-quality results • Commercial use allowed
+                High-quality results • Commercial use allowed • Professional output
               </p>
             </div>
           </div>
