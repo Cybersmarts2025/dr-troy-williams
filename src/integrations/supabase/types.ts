@@ -728,6 +728,42 @@ export type Database = {
         }
         Relationships: []
       }
+      website_content: {
+        Row: {
+          content: string
+          content_type: string | null
+          embedding: string | null
+          id: string
+          indexed_at: string | null
+          metadata: Json | null
+          title: string
+          updated_at: string | null
+          url: string
+        }
+        Insert: {
+          content: string
+          content_type?: string | null
+          embedding?: string | null
+          id?: string
+          indexed_at?: string | null
+          metadata?: Json | null
+          title: string
+          updated_at?: string | null
+          url: string
+        }
+        Update: {
+          content?: string
+          content_type?: string | null
+          embedding?: string | null
+          id?: string
+          indexed_at?: string | null
+          metadata?: Json | null
+          title?: string
+          updated_at?: string | null
+          url?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -799,6 +835,21 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      search_website_content: {
+        Args: {
+          match_count?: number
+          match_threshold?: number
+          query_embedding: string
+        }
+        Returns: {
+          content: string
+          id: string
+          metadata: Json
+          similarity: number
+          title: string
+          url: string
+        }[]
       }
       verify_security_policies: {
         Args: Record<PropertyKey, never>

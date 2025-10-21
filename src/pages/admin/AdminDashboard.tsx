@@ -55,6 +55,21 @@ const AdminDashboard = () => {
             <Card>
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-2">
+                  <Upload className="h-5 w-5 text-[#F97316]" />
+                  AI Content Indexer
+                </CardTitle>
+                <CardDescription>Index website content for AI assistant</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild className="w-full">
+                  <Link to="/admin/indexer">Website Indexer</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader className="pb-4">
+                <CardTitle className="flex items-center gap-2">
                   <Users className="h-5 w-5 text-[#B22234]" />
                   User Management
                 </CardTitle>

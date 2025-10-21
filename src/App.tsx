@@ -30,6 +30,7 @@ import AdminBlog from "./pages/admin/AdminBlog";
 import NewBlogPost from "./pages/admin/NewBlogPost";
 import EditBlogPost from "./pages/admin/EditBlogPost";
 import ContentManager from "./pages/admin/ContentManager";
+import WebsiteIndexerPage from "./pages/admin/WebsiteIndexerPage";
 import TestimonialSubmission from "./pages/TestimonialSubmission";
 import Bookmarks from "./pages/Bookmarks";
 import Appointments from "./pages/Appointments";
@@ -93,6 +94,7 @@ const App = () => (
                 <Route path="/admin/blog/new" element={<NewBlogPost />} />
                 <Route path="/admin/blog/edit/:postId" element={<EditBlogPost />} />
                 <Route path="/admin/content" element={<ContentManager />} />
+                <Route path="/admin/indexer" element={<WebsiteIndexerPage />} />
                 <Route path="/auto-security" element={<AutoSecurity />} />
                 
                 <Route path="/testimonial" element={<TestimonialSubmission />} />

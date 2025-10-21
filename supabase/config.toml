@@ -12,3 +12,12 @@ verify_jwt = false
 
 [functions.generate-search-embedding]
 verify_jwt = false
+
+[functions.index-website-content]
+verify_jwt = false
+
+[functions.search-website-content]
+verify_jwt = false
+
+[functions.ai-cybersecurity-chat]
+verify_jwt = false
