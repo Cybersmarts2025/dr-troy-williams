@@ -39,16 +39,6 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
       />
       
       <NavLink 
-        to="/legacy" 
-        icon={Flag} 
-        label="Legacy" 
-        isScrolled={isScrolled} 
-        baseShadow={baseShadow} 
-        color="#B22234" 
-        hoverColor="#B22234" 
-      />
-      
-      <NavLink 
         to="/books" 
         icon={Book} 
         label="Books" 
@@ -79,16 +69,6 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
       />
       
       <NavLink 
-        to="/certifications" 
-        icon={Award} 
-        label="Certifications" 
-        isScrolled={isScrolled} 
-        baseShadow={baseShadow} 
-        color="#6366F1" 
-        hoverColor="#6366F1" 
-      />
-      
-      <NavLink 
         to="/ai-tools" 
         icon={Bot} 
         label="AI Tools" 
@@ -96,36 +76,6 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         baseShadow={baseShadow} 
         color="#3C3B6E" 
         hoverColor="#3C3B6E" 
-      />
-      
-      <NavLink 
-        to="/mentorship" 
-        icon={Users} 
-        label="Mentorship" 
-        isScrolled={isScrolled} 
-        baseShadow={baseShadow} 
-        color="#B22234" 
-        hoverColor="#B22234" 
-      />
-      
-      <NavButton
-        onClick={() => handleSectionClick('work')}
-        icon={Briefcase} 
-        label="Work History" 
-        isScrolled={isScrolled} 
-        baseShadow={baseShadow} 
-        color="#F97316" 
-        hoverColor="#F97316" 
-      />
-      
-      <NavButton 
-        onClick={() => handleSectionClick('videos')}
-        icon={Video} 
-        label="Videos" 
-        isScrolled={isScrolled} 
-        baseShadow={baseShadow} 
-        color="#1EAEDB" 
-        hoverColor="#1EAEDB" 
       />
       
       <NavButton 

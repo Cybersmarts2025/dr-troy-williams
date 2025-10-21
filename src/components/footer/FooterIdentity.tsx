@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { FileText, Shield, Award, Book, Flag, Newspaper, Users, Video } from 'lucide-react';
+import { FileText, Shield, Award, Book, Flag, Newspaper, Users, Video, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -81,6 +81,15 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
               </Link>
             </li>
             <li>
+              <button 
+                onClick={() => handleSectionClick('work')} 
+                className="text-white/80 hover:text-white transition-colors flex items-center gap-2 text-left"
+              >
+                <Briefcase className="h-4 w-4" />
+                Work History
+              </button>
+            </li>
+            <li>
               <Link 
                 to="/ip" 
                 className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
@@ -127,6 +136,12 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
                 Cybersecurity Consulting
               </Link>
             </li>
+            <li>
+              <Link to="/mentorship" className="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Mentorship Program
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -142,15 +157,6 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
               <Link to="/testimonial" className="text-white/80 hover:text-white transition-colors">
                 Submit Testimonial
               </Link>
-            </li>
-            <li>
-              <button 
-                onClick={() => handleSectionClick('mentoring')} 
-                className="text-white/80 hover:text-white transition-colors flex items-center gap-2 text-left"
-              >
-                <Users className="h-4 w-4" />
-                Mentoring Programs
-              </button>
             </li>
             <li className="text-white/60 text-sm pt-2 border-t border-white/20">
               <span className="text-white/80">Connect:</span>{' '}
