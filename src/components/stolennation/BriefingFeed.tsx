@@ -29,34 +29,34 @@ const BriefingFeed = () => {
       id: '1',
       title: 'Critical: 6 AI Tools Weaponized by Cybercriminals in 2025',
       summary: 'Generative AI has been hijacked by cybercriminals to automate phishing, identity theft, and credential cracking. This Stolen Nation intelligence briefing reveals how six weaponized AI tools are transforming global fraud — and how America must defend against them now.',
-      content: `Artificial intelligence was designed to accelerate innovation — not exploitation. Yet in 2025, we are witnessing a global criminal arms race built entirely on AI.  
+      content: `Artificial intelligence was designed to accelerate innovation, not exploitation. Yet in 2025, we are witnessing a global criminal arms race built entirely on AI.  
 The same technologies powering digital transformation in business and science are now being weaponized by cybercriminals to automate phishing, clone voices, write malware, and crack passwords in seconds.
 
-According to the FBI's 2025 Internet Crime Complaint Center (IC3) report, AI-enhanced fraud losses have already surpassed $10.3 billion. These numbers represent not just financial theft — but the erosion of human trust.  
+According to the FBI's 2025 Internet Crime Complaint Center (IC3) report, AI-enhanced fraud losses have already surpassed $10.3 billion. These numbers represent not just financial theft, but the erosion of human trust.  
 
-### The Rise of Criminal AI Platforms
+The Rise of Criminal AI Platforms
 
 Dark-web marketplaces now openly advertise AI-driven crime-ware.  
 Six tools, in particular, dominate the underground landscape:
 
-1. WormGPT – A modified language model built to generate spear-phishing emails without ethical safeguards. It can compose personalized scams in multiple languages.  
-2. FraudGPT – Trained on leaked cybersecurity manuals and real phishing data. Used to craft fake invoices, tax forms, and malicious scripts that evade antivirus filters.  
-3. PassGAN – A neural network capable of predicting passwords by learning statistical patterns from breached datasets. It can crack 51 % of passwords in under a minute.  
-4. PoisonGPT – An AI tool that injects misinformation and malicious prompts into chat systems and training data, allowing criminals to manipulate AI outputs.  
-5. Speechif.ai – An emerging deepfake voice generator capable of mimicking any voice from a 10-second sample. Used in ransom calls, impersonation scams, and synthetic identity fraud.  
-6. Freedom.ai – Marketed as an "autonomous cyber-operations suite," this tool automates phishing, lateral movement, and social engineering attacks — all through a conversational interface.
+1. WormGPT: A modified language model built to generate spear-phishing emails without ethical safeguards. It can compose personalized scams in multiple languages.  
+2. FraudGPT: Trained on leaked cybersecurity manuals and real phishing data. Used to craft fake invoices, tax forms, and malicious scripts that evade antivirus filters.  
+3. PassGAN: A neural network capable of predicting passwords by learning statistical patterns from breached datasets. It can crack 51 % of passwords in under a minute.  
+4. PoisonGPT: An AI tool that injects misinformation and malicious prompts into chat systems and training data, allowing criminals to manipulate AI outputs.  
+5. Speechif.ai: An emerging deepfake voice generator capable of mimicking any voice from a 10-second sample. Used in ransom calls, impersonation scams, and synthetic identity fraud.  
+6. Freedom.ai: Marketed as an "autonomous cyber-operations suite," this tool automates phishing, lateral movement, and social engineering attacks, all through a conversational interface.
 
 Each of these models removes the friction of traditional cybercrime. Tasks that once required skill and time are now accessible to anyone with $20 in cryptocurrency.
 
-### The Shift from Manual to Machine-Speed Crime
+The Shift from Manual to Machine-Speed Crime
 
 In 2024, phishing attacks were still handcrafted; in 2025, they are fully automated pipelines.  
-A criminal inputs a name and company domain, and within seconds, an AI engine produces an email, voice message, and fake website — all customized for that target.  
+A criminal inputs a name and company domain, and within seconds, an AI engine produces an email, voice message, and fake website, all customized for that target.  
 The phishing-to-compromise timeline that once spanned days is now measured in minutes.
 
-This shift mirrors the industrial revolution of cybercrime — efficiency, scalability, and anonymity fused into a single automated threat stream.
+This shift mirrors the industrial revolution of cybercrime: efficiency, scalability, and anonymity fused into a single automated threat stream.
 
-### Verified Trends Across Law Enforcement
+Verified Trends Across Law Enforcement
 
 The FBI, Europol, and CISA jointly confirmed a 47 % increase in AI-enabled phishing across North America in Q1 2025.  
 CISA's Director described it as "machine-learning weaponization at civilian scale." ([CISA Advisory 2025-04](https://www.cisa.gov/)).  
@@ -64,47 +64,45 @@ Financial institutions report similar spikes: one Tennessee credit union interce
 
 Deepfake voice scams have also exploded. Victims across the Southeast have received calls from "family members" or "company executives" whose cloned voices demanded urgent payments or private credentials. Many victims described them as indistinguishable from reality.
 
-### The National Security Dimension
+The National Security Dimension
 
 Beyond consumer scams, these weaponized AI tools represent a growing national security threat.  
-State-aligned cyber groups are experimenting with PoisonGPT-style misinformation models to infiltrate training data of smaller AI startups — effectively poisoning civilian infrastructure at the foundation.  
+State-aligned cyber groups are experimenting with PoisonGPT-style misinformation models to infiltrate training data of smaller AI startups, effectively poisoning civilian infrastructure at the foundation.  
 Meanwhile, FraudGPT and PassGAN are being integrated into automated attack scripts against small U.S. defense contractors and healthcare providers.
 
 The Department of Homeland Security has already issued internal guidance identifying "malicious AI tool proliferation" as a Tier-1 emerging threat category.  
 If left unchecked, AI weaponization could compromise elections, emergency response systems, and financial markets.
 
-### The Proactive Defense Blueprint
+The Proactive Defense Blueprint
 
 To counter this, I have built a Proactive AI Defense Framework through PatriotProof™, designed to turn AI from a liability into an ally.  
 Its core principles include:
 
-1. Model Isolation and Attestation – Every AI model deployed within an organization should have a verifiable digital signature and hash chain to confirm its origin.  
-2. Zero-Trust AI Architecture – Never allow one AI process to operate unsupervised or self-train without audit logging.  
-3. Behavioral Sandboxing – Use containerized execution to detect AI models generating unauthorized scripts, phishing content, or exfiltration attempts.  
-4. FraudDNA™ Integration – Apply AI fingerprinting to trace malicious prompt patterns across platforms and correlate with known attack clusters.  
-5. Continuous Model Risk Assessment – Every organization should maintain an "AI Threat Register," documenting each model's capabilities, limits, and potential for misuse.  
-6. Public-Private Intelligence Fusion – Share indicators of malicious model use (hashes, outputs, prompt samples) through national cyber-fusion programs coordinated by CISA and the Secret Service.
+1. Model Isolation and Attestation: Every AI model deployed within an organization should have a verifiable digital signature and hash chain to confirm its origin.  
+2. Zero-Trust AI Architecture: Never allow one AI process to operate unsupervised or self-train without audit logging.  
+3. Behavioral Sandboxing: Use containerized execution to detect AI models generating unauthorized scripts, phishing content, or exfiltration attempts.  
+4. FraudDNA™ Integration: Apply AI fingerprinting to trace malicious prompt patterns across platforms and correlate with known attack clusters.  
+5. Continuous Model Risk Assessment: Every organization should maintain an "AI Threat Register," documenting each model's capabilities, limits, and potential for misuse.  
+6. Public-Private Intelligence Fusion: Share indicators of malicious model use (hashes, outputs, prompt samples) through national cyber-fusion programs coordinated by CISA and the Secret Service.
 
-These defenses are not theoretical — they are operational inside test environments under PatriotProof™'s PPP™ (Proactive Prevention Platform).  
+These defenses are not theoretical, they are operational inside test environments under PatriotProof™'s PPP™ (Proactive Prevention Platform).  
 When integrated, they can neutralize malicious AI activity before human victims even see the first phishing message.
 
-### Civilian Awareness and Education
+Civilian Awareness and Education
 
-Every American must understand that today's scams are no longer handwritten by criminals — they are engineered by algorithms trained to deceive.  
+Every American must understand that today's scams are no longer handwritten by criminals, they are engineered by algorithms trained to deceive.  
 Parents, business owners, and government agencies must teach the public to recognize signs of AI-generated communication: unnatural sentence flow, urgent emotional tone, and out-of-character timing.  
 Awareness is the new antivirus.
 
-### Final Assessment
+Final Assessment
 
 The convergence of WormGPT, FraudGPT, PassGAN, and their successors signals a new chapter in global cyber warfare.  
-Artificial intelligence — once our greatest innovation — has become the adversary's greatest asset.  
+Artificial intelligence, once our greatest innovation, has become the adversary's greatest asset.  
 But technology is neutral; the danger lies in who wields it.
 
 As The AI PI, my mission is to ensure that America's machines defend truth, not distort it.  
-The same intelligence that builds can also protect — if guided by ethics, verification, and vigilance.  
-This is not the end of cybersecurity — it's the beginning of Proactive AI Defense.
-
----
+The same intelligence that builds can also protect, if guided by ethics, verification, and vigilance.  
+This is not the end of cybersecurity. It's the beginning of Proactive AI Defense.
 
 Protecting America Through Technology™  
 I am not ahead of the curve. I am building the curve™  
@@ -124,9 +122,9 @@ Built in Tennessee. By Americans. For Americans.`,
       id: '3',
       title: 'Business Email Compromise (BEC) Attacks Up 47% This Quarter',
       summary: 'BEC attacks targeting small businesses reach crisis levels with average losses exceeding $120,000 per incident. Attackers impersonate executives or vendors to authorize fraudulent wire transfers—implement verbal verification protocols.',
-      content: `For the past decade, business email compromise — known in law enforcement circles as BEC — has quietly evolved from a nuisance into one of America's most financially devastating cyber crimes. In 2025, the Federal Bureau of Investigation reported a 47 percent quarterly increase in confirmed incidents nationwide. Losses now exceed $3.2 billion per quarter.
+      content: `For the past decade, business email compromise, known in law enforcement circles as BEC, has quietly evolved from a nuisance into one of America's most financially devastating cyber crimes. In 2025, the Federal Bureau of Investigation reported a 47 percent quarterly increase in confirmed incidents nationwide. Losses now exceed $3.2 billion per quarter.
 
-What makes this alarming is not only the scale, but the precision. BEC today is powered by artificial intelligence — deepfake voices, cloned faces, and context-aware language models that can mimic executives in real time.
+What makes this alarming is not only the scale, but the precision. BEC today is powered by artificial intelligence: deepfake voices, cloned faces, and context-aware language models that can mimic executives in real time.
 
 How Modern BEC Works
 
@@ -143,7 +141,7 @@ While headlines focus on large corporations, the real damage is occurring inside
 
 In Tennessee alone, reported losses jumped by 61 percent year-over-year according to the state ICAC cyber task force. The average loss per case exceeds $120,000, and less than 20 percent is ever recovered.
 
-The AI Factor — Deepfake and Data Fusion
+The AI Factor: Deepfake and Data Fusion
 
 The 2025 threat landscape introduced a new term: "synthetic identity impersonation." Attackers blend leaked data, social media biometrics, and generative AI to fabricate a digital twin of a CEO or vendor. This is not science fiction; it's an industrialized service sold on dark web forums for as little as $300 per target. Some kits even offer subscription packages with AI-generated voice mails and email templates.
 
@@ -151,7 +149,7 @@ According to the FBI's Internet Crime Complaint Center, more than 90 percent of 
 
 National and Economic Impact
 
-Every fraudulent wire transfer funds larger operations — identity theft, narcotics, and even foreign intelligence campaigns. The American Bankers Association estimates that for every $1 lost to BEC, another $4 is lost to follow-on fraud using the same credentials.
+Every fraudulent wire transfer funds larger operations: identity theft, narcotics, and even foreign intelligence campaigns. The American Bankers Association estimates that for every $1 lost to BEC, another $4 is lost to follow-on fraud using the same credentials.
 
 The U.S. Secret Service now operates a national BEC task force with real-time fund recall capabilities, yet most cases are reported too late. Speed is the difference between recovery and loss.
 
@@ -159,12 +157,12 @@ Proactive Defense Blueprint
 
 To every business owner reading this: reactive security is no longer enough. BEC requires proactive verification culture. Adopt these six layers:
 
-1. Dual Approval – No wire or ACH over $2,000 should ever be approved by one person.
-2. Out-of-Band Verification – Confirm requests by phone using pre-defined numbers not listed in the email.
-3. Email Authentication – Implement DMARC, DKIM, and SPF to validate sender domains.
-4. AI Anomaly Detection – Use platforms that flag changes in writing style or signature timing.
-5. Account Segmentation – Limit finance team access to funds; create "view only" roles for vendors.
-6. Incident Response Plan – Draft a playbook with bank contacts and law enforcement numbers ready.
+1. Dual Approval: No wire or ACH over $2,000 should ever be approved by one person.
+2. Out-of-Band Verification: Confirm requests by phone using pre-defined numbers not listed in the email.
+3. Email Authentication: Implement DMARC, DKIM, and SPF to validate sender domains.
+4. AI Anomaly Detection: Use platforms that flag changes in writing style or signature timing.
+5. Account Segmentation: Limit finance team access to funds; create "view only" roles for vendors.
+6. Incident Response Plan: Draft a playbook with bank contacts and law enforcement numbers ready.
 
 The Human Layer
 
@@ -178,9 +176,7 @@ CISA has already published new guidelines on AI threat readiness.
 
 Final Assessment
 
-BEC is no longer just a cyber issue; it is a national economic threat. As The AI PI, I see a direct connection between these attacks and the erosion of trust in digital commerce. The only effective counter measure is proactive intelligence—training machines and humans to detect deception before it costs another payroll, another contract, another American job.
-
----
+BEC is no longer just a cyber issue; it is a national economic threat. As The AI PI, I see a direct connection between these attacks and the erosion of trust in digital commerce. The only effective counter measure is proactive intelligence: training machines and humans to detect deception before it costs another payroll, another contract, another American job.
 
 Protecting America Through Technology™
 I am not ahead of the curve. I am building the curve™
