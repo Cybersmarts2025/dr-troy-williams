@@ -483,7 +483,7 @@ Built in Tennessee. By Americans. For Americans.`,
           <DialogTrigger asChild>
             <Button className="bg-[#B22234] hover:bg-[#8B1A28]">
               <Mail className="h-4 w-4 mr-2" />
-              Subscribe to Briefings
+              Subscribe to Dr Troy's Security Briefings
             </Button>
           </DialogTrigger>
           <DialogContent>
