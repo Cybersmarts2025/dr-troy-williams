@@ -176,6 +176,72 @@ export type Database = {
         }
         Relationships: []
       }
+      briefings: {
+        Row: {
+          audio_url: string | null
+          author: string
+          category: string
+          content: string
+          created_at: string
+          featured_image: string | null
+          geo_tags: string[]
+          id: string
+          keywords: string[]
+          publish_geo: string | null
+          published_at: string | null
+          scheduled_publish_at: string | null
+          seo_description: string
+          seo_title: string
+          slug: string
+          status: string
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          audio_url?: string | null
+          author?: string
+          category: string
+          content: string
+          created_at?: string
+          featured_image?: string | null
+          geo_tags?: string[]
+          id?: string
+          keywords?: string[]
+          publish_geo?: string | null
+          published_at?: string | null
+          scheduled_publish_at?: string | null
+          seo_description: string
+          seo_title: string
+          slug: string
+          status?: string
+          summary: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          audio_url?: string | null
+          author?: string
+          category?: string
+          content?: string
+          created_at?: string
+          featured_image?: string | null
+          geo_tags?: string[]
+          id?: string
+          keywords?: string[]
+          publish_geo?: string | null
+          published_at?: string | null
+          scheduled_publish_at?: string | null
+          seo_description?: string
+          seo_title?: string
+          slug?: string
+          status?: string
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       consultation_requests: {
         Row: {
           budget_range: string | null
@@ -770,7 +836,7 @@ export type Database = {
     }
     Functions: {
       get_current_user_role: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: Database["public"]["Enums"]["app_role"]
       }
       get_public_blog_comments: {
@@ -785,7 +851,7 @@ export type Database = {
         }[]
       }
       get_public_testimonials: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           category: string
           created_at: string
@@ -852,7 +918,7 @@ export type Database = {
         }[]
       }
       verify_security_policies: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           is_secure: boolean
           policy_name: string

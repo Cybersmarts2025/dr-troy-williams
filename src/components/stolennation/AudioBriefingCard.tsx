@@ -11,6 +11,7 @@ interface AudioBriefingCardProps {
     id: string;
     title: string;
     summary: string;
+    content?: string;
     date: string;
     category: string;
   };
@@ -25,9 +26,14 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
     setIsGenerating(true);
     
     try {
+      // Use full content if available, otherwise fall back to summary
+      const textToSpeak = briefing.content 
+        ? `${briefing.title}. ${briefing.content}` 
+        : `${briefing.title}. ${briefing.summary}`;
+
       const { data, error } = await supabase.functions.invoke('text-to-speech', {
         body: {
-          text: `${briefing.title}. ${briefing.summary}`,
+          text: textToSpeak,
           voice: 'George' // Professional male voice suitable for briefings
         }
       });

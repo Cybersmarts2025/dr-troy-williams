@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AudioBriefingCard from './AudioBriefingCard';
 import { Button } from '@/components/ui/button';
-import { Mail } from 'lucide-react';
+import { Mail, Loader2 } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -12,22 +12,19 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-
-interface Briefing {
-  id: string;
-  title: string;
-  summary: string;
-  date: string;
-  category: string;
-}
+import { useBriefings } from '@/hooks/useBriefings';
+import { format } from 'date-fns';
 
 const BriefingFeed = () => {
   const { toast } = useToast();
   const [email, setEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
+  
+  // Fetch briefings from database
+  const { data: briefings, isLoading, error } = useBriefings();
 
-  // Demo data - Updated regularly with current threats
-  const briefings: Briefing[] = [
+  // Fallback demo data if database is empty
+  const demoBriefings = [
     {
       id: '1',
       title: 'Critical: 6 AI Tools Weaponized by Cybercriminals in 2025',
@@ -141,9 +138,37 @@ const BriefingFeed = () => {
       </div>
 
       <div className="space-y-6">
-        {briefings.map((briefing) => (
-          <AudioBriefingCard key={briefing.id} briefing={briefing} />
-        ))}
+        {isLoading ? (
+          <div className="flex justify-center py-12">
+            <Loader2 className="h-8 w-8 animate-spin text-[#3C3B6E]" />
+          </div>
+        ) : error ? (
+          <div className="text-center py-12">
+            <p className="text-destructive">Error loading briefings</p>
+          </div>
+        ) : briefings && briefings.length > 0 ? (
+          briefings.map((briefing) => (
+            <AudioBriefingCard 
+              key={briefing.id} 
+              briefing={{
+                id: briefing.id,
+                title: briefing.title,
+                summary: briefing.summary,
+                content: briefing.content,
+                date: format(new Date(briefing.published_at || briefing.created_at), 'MMMM d, yyyy'),
+                category: briefing.category
+              }} 
+            />
+          ))
+        ) : demoBriefings.length > 0 ? (
+          demoBriefings.map((briefing) => (
+            <AudioBriefingCard key={briefing.id} briefing={briefing} />
+          ))
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">No briefings available</p>
+          </div>
+        )}
       </div>
 
       <div className="mt-8 text-center text-sm text-gray-500">
