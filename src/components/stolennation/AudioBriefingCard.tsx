@@ -40,10 +40,32 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
     setIsGenerating(true);
     
     try {
-      // Use full content if available, otherwise fall back to summary
-      const textToSpeak = briefing.content 
-        ? `${briefing.title}. ${briefing.content}` 
-        : `${briefing.title}. ${briefing.summary}`;
+      // Create a condensed version for audio (first 2-3 paragraphs max ~500 words)
+      // This prevents memory limits in the edge function
+      let audioText = briefing.summary;
+      
+      if (briefing.content) {
+        // Extract first few paragraphs (up to 1500 characters)
+        const paragraphs = briefing.content.split('\n\n').filter(p => p.trim().length > 0);
+        let condensedContent = '';
+        let charCount = 0;
+        
+        for (const para of paragraphs) {
+          // Skip markdown headers and very short lines
+          if (para.startsWith('#') || para.length < 50) continue;
+          
+          if (charCount + para.length < 1500) {
+            condensedContent += para + '\n\n';
+            charCount += para.length;
+          } else {
+            break;
+          }
+        }
+        
+        audioText = condensedContent.trim() || briefing.summary;
+      }
+
+      const textToSpeak = `${briefing.title}. ${audioText}`;
 
       const { data, error } = await supabase.functions.invoke('text-to-speech', {
         body: {
