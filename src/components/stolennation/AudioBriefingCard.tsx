@@ -25,17 +25,19 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const shareUrl = `${window.location.origin}/stolennation#briefing-${briefing.id}`;
-  const shareText = `${briefing.title} - Stolen Nation Intelligence Briefing by Dr. Troy Williams`;
+  const shareUrl = `${window.location.origin}/stolennation`;
+  const shareText = encodeURIComponent(`${briefing.title} - Stolen Nation Intelligence Briefing by Dr. Troy Williams`);
 
-  const handleLinkedInShare = () => {
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
-    window.open(linkedInUrl, '_blank', 'width=600,height=600');
+  const handleLinkedInShare = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(briefing.title)}&summary=${encodeURIComponent(briefing.summary)}`;
+    window.open(linkedInUrl, '_blank', 'noopener,noreferrer,width=600,height=600');
   };
 
-  const handleFacebookShare = () => {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-    window.open(facebookUrl, '_blank', 'width=600,height=600');
+  const handleFacebookShare = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${shareText}`;
+    window.open(facebookUrl, '_blank', 'noopener,noreferrer,width=600,height=600');
   };
 
   const handlePlayPause = () => {
