@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Play, Loader2, Pause, ExternalLink } from 'lucide-react';
+import { Play, Loader2, Pause, ExternalLink, Radio } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Link } from 'react-router-dom';
@@ -217,6 +217,28 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
         )}
 
         <div className="space-y-3 pt-2">
+          {/* Status Indicator */}
+          <div className="flex items-center gap-2">
+            {isGenerating && (
+              <Badge variant="secondary" className="gap-1">
+                <Loader2 className="h-3 w-3 animate-spin" />
+                Generating Audio...
+              </Badge>
+            )}
+            {isPlaying && !isGenerating && (
+              <Badge variant="secondary" className="gap-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                <Radio className="h-3 w-3 animate-pulse" />
+                Playing
+              </Badge>
+            )}
+            {audioUrls.length > 0 && !isPlaying && !isGenerating && (
+              <Badge variant="secondary" className="gap-1">
+                <Pause className="h-3 w-3" />
+                Paused
+              </Badge>
+            )}
+          </div>
+
           <div className="flex items-center gap-2 flex-wrap">
             <Button
               onClick={handlePlayPause}
