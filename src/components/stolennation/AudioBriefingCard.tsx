@@ -21,7 +21,8 @@ interface AudioBriefingCardProps {
 const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [audioUrls, setAudioUrls] = useState<string[]>([]);
+  const [currentChunkIndex, setCurrentChunkIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -40,13 +41,28 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
     window.open(facebookUrl, '_blank', 'noopener,noreferrer,width=600,height=600');
   };
 
+  const handleAudioEnded = () => {
+    // Play next chunk if available
+    if (currentChunkIndex < audioUrls.length - 1) {
+      setCurrentChunkIndex(prev => prev + 1);
+      setTimeout(() => {
+        if (audioRef.current) {
+          audioRef.current.play();
+        }
+      }, 100);
+    } else {
+      setIsPlaying(false);
+      setCurrentChunkIndex(0);
+    }
+  };
+
   const handlePlayPause = () => {
-    if (!audioRef.current) {
-      if (!audioUrl) {
-        generateAudio();
-      }
+    if (audioUrls.length === 0) {
+      generateAudio();
       return;
     }
+
+    if (!audioRef.current) return;
 
     if (isPlaying) {
       audioRef.current.pause();
@@ -57,56 +73,82 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
     }
   };
 
+  const splitTextIntoChunks = (text: string, maxChars: number = 1200): string[] => {
+    const chunks: string[] = [];
+    const paragraphs = text.split('\n\n').filter(p => p.trim().length > 0);
+    let currentChunk = '';
+
+    for (const para of paragraphs) {
+      // Skip markdown headers
+      if (para.startsWith('#')) continue;
+      
+      // If adding this paragraph would exceed limit, save current chunk and start new one
+      if (currentChunk.length + para.length > maxChars && currentChunk.length > 0) {
+        chunks.push(currentChunk.trim());
+        currentChunk = para + '\n\n';
+      } else {
+        currentChunk += para + '\n\n';
+      }
+    }
+
+    // Add remaining content
+    if (currentChunk.trim().length > 0) {
+      chunks.push(currentChunk.trim());
+    }
+
+    return chunks;
+  };
+
   const generateAudio = async () => {
     setIsGenerating(true);
+    setAudioUrls([]);
+    setCurrentChunkIndex(0);
     
     try {
-      // Create a condensed version for audio (first 2-3 paragraphs max ~500 words)
-      // This prevents memory limits in the edge function
-      let audioText = briefing.summary;
+      const fullText = briefing.content || briefing.summary;
+      const textChunks = splitTextIntoChunks(fullText);
       
-      if (briefing.content) {
-        // Extract first few paragraphs (up to 1500 characters)
-        const paragraphs = briefing.content.split('\n\n').filter(p => p.trim().length > 0);
-        let condensedContent = '';
-        let charCount = 0;
-        
-        for (const para of paragraphs) {
-          // Skip markdown headers and very short lines
-          if (para.startsWith('#') || para.length < 50) continue;
-          
-          if (charCount + para.length < 1500) {
-            condensedContent += para + '\n\n';
-            charCount += para.length;
-          } else {
-            break;
+      console.log(`Generating audio for ${textChunks.length} chunks`);
+      
+      const generatedUrls: string[] = [];
+      
+      // Generate audio for each chunk
+      for (let i = 0; i < textChunks.length; i++) {
+        const chunkText = i === 0 
+          ? `${briefing.title}. ${textChunks[i]}` 
+          : textChunks[i];
+
+        console.log(`Generating chunk ${i + 1}/${textChunks.length}`);
+
+        const { data, error } = await supabase.functions.invoke('text-to-speech', {
+          body: {
+            text: chunkText,
+            voice: 'George'
           }
+        });
+
+        if (error) throw error;
+
+        if (data?.audioUrl) {
+          generatedUrls.push(data.audioUrl);
         }
-        
-        audioText = condensedContent.trim() || briefing.summary;
       }
 
-      const textToSpeak = `${briefing.title}. ${audioText}`;
-
-      const { data, error } = await supabase.functions.invoke('text-to-speech', {
-        body: {
-          text: textToSpeak,
-          voice: 'George' // Professional male voice suitable for briefings
+      setAudioUrls(generatedUrls);
+      
+      // Auto-play first chunk
+      setTimeout(() => {
+        if (audioRef.current) {
+          audioRef.current.play();
+          setIsPlaying(true);
         }
+      }, 100);
+
+      toast({
+        title: "Audio Ready",
+        description: `Generated ${generatedUrls.length} audio segments`,
       });
 
-      if (error) throw error;
-
-      if (data?.audioUrl) {
-        setAudioUrl(data.audioUrl);
-        // Auto-play the audio
-        setTimeout(() => {
-          if (audioRef.current) {
-            audioRef.current.play();
-            setIsPlaying(true);
-          }
-        }, 100);
-      }
     } catch (error) {
       console.error('Error generating audio:', error);
       toast({
@@ -214,16 +256,23 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
             </div>
           </div>
           
-          {audioUrl && (
-            <audio 
-              ref={audioRef}
-              src={audioUrl}
-              onEnded={() => setIsPlaying(false)}
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-            >
-              Your browser does not support the audio element.
-            </audio>
+          {audioUrls.length > 0 && (
+            <>
+              <audio 
+                ref={audioRef}
+                src={audioUrls[currentChunkIndex]}
+                onEnded={handleAudioEnded}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+              >
+                Your browser does not support the audio element.
+              </audio>
+              {audioUrls.length > 1 && (
+                <div className="text-xs text-muted-foreground">
+                  Segment {currentChunkIndex + 1} of {audioUrls.length}
+                </div>
+              )}
+            </>
           )}
         </div>
       </CardContent>
