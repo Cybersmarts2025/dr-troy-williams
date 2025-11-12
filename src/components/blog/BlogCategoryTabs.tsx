@@ -9,7 +9,7 @@ import { BlogPost } from '@/types/blog';
 interface BlogCategoryTabsProps {
   activeCategory: string;
   setActiveCategory: (category: string) => void;
-  filteredPosts: BlogPost[];
+  allPosts: BlogPost[];
   getCategoryCount: (category: string) => number;
   containerVariants: any;
   itemVariants: any;
@@ -18,11 +18,17 @@ interface BlogCategoryTabsProps {
 const BlogCategoryTabs = ({ 
   activeCategory, 
   setActiveCategory, 
-  filteredPosts, 
+  allPosts, 
   getCategoryCount,
   containerVariants,
   itemVariants
 }: BlogCategoryTabsProps) => {
+  // Filter posts by category
+  const getPostsByCategory = (category: string) => {
+    if (category === "all") return allPosts;
+    return allPosts.filter(post => post.category === category);
+  };
+
   return (
     <Tabs value={activeCategory} onValueChange={setActiveCategory}>
       <div className="flex justify-center mb-8">
@@ -46,110 +52,33 @@ const BlogCategoryTabs = ({
       </div>
       
       {/* Tab content for each category */}
-      <TabsContent value="all" className="mt-0">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {filteredPosts.map((post) => (
-            <motion.div key={post.id} variants={itemVariants}>
-              <BlogCard post={post} />
+      {["all", "AI & Technology", "National Security", "Fraud Prevention", "Policy & Governance"].map((category) => {
+        const categoryPosts = getPostsByCategory(category);
+        return (
+          <TabsContent key={category} value={category} className="mt-0">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {categoryPosts.map((post) => (
+                <motion.div key={post.id} variants={itemVariants}>
+                  <BlogCard post={post} />
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
 
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-xl text-gray-500">No articles found.</p>
-          </div>
-        )}
-      </TabsContent>
-
-      <TabsContent value="AI & Technology" className="mt-0">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {filteredPosts.map((post) => (
-            <motion.div key={post.id} variants={itemVariants}>
-              <BlogCard post={post} />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-xl text-gray-500">No articles found in this category.</p>
-          </div>
-        )}
-      </TabsContent>
-
-      <TabsContent value="National Security" className="mt-0">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {filteredPosts.map((post) => (
-            <motion.div key={post.id} variants={itemVariants}>
-              <BlogCard post={post} />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-xl text-gray-500">No articles found in this category.</p>
-          </div>
-        )}
-      </TabsContent>
-
-      <TabsContent value="Fraud Prevention" className="mt-0">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {filteredPosts.map((post) => (
-            <motion.div key={post.id} variants={itemVariants}>
-              <BlogCard post={post} />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-xl text-gray-500">No articles found in this category.</p>
-          </div>
-        )}
-      </TabsContent>
-
-      <TabsContent value="Policy & Governance" className="mt-0">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {filteredPosts.map((post) => (
-            <motion.div key={post.id} variants={itemVariants}>
-              <BlogCard post={post} />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-xl text-gray-500">No articles found in this category.</p>
-          </div>
-        )}
-      </TabsContent>
+            {categoryPosts.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-xl text-gray-500">
+                  {category === "all" ? "No articles found." : "No articles found in this category."}
+                </p>
+              </div>
+            )}
+          </TabsContent>
+        );
+      })}
     </Tabs>
   );
 };

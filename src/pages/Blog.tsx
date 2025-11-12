@@ -219,7 +219,7 @@ const Blog = () => {
                 setActiveCategory={(category) => {
                   setSearchFilters(prev => ({ ...prev, category }));
                 }}
-                filteredPosts={filteredPosts}
+                allPosts={blogPosts}
                 getCategoryCount={getCategoryPostCount}
                 containerVariants={containerVariants}
                 itemVariants={itemVariants}
