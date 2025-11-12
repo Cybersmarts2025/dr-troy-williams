@@ -93,7 +93,7 @@ Built in Tennessee. By Americans. For Americans.`,
       id: '3',
       title: 'Business Email Compromise (BEC) Attacks Up 47% This Quarter',
       summary: 'BEC attacks targeting small businesses reach crisis levels with average losses exceeding $120,000 per incident. Attackers impersonate executives or vendors to authorize fraudulent wire transfers—implement verbal verification protocols.',
-      content: `For the past decade, business email compromise — known in law enforcement circles as **BEC** — has quietly evolved from a nuisance into one of America's most financially devastating cyber crimes. In 2025, the Federal Bureau of Investigation reported a 47 percent quarterly increase in confirmed incidents nationwide. Losses now exceed $3.2 billion per quarter.
+      content: `For the past decade, business email compromise — known in law enforcement circles as BEC — has quietly evolved from a nuisance into one of America's most financially devastating cyber crimes. In 2025, the Federal Bureau of Investigation reported a 47 percent quarterly increase in confirmed incidents nationwide. Losses now exceed $3.2 billion per quarter.
 
 What makes this alarming is not only the scale, but the precision. BEC today is powered by artificial intelligence — deepfake voices, cloned faces, and context-aware language models that can mimic executives in real time.
 

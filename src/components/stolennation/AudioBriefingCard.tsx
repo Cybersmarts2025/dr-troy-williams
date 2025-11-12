@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Play, Loader2, Share2 } from 'lucide-react';
+import { Play, Loader2, Pause } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -22,6 +22,8 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const shareUrl = `${window.location.origin}/stolennation#briefing-${briefing.id}`;
   const shareText = `${briefing.title} - Stolen Nation Intelligence Briefing by Dr. Troy Williams`;
@@ -34,6 +36,23 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
   const handleFacebookShare = () => {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
     window.open(facebookUrl, '_blank', 'width=600,height=600');
+  };
+
+  const handlePlayPause = () => {
+    if (!audioRef.current) {
+      if (!audioUrl) {
+        generateAudio();
+      }
+      return;
+    }
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
   };
 
   const generateAudio = async () => {
@@ -79,8 +98,12 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
       if (data?.audioUrl) {
         setAudioUrl(data.audioUrl);
         // Auto-play the audio
-        const audio = new Audio(data.audioUrl);
-        audio.play();
+        setTimeout(() => {
+          if (audioRef.current) {
+            audioRef.current.play();
+            setIsPlaying(true);
+          }
+        }, 100);
       }
     } catch (error) {
       console.error('Error generating audio:', error);
@@ -139,7 +162,7 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
         <div className="space-y-3 pt-2">
           <div className="flex items-center gap-2 flex-wrap">
             <Button
-              onClick={generateAudio}
+              onClick={handlePlayPause}
               disabled={isGenerating}
               size="sm"
               className="bg-[#3C3B6E] hover:bg-[#2d2c54]"
@@ -148,6 +171,11 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
                 <>
                   <Loader2 className="h-4 w-4 mr-2 animate-spin" />
                   Generating...
+                </>
+              ) : isPlaying ? (
+                <>
+                  <Pause className="h-4 w-4 mr-2" />
+                  Pause
                 </>
               ) : (
                 <>
@@ -185,7 +213,13 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
           </div>
           
           {audioUrl && (
-            <audio controls className="w-full" src={audioUrl}>
+            <audio 
+              ref={audioRef}
+              src={audioUrl}
+              onEnded={() => setIsPlaying(false)}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+            >
               Your browser does not support the audio element.
             </audio>
           )}
