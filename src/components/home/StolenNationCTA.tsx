@@ -49,8 +49,7 @@ const StolenNationCTA = () => {
                   <Button 
                     asChild
                     size="lg"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white/10"
+                    className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#3C3B6E] transition-all"
                   >
                     <Link to="/pledge">
                       Take the Pledge
