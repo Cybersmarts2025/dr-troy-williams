@@ -45,6 +45,7 @@ import AITools from "./pages/AITools";
 import MentorshipProgram from "./pages/MentorshipProgram";
 import Portfolio from "./pages/Portfolio";
 import StolenNation from "./pages/StolenNation";
+import BriefingDetail from "./pages/BriefingDetail";
 import ScamAtlas from "./pages/ScamAtlas";
 import Pledge from "./pages/Pledge";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
@@ -96,6 +97,7 @@ const App = () => (
                 
                 {/* New Intelligence Platform Routes */}
                 <Route path="/stolennation" element={<StolenNation />} />
+                <Route path="/stolennation/:slug" element={<BriefingDetail />} />
                 <Route path="/scamatlas" element={<ScamAtlas />} />
                 <Route path="/pledge" element={<Pledge />} />
                 

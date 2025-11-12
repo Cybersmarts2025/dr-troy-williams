@@ -268,7 +268,8 @@ Built in Tennessee. By Americans. For Americans.`,
                 summary: briefing.summary,
                 content: briefing.content,
                 date: format(new Date(briefing.published_at || briefing.created_at), 'MMMM d, yyyy'),
-                category: briefing.category
+                category: briefing.category,
+                slug: briefing.slug
               }} 
             />
           ))

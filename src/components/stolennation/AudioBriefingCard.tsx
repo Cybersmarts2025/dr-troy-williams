@@ -3,9 +3,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Play, Loader2, Pause } from 'lucide-react';
+import { Play, Loader2, Pause, ExternalLink } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
 
 interface AudioBriefingCardProps {
   briefing: {
@@ -15,6 +16,7 @@ interface AudioBriefingCardProps {
     content?: string;
     date: string;
     category: string;
+    slug?: string;
   };
 }
 
@@ -26,7 +28,9 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const shareUrl = `${window.location.origin}/stolennation`;
+  const shareUrl = briefing.slug 
+    ? `${window.location.origin}/stolennation/${briefing.slug}`
+    : `${window.location.origin}/stolennation`;
   const shareText = encodeURIComponent(`${briefing.title} - Stolen Nation Intelligence Briefing by Dr. Troy Williams`);
 
   const handleLinkedInShare = (e: React.MouseEvent) => {
@@ -186,7 +190,16 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        {briefing.content && (
+        {briefing.slug && (
+          <Link to={`/stolennation/${briefing.slug}`}>
+            <Button variant="outline" className="w-full mb-4">
+              <ExternalLink className="h-4 w-4 mr-2" />
+              Read Full Briefing
+            </Button>
+          </Link>
+        )}
+        
+        {briefing.content && !briefing.slug && (
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="content" className="border-border">
               <AccordionTrigger className="text-sm font-medium hover:text-primary">
