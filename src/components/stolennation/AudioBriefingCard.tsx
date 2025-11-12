@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Play, Loader2, Pause, ExternalLink } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -190,20 +190,30 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
+        {briefing.content && (
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="content" className="border-border">
+              <AccordionTrigger className="text-sm font-medium hover:text-primary">
+                Read Full Briefing
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="prose prose-sm dark:prose-invert max-w-none pt-4">
+                  <div className="text-foreground/90 whitespace-pre-wrap leading-relaxed text-sm">
+                    {briefing.content}
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        )}
+        
         {briefing.slug && (
           <Link to={`/stolennation/${briefing.slug}`}>
-            <Button variant="outline" className="w-full mb-4">
+            <Button variant="outline" className="w-full">
               <ExternalLink className="h-4 w-4 mr-2" />
-              Read Full Briefing
+              View Full Briefing Page
             </Button>
           </Link>
-        )}
-        {briefing.content && (
-          <div className="prose prose-sm dark:prose-invert max-w-none pt-4">
-            <div className="text-foreground/90 whitespace-pre-wrap leading-relaxed text-sm">
-              {briefing.content}
-            </div>
-          </div>
         )}
 
         <div className="space-y-3 pt-2">
