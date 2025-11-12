@@ -78,6 +78,16 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         hoverColor="#3C3B6E" 
       />
       
+      <NavLink 
+        to="/stolennation" 
+        icon={Flag} 
+        label="Stolen Nation" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#B22234" 
+        hoverColor="#B22234" 
+      />
+      
       <NavButton 
         onClick={() => handleSectionClick('contact')}
         icon={Mail} 

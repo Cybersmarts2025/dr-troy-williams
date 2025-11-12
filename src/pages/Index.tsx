@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AsSeenInWidget from '@/components/press/AsSeenInWidget';
 import AIChatWidget from '@/components/ai/AIChatWidget';
+import StolenNationCTA from '@/components/home/StolenNationCTA';
 
 // Lazy load less critical components
 const WorkHistory = lazy(() => import("@/components/WorkHistory"));
@@ -314,6 +315,8 @@ const Index = () => {
         </div>
         
         {/* Blog Banner Section */}
+        <StolenNationCTA />
+        
         <div className="bg-[#3C3B6E] text-white py-16">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-between">

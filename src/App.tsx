@@ -41,6 +41,9 @@ import AutoSecurity from "./pages/AutoSecurity";
 import AITools from "./pages/AITools";
 import MentorshipProgram from "./pages/MentorshipProgram";
 import Portfolio from "./pages/Portfolio";
+import StolenNation from "./pages/StolenNation";
+import ScamAtlas from "./pages/ScamAtlas";
+import Pledge from "./pages/Pledge";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -87,6 +90,11 @@ const App = () => (
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/ai-tools" element={<AITools />} />
                 <Route path="/mentorship" element={<MentorshipProgram />} />
+                
+                {/* New Intelligence Platform Routes */}
+                <Route path="/stolennation" element={<StolenNation />} />
+                <Route path="/scamatlas" element={<ScamAtlas />} />
+                <Route path="/pledge" element={<Pledge />} />
                 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminDashboard />} />

@@ -78,6 +78,14 @@ const MobileMenu = ({ children, isOpen = true, onClose, onNavigate = () => {} }:
             />
             
             <MobileMenuItem 
+              to="/stolennation" 
+              icon={Flag} 
+              label="Stolen Nation" 
+              onClick={onClose}
+              color="#B22234" 
+            />
+            
+            <MobileMenuItem 
               to="/certifications" 
               icon={Award} 
               label="Certifications" 
