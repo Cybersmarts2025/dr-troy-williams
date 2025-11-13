@@ -6,8 +6,7 @@ import { useState, useRef, useEffect } from "react";
 
 const YouTubeSection = () => {
   const [hoveredVideo, setHoveredVideo] = useState<number | null>(null);
-  const [loadedVideos, setLoadedVideos] = useState<Record<string, boolean>>({});
-  const videoRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
   
   const videos = [
     {
@@ -36,34 +35,9 @@ const YouTubeSection = () => {
     }
   ];
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const videoId = entry.target.getAttribute('data-video-id');
-          if (videoId) {
-            setLoadedVideos(prev => ({ ...prev, [videoId]: true }));
-          }
-        }
-      });
-    }, options);
-
-    videoRefs.current.forEach(ref => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      videoRefs.current.forEach(ref => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
+  const handleVideoClick = (videoId: string) => {
+    setPlayingVideo(videoId);
+  };
   
   const container = {
     hidden: { opacity: 0 },
@@ -124,40 +98,45 @@ const YouTubeSection = () => {
               <Card className="bg-white/90 backdrop-blur-sm border-2 border-gray-200 shadow-lg overflow-hidden">
                 <CardContent className="p-0">
                   <div 
-                    ref={el => (videoRefs.current[index] = el)}
-                    data-video-id={video.id}
-                    className="relative aspect-video overflow-hidden rounded-t-lg"
+                    className="relative aspect-video overflow-hidden rounded-t-lg cursor-pointer"
                     onMouseEnter={() => setHoveredVideo(index)}
                     onMouseLeave={() => setHoveredVideo(null)}
+                    onClick={() => handleVideoClick(video.id)}
                   >
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-10">
-                      <motion.div 
-                        initial={{ scale: 0.8, opacity: 0.8 }}
-                        animate={{ 
-                          scale: hoveredVideo === index ? 1 : 0.8,
-                          opacity: hoveredVideo === index ? 1 : 0.8
-                        }}
-                        className="bg-[#B22234] text-white p-3 rounded-full"
-                      >
-                        <Play className="h-8 w-8" />
-                      </motion.div>
-                    </div>
-                    {loadedVideos[video.id] ? (
+                    {playingVideo === video.id ? (
                       <iframe 
                         width="100%" 
                         height="100%" 
-                        src={`https://www.youtube.com/embed/${video.id}?autoplay=0&controls=1&rel=0&modestbranding=1&playsinline=1`}
+                        src={`https://www.youtube.com/embed/${video.id}?autoplay=1&controls=1&rel=0&modestbranding=1&playsinline=1`}
                         title={video.title}
                         frameBorder="0" 
-                        loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowFullScreen
                         className="z-0"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                        <Youtube className="h-10 w-10 text-gray-400" />
-                      </div>
+                      <>
+                        <img 
+                          src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-10">
+                          <motion.div 
+                            initial={{ scale: 0.8, opacity: 0.8 }}
+                            animate={{ 
+                              scale: hoveredVideo === index ? 1 : 0.8,
+                              opacity: hoveredVideo === index ? 1 : 0.8
+                            }}
+                            className="bg-[#B22234] text-white p-3 rounded-full"
+                          >
+                            <Play className="h-8 w-8" />
+                          </motion.div>
+                        </div>
+                      </>
                     )}
                   </div>
                   <div className="p-4">
