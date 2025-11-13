@@ -11,27 +11,27 @@ const YouTubeSection = () => {
   
   const videos = [
     {
-      id: "dQw4w9WgXcQ", // Example video - replace with actual working videos from Dr. Troy Williams' channel
+      id: "bmx_J5T7MnM",
       title: "Cybersecurity Fundamentals with Dr. Troy Williams"
     },
     {
-      id: "jNQXAC9IVRw", // Example video - replace with actual working videos
+      id: "TGAaPyptaW8",
       title: "AI and Machine Learning in Cybersecurity"
     },
     {
-      id: "9bZkp7q19f0", // Example video - replace with actual working videos  
+      id: "ffoO7U_y3XY",
       title: "Advanced Threat Detection Strategies"
     },
     {
-      id: "kJQP7kiw5Fk", // Example video - replace with actual working videos
+      id: "YDYsCmLI-7c",
       title: "Zero Trust Security Architecture"
     },
     {
-      id: "ZZ5LpwO-An4", // Example video - replace with actual working videos
+      id: "PqLi0_NuciI",
       title: "Fraud Prevention in Digital Banking"
     },
     {
-      id: "fJ9rUzIMcZQ", // Example video - replace with actual working videos
+      id: "VnMl6a1aajk",
       title: "Building Secure AI Systems"
     }
   ];
