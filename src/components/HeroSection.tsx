@@ -14,7 +14,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden bg-gradient-to-br from-slate-50 to-white">
+    <section className="pt-24 pb-4 md:pt-32 md:pb-6 relative overflow-hidden bg-gradient-to-br from-slate-50 to-white">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 z-0 opacity-5" style={{
         background: "repeating-linear-gradient(45deg, #f1f5f9 0px, #f1f5f9 1px, transparent 1px, transparent 20px)",
@@ -133,7 +133,7 @@ const HeroSection = () => {
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
         transition={{ delay: 1.1, duration: 0.5 }} 
-        className="absolute bottom-0 left-0 right-0"
+        className="mt-12"
       >
         <div className="bg-gradient-to-r from-[#B22234] to-[#3C3B6E] text-white py-4 border-t-4 border-white/30">
           <div className="container mx-auto px-4">
