@@ -1,6 +1,6 @@
 
 import { useLocation } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText, Flag, Award, Bot, Users } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper, FileText, Flag, Award, Bot, Users, Target } from "lucide-react";
 import NavLink from "./NavLink";
 import NavButton from "./NavButton";
 
@@ -76,6 +76,16 @@ const NavLinks = ({ isScrolled, onSectionClick }: NavLinksProps) => {
         baseShadow={baseShadow} 
         color="#3C3B6E" 
         hoverColor="#3C3B6E" 
+      />
+      
+      <NavLink 
+        to="/job-ready-360" 
+        icon={Target} 
+        label="Job Ready 360" 
+        isScrolled={isScrolled} 
+        baseShadow={baseShadow} 
+        color="#f97316" 
+        hoverColor="#f97316" 
       />
       
       <NavLink 

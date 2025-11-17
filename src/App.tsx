@@ -48,6 +48,7 @@ import StolenNation from "./pages/StolenNation";
 import BriefingDetail from "./pages/BriefingDetail";
 import ScamAtlas from "./pages/ScamAtlas";
 import Pledge from "./pages/Pledge";
+import JobReady360 from "./pages/JobReady360";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -94,6 +95,7 @@ const App = () => (
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/ai-tools" element={<AITools />} />
                 <Route path="/mentorship" element={<MentorshipProgram />} />
+                <Route path="/job-ready-360" element={<JobReady360 />} />
                 
                 {/* New Intelligence Platform Routes */}
                 <Route path="/stolennation" element={<StolenNation />} />
