@@ -1,6 +1,6 @@
 
 import { useLocation } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText, Flag, Award } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText, Flag, Award, Target } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import MobileMenuItem from "./MobileMenuItem";
 
@@ -75,6 +75,14 @@ const MobileMenu = ({ children, isOpen = true, onClose, onNavigate = () => {} }:
               label="Blog" 
               onClick={onClose}
               color="#8B5CF6" 
+            />
+            
+            <MobileMenuItem 
+              to="/job-ready-360" 
+              icon={Target} 
+              label="Job Ready 360" 
+              onClick={onClose}
+              color="#f97316" 
             />
             
             <MobileMenuItem 
