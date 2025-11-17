@@ -33,7 +33,7 @@ const JobReady360 = () => {
     },
     {
       number: 2,
-      title: "Reverse Resume™",
+      title: "Reverse Resume",
       icon: FileText,
       description: "The resume must speak the language of the employer.",
       details: [
@@ -322,7 +322,7 @@ const JobReady360 = () => {
               <div className="grid md:grid-cols-2 gap-4 mb-8 text-left">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                   <CheckCircle className="h-6 w-6 mb-2" />
-                  <p>Build your Reverse Resume™</p>
+                  <p>Build your Reverse Resume</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                   <CheckCircle className="h-6 w-6 mb-2" />
