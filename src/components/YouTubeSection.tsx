@@ -40,6 +40,10 @@ const YouTubeSection = () => {
     {
       id: "KWoVmJu6aO4",
       title: "Technology Leadership and Innovation"
+    },
+    {
+      id: "eidjNwaOyKM",
+      title: "Industry Insights and Best Practices"
     }
   ];
 
