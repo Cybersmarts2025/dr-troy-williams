@@ -32,6 +32,10 @@ const YouTubeSection = () => {
     {
       id: "VnMl6a1aajk",
       title: "Building Secure AI Systems"
+    },
+    {
+      id: "YzdK2CSIy0M",
+      title: "Professional Development and Career Strategy"
     }
   ];
 
