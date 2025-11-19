@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/card';
 import { Shield, Lock, Eye, Zap, CheckCircle, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/synthetic-identity-fraud.png';
+import { ServiceSchema, OrganizationSchema, BreadcrumbListSchema } from '@/utils/schemaMarkup';
 
 const SyntheticIdentityDefense = () => {
   return (
@@ -16,6 +17,63 @@ const SyntheticIdentityDefense = () => {
         <title>Synthetic Identity Defense System | Dr. Troy Williams, PhD</title>
         <meta name="description" content="Defending America against synthetic identity engineering with PatriotProof™, FraudDNA™, AISF™, and PPP™. Professional investigation and defense services from The Proactive AI PI." />
       </Helmet>
+
+      <ServiceSchema
+        name="Synthetic Identity Defense System"
+        description="Professional investigation and defense services against synthetic identity engineering using PatriotProof™, FraudDNA™, AISF™, and PPP™. Comprehensive synthetic identity ecosystem investigation, detection of engineered digital humans, and institutional defense roadmap development."
+        provider={{
+          name: "Dr. Troy Williams, PhD - The Proactive AI PI",
+          url: "https://www.drtroywilliams.net"
+        }}
+        areaServed="United States"
+        serviceType="Cybersecurity Investigation and Fraud Prevention"
+        url="https://www.drtroywilliams.net/synthetic-identity-defense"
+        offers={[
+          {
+            name: "Synthetic Identity Ecosystem Investigation",
+            description: "Complete investigation of synthetic identity construction across fragmented data systems"
+          },
+          {
+            name: "Detection of Engineered Digital Humans",
+            description: "Advanced pattern analysis to identify manufactured identities trusted by institutions"
+          },
+          {
+            name: "Financial Aging Pattern Detection",
+            description: "FraudDNA™ pattern analysis engine identifying synthetic identity aging strategies"
+          },
+          {
+            name: "Quantum Era Identity Risk Forecasting",
+            description: "Forward-looking threat assessment for post-quantum cryptographic vulnerabilities"
+          },
+          {
+            name: "Executive Briefings for Banks and Agencies",
+            description: "Strategic intelligence briefings for financial institutions and government agencies"
+          },
+          {
+            name: "Full Institutional Defense Roadmap",
+            description: "Comprehensive defense architecture implementation using PatriotProof™, FraudDNA™, AISF™, and PPP™"
+          }
+        ]}
+      />
+
+      <OrganizationSchema
+        name="Cybersmarts.ai LLC"
+        url="https://www.drtroywilliams.net"
+        description="Leading cybersecurity investigation and artificial intelligence security firm specializing in synthetic identity fraud prevention. Founded by Dr. Troy Williams, PhD, combining cybersecurity engineering, AI science, and licensed private investigation expertise."
+      />
+
+      <BreadcrumbListSchema
+        items={[
+          {
+            name: "Home",
+            item: "https://www.drtroywilliams.net"
+          },
+          {
+            name: "Synthetic Identity Defense",
+            item: "https://www.drtroywilliams.net/synthetic-identity-defense"
+          }
+        ]}
+      />
 
       <NavBar />
       <PageBreadcrumb pageName="Synthetic Identity Defense" />

@@ -273,3 +273,63 @@ export const NewsArticleSchema = ({
     </Helmet>
   );
 };
+
+// Service schema for professional services
+interface ServiceSchemaProps {
+  name: string;
+  description: string;
+  provider: {
+    name: string;
+    url?: string;
+  };
+  areaServed?: string;
+  serviceType?: string;
+  url?: string;
+  offers?: {
+    name: string;
+    description: string;
+  }[];
+}
+
+export const ServiceSchema = ({
+  name,
+  description,
+  provider,
+  areaServed = "United States",
+  serviceType,
+  url,
+  offers
+}: ServiceSchemaProps) => {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": name,
+    "description": description,
+    "provider": {
+      "@type": "Organization",
+      "name": provider.name,
+      ...(provider.url && { "url": provider.url })
+    },
+    ...(areaServed && { "areaServed": areaServed }),
+    ...(serviceType && { "serviceType": serviceType }),
+    ...(url && { "url": url }),
+    ...(offers && {
+      "offers": offers.map(offer => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": offer.name,
+          "description": offer.description
+        }
+      }))
+    })
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">
+        {JSON.stringify(serviceSchema)}
+      </script>
+    </Helmet>
+  );
+};
