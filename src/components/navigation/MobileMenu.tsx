@@ -1,6 +1,6 @@
 
 import { useLocation } from "react-router-dom";
-import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText, Flag, Award, Target } from "lucide-react";
+import { Info, Book, Briefcase, Video, Mail, Newspaper, Quote, FileText, Flag, Award, Target, Shield } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import MobileMenuItem from "./MobileMenuItem";
 
@@ -94,6 +94,14 @@ const MobileMenu = ({ children, isOpen = true, onClose, onNavigate = () => {} }:
             />
             
             <MobileMenuItem 
+              to="/synthetic-identity-defense" 
+              icon={Shield} 
+              label="Synthetic Identity Defense" 
+              onClick={onClose}
+              color="#B22234" 
+            />
+            
+            <MobileMenuItem
               to="/certifications" 
               icon={Award} 
               label="Certifications" 
