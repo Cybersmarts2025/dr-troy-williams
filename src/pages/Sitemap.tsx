@@ -73,6 +73,7 @@ const sitemapData: SitemapSection[] = [
       { to: "/consultation", title: "Consultation", description: "Schedule a professional consultation for your organization.", icon: Calendar },
       { to: "/appointments", title: "Appointments", description: "Book appointments for briefings and advisory sessions.", icon: Calendar },
       { to: "/ai-tools", title: "AI Tools", description: "Access AI-powered security and analysis tools.", icon: Zap },
+      { to: "/auto-security", title: "Auto Security", description: "Automotive security assessment and protection services.", icon: Shield },
     ]
   },
   {
@@ -127,6 +128,11 @@ const Sitemap = () => {
     [filteredData]
   );
 
+  const totalPages = useMemo(() => 
+    sitemapData.reduce((acc, section) => acc + section.links.length, 0),
+    []
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -149,8 +155,11 @@ const Sitemap = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
               Website Sitemap
             </h1>
-            <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-4">
               Complete navigation guide to all pages and resources available on DrTroyWilliams.net
+            </p>
+            <p className="text-sm text-gray-400 text-center mb-8">
+              {totalPages} pages indexed across {sitemapData.length} categories
             </p>
             
             {/* Search Input */}
