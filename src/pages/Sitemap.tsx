@@ -40,6 +40,7 @@ const sitemapData: SitemapSection[] = [
       { to: "/books", title: "Books", description: "Browse published works on cybersecurity, AI, and fraud prevention.", icon: BookOpen },
       { to: "/blog", title: "Blog", description: "Read the latest insights on technology, security, and emerging threats.", icon: PenTool },
       { to: "/press", title: "Press & Media", description: "Media features, press releases, and public appearances.", icon: Newspaper },
+      { to: "/press-kit", title: "Press Kit", description: "Downloadable media assets, bios, and interview request form for journalists.", icon: Newspaper },
     ]
   },
   {
