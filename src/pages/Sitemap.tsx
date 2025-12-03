@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { 
   Home, User, BookOpen, Newspaper, PenTool, Cpu, Briefcase, 
   Shield, FileText, Award, Mail, Calendar, Video, BookMarked,
-  Settings, Globe, Lock, Zap, Target, Users, Database, Search, X
+  Settings, Globe, Lock, Zap, Target, Users, Database, Search, X, Flag
 } from 'lucide-react';
 
 interface SitemapLink {
@@ -81,6 +81,7 @@ const sitemapData: SitemapSection[] = [
       { to: "/bookmarks", title: "Bookmarks", description: "Access your saved articles and resources.", icon: BookMarked },
       { to: "/legacy", title: "Legacy", description: "The enduring impact and mission continuation.", icon: Award },
       { to: "/pledge", title: "Pledge", description: "Commitment to protecting American digital infrastructure.", icon: Shield },
+      { to: "/national-mission", title: "National Mission", description: "34-year mission protecting America through quantum-era fraud prevention and sovereign technology.", icon: Flag },
       { to: "/scamatlas", title: "Scam Atlas", description: "Interactive map of fraud schemes and threat intelligence.", icon: Globe },
       { to: "/ip", title: "Intellectual Property", description: "Trademarks, patents, and proprietary frameworks.", icon: FileText },
     ]
