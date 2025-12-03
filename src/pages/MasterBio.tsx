@@ -726,7 +726,7 @@ const MasterBio = () => {
                 <div className="bg-card border border-border rounded-lg p-6">
                   <div className="aspect-square bg-[#0A1628] rounded-lg mb-4 overflow-hidden">
                     <img 
-                      src="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                      src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
                       alt="Dr. Troy Williams Official Headshot"
                       className="w-full h-full object-cover"
                     />
@@ -736,10 +736,10 @@ const MasterBio = () => {
                     Official Headshot
                   </h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    High-resolution professional headshot for press use.
+                    High-resolution professional headshot for press and media use. 400x400px PNG format.
                   </p>
                   <a 
-                    href="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                    href="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
                     download="DrTroyWilliams-Headshot.png"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#B22234] text-white text-sm font-medium rounded-lg hover:bg-[#8B1A28] transition-colors"
                   >
