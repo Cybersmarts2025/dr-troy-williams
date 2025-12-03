@@ -44,6 +44,7 @@ const sitemapData: SitemapSection[] = [
       { to: "/press", title: "Press & Media", description: "Media features, press releases, and public appearances.", icon: Newspaper },
       { to: "/press-kit", title: "Press Kit", description: "Downloadable media assets, bios, and interview request form for journalists.", icon: Newspaper },
       { to: "/research-footprint", title: "Research Footprint", description: "Academic publications, research profiles, and scholarly impact metrics.", icon: BookOpen },
+      { to: "/validation", title: "Verification & Press Archive", description: "Independent verification sources, press coverage, and official recognition.", icon: Award },
     ]
   },
   {
