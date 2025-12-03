@@ -243,11 +243,11 @@ const PressKit = () => {
                   title="Official Headshot"
                   description="High-resolution professional portrait for press use."
                   icon={Image}
-                  downloadUrl="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png"
+                  downloadUrl="/lovable-uploads/troy-williams-headshot-transparent.png"
                   downloadName="DrTroyWilliams-Headshot.png"
                   previewContent={
                     <img 
-                      src="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                      src="/lovable-uploads/troy-williams-headshot-transparent.png" 
                       alt="Dr. Troy Williams Headshot"
                       className="w-full h-full object-cover"
                     />
@@ -257,7 +257,7 @@ const PressKit = () => {
                   title="Brand Logo"
                   description="Official brand mark and identity assets."
                   icon={Shield}
-                  downloadUrl="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png"
+                  downloadUrl="/lovable-uploads/troy-williams-headshot-transparent.png"
                   downloadName="DrTroyWilliams-Logo.png"
                 />
                 <DownloadCard 

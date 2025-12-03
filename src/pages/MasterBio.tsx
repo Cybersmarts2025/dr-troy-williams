@@ -203,7 +203,7 @@ const MasterBio = () => {
     "url": "https://www.DrTroyWilliams.net",
     "image": {
       "@type": "ImageObject",
-      "url": "https://www.DrTroyWilliams.net/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png",
+      "url": "https://www.DrTroyWilliams.net/lovable-uploads/troy-williams-headshot-transparent.png",
       "width": 400,
       "height": 400,
       "caption": "Dr. Troy Williams - The Proactive AI PI, Cybersecurity Engineer and AI Scientist"
@@ -364,7 +364,7 @@ const MasterBio = () => {
                   <div className="relative">
                     <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#B22234] shadow-2xl">
                       <img 
-                        src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png"
+                        src="/lovable-uploads/troy-williams-headshot-transparent.png"
                         alt="Dr. Troy Williams - The Proactive AI PI, Cybersecurity Engineer and AI Scientist"
                         className="w-full h-full object-cover"
                         loading="eager"
@@ -726,7 +726,7 @@ const MasterBio = () => {
                 <div className="bg-card border border-border rounded-lg p-6">
                   <div className="aspect-square bg-[#0A1628] rounded-lg mb-4 overflow-hidden">
                     <img 
-                      src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                      src="/lovable-uploads/troy-williams-headshot-transparent.png" 
                       alt="Dr. Troy Williams Official Headshot"
                       className="w-full h-full object-cover"
                     />
@@ -739,7 +739,7 @@ const MasterBio = () => {
                     High-resolution professional headshot for press and media use. 400x400px PNG format.
                   </p>
                   <a 
-                    href="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                    href="/lovable-uploads/troy-williams-headshot-transparent.png" 
                     download="DrTroyWilliams-Headshot.png"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#B22234] text-white text-sm font-medium rounded-lg hover:bg-[#8B1A28] transition-colors"
                   >
@@ -765,7 +765,7 @@ const MasterBio = () => {
                     Official brand mark and identity assets.
                   </p>
                   <a 
-                    href="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                    href="/lovable-uploads/troy-williams-headshot-transparent.png" 
                     download="DrTroyWilliams-Brand.png"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#3C3B6E] text-white text-sm font-medium rounded-lg hover:bg-[#2A2950] transition-colors"
                   >
@@ -830,7 +830,7 @@ const MasterBio = () => {
                 <div className="bg-card border border-border rounded-lg p-6">
                   <div className="aspect-square bg-[#0A1628] rounded-lg mb-4 overflow-hidden">
                     <img 
-                      src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                      src="/lovable-uploads/troy-williams-headshot-transparent.png" 
                       alt="Dr. Troy Williams Square Headshot"
                       className="w-full h-full object-cover"
                     />
@@ -843,7 +843,7 @@ const MasterBio = () => {
                     Square cropped version ideal for social media profiles and thumbnails.
                   </p>
                   <a 
-                    href="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                    href="/lovable-uploads/troy-williams-headshot-transparent.png" 
                     download="DrTroyWilliams-Headshot-Square.png"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#B22234] text-white text-sm font-medium rounded-lg hover:bg-[#8B1A28] transition-colors"
                   >
