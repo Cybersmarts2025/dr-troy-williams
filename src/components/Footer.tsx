@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FooterCTA from './footer/FooterCTA';
 import FooterIdentity from './footer/FooterIdentity';
 import FooterCopyright from './footer/FooterCopyright';
@@ -22,6 +23,9 @@ const Footer: React.FC<FooterProps> = ({
           <p className="text-sm text-white/80">Author: Troy Williams, PhD</p>
           <p className="text-xs text-white/70">Built in Tennessee. By Americans. For Americans.</p>
           <p className="text-xs text-white/70 font-semibold">Independent Civilian Intelligence to Protect Americans.</p>
+          <Link to="/sitemap" className="text-xs text-white/60 hover:text-white/90 underline transition-colors">
+            Sitemap
+          </Link>
         </div>
 
         <FooterIdentity companyName={companyName} />

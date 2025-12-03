@@ -50,6 +50,7 @@ import ScamAtlas from "./pages/ScamAtlas";
 import Pledge from "./pages/Pledge";
 import JobReady360 from "./pages/JobReady360";
 import SyntheticIdentityDefense from "./pages/SyntheticIdentityDefense";
+import Sitemap from "./pages/Sitemap";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -119,6 +120,7 @@ const App = () => (
                 
                 <Route path="/testimonial" element={<TestimonialSubmission />} />
                 <Route path="/bookmarks" element={<Bookmarks />} />
+                <Route path="/sitemap" element={<Sitemap />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
