@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import { 
   GraduationCap, Award, FileText, Shield, Globe, 
-  BookOpen, Scale, Newspaper, Lightbulb, Target, Calendar
+  BookOpen, Scale, Newspaper, Lightbulb, Target, Calendar, ExternalLink
 } from 'lucide-react';
 
 interface TimelineEvent {
@@ -429,11 +429,19 @@ const MasterBio = () => {
                         institutions and proposes a multi-layered detection framework integrating machine learning 
                         algorithms with behavioral analytics.
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         <span className="px-2 py-1 text-xs bg-muted rounded">Synthetic Identity</span>
                         <span className="px-2 py-1 text-xs bg-muted rounded">Fraud Detection</span>
                         <span className="px-2 py-1 text-xs bg-muted rounded">Machine Learning</span>
                       </div>
+                      <a 
+                        href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6aboratory" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-[#B22234] hover:text-[#8B1A28] transition-colors"
+                      >
+                        View on SSRN <ExternalLink className="w-4 h-4" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -459,11 +467,19 @@ const MasterBio = () => {
                         An exploration of autonomous intelligence systems designed to proactively identify and 
                         neutralize identity-based threats before they manifest in operational environments.
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         <span className="px-2 py-1 text-xs bg-muted rounded">Autonomous Systems</span>
                         <span className="px-2 py-1 text-xs bg-muted rounded">AI Security</span>
                         <span className="px-2 py-1 text-xs bg-muted rounded">Identity Protection</span>
                       </div>
+                      <a 
+                        href="https://www.researchgate.net/profile/Troy-Williams-27" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-[#3C3B6E] hover:text-[#2A2950] transition-colors"
+                      >
+                        View on ResearchGate <ExternalLink className="w-4 h-4" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -497,6 +513,30 @@ const MasterBio = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Profile Links */}
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="https://www.researchgate.net/profile/Troy-Williams-27" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#00D0AF] text-white font-semibold rounded-lg hover:bg-[#00B89C] transition-colors"
+                >
+                  <Globe className="w-5 h-5" />
+                  ResearchGate Profile
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+                <a 
+                  href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6aboratory" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white font-semibold rounded-lg hover:bg-[#333333] transition-colors"
+                >
+                  <FileText className="w-5 h-5" />
+                  SSRN Author Page
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
 
               {/* Research Metrics Summary */}
