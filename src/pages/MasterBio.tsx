@@ -804,7 +804,7 @@ const MasterBio = () => {
                 <div className="bg-card border border-border rounded-lg p-6">
                   <div className="aspect-square rounded-lg mb-4 overflow-hidden relative" style={{ background: 'repeating-conic-gradient(#e5e7eb 0% 25%, #ffffff 0% 50%) 50% / 20px 20px' }}>
                     <img 
-                      src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                      src="/lovable-uploads/troy-williams-headshot-transparent.png" 
                       alt="Dr. Troy Williams Transparent Background Headshot"
                       className="w-full h-full object-cover"
                     />
@@ -817,7 +817,7 @@ const MasterBio = () => {
                     PNG with transparent background for overlays and design work.
                   </p>
                   <a 
-                    href="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                    href="/lovable-uploads/troy-williams-headshot-transparent.png" 
                     download="DrTroyWilliams-Headshot-Transparent.png"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#3C3B6E] text-white text-sm font-medium rounded-lg hover:bg-[#2A2950] transition-colors"
                   >
