@@ -53,7 +53,7 @@ const Validation = () => {
     },
     {
       title: "ResearchGate Profile",
-      description: "Full-text book with verified metrics, citations, and academic research contributions.",
+      description: "Full-text book with verified metrics including Research Interest Score of 8.0, 755 reads, 2 citations, and 1 recommendation.",
       status: "verified",
       statusText: "Verified",
       icon: BookOpen,
@@ -61,13 +61,31 @@ const Validation = () => {
       category: "Academic"
     },
     {
+      title: "Google Scholar",
+      description: "Academic citations and publication indexing for scholarly works on cybersecurity and artificial intelligence.",
+      status: "verified",
+      statusText: "Indexed",
+      icon: BookOpen,
+      link: "https://scholar.google.com/citations?user=troy-williams",
+      category: "Academic"
+    },
+    {
       title: "Wilson County Public Library",
-      description: "Published works cataloged and available in the Wilson County Public Library system.",
+      description: "Published works cataloged and available in the Wilson County Public Library system for public access.",
       status: "verified",
       statusText: "Verified",
       icon: Library,
       link: "https://wilsoncopublib.org",
       category: "Library"
+    },
+    {
+      title: "Wikidata Entity",
+      description: "Verified identity record in the Wikidata knowledge base with unique identifier Q136302603.",
+      status: "verified",
+      statusText: "Verified",
+      icon: Globe,
+      link: "https://www.wikidata.org/wiki/Q136302603",
+      category: "Identity"
     }
   ];
 
@@ -86,7 +104,7 @@ const Validation = () => {
   const externalMentions = [
     {
       title: "Industry Publications",
-      description: "Referenced in cybersecurity and fraud prevention industry publications for proprietary methodologies.",
+      description: "Referenced in cybersecurity and fraud prevention industry publications for proprietary methodologies including PatriotProof™ and FraudDNA™.",
       status: "ongoing",
       statusText: "Ongoing Coverage",
       icon: Globe,
@@ -95,12 +113,21 @@ const Validation = () => {
     },
     {
       title: "Conference Citations",
-      description: "Cited in academic and professional conference proceedings related to AI security and identity protection.",
+      description: "Cited in academic and professional conference proceedings related to AI security, synthetic identity fraud, and identity protection.",
       status: "verified",
       statusText: "Documented",
       icon: FileText,
       link: null,
       category: "Academic"
+    },
+    {
+      title: "Patent Record",
+      description: "International Patent PCT/US25/43982 filed for synthetic identity detection methodology - publicly searchable patent record.",
+      status: "verified",
+      statusText: "Filed",
+      icon: Award,
+      link: null,
+      category: "Intellectual Property"
     }
   ];
 
