@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import { 
   GraduationCap, Award, FileText, Shield, Globe, 
-  BookOpen, Scale, Newspaper, Lightbulb, Target, Calendar, ExternalLink
+  BookOpen, Scale, Newspaper, Lightbulb, Target, Calendar, ExternalLink,
+  Download, Image, Type, Copy, Check
 } from 'lucide-react';
 
 interface TimelineEvent {
@@ -138,6 +139,41 @@ const categoryColors = {
   publication: 'bg-[#0A1628]',
   trademark: 'bg-[#B22234]',
   milestone: 'bg-[#3C3B6E]'
+};
+
+const BioSnippet = ({ title, text }: { title: string; text: string }) => {
+  const [copied, setCopied] = React.useState(false);
+  
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  
+  return (
+    <div className="bg-card border border-border rounded-lg p-4">
+      <div className="flex items-center justify-between mb-2">
+        <h4 className="font-semibold text-foreground">{title}</h4>
+        <button 
+          onClick={handleCopy}
+          className="inline-flex items-center gap-1 px-3 py-1 text-sm bg-muted hover:bg-muted/80 rounded transition-colors"
+        >
+          {copied ? (
+            <>
+              <Check className="w-4 h-4 text-green-600" />
+              <span className="text-green-600">Copied</span>
+            </>
+          ) : (
+            <>
+              <Copy className="w-4 h-4" />
+              <span>Copy</span>
+            </>
+          )}
+        </button>
+      </div>
+      <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+    </div>
+  );
 };
 
 const MasterBio = () => {
@@ -643,6 +679,143 @@ const MasterBio = () => {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Media Kit Section */}
+        <section className="py-16 bg-[#3C3B6E]/10">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold text-foreground mb-4 text-center">
+                Media Kit
+              </h2>
+              <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Official assets and materials for press coverage, media inquiries, and publications.
+                All materials may be used for editorial purposes with proper attribution.
+              </p>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Headshot */}
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <div className="aspect-square bg-[#0A1628] rounded-lg mb-4 overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                      alt="Dr. Troy Williams Official Headshot"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                    <Image className="w-5 h-5 text-[#B22234]" />
+                    Official Headshot
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    High-resolution professional headshot for press use.
+                  </p>
+                  <a 
+                    href="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                    download="DrTroyWilliams-Headshot.png"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#B22234] text-white text-sm font-medium rounded-lg hover:bg-[#8B1A28] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download PNG
+                  </a>
+                </div>
+
+                {/* Logo/Brand Mark */}
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <div className="aspect-square bg-[#0A1628] rounded-lg mb-4 flex items-center justify-center">
+                    <div className="text-center p-6">
+                      <Shield className="w-16 h-16 text-[#B22234] mx-auto mb-3" />
+                      <p className="text-white font-bold text-lg">The Proactive AI PI</p>
+                      <p className="text-gray-400 text-sm">DrTroyWilliams.net</p>
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                    <Shield className="w-5 h-5 text-[#B22234]" />
+                    Brand Identity
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Official brand mark and identity assets.
+                  </p>
+                  <a 
+                    href="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                    download="DrTroyWilliams-Brand.png"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#3C3B6E] text-white text-sm font-medium rounded-lg hover:bg-[#2A2950] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download Assets
+                  </a>
+                </div>
+
+                {/* Press Kit PDF Placeholder */}
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <div className="aspect-square bg-[#0A1628] rounded-lg mb-4 flex items-center justify-center">
+                    <div className="text-center p-6">
+                      <FileText className="w-16 h-16 text-[#B22234] mx-auto mb-3" />
+                      <p className="text-white font-bold text-lg">Press Kit</p>
+                      <p className="text-gray-400 text-sm">Complete Media Package</p>
+                    </div>
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-[#B22234]" />
+                    Full Press Kit
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Complete press kit with all assets and information.
+                  </p>
+                  <a 
+                    href="/press-kit-dr-troy-williams.txt" 
+                    download="DrTroyWilliams-PressKit.txt"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#0A1628] text-white text-sm font-medium rounded-lg hover:bg-[#1A2638] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download Press Kit
+                  </a>
+                </div>
+              </div>
+
+              {/* Bio Snippets */}
+              <div className="mt-10">
+                <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2 justify-center">
+                  <Type className="w-6 h-6 text-[#B22234]" />
+                  Ready-to-Use Bio Snippets
+                </h3>
+                
+                <div className="space-y-4">
+                  {/* Short Bio */}
+                  <BioSnippet 
+                    title="Short Bio (50 words)"
+                    text="Dr. Troy Williams is a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator known as The Proactive AI PI. He is the creator of PatriotProof™, FraudDNA™, AISF™, and PPP™ systems for synthetic identity fraud defense. Based in Tennessee."
+                  />
+                  
+                  {/* Medium Bio */}
+                  <BioSnippet 
+                    title="Medium Bio (100 words)"
+                    text="Dr. Troy Williams, PhD candidate at Capitol Technology University (AI) and University of the Cumberlands (IT), is a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator. Known as The Proactive AI PI, he specializes in synthetic identity fraud detection and prevention. Williams is the creator of four trademarked defense systems: PatriotProof™, FraudDNA™, AISF™, and PPP™. His research has been featured on SSRN and ResearchGate, with a Research Interest Score of 8.0. He holds Patent PCT/US25/43982 for synthetic identity detection methodology. Mission: Protecting America Through Technology."
+                  />
+                  
+                  {/* Tagline */}
+                  <BioSnippet 
+                    title="Tagline"
+                    text="The Proactive AI PI - Protecting America Through Technology"
+                  />
+                </div>
+              </div>
+
+              {/* Contact for Media */}
+              <div className="mt-10 p-6 bg-[#0A1628] rounded-lg text-center">
+                <h3 className="text-xl font-bold text-white mb-2">Media Inquiries</h3>
+                <p className="text-gray-300 mb-4">
+                  For interviews, speaking engagements, or additional press materials, please contact:
+                </p>
+                <a 
+                  href="/contact" 
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#B22234] text-white font-semibold rounded-lg hover:bg-[#8B1A28] transition-colors"
+                >
+                  Contact for Media Inquiries
+                </a>
               </div>
             </div>
           </div>
