@@ -7,6 +7,14 @@ import { MessageCircle, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
+import { z } from "zod";
+import { sanitizeInput, isValidEmail } from "@/utils/security";
+
+const commentSchema = z.object({
+  author_name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
+  author_email: z.string().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  content: z.string().min(5, "Comment must be at least 5 characters").max(2000, "Comment must be less than 2000 characters")
+});
 
 interface Comment {
   id: string;
@@ -56,18 +64,35 @@ const CommentSection = ({ postId }: CommentSectionProps) => {
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate input
+    const validationResult = commentSchema.safeParse(newComment);
+    if (!validationResult.success) {
+      const firstError = validationResult.error.errors[0]?.message || "Invalid input";
+      toast({
+        title: "Validation Error",
+        description: firstError,
+        variant: "destructive",
+        duration: 5000,
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
+      // Sanitize inputs before inserting
+      const sanitizedData = {
+        blog_post_id: postId,
+        user_id: user?.id || null,
+        author_name: sanitizeInput(newComment.author_name),
+        author_email: newComment.author_email.trim().toLowerCase(),
+        content: sanitizeInput(newComment.content),
+      };
+      
       const { error } = await supabase
         .from('blog_comments')
-        .insert({
-          blog_post_id: postId,
-          user_id: user?.id || null,
-          author_name: newComment.author_name,
-          author_email: newComment.author_email,
-          content: newComment.content,
-        });
+        .insert(sanitizedData);
 
       if (error) throw error;
 

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Mail, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { validateContactForm, sanitizeFormData } from "@/utils/formValidation";
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,20 +16,39 @@ const ContactForm = () => {
     subject: '',
     message: ''
   });
+  const [errors, setErrors] = useState<string[]>([]);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors([]);
+    
+    // Validate form data
+    const validation = validateContactForm(formData);
+    if (!validation.isValid) {
+      setErrors(validation.errors);
+      toast({
+        title: "Validation Error",
+        description: validation.errors[0],
+        variant: "destructive",
+        duration: 5000,
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
+      // Sanitize form data before inserting
+      const sanitized = sanitizeFormData(formData);
+      
       const { error } = await supabase
         .from('contact_messages')
         .insert({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message
+          name: sanitized.name,
+          email: sanitized.email,
+          subject: sanitized.subject,
+          message: sanitized.message
         });
 
       if (error) throw error;
