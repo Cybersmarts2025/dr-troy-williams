@@ -30,6 +30,7 @@ const sitemapData: SitemapSection[] = [
     links: [
       { to: "/", title: "Home", description: "Welcome to Dr. Troy Williams' official website featuring expertise in AI, cybersecurity, and fraud defense.", icon: Home },
       { to: "/about", title: "About", description: "Learn about Dr. Troy Williams' background, credentials, and mission.", icon: User },
+      { to: "/master-bio", title: "Master Biography", description: "Complete professional biography and timeline of Dr. Troy Williams through 2027.", icon: User },
       { to: "/contact", title: "Contact", description: "Get in touch with Dr. Troy Williams for inquiries and collaborations.", icon: Mail },
     ]
   },
