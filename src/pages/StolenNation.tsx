@@ -18,14 +18,14 @@ const StolenNation = () => {
         <meta property="og:url" content="https://drtroywilliams.com/stolennation" />
         <meta property="og:title" content="Stolen Nation - National Intelligence Briefings | Dr. Troy Williams" />
         <meta property="og:description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Dr. Troy Williams." />
-        <meta property="og:image" content="https://drtroywilliams.com/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" />
+        <meta property="og:image" content="https://drtroywilliams.com/lovable-uploads/troy-williams-headshot-transparent.png" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://drtroywilliams.com/stolennation" />
         <meta property="twitter:title" content="Stolen Nation - National Intelligence Briefings | Dr. Troy Williams" />
         <meta property="twitter:description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans." />
-        <meta property="twitter:image" content="https://drtroywilliams.com/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" />
+        <meta property="twitter:image" content="https://drtroywilliams.com/lovable-uploads/troy-williams-headshot-transparent.png" />
       </Helmet>
       
       <NavBar />
