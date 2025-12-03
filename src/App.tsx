@@ -53,6 +53,7 @@ import SyntheticIdentityDefense from "./pages/SyntheticIdentityDefense";
 import Sitemap from "./pages/Sitemap";
 import MasterBio from "./pages/MasterBio";
 import PressKit from "./pages/PressKit";
+import ResearchFootprint from "./pages/ResearchFootprint";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -125,6 +126,7 @@ const App = () => (
                 <Route path="/sitemap" element={<Sitemap />} />
                 <Route path="/master-bio" element={<MasterBio />} />
                 <Route path="/press-kit" element={<PressKit />} />
+                <Route path="/research-footprint" element={<ResearchFootprint />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
