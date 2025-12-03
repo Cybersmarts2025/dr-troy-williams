@@ -41,6 +41,7 @@ const sitemapData: SitemapSection[] = [
       { to: "/blog", title: "Blog", description: "Read the latest insights on technology, security, and emerging threats.", icon: PenTool },
       { to: "/press", title: "Press & Media", description: "Media features, press releases, and public appearances.", icon: Newspaper },
       { to: "/press-kit", title: "Press Kit", description: "Downloadable media assets, bios, and interview request form for journalists.", icon: Newspaper },
+      { to: "/research-footprint", title: "Research Footprint", description: "Academic publications, research profiles, and scholarly impact metrics.", icon: BookOpen },
     ]
   },
   {
