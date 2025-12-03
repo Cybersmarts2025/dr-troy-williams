@@ -393,6 +393,138 @@ const MasterBio = () => {
           </div>
         </section>
 
+        {/* Publications & Research */}
+        <section className="py-16 bg-[#3C3B6E]/10">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
+                Publications & Research
+              </h2>
+              <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Peer-reviewed research and academic contributions advancing the fields of cybersecurity, 
+                artificial intelligence, and synthetic identity fraud prevention.
+              </p>
+              
+              <div className="space-y-6">
+                {/* SSRN Featured Paper */}
+                <div className="bg-card border border-border rounded-lg p-6 hover:border-[#B22234]/50 transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg bg-[#0A1628] text-white flex-shrink-0">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="inline-block px-2 py-1 text-xs font-semibold bg-[#B22234] text-white rounded mb-3">
+                        SSRN Featured
+                      </span>
+                      <h3 className="text-lg font-bold text-foreground mb-2">
+                        Synthetic Identity Fraud: Detection Methodologies and Prevention Frameworks
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Williams, T. (2024). Synthetic Identity Fraud: Detection Methodologies and Prevention Frameworks. 
+                        <em> Social Science Research Network (SSRN)</em>. 
+                        Available at SSRN.
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        This paper examines the emergence of synthetic identity fraud as a critical threat to financial 
+                        institutions and proposes a multi-layered detection framework integrating machine learning 
+                        algorithms with behavioral analytics.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 text-xs bg-muted rounded">Synthetic Identity</span>
+                        <span className="px-2 py-1 text-xs bg-muted rounded">Fraud Detection</span>
+                        <span className="px-2 py-1 text-xs bg-muted rounded">Machine Learning</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ResearchGate Paper */}
+                <div className="bg-card border border-border rounded-lg p-6 hover:border-[#B22234]/50 transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg bg-[#0A1628] text-white flex-shrink-0">
+                      <BookOpen className="w-6 h-6" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="inline-block px-2 py-1 text-xs font-semibold bg-[#3C3B6E] text-white rounded mb-3">
+                        ResearchGate
+                      </span>
+                      <h3 className="text-lg font-bold text-foreground mb-2">
+                        Autonomous Security Frameworks for Next-Generation Identity Protection
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Williams, T. (2024). Autonomous Security Frameworks for Next-Generation Identity Protection. 
+                        <em> ResearchGate</em>. DOI: Pending.
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        An exploration of autonomous intelligence systems designed to proactively identify and 
+                        neutralize identity-based threats before they manifest in operational environments.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 text-xs bg-muted rounded">Autonomous Systems</span>
+                        <span className="px-2 py-1 text-xs bg-muted rounded">AI Security</span>
+                        <span className="px-2 py-1 text-xs bg-muted rounded">Identity Protection</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Working Paper */}
+                <div className="bg-card border border-border rounded-lg p-6 hover:border-[#B22234]/50 transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg bg-[#0A1628] text-white flex-shrink-0">
+                      <Newspaper className="w-6 h-6" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="inline-block px-2 py-1 text-xs font-semibold bg-muted text-muted-foreground rounded mb-3">
+                        Working Paper
+                      </span>
+                      <h3 className="text-lg font-bold text-foreground mb-2">
+                        Quantum-Era Threats to Digital Identity Infrastructure
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Williams, T. (2025, forthcoming). Quantum-Era Threats to Digital Identity Infrastructure: 
+                        Preparing National Defense Systems for Post-Quantum Cryptographic Vulnerabilities.
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        A forward-looking analysis of how quantum computing capabilities will fundamentally 
+                        alter the landscape of identity security, with recommendations for proactive defense measures.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 text-xs bg-muted rounded">Quantum Computing</span>
+                        <span className="px-2 py-1 text-xs bg-muted rounded">Cryptography</span>
+                        <span className="px-2 py-1 text-xs bg-muted rounded">National Security</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Research Metrics Summary */}
+              <div className="mt-10 p-6 bg-[#0A1628] rounded-lg text-white">
+                <h3 className="text-xl font-bold mb-4 text-center">Research Impact Metrics</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                  <div>
+                    <p className="text-3xl font-bold text-[#B22234]">8.0</p>
+                    <p className="text-sm text-gray-400">Research Interest Score</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-[#B22234]">755</p>
+                    <p className="text-sm text-gray-400">Total Reads</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-[#B22234]">2</p>
+                    <p className="text-sm text-gray-400">Citations</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-[#B22234]">1</p>
+                    <p className="text-sm text-gray-400">Recommendations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Intellectual Property */}
         <section className="py-16 bg-[#0A1628] text-white">
           <div className="container mx-auto px-4">
