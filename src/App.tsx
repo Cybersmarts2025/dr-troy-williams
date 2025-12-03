@@ -52,6 +52,7 @@ import JobReady360 from "./pages/JobReady360";
 import SyntheticIdentityDefense from "./pages/SyntheticIdentityDefense";
 import Sitemap from "./pages/Sitemap";
 import MasterBio from "./pages/MasterBio";
+import PressKit from "./pages/PressKit";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -123,6 +124,7 @@ const App = () => (
                 <Route path="/bookmarks" element={<Bookmarks />} />
                 <Route path="/sitemap" element={<Sitemap />} />
                 <Route path="/master-bio" element={<MasterBio />} />
+                <Route path="/press-kit" element={<PressKit />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
