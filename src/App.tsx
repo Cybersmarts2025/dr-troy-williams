@@ -55,6 +55,7 @@ import MasterBio from "./pages/MasterBio";
 import PressKit from "./pages/PressKit";
 import ResearchFootprint from "./pages/ResearchFootprint";
 import Credentials from "./pages/Credentials";
+import TechnologyStack from "./pages/TechnologyStack";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -129,6 +130,7 @@ const App = () => (
                 <Route path="/press-kit" element={<PressKit />} />
                 <Route path="/research-footprint" element={<ResearchFootprint />} />
                 <Route path="/credentials" element={<Credentials />} />
+                <Route path="/technology-stack" element={<TechnologyStack />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
