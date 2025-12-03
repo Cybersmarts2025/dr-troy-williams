@@ -364,7 +364,7 @@ const MasterBio = () => {
                   <div className="relative">
                     <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#B22234] shadow-2xl">
                       <img 
-                        src="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                        src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png"
                         alt="Dr. Troy Williams - The Proactive AI PI, Cybersecurity Engineer and AI Scientist"
                         className="w-full h-full object-cover"
                         loading="eager"
