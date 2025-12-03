@@ -95,7 +95,7 @@ const HeroSection = () => {
               
               <div className="bg-gradient-to-r from-[#3C3B6E] to-[#B22234] text-white p-6 rounded-lg shadow-lg">
                 <p className="text-base font-semibold mb-1">Protecting America Through Technology™</p>
-                <p className="text-sm italic">"I am not ahead of the curve. I am building the curve™"</p>
+                <p className="text-sm italic">"I am not ahead of the curve. I am building the curve."</p>
               </div>
             </motion.div>
             
