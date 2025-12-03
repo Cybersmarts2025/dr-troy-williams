@@ -52,6 +52,7 @@ const sitemapData: SitemapSection[] = [
       { to: "/cybersecurity", title: "Cybersecurity", description: "Enterprise cybersecurity consulting and threat assessment services.", icon: Lock },
       { to: "/aisf", title: "AISF Framework", description: "Autonomous Intelligence Security Framework for AI-driven protection.", icon: Cpu },
       { to: "/ppp", title: "PPP Platform", description: "Proactive Prevention Platform for identity threat mitigation.", icon: Target },
+      { to: "/technology-stack", title: "Technology & System Architecture", description: "Complete breakdown of proprietary defense systems and quantum-secure infrastructure.", icon: Cpu },
       { to: "/stolennation", title: "Stolen Nation", description: "Intelligence briefings on national security and fraud threats.", icon: Globe },
     ]
   },
