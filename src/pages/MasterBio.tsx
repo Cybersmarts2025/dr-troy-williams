@@ -184,12 +184,22 @@ const MasterBio = () => {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://www.DrTroyWilliams.net/#person",
     "name": "Troy Williams",
-    "alternateName": "Dr. Troy Williams",
+    "givenName": "Troy",
+    "familyName": "Williams",
+    "alternateName": ["Dr. Troy Williams", "Dr. Troy Williams, PhD", "The Proactive AI PI"],
     "honorificPrefix": "Dr.",
     "honorificSuffix": "PhD",
-    "jobTitle": ["Cybersecurity Engineer", "Artificial Intelligence Scientist", "Licensed Private Investigator"],
-    "description": "The Proactive AI PI - Cybersecurity engineer, artificial intelligence scientist, and licensed private investigator specializing in synthetic identity fraud defense and national security technology.",
+    "jobTitle": [
+      "Cybersecurity Engineer",
+      "Artificial Intelligence Scientist",
+      "Licensed Tennessee Private Investigator",
+      "Founder & Chief Intelligence Architect at Cybersmarts.ai",
+      "National Fraud Prevention Architect",
+      "U.S. Sovereign Technology Developer"
+    ],
+    "description": "The Proactive AI PI - Cybersecurity engineer, artificial intelligence scientist, and licensed private investigator with 32+ years of investigative experience specializing in synthetic identity fraud defense and national security technology.",
     "url": "https://www.DrTroyWilliams.net",
     "image": {
       "@type": "ImageObject",
@@ -199,8 +209,11 @@ const MasterBio = () => {
       "caption": "Dr. Troy Williams - The Proactive AI PI, Cybersecurity Engineer and AI Scientist"
     },
     "sameAs": [
-      "https://www.researchgate.net/profile/Troy-Williams",
-      "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=Troy-Williams"
+      "https://www.linkedin.com/in/cybersmarts/",
+      "https://www.researchgate.net/profile/Troy-Williams-34",
+      "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6aboratory",
+      "https://scholar.google.com/citations?user=troy-williams",
+      "https://www.wikidata.org/wiki/Q136302603"
     ],
     "knowsAbout": [
       "Cybersecurity",
@@ -209,83 +222,95 @@ const MasterBio = () => {
       "Fraud Detection",
       "Machine Learning",
       "Information Security",
-      "Private Investigation"
+      "Private Investigation",
+      "Post-Quantum Cryptography",
+      "Behavioral Intelligence",
+      "Zero Trust Architecture"
     ],
     "hasCredential": [
       {
         "@type": "EducationalOccupationalCredential",
-        "name": "PhD in Artificial Intelligence (In Progress)",
+        "name": "PhD in Artificial Intelligence",
         "credentialCategory": "Doctoral Degree",
         "educationalLevel": "Doctoral",
-        "recognizedBy": {
-          "@type": "EducationalOrganization",
-          "name": "Capitol Technology University"
-        }
+        "recognizedBy": { "@type": "EducationalOrganization", "name": "Capitol Technology University" }
       },
       {
         "@type": "EducationalOccupationalCredential",
-        "name": "PhD in Information Technology (In Progress)",
+        "name": "PhD in Information Technology",
         "credentialCategory": "Doctoral Degree",
         "educationalLevel": "Doctoral",
-        "recognizedBy": {
-          "@type": "EducationalOrganization",
-          "name": "University of the Cumberlands"
-        }
+        "recognizedBy": { "@type": "EducationalOrganization", "name": "University of the Cumberlands" }
       },
       {
         "@type": "EducationalOccupationalCredential",
         "name": "Master of Science in IT Management",
         "credentialCategory": "Master's Degree",
         "educationalLevel": "Graduate",
-        "recognizedBy": {
-          "@type": "EducationalOrganization",
-          "name": "Western Governors University"
-        },
-        "dateCreated": "2020"
+        "dateCreated": "2020",
+        "recognizedBy": { "@type": "EducationalOrganization", "name": "Western Governors University" }
       },
       {
         "@type": "EducationalOccupationalCredential",
         "name": "Bachelor of Science in Cybersecurity & Information Assurance",
         "credentialCategory": "Bachelor's Degree",
         "educationalLevel": "Undergraduate",
-        "recognizedBy": {
-          "@type": "EducationalOrganization",
-          "name": "Western Governors University"
-        },
-        "dateCreated": "2019"
+        "dateCreated": "2019",
+        "recognizedBy": { "@type": "EducationalOrganization", "name": "Western Governors University" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Prompt Engineering Certification",
+        "credentialCategory": "Professional Certification",
+        "recognizedBy": { "@type": "EducationalOrganization", "name": "Vanderbilt University" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Financial Fraud & Courtroom Ethics Training",
+        "credentialCategory": "Continuing Legal Education",
+        "recognizedBy": { "@type": "Organization", "name": "SBI Seminars" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Licensed Private Investigator",
+        "credentialCategory": "Professional License",
+        "recognizedBy": { "@type": "GovernmentOrganization", "name": "State of Tennessee" }
       }
     ],
     "alumniOf": [
-      {
-        "@type": "EducationalOrganization",
-        "name": "Capitol Technology University"
-      },
-      {
-        "@type": "EducationalOrganization",
-        "name": "University of the Cumberlands"
-      },
-      {
-        "@type": "EducationalOrganization",
-        "name": "Western Governors University"
-      },
-      {
-        "@type": "EducationalOrganization",
-        "name": "Vanderbilt University"
-      }
+      { "@type": "EducationalOrganization", "name": "Capitol Technology University" },
+      { "@type": "EducationalOrganization", "name": "University of the Cumberlands" },
+      { "@type": "EducationalOrganization", "name": "Western Governors University" },
+      { "@type": "EducationalOrganization", "name": "Vanderbilt University" },
+      { "@type": "EducationalOrganization", "name": "SBI Seminars" }
     ],
     "award": [
-      "Patent PCT/US25/43982 - Synthetic Identity Detection Methodology"
+      "Patent PCT/US25/43982 - Synthetic Identity Detection Methodology",
+      "Governor Bill Lee Recognition - State Security Contributions",
+      "ResearchGate Research Interest Score: 8.0"
+    ],
+    "owns": [
+      { "@type": "Product", "name": "PatriotProof™", "description": "Fortress-level national identity and fraud defense system" },
+      { "@type": "Product", "name": "FraudDNA™", "description": "Pattern analysis engine for synthetic identity detection" },
+      { "@type": "Product", "name": "AISF™", "description": "Autonomous Intelligence Security Framework" },
+      { "@type": "Product", "name": "PPP™", "description": "Proactive Prevention Platform" },
+      { "@type": "Product", "name": "ScamAtlas™", "description": "Interactive threat intelligence mapping system" }
     ],
     "affiliation": {
       "@type": "Organization",
       "name": "Cybersmarts.ai LLC",
       "url": "https://www.DrTroyWilliams.net"
     },
+    "memberOf": [
+      { "@type": "LibrarySystem", "name": "Wilson County Public Library", "url": "https://wilsoncopublib.org", "description": "Published works cataloged in library holdings" }
+    ],
     "address": {
       "@type": "PostalAddress",
+      "addressLocality": "Lebanon",
       "addressRegion": "Tennessee",
       "addressCountry": "US"
-    }
+    },
+    "nationality": { "@type": "Country", "name": "United States" }
   };
 
   const breadcrumbSchema = {

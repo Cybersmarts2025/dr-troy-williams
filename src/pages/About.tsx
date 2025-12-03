@@ -31,27 +31,124 @@ const About = () => {
         ]}
       />
       
-      {/* Enhanced Schema.org markup for Dr. Troy Williams */}
+      {/* Comprehensive Person Schema for Dr. Troy Williams */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "name": "Dr. Troy Williams, PhD",
-          "image": "https://www.drtroywilliams.net/images/dr-troy-williams-phd-cybersecurity-expert.png",
-          "jobTitle": "Cybersecurity Engineer, AI Scientist, and Founder of Cybersmarts.ai",
+          "@id": "https://www.drtroywilliams.net/#person",
+          "name": "Troy Williams",
+          "givenName": "Troy",
+          "familyName": "Williams",
+          "alternateName": ["Dr. Troy Williams", "Dr. Troy Williams, PhD", "The Proactive AI PI"],
+          "honorificPrefix": "Dr.",
+          "honorificSuffix": "PhD",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://www.drtroywilliams.net/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png",
+            "width": 400,
+            "height": 400,
+            "caption": "Dr. Troy Williams, PhD - Cybersecurity Engineer and AI Scientist"
+          },
+          "jobTitle": [
+            "Cybersecurity Engineer",
+            "Artificial Intelligence Scientist",
+            "Licensed Tennessee Private Investigator",
+            "Founder & Chief Intelligence Architect at Cybersmarts.ai",
+            "National Fraud Prevention Architect",
+            "U.S. Sovereign Technology Developer"
+          ],
           "url": "https://www.drtroywilliams.net",
+          "description": "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator, a PhD in Artificial Intelligence, and the founder of Cybersmarts.ai, he is dedicated to securing America's digital future through sovereign technology.",
           "sameAs": [
             "https://www.linkedin.com/in/cybersmarts/",
+            "https://www.researchgate.net/profile/Troy-Williams-34",
+            "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6aboratory",
             "https://scholar.google.com/citations?user=troy-williams",
-            "https://www.researchgate.net/profile/Troy-Williams-14?ev=hdr_xprf",
-            "https://ssrn.com/author=troy-williams"
+            "https://www.wikidata.org/wiki/Q136302603"
           ],
-          "description": "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator, a Ph.D. in Artificial Intelligence, and the founder of Cybersmarts.ai, he is dedicated to securing America's digital future.",
-          "alumniOf": ["Capitol Technology University", "Western Governors University"],
+          "hasCredential": [
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "PhD in Artificial Intelligence",
+              "credentialCategory": "Doctoral Degree",
+              "educationalLevel": "Doctoral",
+              "recognizedBy": { "@type": "EducationalOrganization", "name": "Capitol Technology University" }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "PhD in Information Technology",
+              "credentialCategory": "Doctoral Degree",
+              "educationalLevel": "Doctoral",
+              "recognizedBy": { "@type": "EducationalOrganization", "name": "University of the Cumberlands" }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Master of Science in IT Management",
+              "credentialCategory": "Master's Degree",
+              "educationalLevel": "Graduate",
+              "dateCreated": "2020",
+              "recognizedBy": { "@type": "EducationalOrganization", "name": "Western Governors University" }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Bachelor of Science in Cybersecurity & Information Assurance",
+              "credentialCategory": "Bachelor's Degree",
+              "educationalLevel": "Undergraduate",
+              "dateCreated": "2019",
+              "recognizedBy": { "@type": "EducationalOrganization", "name": "Western Governors University" }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Prompt Engineering Certification",
+              "credentialCategory": "Professional Certification",
+              "recognizedBy": { "@type": "EducationalOrganization", "name": "Vanderbilt University" }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Licensed Private Investigator",
+              "credentialCategory": "Professional License",
+              "recognizedBy": { "@type": "GovernmentOrganization", "name": "State of Tennessee" }
+            }
+          ],
+          "alumniOf": [
+            { "@type": "EducationalOrganization", "name": "Capitol Technology University" },
+            { "@type": "EducationalOrganization", "name": "University of the Cumberlands" },
+            { "@type": "EducationalOrganization", "name": "Western Governors University" },
+            { "@type": "EducationalOrganization", "name": "Vanderbilt University" },
+            { "@type": "EducationalOrganization", "name": "SBI Seminars" }
+          ],
+          "award": [
+            "Patent PCT/US25/43982 - Synthetic Identity Detection Methodology",
+            "Governor Bill Lee Recognition - State Security Contributions"
+          ],
+          "knowsAbout": [
+            "Cybersecurity", "Artificial Intelligence", "Synthetic Identity Fraud",
+            "Fraud Detection", "Machine Learning", "Information Security",
+            "Private Investigation", "Post-Quantum Cryptography", "Behavioral Intelligence"
+          ],
+          "owns": [
+            { "@type": "Product", "name": "PatriotProof™", "description": "Fortress-level national identity and fraud defense system" },
+            { "@type": "Product", "name": "FraudDNA™", "description": "Pattern analysis engine for synthetic identity detection" },
+            { "@type": "Product", "name": "AISF™", "description": "Autonomous Intelligence Security Framework" },
+            { "@type": "Product", "name": "PPP™", "description": "Proactive Prevention Platform" },
+            { "@type": "Product", "name": "ScamAtlas™", "description": "Interactive threat intelligence mapping system" }
+          ],
           "worksFor": {
             "@type": "Organization",
-            "name": "Cybersmarts.ai"
-          }
+            "name": "Cybersmarts.ai LLC",
+            "url": "https://www.drtroywilliams.net"
+          },
+          "memberOf": [
+            { "@type": "LibrarySystem", "name": "Wilson County Public Library", "url": "https://wilsoncopublib.org" }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lebanon",
+            "addressRegion": "Tennessee",
+            "addressCountry": "US"
+          },
+          "nationality": { "@type": "Country", "name": "United States" }
         })}
       </script>
       
