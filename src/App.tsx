@@ -57,6 +57,7 @@ import ResearchFootprint from "./pages/ResearchFootprint";
 import Credentials from "./pages/Credentials";
 import TechnologyStack from "./pages/TechnologyStack";
 import NationalMission from "./pages/NationalMission";
+import Timeline from "./pages/Timeline";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -133,6 +134,7 @@ const App = () => (
                 <Route path="/credentials" element={<Credentials />} />
                 <Route path="/technology-stack" element={<TechnologyStack />} />
                 <Route path="/national-mission" element={<NationalMission />} />
+                <Route path="/timeline" element={<Timeline />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
