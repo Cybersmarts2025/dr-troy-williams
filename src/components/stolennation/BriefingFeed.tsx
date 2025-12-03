@@ -105,7 +105,7 @@ The same intelligence that builds can also protect, if guided by ethics, verific
 This is not the end of cybersecurity. It's the beginning of Proactive AI Defense.
 
 Protecting America Through Technology™  
-I am not ahead of the curve. I am building the curve™  
+I am not ahead of the curve. I am building the curve.  
 Author: Troy Williams, PhD  
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-12',
@@ -140,7 +140,7 @@ Every citizen plays a role in defense. If one person reports a fake message, hun
 The solution lies in replacing blind trust with verified truth. I have spent my career focused on one mission: Protecting America Through Technology. That mission begins by equipping citizens with the knowledge and tools to defend themselves in an AI-driven world.
 
 Protecting America Through Technology™  
-I am not ahead of the curve. I am building the curve™  
+I am not ahead of the curve. I am building the curve.  
 Author: Troy Williams, PhD  
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-11',
@@ -207,7 +207,7 @@ Final Assessment
 BEC is no longer just a cyber issue; it is a national economic threat. As The AI PI, I see a direct connection between these attacks and the erosion of trust in digital commerce. The only effective counter measure is proactive intelligence: training machines and humans to detect deception before it costs another payroll, another contract, another American job.
 
 Protecting America Through Technology™
-I am not ahead of the curve. I am building the curve™
+I am not ahead of the curve. I am building the curve.
 Author: Troy Williams, PhD
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-10',
@@ -244,7 +244,7 @@ Phishing will continue to evolve as long as humans remain predictable. The only 
 The internet was built for communication, not deception, but criminals have turned characters into camouflage. The next generation of cybersecurity will depend not only on stronger technology but on teaching every American to see what their eyes cannot. In this new digital battlefield, awareness is armor, and knowledge is protection.
 
 Protecting America Through Technology™  
-I am not ahead of the curve. I am building the curve™  
+I am not ahead of the curve. I am building the curve.  
 Author: Troy Williams, PhD  
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-09',
@@ -279,7 +279,7 @@ In the broader fight against financial crime, businesses that strengthen their p
 Protecting America's financial infrastructure starts with proactive vigilance at every level of business. It begins with awareness and ends with automation. Check fraud is no longer a crime of opportunity; it is a crime of engineering. To defeat it, we must engineer better defenses.
 
 Protecting America Through Technology™  
-I am not ahead of the curve. I am building the curve™  
+I am not ahead of the curve. I am building the curve.  
 Author: Troy Williams, PhD  
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-08',
@@ -381,7 +381,7 @@ Hardware keys are not a gadget; they are the digital equivalent of your house ke
 Protect them, deploy them, and demand that every platform you use supports them.
 
 Protecting America Through Technology™  
-I am not ahead of the curve. I am building the curve™  
+I am not ahead of the curve. I am building the curve.  
 Author: Troy Williams, PhD  
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-07',
@@ -416,7 +416,7 @@ AI can imitate empathy, but it cannot replicate humanity. Every American must le
 The future of fraud prevention will not be about blocking bad actors after the fact but predicting and neutralizing their methods before they reach victims. AI created this problem, and through responsible design, AI will help solve it. My mission remains the same: to protect America through technology and ensure that artificial intelligence serves humanity, not exploits it.
 
 Protecting America Through Technology™  
-I am not ahead of the curve. I am building the curve™  
+I am not ahead of the curve. I am building the curve.  
 Author: Troy Williams, PhD  
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-05',
@@ -451,7 +451,7 @@ America must move beyond reactive security and embrace proactive validation. The
 The Memphis deepfake attack is not just a corporate tragedy but a national wake-up call. It signals the arrival of a new class of digital deception that blends artificial intelligence, psychology, and precision fraud. As technology advances, so must our defenses. With frameworks like PatriotProof, FraudDNA, and AISF, we are building that line of defense before the next incident becomes another headline.
 
 Protecting America Through Technology™  
-I am not ahead of the curve. I am building the curve™  
+I am not ahead of the curve. I am building the curve.  
 Author: Troy Williams, PhD  
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-03',
