@@ -155,7 +155,13 @@ const MasterBio = () => {
     "jobTitle": ["Cybersecurity Engineer", "Artificial Intelligence Scientist", "Licensed Private Investigator"],
     "description": "The Proactive AI PI - Cybersecurity engineer, artificial intelligence scientist, and licensed private investigator specializing in synthetic identity fraud defense and national security technology.",
     "url": "https://www.DrTroyWilliams.net",
-    "image": "https://www.DrTroyWilliams.net/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.DrTroyWilliams.net/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png",
+      "width": 400,
+      "height": 400,
+      "caption": "Dr. Troy Williams - The Proactive AI PI, Cybersecurity Engineer and AI Scientist"
+    },
     "sameAs": [
       "https://www.researchgate.net/profile/Troy-Williams",
       "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=Troy-Williams"
@@ -290,22 +296,44 @@ const MasterBio = () => {
         {/* Hero Section */}
         <section className="bg-[#0A1628] text-white py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Master Biography
-              </h1>
-              <p className="text-xl md:text-2xl text-[#B22234] font-semibold mb-4">
-                Troy Williams, PhD Candidate
-              </p>
-              <p className="text-lg text-gray-300 mb-6">
-                The Proactive AI PI
-              </p>
-              <div className="w-24 h-1 bg-[#B22234] mx-auto mb-8"></div>
-              <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Cybersecurity Engineer. Artificial Intelligence Scientist. Licensed Private Investigator.
-                Three disciplines converging on a single mission: defending American identity infrastructure
-                against synthetic identity engineering and emerging quantum-era threats.
-              </p>
+            <div className="max-w-5xl mx-auto">
+              <div className="flex flex-col lg:flex-row items-center gap-12">
+                {/* Headshot */}
+                <div className="flex-shrink-0">
+                  <div className="relative">
+                    <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#B22234] shadow-2xl">
+                      <img 
+                        src="/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png" 
+                        alt="Dr. Troy Williams - The Proactive AI PI, Cybersecurity Engineer and AI Scientist"
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                      />
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-[#B22234] rounded-full flex items-center justify-center border-4 border-[#0A1628]">
+                      <Shield className="w-10 h-10 text-white" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Bio Text */}
+                <div className="text-center lg:text-left flex-1">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                    Master Biography
+                  </h1>
+                  <p className="text-xl md:text-2xl text-[#B22234] font-semibold mb-4">
+                    Troy Williams, PhD Candidate
+                  </p>
+                  <p className="text-lg text-gray-300 mb-6">
+                    The Proactive AI PI
+                  </p>
+                  <div className="w-24 h-1 bg-[#B22234] mx-auto lg:mx-0 mb-8"></div>
+                  <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
+                    Cybersecurity Engineer. Artificial Intelligence Scientist. Licensed Private Investigator.
+                    Three disciplines converging on a single mission: defending American identity infrastructure
+                    against synthetic identity engineering and emerging quantum-era threats.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
