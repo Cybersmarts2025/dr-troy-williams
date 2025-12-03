@@ -799,6 +799,58 @@ const MasterBio = () => {
                     Download Press Kit
                   </a>
                 </div>
+
+                {/* Transparent Background Headshot */}
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <div className="aspect-square rounded-lg mb-4 overflow-hidden relative" style={{ background: 'repeating-conic-gradient(#e5e7eb 0% 25%, #ffffff 0% 50%) 50% / 20px 20px' }}>
+                    <img 
+                      src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                      alt="Dr. Troy Williams Transparent Background Headshot"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                    <Image className="w-5 h-5 text-[#3C3B6E]" />
+                    Transparent Background
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    PNG with transparent background for overlays and design work.
+                  </p>
+                  <a 
+                    href="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                    download="DrTroyWilliams-Headshot-Transparent.png"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#3C3B6E] text-white text-sm font-medium rounded-lg hover:bg-[#2A2950] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download PNG
+                  </a>
+                </div>
+
+                {/* Square Cropped Version */}
+                <div className="bg-card border border-border rounded-lg p-6">
+                  <div className="aspect-square bg-[#0A1628] rounded-lg mb-4 overflow-hidden">
+                    <img 
+                      src="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                      alt="Dr. Troy Williams Square Headshot"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                    <Image className="w-5 h-5 text-[#B22234]" />
+                    Square Format
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Square cropped version ideal for social media profiles and thumbnails.
+                  </p>
+                  <a 
+                    href="/lovable-uploads/e5dbe2db-0aab-40fa-9588-e2f96f1943f5.png" 
+                    download="DrTroyWilliams-Headshot-Square.png"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#B22234] text-white text-sm font-medium rounded-lg hover:bg-[#8B1A28] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download PNG
+                  </a>
+                </div>
               </div>
 
               {/* Bio Snippets */}
