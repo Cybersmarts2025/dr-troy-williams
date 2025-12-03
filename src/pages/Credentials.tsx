@@ -24,7 +24,7 @@ const credentials: Credential[] = [
   {
     title: "PhD in Artificial Intelligence",
     institution: "Capitol Technology University",
-    status: "In Progress",
+    status: "Completed",
     description: "Doctoral research focused on autonomous security systems, AI-driven fraud detection algorithms, and machine learning applications in identity protection.",
     icon: GraduationCap,
     category: 'doctoral'
@@ -32,7 +32,7 @@ const credentials: Credential[] = [
   {
     title: "PhD in Information Technology",
     institution: "University of the Cumberlands",
-    status: "In Progress",
+    status: "Completed",
     description: "Doctoral studies in emerging technology frameworks, digital transformation, and enterprise security architecture.",
     icon: GraduationCap,
     category: 'doctoral'
@@ -201,13 +201,13 @@ const Credentials = () => {
                 Doctoral Studies
               </h2>
               <p className="text-center text-muted-foreground mb-10">
-                Currently pursuing dual doctoral programs in Artificial Intelligence and Information Technology.
+                Completed doctoral programs in Artificial Intelligence and Information Technology.
               </p>
               
               <div className="grid md:grid-cols-2 gap-6">
                 {doctoralCreds.map((cred, idx) => (
                   <div key={idx} className="bg-card border-2 border-[#B22234]/30 rounded-lg p-6 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 px-3 py-1 bg-[#B22234] text-white text-xs font-semibold rounded-bl-lg">
+                    <div className="absolute top-0 right-0 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-bl-lg">
                       {cred.status}
                     </div>
                     <div className="flex items-start gap-4">
@@ -384,7 +384,7 @@ const Credentials = () => {
             <p className="text-2xl md:text-3xl italic mb-6 max-w-3xl mx-auto">
               "I am not ahead of the curve. I am building the curve."
             </p>
-            <p className="text-[#B22234] font-semibold text-lg mb-8">- Troy Williams, PhD</p>
+            <p className="text-[#B22234] font-semibold text-lg mb-8">- Dr. Troy Williams, PhD</p>
             <div className="flex flex-wrap justify-center gap-4">
               <a 
                 href="/master-bio"
