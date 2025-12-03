@@ -145,6 +145,126 @@ const MasterBio = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Troy Williams",
+    "alternateName": "Dr. Troy Williams",
+    "honorificPrefix": "Dr.",
+    "honorificSuffix": "PhD",
+    "jobTitle": ["Cybersecurity Engineer", "Artificial Intelligence Scientist", "Licensed Private Investigator"],
+    "description": "The Proactive AI PI - Cybersecurity engineer, artificial intelligence scientist, and licensed private investigator specializing in synthetic identity fraud defense and national security technology.",
+    "url": "https://www.DrTroyWilliams.net",
+    "image": "https://www.DrTroyWilliams.net/lovable-uploads/a91273f7-9ba8-4623-a41e-b2cf0b45ecd7.png",
+    "sameAs": [
+      "https://www.researchgate.net/profile/Troy-Williams",
+      "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=Troy-Williams"
+    ],
+    "knowsAbout": [
+      "Cybersecurity",
+      "Artificial Intelligence",
+      "Synthetic Identity Fraud",
+      "Fraud Detection",
+      "Machine Learning",
+      "Information Security",
+      "Private Investigation"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "PhD in Artificial Intelligence (In Progress)",
+        "credentialCategory": "Doctoral Degree",
+        "educationalLevel": "Doctoral",
+        "recognizedBy": {
+          "@type": "EducationalOrganization",
+          "name": "Capitol Technology University"
+        }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "PhD in Information Technology (In Progress)",
+        "credentialCategory": "Doctoral Degree",
+        "educationalLevel": "Doctoral",
+        "recognizedBy": {
+          "@type": "EducationalOrganization",
+          "name": "University of the Cumberlands"
+        }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Master of Science in IT Management",
+        "credentialCategory": "Master's Degree",
+        "educationalLevel": "Graduate",
+        "recognizedBy": {
+          "@type": "EducationalOrganization",
+          "name": "Western Governors University"
+        },
+        "dateCreated": "2020"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Bachelor of Science in Cybersecurity & Information Assurance",
+        "credentialCategory": "Bachelor's Degree",
+        "educationalLevel": "Undergraduate",
+        "recognizedBy": {
+          "@type": "EducationalOrganization",
+          "name": "Western Governors University"
+        },
+        "dateCreated": "2019"
+      }
+    ],
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "Capitol Technology University"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "University of the Cumberlands"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Western Governors University"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Vanderbilt University"
+      }
+    ],
+    "award": [
+      "Patent PCT/US25/43982 - Synthetic Identity Detection Methodology"
+    ],
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Cybersmarts.ai LLC",
+      "url": "https://www.DrTroyWilliams.net"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Tennessee",
+      "addressCountry": "US"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.DrTroyWilliams.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Master Biography",
+        "item": "https://www.DrTroyWilliams.net/master-bio"
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
@@ -154,6 +274,12 @@ const MasterBio = () => {
           content="Complete professional biography and timeline of Dr. Troy Williams, PhD candidate in AI and IT, cybersecurity engineer, and creator of PatriotProof, FraudDNA, AISF, and PPP systems." 
         />
         <link rel="canonical" href="https://www.DrTroyWilliams.net/master-bio" />
+        <script type="application/ld+json">
+          {JSON.stringify(personSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
       </Helmet>
       
       <NavBar />
