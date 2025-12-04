@@ -16,6 +16,15 @@ interface ContactEmailRequest {
   message: string;
 }
 
+// HTML escape function to prevent injection
+const escapeHtml = (str: string): string =>
+  str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -29,15 +38,15 @@ const handler = async (req: Request): Promise<Response> => {
     const emailResponse = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
       to: ["verifiedsafe8@gmail.com"],
-      subject: `Contact Form: ${subject}`,
+      subject: `Contact Form: ${escapeHtml(subject)}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
         <div>
           <strong>Message:</strong>
-          <p>${message.replace(/\n/g, '<br>')}</p>
+          <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
         </div>
       `,
     });
@@ -48,11 +57,11 @@ const handler = async (req: Request): Promise<Response> => {
       to: [email],
       subject: "Thank you for contacting Dr. Troy Williams",
       html: `
-        <h1>Thank you for reaching out, ${name}!</h1>
+        <h1>Thank you for reaching out, ${escapeHtml(name)}!</h1>
         <p>I have received your message and will get back to you as soon as possible.</p>
         <p>Your message:</p>
         <blockquote style="border-left: 4px solid #3C3B6E; padding-left: 16px; margin: 16px 0; color: #666;">
-          ${message.replace(/\n/g, '<br>')}
+          ${escapeHtml(message).replace(/\n/g, '<br>')}
         </blockquote>
         <p>Best regards,<br>Dr. Troy Williams</p>
       `,
