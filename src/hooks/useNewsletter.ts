@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { isValidEmail, sanitizeInput } from "@/utils/security";
 
 interface NewsletterPreferences {
   topics: string[];
@@ -16,11 +17,36 @@ export const useNewsletter = () => {
     setIsSubmitting(true);
     
     try {
+      // Validate email format
+      const trimmedEmail = email.trim().toLowerCase();
+      if (!isValidEmail(trimmedEmail)) {
+        toast({
+          title: "Invalid email",
+          description: "Please enter a valid email address.",
+          variant: "destructive",
+          duration: 5000,
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Validate email length
+      if (trimmedEmail.length > 255) {
+        toast({
+          title: "Email too long",
+          description: "Email address must be less than 255 characters.",
+          variant: "destructive",
+          duration: 5000,
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       // Check if subscriber already exists
       const { data: existingSubscriber } = await supabase
         .from('newsletter_subscribers')
         .select('id')
-        .eq('email', email)
+        .eq('email', trimmedEmail)
         .single();
 
       if (existingSubscriber) {
@@ -29,12 +55,16 @@ export const useNewsletter = () => {
           description: "This email is already subscribed to our newsletter.",
           duration: 5000,
         });
+        setIsSubmitting(false);
         return;
       }
 
+      // Sanitize name input
+      const sanitizedName = name ? sanitizeInput(name).slice(0, 100) : null;
+
       const subscriberData = {
-        email,
-        name: name || null,
+        email: trimmedEmail,
+        name: sanitizedName,
         preferences: preferences ? JSON.stringify(preferences) : null
       };
 
