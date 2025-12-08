@@ -1,23 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { 
   Accessibility, 
   X, 
   Type, 
-  Sun, 
-  Moon, 
   Eye, 
   MousePointer2,
   RotateCcw,
   ZoomIn,
   Contrast,
-  Link2
+  Link2,
+  Keyboard,
+  HelpCircle
 } from 'lucide-react';
+
+// Keyboard shortcuts configuration
+const SHORTCUTS = {
+  togglePanel: { key: 'a', label: 'Alt+A', description: 'Open/Close Panel' },
+  highContrast: { key: 'c', label: 'Alt+C', description: 'Toggle Contrast' },
+  reducedMotion: { key: 'm', label: 'Alt+M', description: 'Toggle Motion' },
+  dyslexiaFont: { key: 'd', label: 'Alt+D', description: 'Toggle Dyslexia Font' },
+  highlightLinks: { key: 'l', label: 'Alt+L', description: 'Toggle Link Highlight' },
+  textSpacing: { key: 's', label: 'Alt+S', description: 'Toggle Text Spacing' },
+  largePointer: { key: 'p', label: 'Alt+P', description: 'Toggle Large Cursor' },
+  reset: { key: 'r', label: 'Alt+R', description: 'Reset All Settings' },
+} as const;
 
 interface AccessibilitySettings {
   fontSize: number;
@@ -39,17 +57,28 @@ const defaultSettings: AccessibilitySettings = {
   largePointer: false,
 };
 
+// Setting labels for announcements (outside component for stability)
+const settingLabels: Record<keyof AccessibilitySettings, string> = {
+  fontSize: 'Font size',
+  highContrast: 'High contrast mode',
+  reducedMotion: 'Reduced motion',
+  dyslexiaFont: 'Dyslexia-friendly font',
+  highlightLinks: 'Link highlighting',
+  textSpacing: 'Increased text spacing',
+  largePointer: 'Large cursor',
+};
+
 const AccessibilityWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [settings, setSettings] = useState<AccessibilitySettings>(defaultSettings);
   const [announcement, setAnnouncement] = useState('');
+  const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
 
   // Announce changes to screen readers
-  const announceChange = (message: string) => {
+  const announceChange = useCallback((message: string) => {
     setAnnouncement(message);
-    // Clear after announcement is read
     setTimeout(() => setAnnouncement(''), 1000);
-  };
+  }, []);
 
   // Load settings from localStorage on mount
   useEffect(() => {
@@ -115,17 +144,6 @@ const AccessibilityWidget = () => {
     }
   };
 
-  // Setting labels for announcements
-  const settingLabels: Record<keyof AccessibilitySettings, string> = {
-    fontSize: 'Font size',
-    highContrast: 'High contrast mode',
-    reducedMotion: 'Reduced motion',
-    dyslexiaFont: 'Dyslexia-friendly font',
-    highlightLinks: 'Link highlighting',
-    textSpacing: 'Increased text spacing',
-    largePointer: 'Large cursor',
-  };
-
   // Update a single setting
   const updateSetting = <K extends keyof AccessibilitySettings>(
     key: K, 
@@ -146,12 +164,78 @@ const AccessibilityWidget = () => {
   };
 
   // Reset all settings
-  const resetSettings = () => {
+  const resetSettings = useCallback(() => {
     setSettings(defaultSettings);
     localStorage.removeItem('accessibilitySettings');
     applySettings(defaultSettings);
     announceChange('All accessibility settings have been reset to defaults');
-  };
+  }, [announceChange]);
+
+  // Toggle a boolean setting
+  const toggleSetting = useCallback((key: keyof AccessibilitySettings) => {
+    if (key === 'fontSize') return;
+    setSettings(prev => {
+      const newValue = !prev[key];
+      const newSettings = { ...prev, [key]: newValue };
+      localStorage.setItem('accessibilitySettings', JSON.stringify(newSettings));
+      applySettings(newSettings);
+      const status = newValue ? 'enabled' : 'disabled';
+      announceChange(`${settingLabels[key]} ${status} via keyboard shortcut`);
+      return newSettings;
+    });
+  }, [announceChange]);
+
+  // Keyboard shortcuts handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!e.altKey) return;
+      
+      const key = e.key.toLowerCase();
+      
+      switch (key) {
+        case SHORTCUTS.togglePanel.key:
+          e.preventDefault();
+          setIsOpen(prev => {
+            const newState = !prev;
+            announceChange(newState ? 'Accessibility panel opened via Alt+A' : 'Accessibility panel closed via Alt+A');
+            return newState;
+          });
+          break;
+        case SHORTCUTS.highContrast.key:
+          e.preventDefault();
+          toggleSetting('highContrast');
+          break;
+        case SHORTCUTS.reducedMotion.key:
+          e.preventDefault();
+          toggleSetting('reducedMotion');
+          break;
+        case SHORTCUTS.dyslexiaFont.key:
+          e.preventDefault();
+          toggleSetting('dyslexiaFont');
+          break;
+        case SHORTCUTS.highlightLinks.key:
+          e.preventDefault();
+          toggleSetting('highlightLinks');
+          break;
+        case SHORTCUTS.textSpacing.key:
+          e.preventDefault();
+          toggleSetting('textSpacing');
+          break;
+        case SHORTCUTS.largePointer.key:
+          e.preventDefault();
+          toggleSetting('largePointer');
+          break;
+        case SHORTCUTS.reset.key:
+          e.preventDefault();
+          resetSettings();
+          announceChange('All settings reset via Alt+R');
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [toggleSetting, resetSettings, announceChange]);
 
   return (
     <>
@@ -216,18 +300,56 @@ const AccessibilityWidget = () => {
                       <Accessibility className="h-5 w-5" aria-hidden="true" />
                       Accessibility Options
                     </CardTitle>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => {
-                        setIsOpen(false);
-                        announceChange('Accessibility options panel closed');
-                      }}
-                      className="h-8 w-8 text-white hover:bg-white/20"
-                      aria-label="Close accessibility options"
-                    >
-                      <X className="h-4 w-4" aria-hidden="true" />
-                    </Button>
+                    <div className="flex items-center gap-1">
+                      <TooltipProvider>
+                        <Tooltip open={showShortcutsHelp} onOpenChange={setShowShortcutsHelp}>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-white hover:bg-white/20"
+                              aria-label="View keyboard shortcuts"
+                            >
+                              <Keyboard className="h-4 w-4" aria-hidden="true" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent 
+                            side="left" 
+                            className="w-56 p-3 bg-background border-2 border-[#3C3B6E]"
+                            sideOffset={8}
+                          >
+                            <div className="space-y-2">
+                              <div className="flex items-center gap-2 text-sm font-semibold text-[#3C3B6E] border-b pb-2">
+                                <Keyboard className="h-4 w-4" />
+                                Keyboard Shortcuts
+                              </div>
+                              <div className="space-y-1.5 text-xs">
+                                {Object.entries(SHORTCUTS).map(([key, value]) => (
+                                  <div key={key} className="flex justify-between items-center">
+                                    <span className="text-muted-foreground">{value.description}</span>
+                                    <kbd className="px-1.5 py-0.5 bg-muted rounded text-[10px] font-mono font-semibold">
+                                      {value.label}
+                                    </kbd>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => {
+                          setIsOpen(false);
+                          announceChange('Accessibility options panel closed');
+                        }}
+                        className="h-8 w-8 text-white hover:bg-white/20"
+                        aria-label="Close accessibility options"
+                      >
+                        <X className="h-4 w-4" aria-hidden="true" />
+                      </Button>
+                    </div>
                   </div>
                 </CardHeader>
                 
