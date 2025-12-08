@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AdminGuard from "@/components/AdminGuard";
+import AccessibilityComplianceTracker from "@/components/admin/AccessibilityComplianceTracker";
 import { FileText, Users, Mail, Settings, Database, Upload, Shield } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -126,6 +127,9 @@ const AdminDashboard = () => {
                 </Button>
               </CardContent>
             </Card>
+            
+            {/* Accessibility Compliance Tracker */}
+            <AccessibilityComplianceTracker />
           </div>
         </div>
         <Footer />
