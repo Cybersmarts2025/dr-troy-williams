@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
@@ -22,7 +23,8 @@ import {
   Loader2,
   RefreshCw,
   ChevronDown,
-  Clock
+  Clock,
+  FileText
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useAccessibilityScan } from '@/hooks/useAccessibilityScan';
@@ -367,7 +369,18 @@ const AccessibilityComplianceTracker = () => {
               className="gap-2"
             >
               <Download className="h-4 w-4" aria-hidden="true" />
-              Audit Checklist
+              Blank Checklist
+            </Button>
+            <Button
+              asChild
+              variant="default"
+              size="sm"
+              className="gap-2"
+            >
+              <Link to="/admin/audit-checklist">
+                <FileText className="h-4 w-4" aria-hidden="true" />
+                Interactive Audit
+              </Link>
             </Button>
             <Badge 
               className={`text-sm px-3 py-1 ${
