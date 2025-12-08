@@ -219,7 +219,7 @@ const PressKit = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
               {keyFacts.map((fact, idx) => (
                 <div key={idx}>
-                  <p className="text-xs text-white/70 uppercase tracking-wider mb-1">{fact.label}</p>
+                  <p className="text-xs text-white/85 uppercase tracking-wider mb-1">{fact.label}</p>
                   <p className="font-semibold text-sm">{fact.value}</p>
                 </div>
               ))}

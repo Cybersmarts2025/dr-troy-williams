@@ -68,7 +68,8 @@ export default {
           secondary: '#3C3B6E', // Navy Blue
           accent: '#F97316', // Orange
           background: '#fff',
-        }
+        },
+        'accent-highlight': 'hsl(var(--accent-highlight))',
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(135deg, #B22234 0%, #9B0000 100%)',

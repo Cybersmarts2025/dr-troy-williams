@@ -278,7 +278,7 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
                 {message.role === 'user' && (
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
-                      <User className="h-4 w-4 text-gray-600" />
+                      <User className="h-4 w-4 text-gray-700" />
                     </div>
                   </div>
                 )}
@@ -293,7 +293,7 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
                   </div>
                 </div>
                 <div className="bg-gray-100 p-3 rounded-lg">
-                  <div className="text-sm text-gray-500">AI is thinking...</div>
+                  <div className="text-sm text-gray-600">AI is thinking...</div>
                 </div>
               </div>
             )}
@@ -327,7 +327,7 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
               </Button>
             </div>
             
-            <div className="text-xs text-gray-500 mt-2 text-center">
+            <div className="text-xs text-gray-600 mt-2 text-center">
               Powered by Lovable AI • Using Gemini 2.5 Flash
             </div>
           </div>

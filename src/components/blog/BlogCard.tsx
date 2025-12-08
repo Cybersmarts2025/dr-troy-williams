@@ -27,11 +27,11 @@ const BlogCard = ({ post }: BlogCardProps) => {
         </div>
       </div>
       <CardHeader>
-        <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-          <Calendar className="h-4 w-4" />
+        <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+          <Calendar className="h-4 w-4" aria-hidden="true" />
           <span>{post.date}</span>
           <span className="mx-1">•</span>
-          <Clock className="h-4 w-4" />
+          <Clock className="h-4 w-4" aria-hidden="true" />
           <span>{post.readTime}</span>
         </div>
         <CardTitle className="text-xl line-clamp-2">{post.title}</CardTitle>

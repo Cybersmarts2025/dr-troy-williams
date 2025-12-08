@@ -57,7 +57,7 @@ const NewsletterSection = () => {
               {isSubmitting ? "Subscribing..." : "Subscribe"}
             </Button>
           </div>
-          <p className="text-sm text-gray-500 mt-4">
+          <p className="text-sm text-gray-600 mt-4">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </form>

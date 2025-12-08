@@ -140,7 +140,7 @@ const CommentSection = ({ postId }: CommentSectionProps) => {
             <div key={comment.id} className="bg-gray-50 p-6 rounded-lg">
               <div className="flex items-center justify-between mb-3">
                 <h4 className="font-semibold text-[#3C3B6E]">{comment.author_name}</h4>
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-600">
                   {new Date(comment.created_at).toLocaleDateString()}
                 </span>
               </div>
@@ -149,7 +149,7 @@ const CommentSection = ({ postId }: CommentSectionProps) => {
           ))}
           
           {comments.length === 0 && (
-            <p className="text-center text-gray-500 py-8">
+            <p className="text-center text-gray-600 py-8">
               No comments yet. Be the first to share your thoughts!
             </p>
           )}
@@ -210,7 +210,7 @@ const CommentSection = ({ postId }: CommentSectionProps) => {
               )}
             </Button>
           </form>
-          <p className="text-sm text-gray-500 mt-4">
+          <p className="text-sm text-gray-600 mt-4">
             Comments are moderated and will appear after approval.
           </p>
         </div>

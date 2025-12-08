@@ -162,7 +162,7 @@ const YouTubeSection = () => {
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-[#3C3B6E]">{video.title}</h3>
-                    <p className="text-sm text-gray-500">Dr. Troy Williams</p>
+                    <p className="text-sm text-gray-600">Dr. Troy Williams</p>
                   </div>
                 </CardContent>
               </Card>
