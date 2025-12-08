@@ -59,6 +59,7 @@ import TechnologyStack from "./pages/TechnologyStack";
 import NationalMission from "./pages/NationalMission";
 import Timeline from "./pages/Timeline";
 import Validation from "./pages/Validation";
+import Accessibility from "./pages/Accessibility";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
 
@@ -137,6 +138,7 @@ const App = () => (
                 <Route path="/national-mission" element={<NationalMission />} />
                 <Route path="/timeline" element={<Timeline />} />
                 <Route path="/validation" element={<Validation />} />
+                <Route path="/accessibility" element={<Accessibility />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
