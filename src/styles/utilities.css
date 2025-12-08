@@ -138,3 +138,76 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ========================================
+   Accessibility Widget Styles
+   ======================================== */
+
+/* High Contrast Mode */
+.high-contrast {
+  filter: contrast(1.25);
+}
+
+.high-contrast body {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.high-contrast a {
+  color: #ffff00 !important;
+}
+
+.high-contrast button,
+.high-contrast [role="button"] {
+  border: 2px solid #fff !important;
+}
+
+/* Reduced Motion Mode */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Dyslexia-Friendly Font */
+.dyslexia-font,
+.dyslexia-font * {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Arial', sans-serif !important;
+  letter-spacing: 0.05em;
+  word-spacing: 0.1em;
+}
+
+/* Highlight Links */
+.highlight-links a:not([role="button"]) {
+  background-color: rgba(255, 255, 0, 0.3) !important;
+  outline: 2px solid #ffff00 !important;
+  outline-offset: 2px;
+}
+
+.highlight-links a:not([role="button"]):hover {
+  background-color: rgba(255, 255, 0, 0.5) !important;
+}
+
+/* Increased Text Spacing */
+.increased-spacing {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+  line-height: 1.8 !important;
+}
+
+.increased-spacing p,
+.increased-spacing li,
+.increased-spacing span {
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  line-height: inherit;
+}
+
+/* Large Cursor */
+.large-cursor,
+.large-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='%233C3B6E' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M4 4l16 8-8 2-2 8z'/%3E%3C/svg%3E") 0 0, auto !important;
+}
