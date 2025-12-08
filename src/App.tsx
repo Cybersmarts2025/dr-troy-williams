@@ -62,6 +62,7 @@ import Validation from "./pages/Validation";
 import Accessibility from "./pages/Accessibility";
 import GoogleAnalytics from './components/analytics/GoogleAnalytics';
 import LiveChatWidget from './components/chat/LiveChatWidget';
+import AccessibilityWidget from './components/accessibility/AccessibilityWidget';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -147,6 +148,7 @@ const App = () => (
               {/* Global Components */}
               <GoogleAnalytics trackingId="G-XXXXXXXXXX" />
               <LiveChatWidget />
+              <AccessibilityWidget />
             </BrowserRouter>
           </TooltipProvider>
         </AuthProvider>
