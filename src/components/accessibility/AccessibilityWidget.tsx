@@ -24,6 +24,7 @@ import {
   Keyboard,
   HelpCircle
 } from 'lucide-react';
+import { useFocusTrap } from '@/hooks/useFocusTrap';
 
 // Keyboard shortcuts configuration
 const SHORTCUTS = {
@@ -73,6 +74,9 @@ const AccessibilityWidget = () => {
   const [settings, setSettings] = useState<AccessibilitySettings>(defaultSettings);
   const [announcement, setAnnouncement] = useState('');
   const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
+  
+  // Focus trap for modal
+  const focusTrapRef = useFocusTrap(isOpen);
 
   // Announce changes to screen readers
   const announceChange = useCallback((message: string) => {
@@ -285,6 +289,7 @@ const AccessibilityWidget = () => {
             
             {/* Panel */}
             <motion.div
+              ref={focusTrapRef}
               className="fixed bottom-24 left-6 z-50 w-80 max-h-[80vh] overflow-hidden"
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}

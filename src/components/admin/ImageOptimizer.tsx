@@ -130,6 +130,17 @@ const ImageOptimizer = () => {
     a.click();
   };
 
+  const handleImageClick = (url: string, index: number) => {
+    downloadOptimized(url, index);
+  };
+
+  const handleImageKeyDown = (event: React.KeyboardEvent, url: string, index: number) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      downloadOptimized(url, index);
+    }
+  };
+
   const downloadAll = () => {
     optimizedUrls.forEach((url, index) => {
       setTimeout(() => downloadOptimized(url, index), index * 100);
@@ -141,7 +152,7 @@ const ImageOptimizer = () => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <ImageIcon className="h-5 w-5" />
+            <ImageIcon className="h-5 w-5" aria-hidden="true" />
             Image Optimizer
           </CardTitle>
           <CardDescription>
@@ -159,13 +170,14 @@ const ImageOptimizer = () => {
                 max="100"
                 value={settings.quality}
                 onChange={(e) => setSettings(prev => ({ ...prev, quality: parseInt(e.target.value) }))}
+                className="min-h-[44px]"
               />
             </div>
             
             <div>
               <Label htmlFor="format">Output Format</Label>
               <Select value={settings.format} onValueChange={(value: any) => setSettings(prev => ({ ...prev, format: value }))}>
-                <SelectTrigger>
+                <SelectTrigger className="min-h-[44px]">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -183,6 +195,7 @@ const ImageOptimizer = () => {
                 type="number"
                 value={settings.maxWidth}
                 onChange={(e) => setSettings(prev => ({ ...prev, maxWidth: parseInt(e.target.value) }))}
+                className="min-h-[44px]"
               />
             </div>
             
@@ -193,6 +206,7 @@ const ImageOptimizer = () => {
                 type="number"
                 value={settings.maxHeight}
                 onChange={(e) => setSettings(prev => ({ ...prev, maxHeight: parseInt(e.target.value) }))}
+                className="min-h-[44px]"
               />
             </div>
           </div>
@@ -206,30 +220,31 @@ const ImageOptimizer = () => {
               accept="image/*"
               onChange={handleFileSelect}
               disabled={isOptimizing}
+              className="min-h-[44px]"
             />
             {selectedFiles.length > 0 && (
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-gray-600 mt-2" aria-live="polite">
                 Selected {selectedFiles.length} image(s)
               </p>
             )}
           </div>
 
           {isOptimizing && (
-            <div className="space-y-2">
+            <div className="space-y-2" role="status" aria-live="polite">
               <div className="flex justify-between text-sm">
                 <span>Optimizing images...</span>
                 <span>{Math.round(progress)}%</span>
               </div>
-              <Progress value={progress} />
+              <Progress value={progress} aria-label={`Optimization progress: ${Math.round(progress)}%`} />
             </div>
           )}
 
           <Button 
             onClick={handleOptimize}
             disabled={selectedFiles.length === 0 || isOptimizing}
-            className="w-full"
+            className="w-full min-h-[44px]"
           >
-            <Zap className="mr-2 h-4 w-4" />
+            <Zap className="mr-2 h-4 w-4" aria-hidden="true" />
             {isOptimizing ? 'Optimizing...' : 'Optimize Images'}
           </Button>
 
@@ -238,24 +253,31 @@ const ImageOptimizer = () => {
               <CardHeader>
                 <CardTitle className="text-lg">Optimized Images</CardTitle>
                 <CardDescription>
-                  Click to download individual images or download all at once
+                  Click or press Enter to download individual images, or download all at once
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4" role="list">
                   {optimizedUrls.map((url, index) => (
-                    <div key={index} className="relative">
-                      <img 
-                        src={url} 
-                        alt={`Optimized ${index + 1}`}
-                        className="w-full h-24 object-cover rounded cursor-pointer hover:opacity-80"
-                        onClick={() => downloadOptimized(url, index)}
-                      />
+                    <div key={index} className="relative" role="listitem">
+                      <button
+                        type="button"
+                        onClick={() => handleImageClick(url, index)}
+                        onKeyDown={(e) => handleImageKeyDown(e, url, index)}
+                        className="w-full h-24 rounded cursor-pointer hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 overflow-hidden min-h-[44px]"
+                        aria-label={`Download optimized image ${index + 1}`}
+                      >
+                        <img 
+                          src={url} 
+                          alt={`Optimized image ${index + 1} preview`}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
                     </div>
                   ))}
                 </div>
-                <Button onClick={downloadAll} className="w-full">
-                  <Download className="mr-2 h-4 w-4" />
+                <Button onClick={downloadAll} className="w-full min-h-[44px]">
+                  <Download className="mr-2 h-4 w-4" aria-hidden="true" />
                   Download All Optimized Images
                 </Button>
               </CardContent>

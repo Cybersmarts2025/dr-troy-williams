@@ -74,6 +74,10 @@ const ContactForm = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    // Clear relevant error when user starts typing
+    if (errors.length > 0) {
+      setErrors([]);
+    }
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
@@ -81,20 +85,47 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white" aria-labelledby="contact-form-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Mail className="h-6 w-6 text-[#3C3B6E]" />
-              <h2 className="text-3xl font-bold">Get in Touch</h2>
+              <Mail className="h-6 w-6 text-[#3C3B6E]" aria-hidden="true" />
+              <h2 id="contact-form-heading" className="text-3xl font-bold">Get in Touch</h2>
             </div>
             <p className="text-lg text-gray-600">
               Have questions or want to collaborate? Send us a message and we'll get back to you soon.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-8 rounded-lg">
+          {/* Screen reader announcements for form errors */}
+          <div 
+            role="alert" 
+            aria-live="assertive" 
+            aria-atomic="true"
+            className="sr-only"
+          >
+            {errors.length > 0 && (
+              <span>Form has {errors.length} error{errors.length > 1 ? 's' : ''}: {errors.join('. ')}</span>
+            )}
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-8 rounded-lg" noValidate>
+            {/* Visible error summary */}
+            {errors.length > 0 && (
+              <div 
+                className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-md"
+                role="alert"
+              >
+                <p className="font-medium mb-2">Please fix the following errors:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  {errors.map((error, index) => (
+                    <li key={index}>{error}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <Label htmlFor="name">Name *</Label>
@@ -105,7 +136,9 @@ const ContactForm = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="mt-1"
+                  aria-required="true"
+                  aria-invalid={errors.some(e => e.toLowerCase().includes('name'))}
+                  className="mt-1 min-h-[44px]"
                 />
               </div>
               <div>
@@ -117,7 +150,9 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="mt-1"
+                  aria-required="true"
+                  aria-invalid={errors.some(e => e.toLowerCase().includes('email'))}
+                  className="mt-1 min-h-[44px]"
                 />
               </div>
             </div>
@@ -131,7 +166,9 @@ const ContactForm = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="mt-1"
+                aria-required="true"
+                aria-invalid={errors.some(e => e.toLowerCase().includes('subject'))}
+                className="mt-1 min-h-[44px]"
               />
             </div>
 
@@ -143,6 +180,8 @@ const ContactForm = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
+                aria-required="true"
+                aria-invalid={errors.some(e => e.toLowerCase().includes('message'))}
                 rows={6}
                 className="mt-1"
                 placeholder="Tell us about your project, question, or how we can help..."
@@ -152,13 +191,13 @@ const ContactForm = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#B22234] hover:bg-[#9B0000] text-lg py-3"
+              className="w-full bg-[#B22234] hover:bg-[#9B0000] text-lg py-3 min-h-[44px]"
             >
               {isSubmitting ? (
                 "Sending Message..."
               ) : (
                 <>
-                  <Send className="h-5 w-5 mr-2" />
+                  <Send className="h-5 w-5 mr-2" aria-hidden="true" />
                   Send Message
                 </>
               )}
@@ -166,7 +205,10 @@ const ContactForm = () => {
 
             <p className="text-sm text-gray-500 text-center">
               You can also reach us directly at{" "}
-              <a href="mailto:verifiedsafe8@gmail.com" className="text-[#B22234] hover:underline">
+              <a 
+                href="mailto:verifiedsafe8@gmail.com" 
+                className="text-[#B22234] hover:underline min-h-[44px] inline-flex items-center"
+              >
                 verifiedsafe8@gmail.com
               </a>
             </p>
