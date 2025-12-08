@@ -24,10 +24,10 @@ const ScamAtlas = () => {
             <MapPin className="h-12 w-12 text-[#B22234] mr-4" />
             <h1 className="text-4xl md:text-5xl font-bold">ScamAtlas™</h1>
           </div>
-          <p className="text-xl text-center max-w-3xl mx-auto mb-4 text-white/90">
+          <p className="text-xl text-center max-w-3xl mx-auto mb-4 text-white">
             ScamAtlas™ empowers citizens with visibility into nationwide fraud patterns and AI-driven deception campaigns.
           </p>
-          <p className="text-center text-sm text-white/70">
+          <p className="text-center text-sm text-white/85">
             Real-time fraud intelligence • Protect your community
           </p>
         </div>

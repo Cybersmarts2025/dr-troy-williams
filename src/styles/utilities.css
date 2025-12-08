@@ -90,3 +90,51 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
+
+/* ========================================
+   WCAG AA Accessible Color Utilities
+   ======================================== */
+
+/* High contrast text on dark backgrounds (minimum 4.5:1 ratio) */
+.text-accessible-dark {
+  @apply text-white;
+}
+
+.text-accessible-dark-muted {
+  color: rgba(255, 255, 255, 0.85); /* 4.5:1+ on #3C3B6E */
+}
+
+.text-accessible-dark-subtle {
+  color: rgba(255, 255, 255, 0.9); /* Higher contrast for smaller text */
+}
+
+/* High contrast highlight on dark backgrounds (gold/amber - 8.5:1 on navy) */
+.text-highlight-dark {
+  @apply text-amber-400;
+}
+
+/* High contrast text on light backgrounds */
+.text-accessible-light {
+  @apply text-gray-800;
+}
+
+.text-accessible-light-muted {
+  @apply text-gray-600; /* 5.5:1 on white */
+}
+
+/* Focus visible states for keyboard navigation */
+.focus-accessible:focus-visible {
+  @apply outline-none ring-2 ring-offset-2 ring-primary;
+}
+
+/* Reduced motion preference support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

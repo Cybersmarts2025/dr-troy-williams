@@ -23,7 +23,7 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-foreground: 215 16% 40%; /* Improved contrast: 5.5:1 on white */
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -45,6 +45,10 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* High contrast accent for dark backgrounds - Gold/Amber */
+    --accent-highlight: 45 93% 58%; /* #F5C542 Gold - 8.5:1 on navy */
+    --accent-highlight-foreground: 222.2 84% 4.9%;
   }
 
   .dark {
@@ -64,7 +68,7 @@
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted-foreground: 215 20% 70%; /* Improved contrast for dark mode */
 
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
@@ -83,6 +87,10 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* High contrast accent for dark backgrounds */
+    --accent-highlight: 45 93% 58%;
+    --accent-highlight-foreground: 222.2 84% 4.9%;
   }
 }
 

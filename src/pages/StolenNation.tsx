@@ -37,10 +37,10 @@ const StolenNation = () => {
             <Shield className="h-12 w-12 text-[#B22234] mr-4" />
             <h1 className="text-4xl md:text-5xl font-bold">Stolen Nation</h1>
           </div>
-          <p className="text-xl text-center max-w-3xl mx-auto mb-8 text-white/90">
+          <p className="text-xl text-center max-w-3xl mx-auto mb-8 text-white">
             National intelligence briefings exposing AI-driven fraud, cyber warfare, and threats targeting American citizens and businesses.
           </p>
-          <p className="text-center text-sm text-white/70">
+          <p className="text-center text-sm text-white/85">
             Independent civilian intelligence • Subscribe for critical updates
           </p>
         </div>
