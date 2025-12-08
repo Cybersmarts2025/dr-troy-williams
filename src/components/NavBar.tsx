@@ -54,9 +54,18 @@ const NavBar = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 bg-background border-b shadow-md transition-all duration-300 ${scrolled ? "py-2" : "py-4"}`}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <Logo />
+    <>
+      {/* Skip to main content link for keyboard/screen reader users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+      >
+        Skip to main content
+      </a>
+      
+      <header className={`fixed top-0 left-0 right-0 z-50 bg-background border-b shadow-md transition-all duration-300 ${scrolled ? "py-2" : "py-4"}`}>
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <Logo />
 
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center gap-4">
@@ -74,8 +83,9 @@ const NavBar = () => {
             onSectionClick={handleSectionClick}
           />
         </div>
-      </div>
-    </header>
+        </div>
+      </header>
+    </>
   );
 };
 

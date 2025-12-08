@@ -22,10 +22,15 @@ const YouTubeSection = lazy(() => import("@/components/YouTubeSection"));
 const ResearchSection = lazy(() => import("@/components/ResearchSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 
-// Loading fallback
+// Loading fallback with accessibility
 const SectionLoader = () => (
-  <div className="py-16 flex justify-center items-center">
-    <div className="w-16 h-16 border-4 border-[#3C3B6E] border-t-transparent rounded-full animate-spin"></div>
+  <div 
+    className="py-16 flex justify-center items-center"
+    role="status"
+    aria-label="Loading content"
+  >
+    <div className="w-16 h-16 border-4 border-[#3C3B6E] border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
+    <span className="sr-only">Loading section content...</span>
   </div>
 );
 
@@ -78,7 +83,7 @@ const Index = () => {
       
       <NavBar />
       
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
         
         <DissertationCallout />

@@ -31,11 +31,13 @@ export const BookmarkButton = ({ id, title, type, url, variant = 'ghost', size =
       size={size}
       onClick={handleClick}
       className="flex items-center gap-2"
+      aria-label={bookmarked ? `Remove ${title} from bookmarks` : `Add ${title} to bookmarks`}
+      aria-pressed={bookmarked}
     >
       {bookmarked ? (
-        <BookmarkMinus className="h-4 w-4" />
+        <BookmarkMinus className="h-4 w-4" aria-hidden="true" />
       ) : (
-        <Bookmark className="h-4 w-4" />
+        <Bookmark className="h-4 w-4" aria-hidden="true" />
       )}
       {size !== 'icon' && (bookmarked ? 'Remove' : 'Save')}
     </Button>

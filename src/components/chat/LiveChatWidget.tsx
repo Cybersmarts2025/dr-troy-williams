@@ -104,8 +104,9 @@ const LiveChatWidget = () => {
           onClick={() => setIsOpen(true)}
           className="rounded-full w-14 h-14 bg-[#3C3B6E] hover:bg-[#2A2952] shadow-lg"
           size="lg"
+          aria-label="Open live chat support"
         >
-          <MessageCircle className="h-6 w-6" />
+          <MessageCircle className="h-6 w-6" aria-hidden="true" />
         </Button>
       </motion.div>
 
@@ -131,14 +132,20 @@ const LiveChatWidget = () => {
                     size="sm"
                     onClick={() => setIsOpen(false)}
                     className="text-white hover:bg-white/20"
+                    aria-label="Close live chat"
                   >
-                    <X className="h-4 w-4" />
+                    <X className="h-4 w-4" aria-hidden="true" />
                   </Button>
                 </div>
               </CardHeader>
               <CardContent className="p-0">
                 {/* Messages */}
-                <div className="h-80 overflow-y-auto p-4 space-y-4">
+                <div 
+                  className="h-80 overflow-y-auto p-4 space-y-4"
+                  role="log"
+                  aria-live="polite"
+                  aria-label="Chat messages"
+                >
                   {messages.map((message) => (
                     <div
                       key={message.id}
@@ -181,8 +188,9 @@ const LiveChatWidget = () => {
                       onClick={handleSendMessage}
                       size="sm"
                       className="bg-[#3C3B6E] hover:bg-[#2A2952]"
+                      aria-label="Send message"
                     >
-                      <Send className="h-4 w-4" />
+                      <Send className="h-4 w-4" aria-hidden="true" />
                     </Button>
                   </div>
                 </div>
