@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import { MediaFeature } from './MediaFeaturesSection';
 
 interface MediaFeatureCardProps {
@@ -9,8 +10,10 @@ interface MediaFeatureCardProps {
 }
 
 const MediaFeatureCard = ({ item, index }: MediaFeatureCardProps) => {
+  const isExternalLink = item.link.startsWith('http') || item.link.startsWith('//');
+
   return (
-    <motion.div 
+    <motion.article 
       key={index} 
       initial={{ opacity: 0, y: 20 }} 
       whileInView={{ opacity: 1, y: 0 }} 
@@ -35,14 +38,33 @@ const MediaFeatureCard = ({ item, index }: MediaFeatureCardProps) => {
         </div>
         <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
         <p className="text-gray-700 mb-4">{item.description}</p>
-        <a href={item.link} className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+        <a 
+          href={item.link} 
+          className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 font-medium min-h-[44px] min-w-[44px] py-2"
+          {...(isExternalLink && {
+            target: "_blank",
+            rel: "noopener noreferrer",
+            'aria-label': `Read Article: ${item.title} (opens in new tab)`
+          })}
+        >
           Read Article
-          <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-          </svg>
+          {isExternalLink ? (
+            <ExternalLink className="w-4 h-4" aria-hidden="true" />
+          ) : (
+            <svg 
+              className="w-4 h-4 ml-1" 
+              fill="currentColor" 
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+              role="img"
+            >
+              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+            </svg>
+          )}
+          {isExternalLink && <span className="sr-only">(opens in new tab)</span>}
         </a>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 

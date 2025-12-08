@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { MessageCircle, X, Send, Bot, User, Shield, FileText, Calendar, Loader2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { useFocusTrap } from '@/hooks/useFocusTrap';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -24,6 +25,9 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
   const [isStreaming, setIsStreaming] = useState(false);
   const [chatType, setChatType] = useState(defaultChatType);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // Focus trap for chat panel
+  const focusTrapRef = useFocusTrap(isOpen);
 
   const chatTypes = {
     general: { icon: Shield, label: 'Cybersecurity Q&A', color: 'bg-blue-500' },
@@ -195,7 +199,13 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
   const Icon = currentChatType.icon;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] max-h-[80vh]">
+    <div 
+      ref={focusTrapRef}
+      className="fixed bottom-6 right-6 z-50 w-96 h-[600px] max-h-[80vh]"
+      role="dialog"
+      aria-modal="true"
+      aria-label="AI Assistant Chat"
+    >
       <Card className="h-full flex flex-col shadow-2xl border-2">
         <CardHeader className="pb-3 bg-gradient-to-r from-[#3C3B6E] to-[#2A2952] text-white rounded-t-lg">
           <div className="flex items-center justify-between">

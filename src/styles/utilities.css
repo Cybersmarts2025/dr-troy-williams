@@ -211,3 +211,73 @@
 .large-cursor * {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='%233C3B6E' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M4 4l16 8-8 2-2 8z'/%3E%3C/svg%3E") 0 0, auto !important;
 }
+
+/* ========================================
+   ADA Touch Target Size - 44x44px minimum
+   ======================================== */
+
+/* Base touch target utility class */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Ensure clickable elements meet touch target requirements */
+button:not(.inline-button),
+[role="button"],
+input[type="checkbox"],
+input[type="radio"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Form inputs should be easily tappable */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  min-height: 44px;
+}
+
+/* For inline links that need padding instead of min-height */
+.inline-link {
+  padding-block: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ========================================
+   Focus Trap Utility
+   ======================================== */
+
+.focus-trap-active {
+  position: relative;
+}
+
+/* ========================================
+   Screen Reader Utilities
+   ======================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Make screen reader content visible on focus (for skip links) */
+.sr-only-focusable:focus,
+.sr-only-focusable:focus-within {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
