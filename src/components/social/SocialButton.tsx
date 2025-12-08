@@ -35,8 +35,9 @@ export const SocialButton = ({ icon: Icon, label, url }: SocialButtonProps) => {
         size="lg" 
         className="gap-2 shadow-lg transition-all duration-300"
         onClick={() => window.open(url, "_blank")}
+        aria-label={`Visit ${label} (opens in new tab)`}
       >
-        <Icon className="h-5 w-5" />
+        <Icon className="h-5 w-5" aria-hidden="true" />
         <span>{label}</span>
       </Button>
     </motion.div>

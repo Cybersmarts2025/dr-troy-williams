@@ -183,8 +183,9 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
           onClick={() => setIsOpen(true)}
           className="h-14 w-14 rounded-full bg-[#3C3B6E] hover:bg-[#2A2952] shadow-lg"
           size="icon"
+          aria-label="Open AI assistant chat"
         >
-          <MessageCircle className="h-6 w-6 text-white" />
+          <MessageCircle className="h-6 w-6 text-white" aria-hidden="true" />
         </Button>
       </div>
     );
@@ -207,8 +208,9 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
               size="icon"
               onClick={() => setIsOpen(false)}
               className="h-8 w-8 text-white hover:bg-white/20"
+              aria-label="Close AI assistant chat"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4" aria-hidden="true" />
             </Button>
           </div>
           
@@ -236,7 +238,12 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
 
         <CardContent className="flex-1 flex flex-col p-0">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div 
+            className="flex-1 overflow-y-auto p-4 space-y-4"
+            role="log"
+            aria-live="polite"
+            aria-label="Chat messages"
+          >
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -310,11 +317,12 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
                 disabled={!input.trim() || isStreaming}
                 size="icon"
                 className="bg-[#3C3B6E] hover:bg-[#2A2952]"
+                aria-label={isStreaming ? "Sending message" : "Send message"}
               >
                 {isStreaming ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
                 ) : (
-                  <Send className="h-4 w-4" />
+                  <Send className="h-4 w-4" aria-hidden="true" />
                 )}
               </Button>
             </div>

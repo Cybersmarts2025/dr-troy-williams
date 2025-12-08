@@ -114,6 +114,15 @@ const YouTubeSection = () => {
                     onMouseEnter={() => setHoveredVideo(index)}
                     onMouseLeave={() => setHoveredVideo(null)}
                     onClick={() => handleVideoClick(video.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleVideoClick(video.id);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Play video: ${video.title}`}
                   >
                     {playingVideo === video.id ? (
                       <iframe 
@@ -130,13 +139,13 @@ const YouTubeSection = () => {
                       <>
                         <img 
                           src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
-                          alt={video.title}
+                          alt={`Thumbnail for ${video.title}`}
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             e.currentTarget.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
                           }}
                         />
-                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-10">
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center z-10" aria-hidden="true">
                           <motion.div 
                             initial={{ scale: 0.8, opacity: 0.8 }}
                             animate={{ 
@@ -145,7 +154,7 @@ const YouTubeSection = () => {
                             }}
                             className="bg-[#B22234] text-white p-3 rounded-full"
                           >
-                            <Play className="h-8 w-8" />
+                            <Play className="h-8 w-8" aria-hidden="true" />
                           </motion.div>
                         </div>
                       </>
