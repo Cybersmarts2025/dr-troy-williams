@@ -42,6 +42,14 @@ const defaultSettings: AccessibilitySettings = {
 const AccessibilityWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [settings, setSettings] = useState<AccessibilitySettings>(defaultSettings);
+  const [announcement, setAnnouncement] = useState('');
+
+  // Announce changes to screen readers
+  const announceChange = (message: string) => {
+    setAnnouncement(message);
+    // Clear after announcement is read
+    setTimeout(() => setAnnouncement(''), 1000);
+  };
 
   // Load settings from localStorage on mount
   useEffect(() => {
@@ -107,6 +115,17 @@ const AccessibilityWidget = () => {
     }
   };
 
+  // Setting labels for announcements
+  const settingLabels: Record<keyof AccessibilitySettings, string> = {
+    fontSize: 'Font size',
+    highContrast: 'High contrast mode',
+    reducedMotion: 'Reduced motion',
+    dyslexiaFont: 'Dyslexia-friendly font',
+    highlightLinks: 'Link highlighting',
+    textSpacing: 'Increased text spacing',
+    largePointer: 'Large cursor',
+  };
+
   // Update a single setting
   const updateSetting = <K extends keyof AccessibilitySettings>(
     key: K, 
@@ -116,6 +135,14 @@ const AccessibilityWidget = () => {
     setSettings(newSettings);
     localStorage.setItem('accessibilitySettings', JSON.stringify(newSettings));
     applySettings(newSettings);
+    
+    // Announce the change to screen readers
+    if (key === 'fontSize') {
+      announceChange(`Font size changed to ${value} percent`);
+    } else if (typeof value === 'boolean') {
+      const status = value ? 'enabled' : 'disabled';
+      announceChange(`${settingLabels[key]} ${status}`);
+    }
   };
 
   // Reset all settings
@@ -123,10 +150,21 @@ const AccessibilityWidget = () => {
     setSettings(defaultSettings);
     localStorage.removeItem('accessibilitySettings');
     applySettings(defaultSettings);
+    announceChange('All accessibility settings have been reset to defaults');
   };
 
   return (
     <>
+      {/* Screen Reader Announcements */}
+      <div 
+        role="status" 
+        aria-live="polite" 
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {announcement}
+      </div>
+
       {/* Floating Button */}
       <motion.div
         className="fixed bottom-6 left-6 z-50"
@@ -135,7 +173,10 @@ const AccessibilityWidget = () => {
         transition={{ delay: 1.5 }}
       >
         <Button
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            setIsOpen(true);
+            announceChange('Accessibility options panel opened');
+          }}
           className="h-14 w-14 rounded-full bg-[#3C3B6E] hover:bg-[#2A2952] shadow-lg"
           size="icon"
           aria-label="Open accessibility options"
@@ -178,7 +219,10 @@ const AccessibilityWidget = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        setIsOpen(false);
+                        announceChange('Accessibility options panel closed');
+                      }}
                       className="h-8 w-8 text-white hover:bg-white/20"
                       aria-label="Close accessibility options"
                     >
