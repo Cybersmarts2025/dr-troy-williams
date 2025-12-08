@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { 
@@ -18,132 +19,31 @@ import {
   Volume2,
   Contrast,
   Download,
-  Loader2
+  Loader2,
+  RefreshCw,
+  ChevronDown,
+  Clock
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useAccessibilityScan } from '@/hooks/useAccessibilityScan';
+import { ScanResult } from '@/utils/accessibilityScanner';
 
-interface ComplianceItem {
-  id: string;
-  name: string;
-  description: string;
-  status: 'complete' | 'partial' | 'pending';
-  icon: React.ElementType;
-  wcagCriteria: string;
-  category: string;
-}
+const iconMap: Record<string, React.ElementType> = {
+  'form-labels': Type,
+  'keyboard-nav': Keyboard,
+  'focus-indicators': MousePointer2,
+  'color-contrast': Contrast,
+  'alt-text': Eye,
+  'link-purpose': Link2,
+  'screen-reader': Volume2,
+  'touch-targets': MousePointer2,
+  'focus-trap': Accessibility,
+  'reduced-motion': Eye,
+  'error-identification': AlertCircle,
+  'lang-attribute': Type
+};
 
-const complianceItems: ComplianceItem[] = [
-  {
-    id: 'form-labels',
-    name: 'Form Labels',
-    description: 'All form inputs have associated labels',
-    status: 'complete',
-    icon: Type,
-    wcagCriteria: '1.3.1, 3.3.2',
-    category: 'Perceivable'
-  },
-  {
-    id: 'keyboard-nav',
-    name: 'Keyboard Navigation',
-    description: 'All interactive elements are keyboard accessible',
-    status: 'complete',
-    icon: Keyboard,
-    wcagCriteria: '2.1.1, 2.1.2',
-    category: 'Operable'
-  },
-  {
-    id: 'focus-indicators',
-    name: 'Focus Indicators',
-    description: 'Visible focus indicators on all focusable elements',
-    status: 'complete',
-    icon: MousePointer2,
-    wcagCriteria: '2.4.7',
-    category: 'Operable'
-  },
-  {
-    id: 'color-contrast',
-    name: 'Color Contrast',
-    description: 'Text meets WCAG AA contrast ratios (4.5:1)',
-    status: 'complete',
-    icon: Contrast,
-    wcagCriteria: '1.4.3',
-    category: 'Perceivable'
-  },
-  {
-    id: 'alt-text',
-    name: 'Image Alt Text',
-    description: 'All images have descriptive alt attributes',
-    status: 'complete',
-    icon: Eye,
-    wcagCriteria: '1.1.1',
-    category: 'Perceivable'
-  },
-  {
-    id: 'link-purpose',
-    name: 'Link Purpose',
-    description: 'Links describe their destination or purpose',
-    status: 'complete',
-    icon: Link2,
-    wcagCriteria: '2.4.4',
-    category: 'Operable'
-  },
-  {
-    id: 'screen-reader',
-    name: 'Screen Reader Support',
-    description: 'ARIA labels and live regions for dynamic content',
-    status: 'complete',
-    icon: Volume2,
-    wcagCriteria: '4.1.2, 4.1.3',
-    category: 'Robust'
-  },
-  {
-    id: 'touch-targets',
-    name: 'Touch Target Size',
-    description: 'Interactive elements meet 44x44px minimum',
-    status: 'complete',
-    icon: MousePointer2,
-    wcagCriteria: '2.5.5',
-    category: 'Operable'
-  },
-  {
-    id: 'focus-trap',
-    name: 'Modal Focus Trap',
-    description: 'Focus is trapped within modals and dialogs',
-    status: 'complete',
-    icon: Accessibility,
-    wcagCriteria: '2.4.3',
-    category: 'Operable'
-  },
-  {
-    id: 'reduced-motion',
-    name: 'Reduced Motion',
-    description: 'Respects prefers-reduced-motion setting',
-    status: 'complete',
-    icon: Eye,
-    wcagCriteria: '2.3.3',
-    category: 'Operable'
-  },
-  {
-    id: 'error-identification',
-    name: 'Error Identification',
-    description: 'Form errors are clearly identified and described',
-    status: 'complete',
-    icon: AlertCircle,
-    wcagCriteria: '3.3.1',
-    category: 'Understandable'
-  },
-  {
-    id: 'lang-attribute',
-    name: 'Language Attribute',
-    description: 'HTML lang attribute is set correctly',
-    status: 'complete',
-    icon: Type,
-    wcagCriteria: '3.1.1',
-    category: 'Understandable'
-  }
-];
-
-const getStatusIcon = (status: ComplianceItem['status']) => {
+const getStatusIcon = (status: ScanResult['status']) => {
   switch (status) {
     case 'complete':
       return <CheckCircle2 className="h-5 w-5 text-green-500" aria-hidden="true" />;
@@ -154,7 +54,7 @@ const getStatusIcon = (status: ComplianceItem['status']) => {
   }
 };
 
-const getStatusBadge = (status: ComplianceItem['status']) => {
+const getStatusBadge = (status: ScanResult['status']) => {
   switch (status) {
     case 'complete':
       return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Complete</Badge>;
@@ -166,21 +66,46 @@ const getStatusBadge = (status: ComplianceItem['status']) => {
 };
 
 const AccessibilityComplianceTracker = () => {
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [isGenerating, setIsGenerating] = React.useState(false);
+  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set());
   const { toast } = useToast();
   
-  const completeCount = complianceItems.filter(item => item.status === 'complete').length;
-  const partialCount = complianceItems.filter(item => item.status === 'partial').length;
-  const pendingCount = complianceItems.filter(item => item.status === 'pending').length;
-  const totalCount = complianceItems.length;
+  const { report, isScanning, lastScanTime, scan } = useAccessibilityScan({ 
+    autoScan: true 
+  });
+
+  // Calculate stats from scan results
+  const results = report?.results || [];
+  const completeCount = results.filter(item => item.status === 'complete').length;
+  const partialCount = results.filter(item => item.status === 'partial').length;
+  const pendingCount = results.filter(item => item.status === 'pending').length;
+  const totalCount = results.length || 12;
   
-  // Calculate overall progress (complete = 100%, partial = 50%, pending = 0%)
-  const progressScore = ((completeCount * 100) + (partialCount * 50)) / totalCount;
-  
-  // Determine overall status
+  const progressScore = report?.overallScore || 0;
   const overallStatus = pendingCount > 0 ? 'needs-work' : partialCount > 0 ? 'almost-there' : 'compliant';
 
+  const toggleExpanded = (id: string) => {
+    setExpandedItems(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
   const generatePDFReport = async () => {
+    if (!report) {
+      toast({
+        title: "No Scan Data",
+        description: "Please run a scan first before generating a report.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsGenerating(true);
     
     try {
@@ -193,10 +118,9 @@ const AccessibilityComplianceTracker = () => {
       });
       
       // Header with branding
-      doc.setFillColor(60, 59, 110); // Navy blue
+      doc.setFillColor(60, 59, 110);
       doc.rect(0, 0, pageWidth, 45, 'F');
       
-      // Title
       doc.setTextColor(255, 255, 255);
       doc.setFontSize(24);
       doc.setFont('helvetica', 'bold');
@@ -207,33 +131,31 @@ const AccessibilityComplianceTracker = () => {
       doc.text('Dr. Troy Williams - DrTroyWilliams.net', 14, 32);
       doc.text(`Generated: ${currentDate}`, 14, 40);
       
-      // Reset text color
       doc.setTextColor(0, 0, 0);
       
-      // Executive Summary Section
+      // Executive Summary
       doc.setFontSize(16);
       doc.setFont('helvetica', 'bold');
       doc.text('Executive Summary', 14, 58);
       
-      doc.setFontSize(11);
-      doc.setFont('helvetica', 'normal');
-      
       // Overall Score Box
       const scoreBoxY = 65;
-      doc.setFillColor(240, 253, 244); // Light green
+      doc.setFillColor(240, 253, 244);
       doc.roundedRect(14, scoreBoxY, 80, 30, 3, 3, 'F');
       
       doc.setFontSize(10);
-      doc.setTextColor(22, 101, 52); // Dark green
+      doc.setTextColor(22, 101, 52);
       doc.text('Overall Compliance Score', 18, scoreBoxY + 10);
       doc.setFontSize(24);
       doc.setFont('helvetica', 'bold');
       doc.text(`${Math.round(progressScore)}%`, 18, scoreBoxY + 24);
       
       // Status Box
-      doc.setFillColor(overallStatus === 'compliant' ? 34 : overallStatus === 'almost-there' ? 245 : 239, 
-                       overallStatus === 'compliant' ? 197 : overallStatus === 'almost-there' ? 158 : 68,
-                       overallStatus === 'compliant' ? 94 : overallStatus === 'almost-there' ? 11 : 68);
+      doc.setFillColor(
+        overallStatus === 'compliant' ? 34 : overallStatus === 'almost-there' ? 245 : 239,
+        overallStatus === 'compliant' ? 197 : overallStatus === 'almost-there' ? 158 : 68,
+        overallStatus === 'compliant' ? 94 : overallStatus === 'almost-there' ? 11 : 68
+      );
       doc.roundedRect(100, scoreBoxY, 96, 30, 3, 3, 'F');
       
       doc.setFontSize(10);
@@ -255,43 +177,43 @@ const AccessibilityComplianceTracker = () => {
       doc.text(`• ${completeCount} of ${totalCount} criteria fully met`, 14, statsY);
       doc.text(`• ${partialCount} criteria partially met`, 14, statsY + 8);
       doc.text(`• ${pendingCount} criteria requiring attention`, 14, statsY + 16);
+      doc.text(`• Last scan: ${lastScanTime?.toLocaleString() || 'N/A'}`, 14, statsY + 24);
       
       // Compliance Details Table
       doc.setFontSize(16);
       doc.setFont('helvetica', 'bold');
-      doc.text('Compliance Details', 14, statsY + 35);
+      doc.text('Automated Scan Results', 14, statsY + 45);
       
-      // Group items by category
-      const categories = ['Perceivable', 'Operable', 'Understandable', 'Robust'];
-      
-      const tableData = complianceItems.map(item => [
+      const tableData = results.map(item => [
         item.category,
         item.name,
         item.description,
         `WCAG ${item.wcagCriteria}`,
-        item.status === 'complete' ? '✓ Complete' : item.status === 'partial' ? '◐ Partial' : '✗ Pending'
+        item.status === 'complete' ? '✓ Complete' : item.status === 'partial' ? '◐ Partial' : '✗ Pending',
+        `${item.passCount}/${item.passCount + item.failCount}`
       ]);
       
       autoTable(doc, {
-        startY: statsY + 40,
-        head: [['Category', 'Criterion', 'Description', 'WCAG Reference', 'Status']],
+        startY: statsY + 50,
+        head: [['Category', 'Criterion', 'Description', 'WCAG', 'Status', 'Pass/Total']],
         body: tableData,
         headStyles: {
           fillColor: [60, 59, 110],
           textColor: [255, 255, 255],
           fontStyle: 'bold',
-          fontSize: 9
+          fontSize: 8
         },
         bodyStyles: {
-          fontSize: 8,
-          cellPadding: 3
+          fontSize: 7,
+          cellPadding: 2
         },
         columnStyles: {
-          0: { cellWidth: 25 },
-          1: { cellWidth: 30 },
-          2: { cellWidth: 55 },
-          3: { cellWidth: 30 },
-          4: { cellWidth: 25 }
+          0: { cellWidth: 22 },
+          1: { cellWidth: 28 },
+          2: { cellWidth: 50 },
+          3: { cellWidth: 25 },
+          4: { cellWidth: 22 },
+          5: { cellWidth: 18 }
         },
         alternateRowStyles: {
           fillColor: [248, 250, 252]
@@ -310,31 +232,48 @@ const AccessibilityComplianceTracker = () => {
         }
       });
       
-      // Get final Y position after table
       const finalY = (doc as any).lastAutoTable.finalY || 200;
       
-      // Recommendations Section (if there are issues)
-      if (partialCount > 0 || pendingCount > 0) {
-        const partialItems = complianceItems.filter(item => item.status !== 'complete');
+      // Issues Section
+      const issueItems = results.filter(item => item.issues.length > 0);
+      if (issueItems.length > 0) {
+        let currentY = finalY + 15;
         
-        if (finalY + 40 > doc.internal.pageSize.getHeight()) {
+        if (currentY + 40 > doc.internal.pageSize.getHeight()) {
           doc.addPage();
-          doc.setFontSize(16);
-          doc.setFont('helvetica', 'bold');
-          doc.text('Recommendations', 14, 20);
-        } else {
-          doc.setFontSize(16);
-          doc.setFont('helvetica', 'bold');
-          doc.text('Recommendations', 14, finalY + 15);
+          currentY = 20;
         }
         
-        doc.setFontSize(10);
-        doc.setFont('helvetica', 'normal');
-        let recY = finalY + 25;
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Issues Found', 14, currentY);
         
-        partialItems.forEach((item, index) => {
-          doc.text(`${index + 1}. ${item.name}: ${item.description}`, 14, recY);
-          recY += 8;
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'normal');
+        currentY += 10;
+        
+        issueItems.forEach((item) => {
+          if (currentY + 20 > doc.internal.pageSize.getHeight()) {
+            doc.addPage();
+            currentY = 20;
+          }
+          
+          doc.setFont('helvetica', 'bold');
+          doc.text(`${item.name} (${item.issues.length} issue${item.issues.length > 1 ? 's' : ''})`, 14, currentY);
+          doc.setFont('helvetica', 'normal');
+          currentY += 6;
+          
+          item.issues.slice(0, 5).forEach((issue) => {
+            doc.text(`  • ${issue}`, 14, currentY);
+            currentY += 5;
+          });
+          
+          if (item.issues.length > 5) {
+            doc.text(`  ... and ${item.issues.length - 5} more issues`, 14, currentY);
+            currentY += 5;
+          }
+          
+          currentY += 5;
         });
       }
       
@@ -345,7 +284,7 @@ const AccessibilityComplianceTracker = () => {
         doc.setFontSize(8);
         doc.setTextColor(128, 128, 128);
         doc.text(
-          `Page ${i} of ${pageCount} | Confidential - For Internal Use Only`,
+          `Page ${i} of ${pageCount} | Automated Accessibility Scan Report`,
           pageWidth / 2,
           doc.internal.pageSize.getHeight() - 10,
           { align: 'center' }
@@ -358,7 +297,6 @@ const AccessibilityComplianceTracker = () => {
         );
       }
       
-      // Save the PDF
       doc.save(`WCAG-Compliance-Report-${new Date().toISOString().split('T')[0]}.pdf`);
       
       toast({
@@ -386,15 +324,32 @@ const AccessibilityComplianceTracker = () => {
               <Accessibility className="h-5 w-5 text-[#3C3B6E]" aria-hidden="true" />
               WCAG 2.1 AA Compliance Tracker
             </CardTitle>
-            <CardDescription>
-              Monitor accessibility compliance across your website
+            <CardDescription className="flex items-center gap-2 mt-1">
+              <span>Automated accessibility scanning</span>
+              {lastScanTime && (
+                <span className="text-xs flex items-center gap-1 text-muted-foreground">
+                  <Clock className="h-3 w-3" aria-hidden="true" />
+                  Last scan: {lastScanTime.toLocaleTimeString()}
+                </span>
+              )}
             </CardDescription>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 flex-wrap">
+            <Button
+              onClick={scan}
+              disabled={isScanning}
+              variant="outline"
+              size="sm"
+              className="gap-2"
+            >
+              <RefreshCw className={`h-4 w-4 ${isScanning ? 'animate-spin' : ''}`} aria-hidden="true" />
+              {isScanning ? 'Scanning...' : 'Run Scan'}
+            </Button>
             <Button
               onClick={generatePDFReport}
-              disabled={isGenerating}
+              disabled={isGenerating || !report}
               variant="outline"
+              size="sm"
               className="gap-2"
             >
               {isGenerating ? (
@@ -402,7 +357,7 @@ const AccessibilityComplianceTracker = () => {
               ) : (
                 <Download className="h-4 w-4" aria-hidden="true" />
               )}
-              {isGenerating ? 'Generating...' : 'Export PDF Report'}
+              Export PDF
             </Button>
             <Badge 
               className={`text-sm px-3 py-1 ${
@@ -448,30 +403,78 @@ const AccessibilityComplianceTracker = () => {
 
         {/* Compliance Items Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {complianceItems.map((item) => {
-            const Icon = item.icon;
+          {results.map((item) => {
+            const Icon = iconMap[item.id] || Accessibility;
+            const hasIssues = item.issues.length > 0;
+            const isExpanded = expandedItems.has(item.id);
+            
             return (
-              <div 
+              <Collapsible
                 key={item.id}
-                className="flex items-start gap-3 p-4 rounded-lg border bg-card hover:bg-muted/50 transition-colors"
+                open={isExpanded}
+                onOpenChange={() => hasIssues && toggleExpanded(item.id)}
               >
-                <div className="flex-shrink-0 mt-0.5">
-                  {getStatusIcon(item.status)}
+                <div 
+                  className={`rounded-lg border bg-card transition-colors ${hasIssues ? 'hover:bg-muted/50 cursor-pointer' : ''}`}
+                >
+                  <CollapsibleTrigger asChild disabled={!hasIssues}>
+                    <div className="flex items-start gap-3 p-4">
+                      <div className="flex-shrink-0 mt-0.5">
+                        {getStatusIcon(item.status)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Icon className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                          <span className="font-medium text-sm">{item.name}</span>
+                          {hasIssues && (
+                            <ChevronDown 
+                              className={`h-4 w-4 text-muted-foreground transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
+                              aria-hidden="true"
+                            />
+                          )}
+                        </div>
+                        <p className="text-xs text-muted-foreground mb-2">{item.description}</p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-muted-foreground font-mono">
+                            WCAG {item.wcagCriteria}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-muted-foreground">
+                              {item.passCount}/{item.passCount + item.failCount}
+                            </span>
+                            {getStatusBadge(item.status)}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CollapsibleTrigger>
+                  
+                  <CollapsibleContent>
+                    {hasIssues && (
+                      <div className="px-4 pb-4 pt-0">
+                        <div className="bg-red-50 dark:bg-red-950/20 rounded-md p-3 mt-2">
+                          <p className="text-xs font-medium text-red-800 dark:text-red-200 mb-2">
+                            Issues Found ({item.issues.length}):
+                          </p>
+                          <ul className="text-xs text-red-700 dark:text-red-300 space-y-1">
+                            {item.issues.slice(0, 5).map((issue, idx) => (
+                              <li key={idx} className="flex items-start gap-1">
+                                <span className="text-red-500">•</span>
+                                <span>{issue}</span>
+                              </li>
+                            ))}
+                            {item.issues.length > 5 && (
+                              <li className="text-red-600 dark:text-red-400 italic">
+                                ...and {item.issues.length - 5} more issues
+                              </li>
+                            )}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+                  </CollapsibleContent>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Icon className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
-                    <span className="font-medium text-sm">{item.name}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground mb-2">{item.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground font-mono">
-                      WCAG {item.wcagCriteria}
-                    </span>
-                    {getStatusBadge(item.status)}
-                  </div>
-                </div>
-              </div>
+              </Collapsible>
             );
           })}
         </div>
