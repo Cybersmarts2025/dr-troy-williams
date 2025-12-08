@@ -27,6 +27,7 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { useAccessibilityScan } from '@/hooks/useAccessibilityScan';
 import { ScanResult } from '@/utils/accessibilityScanner';
+import { generateADAComplianceChecklistPDF } from '@/utils/adaComplianceChecklistPDF';
 
 const iconMap: Record<string, React.ElementType> = {
   'form-labels': Type,
@@ -357,7 +358,16 @@ const AccessibilityComplianceTracker = () => {
               ) : (
                 <Download className="h-4 w-4" aria-hidden="true" />
               )}
-              Export PDF
+              Export Report
+            </Button>
+            <Button
+              onClick={generateADAComplianceChecklistPDF}
+              variant="outline"
+              size="sm"
+              className="gap-2"
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
+              Audit Checklist
             </Button>
             <Badge 
               className={`text-sm px-3 py-1 ${
