@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import ConsultationForm from "@/components/consultations/ConsultationForm";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
+import SeasonalBanner from "@/components/SeasonalBanner";
 
 const Consultation = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const Consultation = () => {
         />
       </Helmet>
       
+      <SeasonalBanner />
       <NavBar />
       
       <main className="pt-16">

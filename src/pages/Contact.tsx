@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/contact/ContactForm";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
+import SeasonalBanner from "@/components/SeasonalBanner";
 
 const Contact = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const Contact = () => {
         />
       </Helmet>
       
+      <SeasonalBanner />
       <NavBar />
       
       <main className="pt-16">
