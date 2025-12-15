@@ -30,9 +30,9 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
   const focusTrapRef = useFocusTrap(isOpen);
 
   const chatTypes = {
-    general: { icon: Shield, label: 'Cybersecurity Q&A', color: 'bg-blue-500' },
-    research: { icon: FileText, label: 'Research Assistant', color: 'bg-green-500' },
-    consultation: { icon: Calendar, label: 'Consultation Help', color: 'bg-purple-500' }
+    general: { icon: Shield, label: 'Q&A', color: 'bg-blue-500' },
+    research: { icon: FileText, label: 'Research', color: 'bg-green-500' },
+    consultation: { icon: Calendar, label: 'Consult', color: 'bg-purple-500' }
   };
 
   useEffect(() => {
@@ -41,11 +41,11 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      // Add welcome message based on chat type
+      // Personal welcome messages from Dr. Troy
       const welcomeMessages = {
-        general: "👋 Hi! I'm Dr. Troy Williams' AI assistant. I provide step-by-step, example-rich answers tailored to your context. For more depth, say ‘deep dive’. What would you like to explore?",
-        research: "🔬 Welcome! I provide detailed research analysis with key findings, methods, limitations, and next steps. Share a link or topic, or say ‘deep dive’ for a thorough review.",
-        consultation: "📅 Hello! I’ll ask a few quick questions, then outline recommended services, timelines, and immediate actions. Tell me your goals, timeline, and constraints."
+        general: "Hey there! I'm Dr. Troy Williams - The Proactive AI PI. I specialize in synthetic identity fraud and cybersecurity. What's on your mind? I'm here to help you navigate any security challenges you're facing.",
+        research: "Hi! I'm Dr. Troy - let's talk research. I'm passionate about synthetic identity fraud detection and AI security. Share what you're exploring, and I'll give you my insights from years of independent research.",
+        consultation: "Hello! I'm Dr. Troy Williams. I'd love to learn about your situation and see how I can help. Tell me a bit about your organization and what security challenges you're facing, and we'll figure out the best path forward together."
       };
 
       setMessages([{
@@ -187,7 +187,7 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
           onClick={() => setIsOpen(true)}
           className="h-14 w-14 rounded-full bg-[#3C3B6E] hover:bg-[#2A2952] shadow-lg"
           size="icon"
-          aria-label="Open AI assistant chat"
+          aria-label="Chat with Dr. Troy Williams"
         >
           <MessageCircle className="h-6 w-6 text-white" aria-hidden="true" />
         </Button>
@@ -204,21 +204,21 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
       className="fixed bottom-6 right-6 z-50 w-96 h-[600px] max-h-[80vh]"
       role="dialog"
       aria-modal="true"
-      aria-label="AI Assistant Chat"
+      aria-label="Chat with Dr. Troy Williams"
     >
       <Card className="h-full flex flex-col shadow-2xl border-2">
         <CardHeader className="pb-3 bg-gradient-to-r from-[#3C3B6E] to-[#2A2952] text-white rounded-t-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Icon className="h-5 w-5" />
-              <CardTitle className="text-lg">AI Assistant</CardTitle>
+              <CardTitle className="text-lg">Chat with Dr. Troy</CardTitle>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
               className="h-8 w-8 text-white hover:bg-white/20"
-              aria-label="Close AI assistant chat"
+              aria-label="Close chat"
             >
               <X className="h-4 w-4" aria-hidden="true" />
             </Button>
@@ -303,7 +303,7 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
                   </div>
                 </div>
                 <div className="bg-gray-100 p-3 rounded-lg">
-                  <div className="text-sm text-gray-600">AI is thinking...</div>
+                  <div className="text-sm text-gray-600">Dr. Troy is typing...</div>
                 </div>
               </div>
             )}
@@ -318,7 +318,7 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask about cybersecurity, AI safety, or fraud prevention..."
+                placeholder="Ask me anything about cybersecurity..."
                 disabled={isStreaming}
                 className="flex-1"
               />
@@ -337,8 +337,8 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
               </Button>
             </div>
             
-            <div className="text-xs text-gray-600 mt-2 text-center">
-              Powered by Lovable AI • Using Gemini 2.5 Flash
+            <div className="text-xs text-gray-500 mt-2 text-center">
+              Speak directly with Dr. Troy Williams
             </div>
           </div>
         </CardContent>
