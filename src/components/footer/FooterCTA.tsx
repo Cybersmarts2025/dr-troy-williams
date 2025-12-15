@@ -9,7 +9,7 @@ const FooterCTA = () => {
     <div className="bg-gradient-to-r from-[#B22234]/90 to-[#B22234]/80 -mt-6 mb-6 py-5 px-6 rounded-lg shadow-lg flex flex-col md:flex-row justify-between items-center gap-4">
       <div>
         <h3 className="text-xl font-bold mb-1">Media & Consulting</h3>
-        <p className="text-sm text-white/90">Available for interviews and consulting</p>
+        <p className="text-sm text-white/90">Available via phone and email only</p>
       </div>
       <div className="flex flex-wrap gap-3 mt-3 md:mt-0">
         <Button

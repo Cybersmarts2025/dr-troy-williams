@@ -159,8 +159,8 @@ FEATURED TOPICS FOR EXPERT COMMENTARY
         <div className="max-w-3xl mx-auto bg-gradient-to-r from-[#B22234]/5 to-[#3C3B6E]/5 p-6 md:p-8 rounded-lg border border-[#B22234]/20 shadow-md">
           <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-center">Media Inquiries</h2>
           <p className="text-center mb-6 md:mb-8 text-base md:text-lg">
-            For press interviews, speaking engagement requests, or expert commentary on artificial intelligence, 
-            cybersecurity, or national security technology matters, please contact Dr. Williams' media relations team.
+            For press inquiries, expert commentary, or consulting requests on artificial intelligence, 
+            cybersecurity, or national security technology matters, Dr. Williams is available via phone and email only.
           </p>
           
           <div className="grid md:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-8">
