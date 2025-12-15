@@ -190,13 +190,9 @@ async function indexPage(
   }
 }
 
-serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
-
+async function runIndexing() {
   const startTime = Date.now();
-  console.log('=== Auto-Index Website Content Started ===');
+  console.log('=== Background Auto-Index Started ===');
   console.log(`Time: ${new Date().toISOString()}`);
 
   try {
@@ -205,19 +201,18 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 
     if (!OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY not configured');
+      console.error('OPENAI_API_KEY not configured');
+      return;
     }
 
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const results: { url: string; success: boolean; error?: string }[] = [];
     let successCount = 0;
     let errorCount = 0;
 
-    // Index all pages
+    // Index all pages with delay to avoid rate limiting
     for (const [url, pageData] of Object.entries(PAGE_CONTENT)) {
       const result = await indexPage(supabase, OPENAI_API_KEY, url, pageData.title, pageData.content);
-      results.push({ url, ...result });
       
       if (result.success) {
         successCount++;
@@ -225,19 +220,35 @@ serve(async (req) => {
         errorCount++;
       }
 
-      // Small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // 2.5 second delay to avoid OpenAI rate limiting
+      await new Promise(resolve => setTimeout(resolve, 2500));
     }
 
     const duration = Date.now() - startTime;
     console.log(`=== Auto-Index Complete ===`);
     console.log(`Success: ${successCount}, Errors: ${errorCount}, Duration: ${duration}ms`);
+  } catch (error) {
+    console.error('Background indexing error:', error);
+  }
+}
 
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  console.log('=== Auto-Index Request Received ===');
+  
+  try {
+    // Start background task for indexing
+    EdgeRuntime.waitUntil(runIndexing());
+
+    // Return immediately
     return new Response(JSON.stringify({
       success: true,
-      message: `Indexed ${successCount} pages successfully, ${errorCount} errors`,
-      duration_ms: duration,
-      results,
+      message: `Indexing ${Object.keys(PAGE_CONTENT).length} pages in background. Check logs for progress.`,
+      pages_to_index: Object.keys(PAGE_CONTENT).length,
+      estimated_time_seconds: Object.keys(PAGE_CONTENT).length * 3,
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
