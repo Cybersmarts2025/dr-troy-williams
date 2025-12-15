@@ -84,7 +84,40 @@ const BioSnippet = ({ title, text, wordCount }: { title: string; text: string; w
   );
 };
 
-const DownloadCard = ({ 
+const OFFICIAL_BIO = "Dr. Troy Williams, PhD, represents a unique convergence of three critical disciplines: cybersecurity engineering, artificial intelligence science, and licensed private investigation. Known professionally as The Proactive AI PI, Williams has dedicated his career to identifying and neutralizing synthetic identity fraud—one of the fastest-growing and least understood threats to American financial infrastructure. Through doctoral-level research in artificial intelligence and cybersecurity, Williams brings both academic rigor and real-world investigative experience to his work. His independent research has been featured on SSRN and ResearchGate, achieving a Research Interest Score of 8.0. Williams is the creator of four trademarked defense systems that together form the first unified synthetic identity prevention architecture in the United States: PatriotProof™ (fortress-level identity defense), FraudDNA™ (behavioral pattern analysis), AISF™ (Autonomous Intelligence Security Framework), and PPP™ (Proactive Prevention Platform). He holds international Patent PCT/US25/43982 for his synthetic identity detection methodology. His research and publications are independently developed and published. His specialized training includes prompt engineering under Dr. Jules White at Vanderbilt University and financial fraud investigation through SBI Seminars. Based in Tennessee, Williams operates under a singular mission: Protecting America Through Technology.";
+
+const CopyOfficialBioButton = () => {
+  const [copied, setCopied] = useState(false);
+  
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(OFFICIAL_BIO);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  
+  return (
+    <Button 
+      onClick={handleCopy}
+      variant="usaRed"
+      size="lg"
+      className="gap-2"
+    >
+      {copied ? (
+        <>
+          <Check className="w-5 h-5" />
+          Bio Copied!
+        </>
+      ) : (
+        <>
+          <Copy className="w-5 h-5" />
+          Copy Official Bio
+        </>
+      )}
+    </Button>
+  );
+};
+
+const DownloadCard = ({
   title, 
   description, 
   icon: Icon, 
@@ -286,9 +319,12 @@ const PressKit = () => {
               <h2 className="text-3xl font-bold text-foreground mb-4 text-center">
                 Ready-to-Use Bios
               </h2>
-              <p className="text-center text-muted-foreground mb-10">
+              <p className="text-center text-muted-foreground mb-6">
                 Pre-approved biographical text for articles and introductions.
               </p>
+              <div className="flex justify-center mb-10">
+                <CopyOfficialBioButton />
+              </div>
               
               <div className="space-y-4">
                 <BioSnippet 
