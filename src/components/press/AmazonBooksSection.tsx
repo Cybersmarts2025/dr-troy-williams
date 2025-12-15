@@ -43,7 +43,12 @@ export const AmazonBooksSection = () => {
       }
 
       if (data?.success && data.books) {
-        setBooks(data.books);
+        // Filter out children's books not relevant to this professional site
+        const filteredBooks = data.books.filter((book: Book) => 
+          !book.title.toLowerCase().includes('kyler') && 
+          !book.title.toLowerCase().includes('poppie')
+        );
+        setBooks(filteredBooks);
       } else {
         setError(data?.error || 'Failed to fetch books');
       }
