@@ -8,7 +8,8 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AdminGuard from "@/components/AdminGuard";
 import AccessibilityComplianceTracker from "@/components/admin/AccessibilityComplianceTracker";
-import { FileText, Users, Mail, Settings, Database, Upload, Shield } from 'lucide-react';
+import AdminBooksManager from "@/components/admin/AdminBooksManager";
+import { FileText, Users, Mail, Settings, Database, Upload, Shield, BookOpen } from 'lucide-react';
 
 const AdminDashboard = () => {
   return (
@@ -130,6 +131,11 @@ const AdminDashboard = () => {
             
             {/* Accessibility Compliance Tracker */}
             <AccessibilityComplianceTracker />
+            
+            {/* Amazon Books Cache Manager */}
+            <div className="md:col-span-2">
+              <AdminBooksManager />
+            </div>
           </div>
         </div>
         <Footer />
