@@ -165,6 +165,8 @@ const FooterIdentity = ({ companyName }: FooterIdentityProps) => {
               <a href="https://www.researchgate.net/profile/Troy-Williams-14?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors">ResearchGate</a>
               {' · '}
               <a href="https://www.wikidata.org/wiki/Q136302603" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors">Wikidata</a>
+              {' · '}
+              <a href="https://www.amazon.com/author/troy-williams" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors">Amazon Author</a>
             </li>
           </ul>
         </div>
