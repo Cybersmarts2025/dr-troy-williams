@@ -126,8 +126,8 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "02/2027",
-    title: "PhD Completion Target",
-    description: "Projected completion of doctoral studies, culminating years of advanced research in artificial intelligence and cybersecurity with focus on national synthetic identity defense.",
+    title: "Prototype Development",
+    description: "Currently developing prototype for financial fraud detection and LegalSmarts and ReAIM platforms.",
     icon: GraduationCap,
     category: 'milestone'
   }
