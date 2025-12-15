@@ -127,7 +127,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "02/2027",
     title: "Prototype Development",
-    description: "Currently developing prototype for financial fraud detection and LegalSmarts and ReAIM platforms.",
+    description: "Currently developing prototype for financial fraud detection including PatriotProof™, CyberSmarts, LegalSmarts, and ReAIM platforms.",
     icon: GraduationCap,
     category: 'milestone'
   }
