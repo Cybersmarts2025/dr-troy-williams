@@ -308,6 +308,41 @@ const PressKit = () => {
                   downloadName="DrTroyWilliams-FullPressKit.txt"
                 />
               </div>
+
+              {/* Official Profiles */}
+              <div className="mt-10 pt-8 border-t border-border">
+                <h3 className="text-xl font-bold text-foreground mb-4 text-center">Official Profiles</h3>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <a 
+                    href="https://www.amazon.com/author/troy-williams" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF9900] text-black font-medium rounded-lg hover:bg-[#e88a00] transition-colors"
+                  >
+                    <BookOpen className="w-5 h-5" />
+                    Amazon Author Page
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/cybersmarts/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0A66C2] text-white font-medium rounded-lg hover:bg-[#084d94] transition-colors"
+                  >
+                    LinkedIn Profile
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                  <a 
+                    href="https://www.researchgate.net/profile/Troy-Williams-14" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#00CCBB] text-white font-medium rounded-lg hover:bg-[#00b3a3] transition-colors"
+                  >
+                    ResearchGate
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
