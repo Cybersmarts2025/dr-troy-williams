@@ -8,7 +8,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import SeasonalBanner from "@/components/SeasonalBanner";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
-import stolenNationCover from "@/assets/stolen-nation-cover.jpg";
+import AmazonBooksSection from "@/components/press/AmazonBooksSection";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -357,44 +357,9 @@ const PressKit = () => {
                 </div>
               </div>
 
-              {/* Published Books */}
-              <div className="mt-10 pt-8 border-t border-border">
-                <h3 className="text-xl font-bold text-foreground mb-2 text-center">Books by Dr. Troy Williams</h3>
-                <p className="text-center text-muted-foreground mb-6">
-                  Authoritative works on fraud prevention, cybersecurity, and protecting America.
-                </p>
-                <div className="flex justify-center">
-                  <div className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow max-w-sm">
-                    <div className="relative">
-                      <img 
-                        src={stolenNationCover}
-                        alt="Stolen Nation book cover by Dr. Troy Williams"
-                        className="w-full h-auto"
-                        loading="lazy"
-                      />
-                      <div className="absolute top-3 right-3 bg-[#B22234] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-                        Coming Soon
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <h4 className="font-bold text-foreground text-lg mb-2">Stolen Nation</h4>
-                      <p className="text-sm text-muted-foreground mb-1 font-medium">
-                        How to Protect Your Money, Credit, and Identity from Hackers, Scammers, and Foreign Exploiters Targeting America
-                      </p>
-                      <p className="text-xs text-muted-foreground mb-4">
-                        By Troy Williams, PhD
-                      </p>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        A comprehensive guide to understanding and defending against the synthetic identity fraud epidemic threatening American families and financial institutions.
-                      </p>
-                      <div className="flex items-center gap-2 text-sm text-[#B22234] font-medium">
-                        <BookOpen className="w-4 h-4" />
-                        Currently in Development
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+              {/* Published Books - Dynamic from Amazon */}
+              <AmazonBooksSection />
             </div>
           </div>
         </section>
