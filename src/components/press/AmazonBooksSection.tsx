@@ -9,7 +9,6 @@ interface Book {
   amazonUrl: string;
   title: string;
   coverUrl: string;
-  description?: string;
 }
 
 // Hardcoded Stolen Nation book (coming soon)
@@ -23,19 +22,62 @@ const STOLEN_NATION_BOOK = {
   isComingSoon: true,
 };
 
+// Filter out children's books
+const EXCLUDED_KEYWORDS = ['kyler', 'poppie', 'adventure', 'kids', 'children story', 'bedtime', 'coloring'];
+
+const filterBooks = (books: Book[]) => {
+  return books.filter((book) => {
+    const title = book.title.toLowerCase();
+    return !EXCLUDED_KEYWORDS.some(keyword => title.includes(keyword));
+  });
+};
+
 export const AmazonBooksSection = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [hasFetched, setHasFetched] = useState(false);
+  const [fromCache, setFromCache] = useState(false);
 
-  const fetchBooks = async () => {
+  // Load cached books from database on mount
+  useEffect(() => {
+    loadCachedBooks();
+  }, []);
+
+  const loadCachedBooks = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('cached_amazon_books')
+        .select('asin, title, cover_url, amazon_url')
+        .eq('is_visible', true)
+        .order('display_order', { ascending: true });
+
+      if (!error && data && data.length > 0) {
+        const mappedBooks = data.map(b => ({
+          asin: b.asin,
+          amazonUrl: b.amazon_url,
+          title: b.title,
+          coverUrl: b.cover_url || '',
+        }));
+        setBooks(filterBooks(mappedBooks));
+        setFromCache(true);
+      } else {
+        // No cache, fetch fresh
+        fetchBooks(false);
+      }
+    } catch (err) {
+      console.error('Error loading cached books:', err);
+      fetchBooks(false);
+    }
+  };
+
+  const fetchBooks = async (forceRefresh: boolean = true) => {
     setLoading(true);
-    setError(null);
     
     try {
       const { data, error: fnError } = await supabase.functions.invoke('fetch-author-books', {
-        body: { authorUrl: 'https://www.amazon.com/author/troy-williams' }
+        body: { 
+          authorUrl: 'https://www.amazon.com/author/troy-williams',
+          forceRefresh 
+        }
       });
 
       if (fnError) {
@@ -43,29 +85,15 @@ export const AmazonBooksSection = () => {
       }
 
       if (data?.success && data.books) {
-        // Filter out children's books not relevant to this professional site
-        const childrenKeywords = ['kyler', 'poppie', 'adventure', 'kids', 'children story', 'bedtime', 'coloring'];
-        const filteredBooks = data.books.filter((book: Book) => {
-          const title = book.title.toLowerCase();
-          return !childrenKeywords.some(keyword => title.includes(keyword));
-        });
-        setBooks(filteredBooks);
-      } else {
-        setError(data?.error || 'Failed to fetch books');
+        setBooks(filterBooks(data.books));
+        setFromCache(data.fromCache || false);
       }
     } catch (err) {
       console.error('Error fetching books:', err);
-      setError('Unable to load books from Amazon. Please try again later.');
     } finally {
       setLoading(false);
-      setHasFetched(true);
     }
   };
-
-  // Auto-fetch on mount
-  useEffect(() => {
-    fetchBooks();
-  }, []);
 
   return (
     <div className="mt-10 pt-8 border-t border-border">
@@ -74,7 +102,7 @@ export const AmazonBooksSection = () => {
         <Button
           variant="outline"
           size="sm"
-          onClick={fetchBooks}
+          onClick={() => fetchBooks(true)}
           disabled={loading}
           className="gap-2"
         >
@@ -83,18 +111,15 @@ export const AmazonBooksSection = () => {
           ) : (
             <RefreshCw className="w-4 h-4" />
           )}
-          {loading ? 'Loading...' : 'Refresh'}
+          {loading ? 'Refreshing...' : 'Refresh'}
         </Button>
       </div>
       <p className="text-center text-muted-foreground mb-6">
         Authoritative works on fraud prevention, cybersecurity, and protecting America.
+        {fromCache && books.length > 0 && (
+          <span className="text-xs ml-2 text-muted-foreground/70">(cached)</span>
+        )}
       </p>
-
-      {error && (
-        <div className="text-center text-destructive text-sm mb-4 p-3 bg-destructive/10 rounded-lg">
-          {error}
-        </div>
-      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {/* Always show Stolen Nation first */}
@@ -126,7 +151,7 @@ export const AmazonBooksSection = () => {
           </div>
         </div>
 
-        {/* Dynamic books from Amazon */}
+        {/* Dynamic books from cache/Amazon */}
         {books.map((book) => (
           <div key={book.asin} className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
             <div className="aspect-[3/4] bg-gradient-to-br from-[#3C3B6E] to-[#0A1628] flex items-center justify-center">
@@ -136,7 +161,6 @@ export const AmazonBooksSection = () => {
                 className="w-full h-full object-cover"
                 loading="lazy"
                 onError={(e) => {
-                  // Fallback to icon if image fails
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.parentElement!.innerHTML = '<div class="flex items-center justify-center w-full h-full"><svg class="w-16 h-16 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg></div>';
                 }}
@@ -144,9 +168,6 @@ export const AmazonBooksSection = () => {
             </div>
             <div className="p-4">
               <h4 className="font-semibold text-foreground text-sm mb-2 line-clamp-2">{book.title}</h4>
-              {book.description && (
-                <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{book.description}</p>
-              )}
               <a 
                 href={book.amazonUrl}
                 target="_blank"
@@ -160,13 +181,6 @@ export const AmazonBooksSection = () => {
             </div>
           </div>
         ))}
-
-        {/* Show placeholder if no books loaded and not loading */}
-        {!loading && !hasFetched && books.length === 0 && (
-          <div className="col-span-full text-center py-8 text-muted-foreground">
-            <p className="mb-2">Click "Refresh" to load books from Amazon Author page</p>
-          </div>
-        )}
 
         {/* Loading skeleton */}
         {loading && books.length === 0 && (
