@@ -8,6 +8,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import SeasonalBanner from "@/components/SeasonalBanner";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
+import stolenNationCover from "@/assets/stolen-nation-cover.jpg";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -366,9 +367,10 @@ const PressKit = () => {
                   <div className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow max-w-sm">
                     <div className="relative">
                       <img 
-                        src="/lovable-uploads/stolen-nation-cover.jpg" 
-                        alt="Stolen Nation Book Cover"
+                        src={stolenNationCover}
+                        alt="Stolen Nation book cover by Dr. Troy Williams"
                         className="w-full h-auto"
+                        loading="lazy"
                       />
                       <div className="absolute top-3 right-3 bg-[#B22234] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
                         Coming Soon
