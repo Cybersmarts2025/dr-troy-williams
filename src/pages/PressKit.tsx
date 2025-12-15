@@ -358,63 +358,39 @@ const PressKit = () => {
 
               {/* Published Books */}
               <div className="mt-10 pt-8 border-t border-border">
-                <h3 className="text-xl font-bold text-foreground mb-2 text-center">Published Books</h3>
+                <h3 className="text-xl font-bold text-foreground mb-2 text-center">Books by Dr. Troy Williams</h3>
                 <p className="text-center text-muted-foreground mb-6">
-                  Authoritative works on AI, cybersecurity, and digital investigation.
+                  Authoritative works on fraud prevention, cybersecurity, and protecting America.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[
-                    {
-                      title: "Stolen Nation: Protecting America's Digital Sovereignty",
-                      description: "An eye-opening analysis of the digital threats facing American infrastructure and a comprehensive framework for ensuring technological independence.",
-                      amazonUrl: "https://www.amazon.com/dp/B0BXHD8VLQ",
-                      coverImage: "https://images-na.ssl-images-amazon.com/images/I/41XS9B9L9QL._SX331_BO1,204,203,200_.jpg"
-                    },
-                    {
-                      title: "The Proactive Prevention Platform",
-                      description: "An innovative approach to cybersecurity that moves beyond reactive measures to proactively identify and neutralize threats.",
-                      amazonUrl: "https://www.amazon.com/dp/B09NTKWTT7",
-                      coverImage: "https://images-na.ssl-images-amazon.com/images/I/41y2J6B9URL._SX331_BO1,204,203,200_.jpg"
-                    },
-                    {
-                      title: "AI Security Frameworks for Critical Infrastructure",
-                      description: "A technical guide to implementing secure AI systems in sensitive environments with integrity and ethical standards.",
-                      amazonUrl: "https://www.amazon.com/dp/B0B7X3WFNM",
-                      coverImage: "https://images-na.ssl-images-amazon.com/images/I/41qR2BPXL5L._SX331_BO1,204,203,200_.jpg"
-                    },
-                    {
-                      title: "Digital Investigation: Modern Methodologies",
-                      description: "A comprehensive guide to digital evidence collection, preservation, and analysis for law enforcement professionals.",
-                      amazonUrl: "https://www.amazon.com/dp/B0C2VHLL8P",
-                      coverImage: "https://images-na.ssl-images-amazon.com/images/I/41DIGITAL9L._SX331_BO1,204,203,200_.jpg"
-                    },
-                    {
-                      title: "American Technology Independence",
-                      description: "Examining the critical relationship between domestic technology development capabilities and national security.",
-                      amazonUrl: "https://www.amazon.com/dp/B0BVMQPN3D",
-                      coverImage: "https://images-na.ssl-images-amazon.com/images/I/41AMTECH9L._SX331_BO1,204,203,200_.jpg"
-                    }
-                  ].map((book, index) => (
-                    <div key={index} className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                      <div className="aspect-[3/4] bg-gradient-to-br from-[#3C3B6E] to-[#B22234] flex items-center justify-center p-4">
-                        <BookOpen className="w-16 h-16 text-white/80" />
-                      </div>
-                      <div className="p-4">
-                        <h4 className="font-semibold text-foreground text-sm mb-2 line-clamp-2">{book.title}</h4>
-                        <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{book.description}</p>
-                        <a 
-                          href={book.amazonUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#FF9900] text-black font-medium rounded hover:bg-[#e88a00] transition-colors"
-                        >
-                          <BookOpen className="w-3.5 h-3.5" />
-                          Buy on Amazon
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
+                <div className="flex justify-center">
+                  <div className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow max-w-sm">
+                    <div className="relative">
+                      <img 
+                        src="/lovable-uploads/stolen-nation-cover.jpg" 
+                        alt="Stolen Nation Book Cover"
+                        className="w-full h-auto"
+                      />
+                      <div className="absolute top-3 right-3 bg-[#B22234] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                        Coming Soon
                       </div>
                     </div>
-                  ))}
+                    <div className="p-5">
+                      <h4 className="font-bold text-foreground text-lg mb-2">Stolen Nation</h4>
+                      <p className="text-sm text-muted-foreground mb-1 font-medium">
+                        How to Protect Your Money, Credit, and Identity from Hackers, Scammers, and Foreign Exploiters Targeting America
+                      </p>
+                      <p className="text-xs text-muted-foreground mb-4">
+                        By Troy Williams, PhD
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        A comprehensive guide to understanding and defending against the synthetic identity fraud epidemic threatening American families and financial institutions.
+                      </p>
+                      <div className="flex items-center gap-2 text-sm text-[#B22234] font-medium">
+                        <BookOpen className="w-4 h-4" />
+                        Currently in Development
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
