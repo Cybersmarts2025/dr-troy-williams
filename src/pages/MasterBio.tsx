@@ -851,8 +851,8 @@ const MasterBio = () => {
                   
                   {/* Medium Bio */}
                   <BioSnippet 
-                    title="Medium Bio (100 words)"
-                    text="Dr. Troy Williams, PhD from Capitol Technology University (AI) and University of the Cumberlands (IT), is a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator. Known as The Proactive AI PI, he specializes in synthetic identity fraud detection and prevention. Williams is the creator of four trademarked defense systems: PatriotProof™, FraudDNA™, AISF™, and PPP™. His research has been featured on SSRN and ResearchGate, with a Research Interest Score of 8.0. He holds Patent PCT/US25/43982 for synthetic identity detection methodology. Mission: Protecting America Through Technology."
+                    title="Medium Bio (100 words) — Compliant Version"
+                    text="Dr. Troy Williams, PhD, is a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator known as The Proactive AI PI. He specializes in synthetic identity fraud detection and proactive prevention methodologies. Williams is the creator of four trademarked defense systems: PatriotProof™, FraudDNA™, Autonomous Intelligence Security Framework AISF™, and the Proactive Prevention Platform PPP™. His independent research has been featured on SSRN and ResearchGate, earning a Research Interest Score of 8.0. He is the inventor listed on international patent application PCT/US25/43982 for synthetic identity detection methodology. Mission: Protecting America Through Technology™."
                   />
                   
                   {/* Tagline */}
