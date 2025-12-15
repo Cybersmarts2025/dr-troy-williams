@@ -15,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AsSeenInWidget from '@/components/press/AsSeenInWidget';
 import AIChatWidget from '@/components/ai/AIChatWidget';
 import StolenNationCTA from '@/components/home/StolenNationCTA';
+import SeasonalBanner from '@/components/SeasonalBanner';
 
 // Lazy load less critical components
 const WorkHistory = lazy(() => import("@/components/WorkHistory"));
@@ -81,6 +82,7 @@ const Index = () => {
         url="https://cybersmarts.ai"
       />
       
+      <SeasonalBanner />
       <NavBar />
       
       <main id="main-content" tabIndex={-1}>
