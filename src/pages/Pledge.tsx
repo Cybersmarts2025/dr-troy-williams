@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 import PageBreadcrumb from '@/components/navigation/PageBreadcrumb';
+import SeasonalBanner from '@/components/SeasonalBanner';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Flag, Download, CheckCircle } from 'lucide-react';
@@ -34,6 +35,7 @@ const Pledge = () => {
         <meta name="description" content="Join the American Digital Stewardship Pledge - a commitment to protecting our nation in the digital age through vigilance, verification, and civic responsibility." />
       </Helmet>
       
+      <SeasonalBanner />
       <NavBar />
       <PageBreadcrumb pageName="The Pledge" />
       
