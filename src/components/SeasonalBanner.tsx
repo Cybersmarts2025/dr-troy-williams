@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Snowflake, PartyPopper, Heart, Clover, Egg, Flower2, Flag, Sun, Ghost, Award, TreeDeciduous, Star } from 'lucide-react';
+import { Snowflake, PartyPopper, Heart, Clover, Egg, Flower2, Flag, Sun, Ghost, Award, TreeDeciduous, Star, Shield } from 'lucide-react';
 
 type AnimationType = 'snowfall' | 'confetti' | 'hearts' | 'clovers' | 'sparkles' | 'leaves' | 'fireworks' | 'none';
 
@@ -482,14 +482,14 @@ const getSeasonalConfig = (): SeasonalConfig => {
     }
   }
 
-  // Default - no banner
+  // Default - always show a welcome banner
   return {
-    message: "",
-    icon: null,
-    bgGradient: "",
-    textColor: "",
-    showBanner: false,
-    animationType: 'none'
+    message: "🛡️ Welcome! Dr. Troy Williams is available via phone and email for consulting and media inquiries.",
+    icon: <Shield className="h-5 w-5" />,
+    bgGradient: "bg-gradient-to-r from-[#3C3B6E] via-[#B22234] to-[#3C3B6E]",
+    textColor: "text-white",
+    showBanner: true,
+    animationType: 'sparkles'
   };
 };
 
@@ -526,7 +526,8 @@ const SeasonalBanner: React.FC = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`${config.bgGradient} ${config.textColor} py-3 px-4 text-center relative overflow-hidden`}
+      className={`${config.bgGradient} ${config.textColor} py-3 px-4 text-center relative overflow-hidden fixed top-0 left-0 right-0 z-[60]`}
+      id="seasonal-banner"
     >
       {/* Animated effects based on holiday */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
