@@ -69,8 +69,8 @@ const Index = () => {
       <PersonSchema 
         name="Dr. Troy Williams"
         jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority"
-        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation."
-        alumniOf={["Capitol Technology University", "Western Governors University"]}
+        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. His research and publications are independently developed and published."
+        alumniOf={["Western Governors University"]}
         sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]}
       />
       

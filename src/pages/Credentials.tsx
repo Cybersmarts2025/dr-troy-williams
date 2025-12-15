@@ -22,17 +22,17 @@ interface Credential {
 
 const credentials: Credential[] = [
   {
-    title: "PhD in Artificial Intelligence",
-    institution: "Capitol Technology University",
-    status: "Completed",
+    title: "Doctoral-level Research in Artificial Intelligence",
+    institution: "Independent Research",
+    status: "Active",
     description: "Doctoral research focused on autonomous security systems, AI-driven fraud detection algorithms, and machine learning applications in identity protection.",
     icon: GraduationCap,
     category: 'doctoral'
   },
   {
-    title: "PhD in Information Technology",
-    institution: "University of the Cumberlands",
-    status: "Completed",
+    title: "Doctoral-level Research in Information Technology",
+    institution: "Independent Research",
+    status: "Active",
     description: "Doctoral studies in emerging technology frameworks, digital transformation, and enterprise security architecture.",
     icon: GraduationCap,
     category: 'doctoral'
@@ -170,7 +170,7 @@ const Credentials = () => {
             <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-center">
               <div>
                 <p className="text-3xl md:text-4xl font-bold">2</p>
-                <p className="text-sm text-white/80">PhD Programs</p>
+                <p className="text-sm text-white/80">Doctoral Studies</p>
               </div>
               <div>
                 <p className="text-3xl md:text-4xl font-bold">2</p>
@@ -201,7 +201,7 @@ const Credentials = () => {
                 Doctoral Studies
               </h2>
               <p className="text-center text-muted-foreground mb-10">
-                Completed doctoral programs in Artificial Intelligence and Information Technology.
+                Doctoral-level research in Artificial Intelligence and Information Technology.
               </p>
               
               <div className="grid md:grid-cols-2 gap-6">

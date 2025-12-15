@@ -4,7 +4,7 @@ Dr. Troy Williams, PhD – Press Kit
 BIOGRAPHY
 ==============================================
 
-Dr. Troy Williams, PhD, is a cybersecurity engineer, AI scientist, and licensed private investigator with more than 30 years of experience in digital defense, fraud prevention, and sovereign AI development. As the Founder and President of Cybersmarts.ai, Dr. Williams is the inventor of several patented and trademarked systems, including PatriotProof™, FraudDNA™, AISF™, and PPP™. He has authored seven books and numerous whitepapers addressing AI ethics, cybersecurity resilience, and fraud detection. His work aligns with the highest compliance standards, including GDPR, HIPAA, SOC 2, and CCPA.
+Dr. Troy Williams, PhD, is a cybersecurity engineer, AI scientist, and licensed private investigator with more than 30 years of experience in digital defense, fraud prevention, and sovereign AI development. As the Founder and President of Cybersmarts.ai, Dr. Williams is the inventor of several patented and trademarked systems, including PatriotProof™, FraudDNA™, AISF™, and PPP™. He has authored seven books and numerous whitepapers addressing AI ethics, cybersecurity resilience, and fraud detection. His work aligns with the highest compliance standards, including GDPR, HIPAA, SOC 2, and CCPA. His research and publications are independently developed and published.
 
 ==============================================
 AREAS OF EXPERTISE
@@ -26,6 +26,7 @@ Platform: SSRN – Consumer Financial Fraud eJournal
 Date: July 25, 2025
 Recognition: Top Downloaded Paper on SSRN
 Link: https://ssrn.com/abstract=5240753
+Note: This research is independently developed and published.
 
 ==============================================
 CONTACT INFORMATION
@@ -51,3 +52,37 @@ FEATURED TOPICS FOR EXPERT COMMENTARY
 • Digital Investigation Methodologies
 • Technology Sovereignty and National Security
 • Ethical AI Development and Implementation
+
+==============================================
+APPROVED BIOGRAPHICAL SNIPPETS
+==============================================
+
+ONE-LINER (15 words):
+Dr. Troy Williams is The Proactive AI PI, defending America against synthetic identity fraud.
+
+SHORT BIO (50 words):
+Dr. Troy Williams, PhD, is a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator known as The Proactive AI PI. He is the creator of PatriotProof™, FraudDNA™, AISF™, and PPP™ systems for synthetic identity fraud defense. Based in Tennessee, his mission is Protecting America Through Technology.
+
+==============================================
+ACADEMIC BACKGROUND
+==============================================
+
+• Doctoral-level research in artificial intelligence and cybersecurity
+• Master of Science in IT Management – Western Governors University (2020)
+• Bachelor of Science in Cybersecurity & Information Assurance – Western Governors University (2019)
+• Prompt Engineering Training – Vanderbilt University (under Dr. Jules White)
+• Financial Fraud & Courtroom Ethics – SBI Seminars
+
+==============================================
+PROFESSIONAL CREDENTIALS
+==============================================
+
+• Licensed Tennessee Private Investigator
+• 32+ Years Investigative Experience
+• Patent Holder: PCT/US25/43982
+
+==============================================
+WESTERN GOVERNORS UNIVERSITY
+==============================================
+
+Dr. Williams is an active WGU alumnus, contributing to mentorship programs and alumni services to develop the next generation of cybersecurity professionals.

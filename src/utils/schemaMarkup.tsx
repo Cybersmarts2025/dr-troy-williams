@@ -20,7 +20,7 @@ export const DR_TROY_WILLIAMS_DATA = {
     "National Fraud Prevention Architect",
     "U.S. Sovereign Technology Developer"
   ],
-  description: "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator, a PhD in Artificial Intelligence, and the founder of Cybersmarts.ai, he is dedicated to securing America's digital future through sovereign technology.",
+  description: "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator and independent researcher, he is dedicated to securing America's digital future through sovereign technology. His research and publications are independently developed and published.",
   url: "https://www.DrTroyWilliams.net",
   image: "https://www.DrTroyWilliams.net/lovable-uploads/troy-williams-headshot-transparent.png",
   sameAs: [
@@ -45,8 +45,7 @@ export const DR_TROY_WILLIAMS_DATA = {
   ],
   patent: "PCT/US25/43982 - Synthetic Identity Detection Methodology",
   education: [
-    { name: "PhD in Artificial Intelligence", institution: "Capitol Technology University", level: "Doctoral" },
-    { name: "PhD in Information Technology", institution: "University of the Cumberlands", level: "Doctoral" },
+    { name: "Doctoral-level research in artificial intelligence and cybersecurity", institution: "", level: "Doctoral" },
     { name: "Master of Science in IT Management", institution: "Western Governors University", level: "Graduate", year: "2020" },
     { name: "Bachelor of Science in Cybersecurity & Information Assurance", institution: "Western Governors University", level: "Undergraduate", year: "2019" },
     { name: "Prompt Engineering Certification", institution: "Vanderbilt University", level: "Professional" },
@@ -129,20 +128,26 @@ export const DrTroyWilliamsSchema = ({
   };
 
   if (includeEducation) {
-    personSchema.hasCredential = data.education.map(edu => ({
-      "@type": "EducationalOccupationalCredential",
-      "name": edu.name,
-      "credentialCategory": edu.level === "License" ? "Professional License" : `${edu.level} Degree`,
-      "educationalLevel": edu.level,
-      ...(edu.year && { "dateCreated": edu.year }),
-      "recognizedBy": {
-        "@type": edu.level === "License" ? "GovernmentOrganization" : "EducationalOrganization",
-        "name": edu.institution
-      }
-    }));
+    // Only include non-doctoral credentials with institutions
+    personSchema.hasCredential = data.education
+      .filter(edu => edu.level !== "Doctoral" && edu.institution)
+      .map(edu => ({
+        "@type": "EducationalOccupationalCredential",
+        "name": edu.name,
+        "credentialCategory": edu.level === "License" ? "Professional License" : 
+          edu.level === "Professional" ? "Professional Certification" : `${edu.level} Degree`,
+        "educationalLevel": edu.level,
+        ...(edu.year && { "dateCreated": edu.year }),
+        "recognizedBy": {
+          "@type": edu.level === "License" ? "GovernmentOrganization" : "EducationalOrganization",
+          "name": edu.institution
+        }
+      }));
 
+    // Only include WGU for mentorship context (non-doctoral)
     personSchema.alumniOf = [...new Set(data.education.map(edu => edu.institution))]
-      .filter(inst => inst !== "State of Tennessee")
+      .filter(inst => inst && inst !== "State of Tennessee" && inst !== "")
+      .filter(inst => inst === "Western Governors University")
       .map(inst => ({
         "@type": "EducationalOrganization",
         "name": inst
