@@ -56,8 +56,10 @@ export const AmazonBooksSection = () => {
     }
   };
 
-  // Don't auto-fetch to avoid API calls on every page load
-  // User can click refresh to load books
+  // Auto-fetch on mount
+  useEffect(() => {
+    fetchBooks();
+  }, []);
 
   return (
     <div className="mt-10 pt-8 border-t border-border">
