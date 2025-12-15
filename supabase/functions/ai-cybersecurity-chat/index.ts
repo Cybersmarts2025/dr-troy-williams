@@ -44,6 +44,118 @@ function cleanupRateLimitMap() {
   }
 }
 
+// Get seasonal/holiday greeting based on current date
+function getHolidayGreeting(): string {
+  const now = new Date();
+  const month = now.getMonth(); // 0-indexed (0 = January)
+  const day = now.getDate();
+  
+  // December - Christmas season
+  if (month === 11) {
+    if (day >= 20 && day <= 25) {
+      return "Merry Christmas! I hope you're enjoying this blessed holiday season with loved ones. ";
+    }
+    if (day >= 26 && day <= 31) {
+      return "Happy holidays! As we close out this year, I'm grateful for the opportunity to connect with you. ";
+    }
+    return "Season's greetings! Wishing you warmth and joy this holiday season. ";
+  }
+  
+  // January - New Year
+  if (month === 0) {
+    if (day <= 7) {
+      return "Happy New Year! May this year bring you security, success, and peace of mind. ";
+    }
+    if (day >= 15 && day <= 21) {
+      return "Happy Martin Luther King Jr. Day! A time to reflect on service and justice. ";
+    }
+    return "";
+  }
+  
+  // February - Valentine's/Presidents Day
+  if (month === 1) {
+    if (day >= 12 && day <= 14) {
+      return "Happy Valentine's Day! Sending warmth your way. ";
+    }
+    if (day >= 15 && day <= 21) {
+      return "Happy Presidents Day weekend! ";
+    }
+    return "";
+  }
+  
+  // March - St. Patrick's Day
+  if (month === 2) {
+    if (day >= 15 && day <= 17) {
+      return "Happy St. Patrick's Day! May luck be on your side. ";
+    }
+    return "";
+  }
+  
+  // April - Easter (approximate)
+  if (month === 3) {
+    if (day >= 1 && day <= 7) {
+      return "Happy Easter season! Hope you're having a wonderful spring. ";
+    }
+    return "";
+  }
+  
+  // May - Memorial Day / Mother's Day
+  if (month === 4) {
+    if (day >= 8 && day <= 14) {
+      return "Happy Mother's Day to all the amazing mothers out there! ";
+    }
+    if (day >= 25 && day <= 31) {
+      return "As we honor Memorial Day, I'm grateful for those who served our nation. ";
+    }
+    return "";
+  }
+  
+  // June - Father's Day
+  if (month === 5) {
+    if (day >= 15 && day <= 21) {
+      return "Happy Father's Day to all the dads! ";
+    }
+    return "";
+  }
+  
+  // July - Independence Day
+  if (month === 6) {
+    if (day >= 1 && day <= 4) {
+      return "Happy Independence Day! Proud to be protecting America through technology. ";
+    }
+    return "";
+  }
+  
+  // September - Labor Day
+  if (month === 8) {
+    if (day >= 1 && day <= 7) {
+      return "Happy Labor Day! Honoring the hard work that builds our nation. ";
+    }
+    return "";
+  }
+  
+  // October - Halloween
+  if (month === 9) {
+    if (day >= 28 && day <= 31) {
+      return "Happy Halloween! Don't let cyber threats spook you - I'm here to help. ";
+    }
+    return "";
+  }
+  
+  // November - Thanksgiving/Veterans Day
+  if (month === 10) {
+    if (day >= 10 && day <= 11) {
+      return "Happy Veterans Day! Thank you to all who have served our great nation. ";
+    }
+    if (day >= 22 && day <= 28) {
+      return "Happy Thanksgiving! I'm thankful for the opportunity to help protect you and your business. ";
+    }
+    return "";
+  }
+  
+  return "";
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -142,9 +254,16 @@ serve(async (req) => {
       }
     }
 
+    // Get holiday greeting
+    const holidayGreeting = getHolidayGreeting();
+
     // Enhanced system prompts - personal voice of Dr. Troy Williams
     const systemPrompts = {
       general: `You ARE Dr. Troy Williams, PhD - The Proactive AI PI. Speak in first person as if the visitor is having a direct one-on-one conversation with you. Be warm, professional, and personal.
+
+SEASONAL GREETING (use naturally in your first response if appropriate):
+${holidayGreeting || "No special holiday today, but always be warm and welcoming."}
+
 
 WHO I AM:
 - I'm a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator
