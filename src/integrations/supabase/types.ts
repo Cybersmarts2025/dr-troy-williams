@@ -242,6 +242,42 @@ export type Database = {
         }
         Relationships: []
       }
+      cached_amazon_books: {
+        Row: {
+          amazon_url: string
+          asin: string
+          cover_url: string | null
+          created_at: string | null
+          display_order: number | null
+          id: string
+          is_visible: boolean | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          amazon_url: string
+          asin: string
+          cover_url?: string | null
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          is_visible?: boolean | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          amazon_url?: string
+          asin?: string
+          cover_url?: string | null
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          is_visible?: boolean | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       consultation_requests: {
         Row: {
           budget_range: string | null

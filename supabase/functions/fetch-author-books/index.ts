@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -11,10 +12,41 @@ serve(async (req) => {
   }
 
   try {
-    console.log('Fetching books from Amazon Author page');
-    
-    const { authorUrl } = await req.json();
+    const { authorUrl, forceRefresh } = await req.json();
     const url = authorUrl || 'https://www.amazon.com/author/troy-williams';
+    
+    // Initialize Supabase client
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    // If not forcing refresh, return cached books
+    if (!forceRefresh) {
+      const { data: cachedBooks, error: cacheError } = await supabase
+        .from('cached_amazon_books')
+        .select('*')
+        .eq('is_visible', true)
+        .order('display_order', { ascending: true });
+      
+      if (!cacheError && cachedBooks && cachedBooks.length > 0) {
+        console.log(`Returning ${cachedBooks.length} cached books`);
+        return new Response(
+          JSON.stringify({ 
+            success: true, 
+            books: cachedBooks.map(b => ({
+              asin: b.asin,
+              amazonUrl: b.amazon_url,
+              title: b.title,
+              coverUrl: b.cover_url,
+            })),
+            fromCache: true 
+          }),
+          { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+    }
+
+    console.log('Fetching fresh books from Amazon Author page');
 
     const firecrawlApiKey = Deno.env.get('FIRECRAWL_API_KEY');
     if (!firecrawlApiKey) {
@@ -62,8 +94,30 @@ serve(async (req) => {
     const books = extractBooksFromHtml(firecrawlData.data?.html || '');
     console.log(`Found ${books.length} books`);
 
+    // Save to cache (upsert)
+    for (let i = 0; i < books.length; i++) {
+      const book = books[i];
+      const { error: upsertError } = await supabase
+        .from('cached_amazon_books')
+        .upsert({
+          asin: book.asin,
+          title: book.title,
+          cover_url: book.coverUrl,
+          amazon_url: book.amazonUrl,
+          display_order: i,
+          is_visible: true,
+          updated_at: new Date().toISOString(),
+        }, { onConflict: 'asin' });
+      
+      if (upsertError) {
+        console.error(`Error caching book ${book.asin}:`, upsertError);
+      }
+    }
+    
+    console.log('Books cached successfully');
+
     return new Response(
-      JSON.stringify({ success: true, books }),
+      JSON.stringify({ success: true, books, fromCache: false }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
 
@@ -81,7 +135,6 @@ function extractBooksFromHtml(html: string) {
   const seenAsins = new Set<string>();
   
   // Amazon's book faceouts use data-csa-c-item-id for ASIN
-  // Pattern: data-csa-c-item-id="ASIN" followed by aria-label="Title"
   const bookFaceoutPattern = /data-csa-c-item-id="([A-Z0-9]{10,})"[^>]*>[\s\S]*?aria-label="([^"]+)"/gi;
   
   let match;
@@ -89,31 +142,20 @@ function extractBooksFromHtml(html: string) {
     const asin = match[1];
     let title = match[2].trim();
     
-    // Skip if already seen
     if (seenAsins.has(asin)) continue;
-    
-    // Skip Kindle Unlimited entries
     if (title.toLowerCase().includes('kindle unlimited')) continue;
     
-    // Clean up title
     title = title.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"');
     
-    // Find the cover image for this ASIN
-    // Look for coverimagephysicalid near this ASIN
     const asinPos = html.indexOf(`data-csa-c-item-id="${asin}"`);
     let coverUrl = '';
     
     if (asinPos > -1) {
       const nearbyHtml = html.slice(asinPos, asinPos + 3000);
-      
-      // Look for coverimagephysicalid attribute
       const imageIdMatch = nearbyHtml.match(/coverimagephysicalid="([^"]+)"/i);
       if (imageIdMatch) {
-        const imageId = imageIdMatch[1];
-        coverUrl = `https://m.media-amazon.com/images/I/${imageId}._SY400_.jpg`;
+        coverUrl = `https://m.media-amazon.com/images/I/${imageIdMatch[1]}._SY400_.jpg`;
       }
-      
-      // Fallback: look for srcset with image URL
       if (!coverUrl) {
         const srcsetMatch = nearbyHtml.match(/srcset="[^"]*?(https:\/\/m\.media-amazon\.com\/images\/I\/[^_\s]+)[^"]*"/i);
         if (srcsetMatch) {
@@ -122,7 +164,6 @@ function extractBooksFromHtml(html: string) {
       }
     }
     
-    // Fallback to Amazon's product image API
     if (!coverUrl) {
       coverUrl = `https://images-na.ssl-images-amazon.com/images/P/${asin}.01.LZZZZZZZ.jpg`;
     }
@@ -136,7 +177,7 @@ function extractBooksFromHtml(html: string) {
     });
   }
   
-  // Also try alternate pattern: href with /dp/ASIN and nearby aria-label
+  // Also try alternate pattern
   const altPattern = /href="[^"]*\/dp\/([A-Z0-9]{10})[^"]*"[^>]*aria-label="([^"]+)"/gi;
   while ((match = altPattern.exec(html)) !== null) {
     const asin = match[1];
@@ -147,7 +188,6 @@ function extractBooksFromHtml(html: string) {
     
     title = title.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"');
     
-    // Find cover image
     const asinPos = html.indexOf(`/dp/${asin}`);
     let coverUrl = '';
     
