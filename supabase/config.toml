@@ -1,4 +1,3 @@
-
 project_id = "dfnrhiovacznpnzevzfe"
 
 [functions.admin-operations]
@@ -20,4 +19,7 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.ai-cybersecurity-chat]
+verify_jwt = false
+
+[functions.auto-index-website]
 verify_jwt = false
