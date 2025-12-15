@@ -23,7 +23,7 @@ const STOLEN_NATION_BOOK = {
 };
 
 // Filter out children's books
-const EXCLUDED_KEYWORDS = ['kyler', 'poppie', 'adventure', 'kids', 'children story', 'bedtime', 'coloring'];
+const EXCLUDED_KEYWORDS = ['kyler', 'poppie', 'adventure', 'kids', 'children story', 'bedtime', 'coloring', 'pb&j', 'knick knack', 'patty whack', 'olivia', 'snack', 'alphabet', 'zoo'];
 
 const filterBooks = (books: Book[]) => {
   return books.filter((book) => {
