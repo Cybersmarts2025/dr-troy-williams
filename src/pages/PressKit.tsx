@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import SeasonalBanner from "@/components/SeasonalBanner";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -222,6 +223,7 @@ const PressKit = () => {
         <link rel="canonical" href="https://www.DrTroyWilliams.net/press-kit" />
       </Helmet>
       
+      <SeasonalBanner />
       <NavBar />
       
       <main className="pt-16">

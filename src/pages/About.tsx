@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import Footer from "@/components/Footer";
 import PageBreadcrumb from "@/components/navigation/PageBreadcrumb";
 import NavBar from "@/components/NavBar";
+import SeasonalBanner from "@/components/SeasonalBanner";
 import { PersonSchema, WebPageSchema, BreadcrumbListSchema } from "@/utils/schemaMarkup";
 
 const About = () => {
@@ -142,6 +143,7 @@ const About = () => {
         sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]}
       />
       
+      <SeasonalBanner />
       <NavBar />
       
       <div className="pt-20">
