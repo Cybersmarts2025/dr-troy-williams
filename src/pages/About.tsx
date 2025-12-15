@@ -59,7 +59,7 @@ const About = () => {
             "U.S. Sovereign Technology Developer"
           ],
           "url": "https://www.drtroywilliams.net",
-          "description": "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator, a PhD in Artificial Intelligence, and the founder of Cybersmarts.ai, he is dedicated to securing America's digital future through sovereign technology.",
+          "description": "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator and independent researcher, he is dedicated to securing America's digital future through sovereign technology. His research and publications are independently developed and published.",
           "sameAs": [
             "https://www.linkedin.com/in/cybersmarts/",
             "https://www.researchgate.net/profile/Troy-Williams-34",
@@ -68,20 +68,6 @@ const About = () => {
             "https://www.wikidata.org/wiki/Q136302603"
           ],
           "hasCredential": [
-            {
-              "@type": "EducationalOccupationalCredential",
-              "name": "PhD in Artificial Intelligence",
-              "credentialCategory": "Doctoral Degree",
-              "educationalLevel": "Doctoral",
-              "recognizedBy": { "@type": "EducationalOrganization", "name": "Capitol Technology University" }
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              "name": "PhD in Information Technology",
-              "credentialCategory": "Doctoral Degree",
-              "educationalLevel": "Doctoral",
-              "recognizedBy": { "@type": "EducationalOrganization", "name": "University of the Cumberlands" }
-            },
             {
               "@type": "EducationalOccupationalCredential",
               "name": "Master of Science in IT Management",
@@ -112,11 +98,7 @@ const About = () => {
             }
           ],
           "alumniOf": [
-            { "@type": "EducationalOrganization", "name": "Capitol Technology University" },
-            { "@type": "EducationalOrganization", "name": "University of the Cumberlands" },
-            { "@type": "EducationalOrganization", "name": "Western Governors University" },
-            { "@type": "EducationalOrganization", "name": "Vanderbilt University" },
-            { "@type": "EducationalOrganization", "name": "SBI Seminars" }
+            { "@type": "EducationalOrganization", "name": "Western Governors University" }
           ],
           "award": [
             "Patent PCT/US25/43982 - Synthetic Identity Detection Methodology",
@@ -155,8 +137,8 @@ const About = () => {
       <PersonSchema 
         name="Dr. Troy Williams"
         jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority"
-        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator, a Ph.D. in Artificial Intelligence, and the founder of Cybersmarts.ai, he is dedicated to securing America's digital future."
-        alumniOf={["Capitol Technology University", "Western Governors University"]}
+        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator and independent researcher, he is dedicated to securing America's digital future. His research and publications are independently developed and published."
+        alumniOf={["Western Governors University"]}
         sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]}
       />
       
@@ -218,7 +200,7 @@ const About = () => {
               Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. He's built his career on one mission: protecting America through technology.
             </p>
             <p className="text-lg mb-8">
-              As Dr. Troy Williams — a Ph.D. in Artificial Intelligence, a <strong>Licensed Tennessee Private Investigator</strong>, a published author, and the founder of Cybersmarts.ai, a nonprofit organization advancing national AI security, ethical tech development, and digital sovereignty, he is dedicated to securing America's digital future.
+              As Dr. Troy Williams — a <strong>Licensed Tennessee Private Investigator</strong>, an independent researcher with doctoral-level expertise in artificial intelligence and cybersecurity, a published author, and the founder of Cybersmarts.ai, a nonprofit organization advancing national AI security, ethical tech development, and digital sovereignty, he is dedicated to securing America's digital future.
             </p>
           </div>
 
@@ -234,7 +216,7 @@ const About = () => {
               <p className="mb-4">Dr. Troy Williams' professional credentials include:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Licensed Tennessee Private Investigator</li>
-                <li>Ph.D. in Artificial Intelligence</li>
+                <li>Doctoral-level research in artificial intelligence and cybersecurity</li>
                 <li>Over 32 years of investigative and cybersecurity experience in Lebanon, Tennessee</li>
               </ul>
               <div className="mt-6 pt-4 border-t border-gray-200">
@@ -254,9 +236,9 @@ const About = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">Dr. Troy Williams' journey began in electronics and evolved into cybersecurity and AI architecture. He holds degrees in:</p>
+              <p className="mb-4">Dr. Troy Williams' journey began in electronics and evolved into cybersecurity and AI architecture. His academic background includes:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Ph.D. in Artificial Intelligence – Capitol Technology University</li>
+                <li>Doctoral-level research in artificial intelligence and cybersecurity</li>
                 <li>Master's in IT Management – Western Governors University</li>
                 <li>Bachelor's in Cybersecurity & Information Assurance – WGU</li>
                 <li>Associate's in Electronics</li>
@@ -312,6 +294,7 @@ const About = () => {
                 <li>Stolen Nation: How to Protect Your Money, Credit, and Identity from Hackers, Scammers, and Foreign Exploiters (Coming Soon)</li>
               </ul>
               <p className="mt-4">These works reflect Dr. Troy Williams' belief that knowledge should not just inform — it should defend.</p>
+              <p className="mt-4 font-semibold text-[#3C3B6E]">My research and publications are independently developed and published.</p>
             </CardContent>
           </Card>
 

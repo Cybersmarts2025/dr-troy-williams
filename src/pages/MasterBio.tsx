@@ -56,14 +56,14 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2023",
-    title: "PhD Studies: Information Technology",
+    title: "Doctoral Studies: Information Technology",
     description: "Enrolled at University of the Cumberlands for doctoral studies in Information Technology, focusing on emerging technology frameworks and digital transformation.",
     icon: GraduationCap,
     category: 'education'
   },
   {
     year: "2024",
-    title: "PhD Studies: Artificial Intelligence",
+    title: "Doctoral Studies: Artificial Intelligence",
     description: "Commenced doctoral program at Capitol Technology University specializing in Artificial Intelligence, with research emphasis on autonomous security systems and fraud detection algorithms.",
     icon: GraduationCap,
     category: 'education'
@@ -230,20 +230,6 @@ const MasterBio = () => {
     "hasCredential": [
       {
         "@type": "EducationalOccupationalCredential",
-        "name": "PhD in Artificial Intelligence",
-        "credentialCategory": "Doctoral Degree",
-        "educationalLevel": "Doctoral",
-        "recognizedBy": { "@type": "EducationalOrganization", "name": "Capitol Technology University" }
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "PhD in Information Technology",
-        "credentialCategory": "Doctoral Degree",
-        "educationalLevel": "Doctoral",
-        "recognizedBy": { "@type": "EducationalOrganization", "name": "University of the Cumberlands" }
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
         "name": "Master of Science in IT Management",
         "credentialCategory": "Master's Degree",
         "educationalLevel": "Graduate",
@@ -278,11 +264,7 @@ const MasterBio = () => {
       }
     ],
     "alumniOf": [
-      { "@type": "EducationalOrganization", "name": "Capitol Technology University" },
-      { "@type": "EducationalOrganization", "name": "University of the Cumberlands" },
-      { "@type": "EducationalOrganization", "name": "Western Governors University" },
-      { "@type": "EducationalOrganization", "name": "Vanderbilt University" },
-      { "@type": "EducationalOrganization", "name": "SBI Seminars" }
+      { "@type": "EducationalOrganization", "name": "Western Governors University" }
     ],
     "award": [
       "Patent PCT/US25/43982 - Synthetic Identity Detection Methodology",
@@ -420,8 +402,8 @@ const MasterBio = () => {
                   <GraduationCap className="w-10 h-10 text-[#B22234] mb-4" />
                   <h3 className="text-xl font-bold text-foreground mb-2">Doctoral Studies</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>PhD in Artificial Intelligence - Capitol Technology University</li>
-                    <li>PhD in Information Technology - University of the Cumberlands</li>
+                    <li>Doctoral-level research in Artificial Intelligence</li>
+                    <li>Doctoral-level research in Information Technology</li>
                   </ul>
                 </div>
                 <div className="bg-card border border-border rounded-lg p-6">

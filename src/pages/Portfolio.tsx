@@ -32,8 +32,8 @@ const Portfolio = () => {
 
   const achievements = [
     {
-      title: "PhD in Artificial Intelligence",
-      institution: "Capitol Technology University",
+      title: "Doctoral-level AI Research",
+      institution: "Independent Research",
       year: "2024",
       description: "Specialized in AI security frameworks and autonomous systems",
       icon: Brain
@@ -152,7 +152,7 @@ const Portfolio = () => {
                   32+ Years Experience
                 </Badge>
                 <Badge variant="secondary" className="bg-white/20 text-white text-lg px-4 py-2">
-                  PhD in Artificial Intelligence
+                  Doctoral AI Research
                 </Badge>
                 <Badge variant="secondary" className="bg-white/20 text-white text-lg px-4 py-2">
                   Patent Holder
@@ -207,7 +207,7 @@ const Portfolio = () => {
                   Dr. Troy Williams is a distinguished cybersecurity expert and AI pioneer with over three decades of experience in private investigation, digital forensics, and emerging technology development. As the founder of Cybersmarts.ai LLC and former President of Information Systems Inc, he has established himself as a thought leader in proactive cybersecurity defense and artificial intelligence security frameworks.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  His groundbreaking work includes the development of PatriotProof™ and FraudDNA™ technologies, representing the cutting edge of AI-driven fraud prevention and identity verification systems. Dr. Williams holds a PhD in Artificial Intelligence and has been recognized with numerous academic and professional honors, including the WGU Capstone Excellence Award and membership in multiple honor societies.
+                  His groundbreaking work includes the development of PatriotProof™ and FraudDNA™ technologies, representing the cutting edge of AI-driven fraud prevention and identity verification systems. Dr. Williams conducts doctoral-level research in artificial intelligence and has been recognized with numerous academic and professional honors, including the WGU Capstone Excellence Award and membership in multiple honor societies. His research and publications are independently developed and published.
                 </p>
               </div>
             </motion.div>

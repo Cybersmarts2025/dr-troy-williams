@@ -46,7 +46,7 @@ const DissertationCallout = () => {
                     <span className="font-semibold text-[#1A1F2C]">Critical Defense Technologies</span>
                   </div>
                   <p className="text-gray-700 mb-4">
-                    This dissertation—part of my PhD in Artificial Intelligence—represents a critical advancement 
+                    This dissertation—part of doctoral-level research in Artificial Intelligence—represents a critical advancement 
                     in the defense of financial systems, blending quantum biometrics, sovereign AI, and preemptive 
                     cybersecurity architecture.
                   </p>
