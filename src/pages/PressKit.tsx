@@ -30,7 +30,7 @@ import { useToast } from "@/hooks/use-toast";
 import { 
   Download, Image, FileText, Shield, Copy, Check, 
   Mic, Video, Newspaper, Mail, Phone, Globe, 
-  Award, BookOpen, Target, ExternalLink, User
+  Award, BookOpen, Target, ExternalLink, User, Youtube
 } from 'lucide-react';
 
 const interviewSchema = z.object({
@@ -339,6 +339,16 @@ const PressKit = () => {
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#00CCBB] text-white font-medium rounded-lg hover:bg-[#00b3a3] transition-colors"
                   >
                     ResearchGate
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                  <a 
+                    href="https://www.youtube.com/@DrTroyWilliamsPhD" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF0000] text-white font-medium rounded-lg hover:bg-[#cc0000] transition-colors"
+                  >
+                    <Youtube className="w-5 h-5" />
+                    YouTube Channel
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
