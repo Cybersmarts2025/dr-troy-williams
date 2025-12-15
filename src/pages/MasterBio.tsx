@@ -845,8 +845,8 @@ const MasterBio = () => {
                 <div className="space-y-4">
                   {/* Short Bio */}
                   <BioSnippet 
-                    title="Short Bio (50 words)"
-                    text="Dr. Troy Williams is a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator known as The Proactive AI PI. He is the creator of PatriotProof™, FraudDNA™, AISF™, and PPP™ systems for synthetic identity fraud defense. Based in Tennessee."
+                    title="Short Bio (50 words) — Compliant Version"
+                    text="Dr. Troy Williams, PhD, is a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator known as The Proactive AI PI. He is the creator of PatriotProof™, FraudDNA™, AISF™, and PPP™ systems for synthetic identity fraud defense. Mission: Protecting America Through Technology™."
                   />
                   
                   {/* Medium Bio */}
@@ -854,11 +854,17 @@ const MasterBio = () => {
                     title="Medium Bio (100 words) — Compliant Version"
                     text="Dr. Troy Williams, PhD, is a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator known as The Proactive AI PI. He specializes in synthetic identity fraud detection and proactive prevention methodologies. Williams is the creator of four trademarked defense systems: PatriotProof™, FraudDNA™, Autonomous Intelligence Security Framework AISF™, and the Proactive Prevention Platform PPP™. His independent research has been featured on SSRN and ResearchGate, earning a Research Interest Score of 8.0. He is the inventor listed on international patent application PCT/US25/43982 for synthetic identity detection methodology. Mission: Protecting America Through Technology™."
                   />
+
+                  {/* Full Bio */}
+                  <BioSnippet 
+                    title="Full Bio (200 words) — Compliant Version"
+                    text="Dr. Troy Williams, PhD, represents a unique convergence of three critical disciplines: cybersecurity engineering, artificial intelligence science, and licensed private investigation. Known professionally as The Proactive AI PI, Williams has dedicated his career to identifying and neutralizing synthetic identity fraud—one of the fastest-growing and least understood threats to American financial infrastructure. Through doctoral-level research in artificial intelligence and cybersecurity, Williams brings both academic rigor and real-world investigative experience to his work. His independent research has been featured on SSRN and ResearchGate, achieving a Research Interest Score of 8.0. Williams is the creator of four trademarked defense systems that together form the first unified synthetic identity prevention architecture in the United States: PatriotProof™ (fortress-level identity defense), FraudDNA™ (behavioral pattern analysis), AISF™ (Autonomous Intelligence Security Framework), and PPP™ (Proactive Prevention Platform). He is the inventor listed on international patent application PCT/US25/43982 for his synthetic identity detection methodology. His research and publications are independently developed and published. His specialized training includes prompt engineering under Dr. Jules White at Vanderbilt University and financial fraud investigation through SBI Seminars. Based in Tennessee, Williams operates under a singular mission: Protecting America Through Technology™."
+                  />
                   
                   {/* Tagline */}
                   <BioSnippet 
                     title="Tagline"
-                    text="The Proactive AI PI - Protecting America Through Technology"
+                    text="The Proactive AI PI — Protecting America Through Technology™"
                   />
                 </div>
               </div>
