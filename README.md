@@ -1,73 +1,28 @@
-# Welcome to your Lovable project
+# DrTroyWilliams.net
 
-## Project info
+## Source of truth
 
-**URL**: https://lovable.dev/projects/d176e579-6912-4561-b3b7-194038bfccda
+I maintain this project through local development on my machine using Dyad and GitHub.
+This repository is the single source of truth.
+All deployments are built from GitHub and published through Vercel.
 
-## How can I edit this code?
+## Local development
 
-There are several ways of editing your application.
+Prerequisites
+Node.js and npm installed
 
-**Use Lovable**
+Install dependencies
+npm install
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d176e579-6912-4561-b3b7-194038bfccda) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Run the development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Vercel is connected to the GitHub main branch.
+Production deployments are triggered by commits to main.
 
-**Use GitHub Codespaces**
+## Security baseline
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/d176e579-6912-4561-b3b7-194038bfccda) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+I do not commit secrets to this repository.
+Environment variables are managed in Vercel and local .env.local files that are not committed.
