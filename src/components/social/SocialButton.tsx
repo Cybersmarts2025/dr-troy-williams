@@ -1,6 +1,5 @@
-
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { LucideIcon } from "lucide-react";
 
 interface SocialButtonProps {
@@ -10,14 +9,14 @@ interface SocialButtonProps {
 }
 
 export const SocialButton = ({ icon: Icon, label, url }: SocialButtonProps) => {
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { 
       opacity: 1, 
       y: 0,
       transition: { 
         duration: 0.4,
-        ease: "easeOut" 
+        ease: [0.16, 1, 0.3, 1] // cubic-bezier for easeOut
       }
     }
   };
