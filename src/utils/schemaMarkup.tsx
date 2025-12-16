@@ -22,7 +22,7 @@ export const DR_TROY_WILLIAMS_DATA = {
   ],
   description: "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator and independent researcher, he is dedicated to securing America's digital future through sovereign technology. His research and publications are independently developed and published.",
   url: "https://www.DrTroyWilliams.net",
-  image: "https://www.DrTroyWilliams.net/lovable-uploads/troy-williams-headshot-transparent.png",
+  image: "https://www.DrTroyWilliams.net/assets/troy-williams-headshot-transparent.png",
   sameAs: [
     "https://www.linkedin.com/in/cybersmarts/",
     "https://www.researchgate.net/profile/Troy-Williams-34",

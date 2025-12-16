@@ -37,7 +37,7 @@ const HeroSection = () => {
           >
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl bg-white">
               <img 
-                src="/lovable-uploads/troy-williams-headshot-transparent.png"
+                src="/assets/troy-williams-headshot-transparent.png"
                 alt="Dr. Troy Williams - The AI PI" 
                 className="w-full h-full object-cover" 
               />

@@ -46,7 +46,7 @@ const About = () => {
           "honorificSuffix": "PhD",
           "image": {
             "@type": "ImageObject",
-            "url": "https://www.drtroywilliams.net/lovable-uploads/troy-williams-headshot-transparent.png",
+            "url": "https://www.drtroywilliams.net/assets/troy-williams-headshot-transparent.png",
             "width": 400,
             "height": 400,
             "caption": "Dr. Troy Williams, PhD - Cybersecurity Engineer and AI Scientist"
@@ -165,7 +165,7 @@ const About = () => {
               <div className="flex justify-center md:justify-end">
                 <div className="relative">
                   <img 
-                    src="/lovable-uploads/troy-williams-headshot-transparent.png"
+                    src="/assets/troy-williams-headshot-transparent.png"
                     alt="Dr. Troy Williams, PhD - Cybersecurity Engineer and AI Scientist"
                     title="Dr. Troy Williams, PhD - Founder of Cybersmarts.ai"
                     className="w-80 h-80 object-cover rounded-xl shadow-2xl border-4 border-white"

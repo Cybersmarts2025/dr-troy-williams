@@ -97,7 +97,7 @@ const Press = () => {
     organization: "State of Tennessee - Governor Bill Lee",
     year: "2025",
     description: "Formally recognized by Governor Bill Lee for outstanding service and contributions in cybersecurity, fraud prevention, and artificial intelligence innovation. This certificate acknowledges a career dedicated to advancing technologies that strengthen trust, privacy, and resilience in the digital age.",
-    logo: "/lovable-uploads/troy-williams-headshot-transparent.png"
+    logo: "/assets/troy-williams-headshot-transparent.png"
   }, {
     title: "National Cybersecurity Excellence Award",
     organization: "Department of Homeland Security",

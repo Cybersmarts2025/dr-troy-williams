@@ -279,11 +279,11 @@ const PressKit = () => {
                   title="Official Headshot"
                   description="High-resolution professional portrait for press use."
                   icon={Image}
-                  downloadUrl="/lovable-uploads/troy-williams-headshot-transparent.png"
+                  downloadUrl="/assets/troy-williams-headshot-transparent.png"
                   downloadName="DrTroyWilliams-Headshot.png"
                   previewContent={
                     <img 
-                      src="/lovable-uploads/troy-williams-headshot-transparent.png" 
+                      src="/assets/troy-williams-headshot-transparent.png" 
                       alt="Dr. Troy Williams Headshot"
                       className="w-full h-full object-cover"
                     />
@@ -293,7 +293,7 @@ const PressKit = () => {
                   title="Brand Logo"
                   description="Official brand mark and identity assets."
                   icon={Shield}
-                  downloadUrl="/lovable-uploads/troy-williams-headshot-transparent.png"
+                  downloadUrl="/assets/troy-williams-headshot-transparent.png"
                   downloadName="DrTroyWilliams-Logo.png"
                 />
                 <DownloadCard 
