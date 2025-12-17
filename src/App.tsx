@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -35,6 +34,7 @@ import BriefingsManager from "./pages/admin/BriefingsManager";
 import NewBriefing from "./pages/admin/NewBriefing";
 import EditBriefing from "./pages/admin/EditBriefing";
 import AuditChecklist from "./pages/admin/AuditChecklist";
+import SystemHealth from "./pages/admin/SystemHealth";
 import TestimonialSubmission from "./pages/TestimonialSubmission";
 import Bookmarks from "./pages/Bookmarks";
 import Appointments from "./pages/Appointments";
@@ -128,6 +128,7 @@ const App = () => (
                 <Route path="/admin/content" element={<ContentManager />} />
                 <Route path="/admin/indexer" element={<WebsiteIndexerPage />} />
                 <Route path="/admin/audit-checklist" element={<AuditChecklist />} />
+                <Route path="/admin/health" element={<SystemHealth />} />
                 <Route path="/auto-security" element={<AutoSecurity />} />
                 
                 <Route path="/testimonial" element={<TestimonialSubmission />} />
