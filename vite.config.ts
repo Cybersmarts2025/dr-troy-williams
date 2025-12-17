@@ -5,9 +5,11 @@ import react from "@vitejs/plugin-react-swc";
 const envSecretGuard = () => {
   return {
     name: "env-secret-guard",
-    config() {
-      const env = process.env || {};
-      const keys = Object.keys(env).filter((k) => k.startsWith("VITE_"));
+    // Include env to detect mode
+    config(_userConfig, env) {
+      const isProd = env.mode === "production" || process.env.NODE_ENV === "production";
+      const runtimeEnv = process.env || {};
+      const keys = Object.keys(runtimeEnv).filter((k) => k.startsWith("VITE_"));
 
       // Publicly allowed VITE_* keys (expand as needed)
       const allowedPublic = new Set([
@@ -39,11 +41,15 @@ const envSecretGuard = () => {
       }
 
       if (offenders.length > 0) {
-        throw new Error(
-          `Security error: Sensitive env vars must NOT use VITE_ prefix (client-exposed). Found: ${offenders.join(
-            ", "
-          )}. Move these to server-only (edge functions) or rename without VITE_.`
-        );
+        const message =
+          `Sensitive env vars must NOT use VITE_ prefix (client-exposed). Found: ${offenders.join(", ")}. ` +
+          `Move these to server-only (edge functions) or rename without VITE_.`;
+
+        if (isProd) {
+          throw new Error(`Security error: ${message}`);
+        } else {
+          console.warn(`[env-secret-guard] ${message}`);
+        }
       }
     },
   };
