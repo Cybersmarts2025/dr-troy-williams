@@ -38,6 +38,18 @@ const ContactForm = () => {
       return;
     }
 
+    // Require a signed-in user to prevent anonymous abuse
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (!sessionData?.session) {
+      toast({
+        title: "Please sign in",
+        description: "You must be signed in to send a message.",
+        variant: "destructive",
+        duration: 4000,
+      });
+      return;
+    }
+
     // Client-side rate limit
     if (!checkRateLimit()) {
       toast({

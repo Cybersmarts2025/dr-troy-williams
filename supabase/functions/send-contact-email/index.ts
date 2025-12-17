@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -18,6 +19,23 @@ function isRateLimited(ip: string): boolean {
   }
   if (record.count >= MAX_REQUESTS_PER_WINDOW) return true;
   record.count++;
+  return false;
+}
+
+// Add per-email rate limiter (in-memory)
+const emailRateMap = new Map<string, { count: number; resetTime: number }>();
+const EMAIL_RATE_WINDOW_MS = 10 * 60_000; // 10 minutes
+const MAX_EMAILS_PER_WINDOW = 2;
+
+function isEmailRateLimited(email: string): boolean {
+  const now = Date.now();
+  const rec = emailRateMap.get(email.toLowerCase());
+  if (!rec || now > rec.resetTime) {
+    emailRateMap.set(email.toLowerCase(), { count: 1, resetTime: now + EMAIL_RATE_WINDOW_MS });
+    return false;
+  }
+  if (rec.count >= MAX_EMAILS_PER_WINDOW) return true;
+  rec.count++;
   return false;
 }
 
@@ -70,6 +88,19 @@ serve(async (req: Request): Promise<Response> => {
     });
   }
 
+  // Require authenticated user (JWT)
+  const token = req.headers.get("authorization")?.replace("Bearer ", "");
+  const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+  const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+  const supabase = createClient(supabaseUrl, supabaseKey, { auth: { autoRefreshToken: false, persistSession: false }});
+  const { data: { user } } = await supabase.auth.getUser(token || "");
+  if (!user) {
+    return new Response(JSON.stringify({ error: "Authentication required" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json", ...corsHeaders },
+    });
+  }
+
   // IP-based rate limiting
   const clientIP = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (isRateLimited(clientIP)) {
@@ -96,9 +127,26 @@ serve(async (req: Request): Promise<Response> => {
         headers: { "Content-Type": "application/json", ...corsHeaders },
       });
     }
+
+    // Additional simple content sanity checks
+    if (/<[^>]+>/.test(message)) {
+      return new Response(JSON.stringify({ error: "HTML is not allowed in message" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
     if (subject.length > 200 || message.length > 5000) {
       return new Response(JSON.stringify({ error: "Message too long" }), {
         status: 400,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
+    // Per-email rate limit
+    if (isEmailRateLimited(email)) {
+      return new Response(JSON.stringify({ error: "Too many messages from this email. Please try again later." }), {
+        status: 429,
         headers: { "Content-Type": "application/json", ...corsHeaders },
       });
     }
@@ -117,6 +165,7 @@ serve(async (req: Request): Promise<Response> => {
           <strong>Message:</strong>
           <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
         </div>
+        <p><em>Sent by authenticated user: ${escapeHtml(user.email ?? user.id)}</em></p>
       `,
     });
 

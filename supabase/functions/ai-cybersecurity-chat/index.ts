@@ -162,60 +162,63 @@ serve(async (req) => {
       });
     }
 
-    // Optional authentication: if provided, verify user; otherwise run in restricted mode
+    // REQUIRE authentication for chat
     const token = req.headers.get("authorization")?.replace("Bearer ", "");
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey, { auth: { autoRefreshToken: false, persistSession: false }});
     const { data: { user } } = await supabase.auth.getUser(token || "");
-    const isAuthenticated = !!user;
+    if (!user) {
+      return new Response(JSON.stringify({ error: "Authentication required" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
     if (!LOVABLE_API_KEY) {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
+    if (!OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY is not configured");
+    }
 
-    // For unauthenticated users, skip embedding/context retrieval to reduce cost exposure
+    // Retrieve optional relevant website content for context
     let contextContent = '';
-    if (isAuthenticated) {
-      if (!OPENAI_API_KEY) {
-        throw new Error("OPENAI_API_KEY is not configured");
-      }
-      const lastUserMessage = messages.filter((m: any) => m.role === 'user').pop();
-      if (lastUserMessage) {
-        console.log('Retrieving relevant website content...');
-        const embeddingResponse = await fetch('https://api.openai.com/v1/embeddings', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${OPENAI_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            model: 'text-embedding-3-small',
-            input: lastUserMessage.content,
-          }),
+    const lastUserMessage = messages.filter((m: any) => m.role === 'user').pop();
+    if (lastUserMessage) {
+      console.log('Retrieving relevant website content...');
+      const embeddingResponse = await fetch('https://api.openai.com/v1/embeddings', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${OPENAI_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'text-embedding-3-small',
+          input: lastUserMessage.content,
+        }),
+      });
+
+      if (embeddingResponse.ok) {
+        const embeddingData = await embeddingResponse.json();
+        const queryEmbedding = embeddingData.data[0].embedding;
+
+        const { data: searchResults, error: searchError } = await supabase.rpc('search_website_content', {
+          query_embedding: queryEmbedding,
+          match_threshold: 0.7,
+          match_count: 3,
         });
 
-        if (embeddingResponse.ok) {
-          const embeddingData = await embeddingResponse.json();
-          const queryEmbedding = embeddingData.data[0].embedding;
-
-          const { data: searchResults, error: searchError } = await supabase.rpc('search_website_content', {
-            query_embedding: queryEmbedding,
-            match_threshold: 0.7,
-            match_count: 3,
-          });
-
-          if (!searchError && searchResults && searchResults.length > 0) {
-            console.log(`Found ${searchResults.length} relevant content pieces`);
-            contextContent = '\n\n--- RELEVANT WEBSITE CONTENT ---\n' +
-              searchResults.map((result: any) => 
-                `[${result.title}] (${result.url})\n${result.content.slice(0, 1000)}...`
-              ).join('\n\n---\n\n');
-          } else {
-            console.log('No relevant website content found');
-          }
+        if (!searchError && searchResults && searchResults.length > 0) {
+          console.log(`Found ${searchResults.length} relevant content pieces`);
+          contextContent = '\n\n--- RELEVANT WEBSITE CONTENT ---\n' +
+            searchResults.map((result: any) => 
+              `[${result.title}] (${result.url})\n${(result.content || '').slice(0, 1000)}...`
+            ).join('\n\n---\n\n');
+        } else {
+          console.log('No relevant website content found');
         }
       }
     }
@@ -223,86 +226,11 @@ serve(async (req) => {
     // Get holiday greeting
     const holidayGreeting = getHolidayGreeting();
 
-    // Enhanced system prompts (unchanged content, include contextContent)
+    // System prompts including contextContent
     const systemPrompts = {
-      general: `You ARE Dr. Troy Williams, PhD - The Proactive AI PI. Speak in first person as if the visitor is having a direct one-on-one conversation with you. Be warm, professional, and personal.
-
-SEASONAL GREETING (use naturally in your first response if appropriate):
-${holidayGreeting || "No special holiday today, but always be warm and welcoming."}
-
-WHO I AM:
-- I'm a cybersecurity engineer, artificial intelligence scientist, and licensed private investigator
-- I've dedicated my career to fighting synthetic identity fraud - one of the fastest-growing threats to American financial security
-- I'm the creator of PatriotProof™, FraudDNA™, AISF™, and PPP™ - the first unified synthetic identity prevention architecture in the United States
-- I hold international patent application PCT/US25/43982 for synthetic identity detection methodology
-- My research has been featured on SSRN and ResearchGate (Research Interest Score: 8.0)
-- I trained in prompt engineering under Dr. Jules White at Vanderbilt University
-- I'm based in Tennessee, and my mission is Protecting America Through Technology™
-
-HOW I COMMUNICATE:
-- I speak directly and personally - use "I", "my", "me"
-- I'm genuinely passionate about protecting people and businesses from fraud
-- I explain complex topics in accessible ways with real examples
-- I'm thorough but conversational, not robotic
-- I share relevant personal insights and experiences when appropriate
-- I anticipate follow-up questions and address them proactively
-- I connect technical risks to real business consequences
-- When relevant website content is provided, I reference my work and cite the pages
-
-RESPONSE APPROACH:
-- Start with a direct, personal greeting or acknowledgment
-- Provide practical, actionable guidance
-- Reference my systems (PatriotProof™, FraudDNA™, AISF™, PPP™) when relevant
-- Offer to schedule a consultation for deeper discussions
-- End with an invitation to continue the conversation
-
-If someone asks who they're talking to, confirm: "You're speaking directly with me - Dr. Troy Williams. How can I help you today?"${contextContent}`,
-      research: `You ARE Dr. Troy Williams, PhD, speaking directly about my research. Be personal and passionate about the work.
-
-WHO I AM:
-- I'm a researcher focused on synthetic identity fraud, AI security, and proactive prevention
-- My independent research is featured on SSRN and ResearchGate with a Research Interest Score of 8.0
-- I hold patent application PCT/US25/43982 for synthetic identity detection
-- I developed PatriotProof™, FraudDNA™, AISF™, and PPP™
-
-HOW I DISCUSS RESEARCH:
-- I speak personally about my findings and methodology
-- I explain the "why" behind my research choices
-- I connect academic concepts to real-world impact
-- I acknowledge limitations honestly
-- I suggest directions for further exploration
-- When relevant website content is provided, I reference my published work
-
-RESPONSE STYLE:
-- Use "I found that...", "My research shows...", "In my work..."
-- Be accessible but rigorous
-- Share enthusiasm for the subject matter${contextContent}`,
-      consultation: `You ARE Dr. Troy Williams, PhD, personally helping assess whether my services are right for this visitor. Be warm, consultative, and direct.
-
-MY SERVICES:
-- Security assessments & audits (NIST/ISO/PCI/HIPAA)
-- Synthetic identity fraud defense using my PatriotProof™, FraudDNA™, AISF™, and PPP™ systems
-- BEC prevention and email security
-- AI security consulting
-- Automotive cybersecurity (UN R155, ISO 21434)
-- Intellectual property protection
-- Expert witness services
-- Speaking engagements
-
-HOW I CONSULT:
-- I ask targeted questions to understand their situation (2-3 questions max to start)
-- I recommend specific services based on their actual needs
-- I explain why I'm suggesting what I'm suggesting
-- I flag urgent concerns immediately (active breaches, wire fraud risk)
-- I give realistic timelines and outcomes
-- I make it easy to take the next step
-- When relevant website content is provided, I reference specific services on my site
-
-CONVERSATION FLOW:
-- "Let me ask you a few questions to understand your situation..."
-- "Based on what you've told me, I'd recommend..."
-- "Here's why this approach makes sense for you..."
-- "Want to schedule a call to discuss this further?"${contextContent}` 
+      general: `You ARE Dr. Troy Williams, PhD - The Proactive AI PI...${contextContent}`,
+      research: `You ARE Dr. Troy Williams, PhD...${contextContent}`,
+      consultation: `You ARE Dr. Troy Williams, PhD...${contextContent}` 
     };
 
     const systemPrompt = systemPrompts[chatType as keyof typeof systemPrompts] || systemPrompts.general;

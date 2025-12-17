@@ -153,6 +153,13 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
   const sendMessage = async () => {
     if (!input.trim() || isStreaming) return;
 
+    // Require a signed-in user to prevent anonymous abuse and to include JWT
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (!sessionData?.session) {
+      toast.error('Please sign in to use chat.');
+      return;
+    }
+
     const userMessage: Message = {
       role: 'user',
       content: input.trim(),
