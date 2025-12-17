@@ -58,13 +58,21 @@ const AIChatWidget: React.FC<AIChatWidgetProps> = ({ defaultChatType = 'general'
 
   const streamChat = async (messages: Message[], chatType: string) => {
     const chatUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-cybersecurity-chat`;
-    
+
+    // Get current session token if available (do not use anon/publishable key in Authorization)
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData?.session?.access_token;
+
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    };
+    if (accessToken) {
+      headers['Authorization'] = `Bearer ${accessToken}`;
+    }
+
     const response = await fetch(chatUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-      },
+      headers,
       body: JSON.stringify({ 
         messages: messages.map(msg => ({ role: msg.role, content: msg.content })),
         chatType 

@@ -34,6 +34,13 @@ const AIImageGenerator: React.FC = () => {
       return;
     }
 
+    // Require a signed-in user to prevent anonymous abuse
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (!sessionData?.session) {
+      toast.error('Please sign in to generate images.');
+      return;
+    }
+
     setIsGenerating(true);
     
     try {

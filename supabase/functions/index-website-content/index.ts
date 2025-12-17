@@ -1,29 +1,96 @@
+// @ts-nocheck
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+const ALLOWED_ORIGINS = new Set<string>([
+  "https://drtroywilliams.com",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+]);
+
+function cors(origin: string | null) {
+  const allowed = origin && ALLOWED_ORIGINS.has(origin);
+  return {
+    'Access-Control-Allow-Origin': allowed ? origin : 'https://drtroywilliams.com',
+    'Vary': 'Origin',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  };
+}
+
+function isAllowedUrl(u: string): boolean {
+  try {
+    const url = new URL(u, 'https://drtroywilliams.com');
+    const hostnameAllowed = url.hostname.endsWith('drtroywilliams.com');
+    const disallowedPaths = ['/admin', '/supabase', '/api'];
+    const pathAllowed = !disallowedPaths.some(p => url.pathname.startsWith(p));
+    return hostnameAllowed && pathAllowed;
+  } catch {
+    return false;
+  }
+}
 
 serve(async (req) => {
+  const origin = req.headers.get('origin');
+  const corsHeaders = cors(origin);
+
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    return new Response(JSON.stringify({ error: 'Origin not allowed' }), {
+      status: 403,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
+  }
+
   try {
-    const { url, title, content } = await req.json();
-    
-    const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
+    // Admin auth required
+    const token = req.headers.get('authorization')?.replace('Bearer ', '');
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    
+    const supabase = createClient(supabaseUrl, supabaseKey, { auth: { autoRefreshToken: false, persistSession: false }});
+
+    const { data: { user } } = await supabase.auth.getUser(token || '');
+    if (!user) {
+      return new Response(JSON.stringify({ error: 'Authentication required' }), {
+        status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Admin role check
+    const { data: adminCheck } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user.id)
+      .eq('role', 'admin')
+      .maybeSingle();
+
+    if (!adminCheck) {
+      return new Response(JSON.stringify({ error: 'Admin privileges required' }), {
+        status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const { url, title, content } = await req.json();
+
+    if (!url || !title || !content || typeof content !== 'string') {
+      return new Response(JSON.stringify({ error: 'Invalid payload' }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (!isAllowedUrl(url)) {
+      return new Response(JSON.stringify({ error: 'URL not allowed for indexing' }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
     if (!OPENAI_API_KEY) {
       throw new Error('OPENAI_API_KEY not configured');
     }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
 
     console.log(`Indexing content for: ${url}`);
 

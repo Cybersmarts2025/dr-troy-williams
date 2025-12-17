@@ -7,6 +7,7 @@ import { Mail, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 import { validateContactForm, sanitizeFormData } from "@/utils/formValidation";
+import { useRateLimit } from "@/hooks/useRateLimit";
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,14 +15,39 @@ const ContactForm = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    // Honeypot field – must remain empty
+    website: ''
   });
   const [errors, setErrors] = useState<string[]>([]);
   const { toast } = useToast();
+  const { checkRateLimit, isBlocked, remainingAttempts } = useRateLimit({
+    maxAttempts: 5,
+    windowMs: 60_000,
+    identifier: 'contact-form'
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors([]);
+
+    // Honeypot check
+    if (formData.website) {
+      // Silently succeed to avoid tipping off bots
+      toast({ title: "Message sent successfully!", description: "Thank you for your message. We'll get back to you soon.", duration: 4000 });
+      return;
+    }
+
+    // Client-side rate limit
+    if (!checkRateLimit()) {
+      toast({
+        title: "Too many attempts",
+        description: "Please wait a minute before trying again.",
+        variant: "destructive",
+        duration: 5000,
+      });
+      return;
+    }
     
     // Validate form data
     const validation = validateContactForm(formData);
@@ -39,17 +65,13 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Sanitize form data before inserting
-      const sanitized = sanitizeFormData(formData);
-      
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert({
-          name: sanitized.name,
-          email: sanitized.email,
-          subject: sanitized.subject,
-          message: sanitized.message
-        });
+      // Sanitize form data
+      const { name, email, subject, message } = sanitizeFormData(formData);
+
+      // Send via secure Edge Function (server-side rate limit + origin checks)
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: { name, email, subject, message }
+      });
 
       if (error) throw error;
 
@@ -59,7 +81,7 @@ const ContactForm = () => {
         duration: 5000,
       });
 
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '', website: '' });
     } catch (error) {
       console.error('Error sending message:', error);
       toast({
@@ -126,6 +148,20 @@ const ContactForm = () => {
               </div>
             )}
 
+            {/* Honeypot field (hidden) */}
+            <div className="hidden" aria-hidden="true">
+              <Label htmlFor="website">Website</Label>
+              <Input
+                id="website"
+                name="website"
+                type="text"
+                value={formData.website}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <Label htmlFor="name">Name *</Label>
@@ -190,7 +226,7 @@ const ContactForm = () => {
 
             <Button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || isBlocked}
               className="w-full bg-[#B22234] hover:bg-[#9B0000] text-lg py-3 min-h-[44px]"
             >
               {isSubmitting ? (
@@ -198,7 +234,7 @@ const ContactForm = () => {
               ) : (
                 <>
                   <Send className="h-5 w-5 mr-2" aria-hidden="true" />
-                  Send Message
+                  {isBlocked ? `Try again soon (${remainingAttempts} left)` : "Send Message"}
                 </>
               )}
             </Button>
