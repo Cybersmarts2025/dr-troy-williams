@@ -6,14 +6,17 @@ import { fileURLToPath, URL } from "node:url";
 const envSecretGuard = () => {
   return {
     name: "env-secret-guard",
-    config() {
-      const env = process.env || {};
-      const keys = Object.keys(env).filter((k) => k.startsWith("VITE_"));
+    // Use env.mode to decide whether to warn (dev) or throw (prod)
+    config(_userConfig, env) {
+      const isProd = env.mode === "production" || process.env.NODE_ENV === "production";
+      const runtimeEnv = process.env || {};
+      const keys = Object.keys(runtimeEnv).filter((k) => k.startsWith("VITE_"));
 
       // Publicly allowed VITE_* keys (expand as needed)
       const allowedPublic = new Set([
         "VITE_SUPABASE_URL",
         "VITE_SUPABASE_ANON_KEY",
+        "VITE_SUPABASE_PUBLISHABLE_KEY", // allow transitional name in dev
       ]);
 
       // Disallowed substrings for sensitive keys
@@ -40,11 +43,15 @@ const envSecretGuard = () => {
       }
 
       if (offenders.length > 0) {
-        throw new Error(
-          `Security error: Sensitive env vars must NOT use VITE_ prefix (client-exposed). Found: ${offenders.join(
-            ", "
-          )}. Move these to server-only (edge functions) or rename without VITE_.`
-        );
+        const message =
+          `Sensitive env vars must NOT use VITE_ prefix (client-exposed). Found: ${offenders.join(", ")}. ` +
+          `Move these to server-only (edge functions) or rename without VITE_.`;
+
+        if (isProd) {
+          throw new Error(`Security error: ${message}`);
+        } else {
+          console.warn(`[env-secret-guard] ${message}`);
+        }
       }
     },
   };
