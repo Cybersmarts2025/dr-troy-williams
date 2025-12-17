@@ -1,14 +1,65 @@
+// @ts-nocheck
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+const ALLOWED_ORIGINS = new Set<string>([
+  'https://drtroywilliams.com',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+]);
+
+function cors(origin: string | null) {
+  const allowed = origin && ALLOWED_ORIGINS.has(origin);
+  return {
+    'Access-Control-Allow-Origin': allowed ? origin : 'https://drtroywilliams.com',
+    'Vary': 'Origin',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  };
+}
+
+const rateLimit = new Map<string, { count: number; resetTime: number }>();
+const WINDOW = 60_000;
+const MAX_REQ = 10;
+
+function limited(ip: string) {
+  const now = Date.now();
+  const rec = rateLimit.get(ip);
+  if (!rec || now > rec.resetTime) {
+    rateLimit.set(ip, { count: 1, resetTime: now + WINDOW });
+    return false;
+  }
+  if (rec.count >= MAX_REQ) return true;
+  rec.count++;
+  return false;
 }
 
 serve(async (req) => {
+  const origin = req.headers.get('origin');
+  const corsHeaders = cors(origin);
+
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    return new Response(JSON.stringify({ success: false, error: 'Origin not allowed' }), {
+      status: 403,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
+  }
+
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+  if (limited(ip)) {
+    return new Response(JSON.stringify({ success: false, error: 'Rate limit exceeded' }), {
+      status: 429,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
+  }
+
+  if (req.method !== 'POST') {
+    return new Response(JSON.stringify({ success: false, error: 'Method not allowed' }), {
+      status: 405, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
   }
 
   try {
@@ -18,7 +69,16 @@ serve(async (req) => {
     // Initialize Supabase client
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const supabase = createClient(supabaseUrl, supabaseServiceKey, { auth: { autoRefreshToken: false, persistSession: false }});
+
+    // Require authenticated user
+    const token = req.headers.get('authorization')?.replace('Bearer ', '') || '';
+    const { data: { user } } = await supabase.auth.getUser(token);
+    if (!user) {
+      return new Response(JSON.stringify({ success: false, error: 'Authentication required' }), {
+        status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
 
     // If not forcing refresh, return cached books
     if (!forceRefresh) {
@@ -44,6 +104,20 @@ serve(async (req) => {
           { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
+    }
+
+    // Require admin to perform fresh scraping
+    const { data: adminCheck } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user.id)
+      .eq('role', 'admin')
+      .maybeSingle();
+
+    if (!adminCheck) {
+      return new Response(JSON.stringify({ success: false, error: 'Admin privileges required to refresh' }), {
+        status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
     }
 
     console.log('Fetching fresh books from Amazon Author page');

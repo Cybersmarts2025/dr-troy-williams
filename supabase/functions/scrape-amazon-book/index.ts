@@ -1,29 +1,97 @@
+// @ts-nocheck
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+const ALLOWED_ORIGINS = new Set<string>([
+  'https://drtroywilliams.com',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+]);
+
+function cors(origin: string | null) {
+  const allowed = origin && ALLOWED_ORIGINS.has(origin);
+  return {
+    'Access-Control-Allow-Origin': allowed ? origin : 'https://drtroywilliams.com',
+    'Vary': 'Origin',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  };
+}
+
+const rateLimit = new Map<string, { count: number; resetTime: number }>();
+const WINDOW = 60_000; // 1 minute
+const MAX_REQ = 10;
+
+function limited(ip: string) {
+  const now = Date.now();
+  const rec = rateLimit.get(ip);
+  if (!rec || now > rec.resetTime) {
+    rateLimit.set(ip, { count: 1, resetTime: now + WINDOW });
+    return false;
+  }
+  if (rec.count >= MAX_REQ) return true;
+  rec.count++;
+  return false;
+}
+
+function isAmazonUrl(u: string): boolean {
+  try {
+    const url = new URL(u);
+    const host = url.hostname.toLowerCase();
+    // Only allow Amazon product pages
+    if (!host.endsWith('amazon.com')) return false;
+    return /\/dp\/[A-Z0-9]{10}/i.test(url.pathname);
+  } catch {
+    return false;
+  }
 }
 
 serve(async (req) => {
+  const origin = req.headers.get('origin');
+  const corsHeaders = cors(origin);
+
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    return new Response(JSON.stringify({ success: false, error: 'Origin not allowed' }), {
+      status: 403,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
+  }
+
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+  if (limited(ip)) {
+    return new Response(JSON.stringify({ success: false, error: 'Rate limit exceeded. Please try again later.' }), {
+      status: 429,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
+  }
+
   try {
+    // Require authenticated user
+    const token = req.headers.get('authorization')?.replace('Bearer ', '') || '';
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const admin = createClient(supabaseUrl, supabaseKey, { auth: { autoRefreshToken: false, persistSession: false }});
+    const { data: { user } } = await admin.auth.getUser(token);
+    if (!user) {
+      return new Response(JSON.stringify({ success: false, error: 'Authentication required' }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     console.log('Starting Amazon book scraping request');
     
     const { url } = await req.json();
     
-    if (!url) {
-      console.error('No URL provided');
+    if (!url || typeof url !== 'string' || !isAmazonUrl(url)) {
+      console.error('Invalid or disallowed URL');
       return new Response(
-        JSON.stringify({ success: false, error: 'URL is required' }),
-        { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 400 
-        }
+        JSON.stringify({ success: false, error: 'Valid Amazon product URL (https://www.amazon.com/dp/ASIN) is required' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }
 
@@ -32,10 +100,7 @@ serve(async (req) => {
       console.error('FIRECRAWL_API_KEY not found in environment');
       return new Response(
         JSON.stringify({ success: false, error: 'Firecrawl API key not configured' }),
-        { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 500 
-        }
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
       );
     }
 

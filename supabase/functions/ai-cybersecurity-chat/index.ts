@@ -235,6 +235,7 @@ serve(async (req) => {
 
     const systemPrompt = systemPrompts[chatType as keyof typeof systemPrompts] || systemPrompts.general;
 
+    const isAuthenticated = !!user;
     console.log(`Processing ${chatType} chat request with ${messages.length} messages from IP: ${clientIP}; auth=${isAuthenticated}`);
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -251,8 +252,7 @@ serve(async (req) => {
         ],
         stream: true,
         temperature: 0.8,
-        // Reduce token budget slightly for unauthenticated requests
-        max_tokens: isAuthenticated ? 2500 : 1200,
+        max_tokens: 2500,
       }),
     });
 
