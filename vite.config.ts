@@ -1,5 +1,6 @@
-import { defineConfig } from "vite";
+﻿import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+<<<<<<< HEAD
 import { fileURLToPath, URL } from "node:url";
 
 // Security plugin to prevent leaking secrets via VITE_* envs
@@ -70,3 +71,18 @@ export default defineConfig({
     strictPort: true
   }
 });
+=======
+import path from "node:path";
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src")
+    }
+  },
+  server: {
+    host: "localhost"
+  }
+});
+>>>>>>> 64263f1404bb2a2578060545a1ceec5d8ce5d053

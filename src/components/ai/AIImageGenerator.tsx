@@ -217,8 +217,7 @@ const AIImageGenerator: React.FC = () => {
             <div className="text-sm">
               <p className="text-blue-800 font-medium mb-1">AI Image Generation</p>
               <p className="text-blue-700">
-                This tool uses Lovable AI's Gemini 2.5 Flash Image Preview model to generate 
-                professional images. All generated images are optimized for cybersecurity, 
+                This tool uses the Gemini 2.5 Flash Image Preview model to generate professional images optimized for cybersecurity, technology, and business use. All generated images are optimized for cybersecurity, 
                 technology, and business contexts.
               </p>
               <p className="text-blue-600 text-xs mt-2">
