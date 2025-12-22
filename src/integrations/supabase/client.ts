@@ -6,6 +6,12 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://dfnrhiovacznp
 // Prefer the standard name; fall back to the existing variable for compatibility
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || "";
 
+// Warn if someone accidentally exposed a service role key to the client build
+const POSSIBLE_CLIENT_SERVICE_ROLE = (import.meta as any).env?.VITE_SUPABASE_SERVICE_ROLE_KEY;
+if (typeof POSSIBLE_CLIENT_SERVICE_ROLE === 'string' && POSSIBLE_CLIENT_SERVICE_ROLE.length > 0) {
+  console.error("[security] Detected VITE_SUPABASE_SERVICE_ROLE_KEY in client env. Remove it immediately — never expose service role keys to the browser.");
+}
+
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
   console.warn("[supabase] Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY. Check your .env configuration.");
 }

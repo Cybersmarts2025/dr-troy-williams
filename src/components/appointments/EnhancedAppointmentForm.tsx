@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,6 +13,7 @@ import { Calendar, Clock, User, FileDown } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import CalendarSelector from './CalendarSelector';
 import { format } from 'date-fns';
+import { sanitizeInput } from '@/utils/security';
 
 const appointmentSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -69,14 +69,14 @@ const EnhancedAppointmentForm = () => {
     setIsSubmitting(true);
     try {
       const appointmentData = {
-        name: data.name,
-        email: data.email,
-        phone: data.phone || null,
-        appointment_type: data.appointment_type,
+        name: sanitizeInput(data.name).slice(0, 200),
+        email: data.email.trim().toLowerCase().slice(0, 255),
+        phone: data.phone ? sanitizeInput(data.phone).slice(0, 50) : null,
+        appointment_type: sanitizeInput(data.appointment_type).slice(0, 150),
         preferred_date: new Date(selectedDate.toDateString() + ' ' + data.preferred_time).toISOString(),
-        preferred_time: data.preferred_time,
+        preferred_time: sanitizeInput(data.preferred_time).slice(0, 10),
         duration_minutes: data.duration_minutes,
-        message: data.message || null,
+        message: data.message ? sanitizeInput(data.message).slice(0, 2000) : null,
         user_id: user?.id || null,
       };
 

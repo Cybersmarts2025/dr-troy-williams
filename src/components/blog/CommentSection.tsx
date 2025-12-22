@@ -46,15 +46,21 @@ const CommentSection = ({ postId }: CommentSectionProps) => {
 
   const fetchComments = async () => {
     try {
-      const { data, error } = await supabase
-        .from('blog_comments')
-        .select('*')
-        .eq('blog_post_id', postId)
-        .eq('is_approved', true)
-        .order('created_at', { ascending: true });
+      // Use secure RPC which only returns approved comments and never exposes emails
+      const { data, error } = await supabase.rpc('get_public_blog_comments', { post_id: postId });
 
       if (error) throw error;
-      setComments(data || []);
+
+      // Map to the expected shape
+      const safeComments = (data || []).map((c: any) => ({
+        id: c.id,
+        author_name: c.author_name,
+        content: c.content,
+        created_at: c.created_at,
+        is_approved: true,
+      })) as Comment[];
+
+      setComments(safeComments);
     } catch (error) {
       console.error('Error fetching comments:', error);
     } finally {

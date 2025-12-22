@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -12,6 +11,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { MessageSquare, Briefcase, DollarSign } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { sanitizeInput } from '@/utils/security';
 
 const consultationSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -77,14 +77,14 @@ const ConsultationForm = () => {
     setIsSubmitting(true);
     try {
       const consultationData = {
-        name: data.name,
-        email: data.email,
-        company: data.company || null,
-        phone: data.phone || null,
-        consultation_type: data.consultation_type,
-        budget_range: data.budget_range || null,
-        project_description: data.project_description,
-        timeline: data.timeline || null,
+        name: sanitizeInput(data.name).slice(0, 200),
+        email: data.email.trim().toLowerCase().slice(0, 255),
+        company: data.company ? sanitizeInput(data.company).slice(0, 200) : null,
+        phone: data.phone ? sanitizeInput(data.phone).slice(0, 50) : null,
+        consultation_type: sanitizeInput(data.consultation_type).slice(0, 150),
+        budget_range: data.budget_range ? sanitizeInput(data.budget_range).slice(0, 100) : null,
+        project_description: sanitizeInput(data.project_description).slice(0, 5000),
+        timeline: data.timeline ? sanitizeInput(data.timeline).slice(0, 100) : null,
         user_id: user?.id || null,
       };
 

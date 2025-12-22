@@ -1,8 +1,18 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.49.4'
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+const ALLOWED_ORIGINS = new Set<string>([
+  'https://drtroywilliams.com',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+]);
+
+function cors(origin: string | null) {
+  const allowed = origin && ALLOWED_ORIGINS.has(origin);
+  return {
+    'Access-Control-Allow-Origin': allowed ? origin : 'https://drtroywilliams.com',
+    'Vary': 'Origin',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  };
 }
 
 interface AdminOperationRequest {
@@ -11,9 +21,20 @@ interface AdminOperationRequest {
 }
 
 Deno.serve(async (req) => {
+  const origin = req.headers.get('origin');
+  const corsHeaders = cors(origin);
+
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Enforce origin allowlist
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    return new Response(JSON.stringify({ error: 'Origin not allowed' }), {
+      status: 403,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
   }
 
   try {
@@ -29,9 +50,23 @@ Deno.serve(async (req) => {
       }
     )
 
+    // simple audit logger
+    const logAudit = async (event_type: string, description: string, performed_by: string | null) => {
+      try {
+        await supabaseAdmin.from('security_audit_log').insert({
+          event_type,
+          description,
+          performed_by: performed_by ? performed_by : null
+        });
+      } catch {
+        // ignore logging errors
+      }
+    };
+
     // Get the authorization header
     const authHeader = req.headers.get('Authorization')
     if (!authHeader) {
+      await logAudit('ADMIN_OP_UNAUTHORIZED', 'Missing Authorization header', null);
       return new Response(
         JSON.stringify({ error: 'No authorization header' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -43,7 +78,7 @@ Deno.serve(async (req) => {
     const { data: { user }, error: userError } = await supabaseAdmin.auth.getUser(token)
     
     if (userError || !user) {
-      console.error('Auth error:', userError)
+      await logAudit('ADMIN_OP_UNAUTHORIZED', `Invalid authentication: ${userError?.message ?? 'no user'}`, null);
       return new Response(
         JSON.stringify({ error: 'Invalid authentication' }),
         { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -59,7 +94,7 @@ Deno.serve(async (req) => {
       .single()
 
     if (adminError || !adminCheck) {
-      console.error('Admin check failed:', adminError)
+      await logAudit('ADMIN_OP_FORBIDDEN', `Non-admin attempted admin operation`, user.id);
       return new Response(
         JSON.stringify({ error: 'Admin privileges required' }),
         { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -84,11 +119,10 @@ Deno.serve(async (req) => {
       )
     }
 
-    let result
     let message
 
     switch (operation) {
-      case 'promote_user':
+      case 'promote_user': {
         // Check if user already has admin role
         const { data: existingRole } = await supabaseAdmin
           .from('user_roles')
@@ -98,6 +132,7 @@ Deno.serve(async (req) => {
           .single()
 
         if (existingRole) {
+          await logAudit('ADMIN_OP_NOOP', `Promote skipped (already admin): ${target_user_id}`, user.id);
           return new Response(
             JSON.stringify({ success: true, message: 'User is already an admin' }),
             { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -112,7 +147,7 @@ Deno.serve(async (req) => {
           })
 
         if (promoteError) {
-          console.error('Promote error:', promoteError)
+          await logAudit('ADMIN_OP_ERROR', `Promote failed: ${promoteError.message}`, user.id);
           return new Response(
             JSON.stringify({ error: 'Failed to promote user to admin' }),
             { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -120,9 +155,11 @@ Deno.serve(async (req) => {
         }
 
         message = 'User promoted to admin successfully'
+        await logAudit('ADMIN_OP_SUCCESS', `Promoted user to admin: ${target_user_id}`, user.id);
         break
+      }
 
-      case 'revoke_admin':
+      case 'revoke_admin': {
         const { error: revokeError } = await supabaseAdmin
           .from('user_roles')
           .delete()
@@ -130,7 +167,7 @@ Deno.serve(async (req) => {
           .eq('role', 'admin')
 
         if (revokeError) {
-          console.error('Revoke error:', revokeError)
+          await logAudit('ADMIN_OP_ERROR', `Revoke failed: ${revokeError.message}`, user.id);
           return new Response(
             JSON.stringify({ error: 'Failed to revoke admin access' }),
             { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -138,7 +175,9 @@ Deno.serve(async (req) => {
         }
 
         message = 'Admin access revoked successfully'
+        await logAudit('ADMIN_OP_SUCCESS', `Revoked admin from user: ${target_user_id}`, user.id);
         break
+      }
 
       default:
         return new Response(
@@ -146,9 +185,6 @@ Deno.serve(async (req) => {
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         )
     }
-
-    // Log the admin action for audit purposes
-    console.log(`Admin ${user.id} performed ${operation} on user ${target_user_id}`)
 
     return new Response(
       JSON.stringify({ success: true, message }),
@@ -159,7 +195,7 @@ Deno.serve(async (req) => {
     console.error('Server error:', error)
     return new Response(
       JSON.stringify({ error: 'Internal server error' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 500, headers: { 'Content-Type': 'application/json', ...cors(null) } }
     )
   }
 })

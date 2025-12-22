@@ -82,6 +82,17 @@ serve(async (req: Request): Promise<Response> => {
 
   // Enforce origin allowlist
   if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    // Attempt audit log via service role client
+    try {
+      const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+      const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      await supabase.from('security_audit_log').insert({
+        event_type: 'CONTACT_EMAIL_FORBIDDEN_ORIGIN',
+        description: `Blocked origin: ${origin ?? 'null'}`,
+        performed_by: null
+      });
+    } catch {}
     return new Response(JSON.stringify({ error: "Origin not allowed" }), {
       status: 403,
       headers: { "Content-Type": "application/json", ...corsHeaders },
@@ -95,6 +106,13 @@ serve(async (req: Request): Promise<Response> => {
   const supabase = createClient(supabaseUrl, supabaseKey, { auth: { autoRefreshToken: false, persistSession: false }});
   const { data: { user } } = await supabase.auth.getUser(token || "");
   if (!user) {
+    try {
+      await supabase.from('security_audit_log').insert({
+        event_type: 'CONTACT_EMAIL_UNAUTHORIZED',
+        description: 'Missing or invalid JWT',
+        performed_by: null
+      });
+    } catch {}
     return new Response(JSON.stringify({ error: "Authentication required" }), {
       status: 401,
       headers: { "Content-Type": "application/json", ...corsHeaders },
@@ -187,12 +205,28 @@ serve(async (req: Request): Promise<Response> => {
 
     console.log("Email sent successfully:", emailResponse);
 
+    // Audit log successful send
+    try {
+      await supabase.from('security_audit_log').insert({
+        event_type: 'CONTACT_EMAIL_SENT',
+        description: `Contact email from ${email}`,
+        performed_by: user.id
+      });
+    } catch {}
+
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { "Content-Type": "application/json", ...corsHeaders },
     });
   } catch (error: any) {
     console.error("Error in send-contact-email function:", error);
+    try {
+      await supabase.from('security_audit_log').insert({
+        event_type: 'CONTACT_EMAIL_ERROR',
+        description: `Error sending: ${error?.message ?? 'unknown'}`,
+        performed_by: user?.id ?? null
+      });
+    } catch {}
     return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
       headers: { "Content-Type": "application/json", ...corsHeaders },
