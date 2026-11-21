@@ -106,7 +106,7 @@ This is not the end of cybersecurity. It's the beginning of Proactive AI Defense
 
 Protecting America Through Technology™  
 I am not ahead of the curve. I am building the curve.  
-Author: Troy Williams, PhD  
+Author: Troy Williams
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-12',
       category: 'AI Threats'
@@ -141,7 +141,7 @@ The solution lies in replacing blind trust with verified truth. I have spent my 
 
 Protecting America Through Technology™  
 I am not ahead of the curve. I am building the curve.  
-Author: Troy Williams, PhD  
+Author: Troy Williams
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-11',
       category: 'Consumer Fraud'
@@ -208,7 +208,7 @@ BEC is no longer just a cyber issue; it is a national economic threat. As The AI
 
 Protecting America Through Technology™
 I am not ahead of the curve. I am building the curve.
-Author: Troy Williams, PhD
+Author: Troy Williams
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-10',
       category: 'Business Fraud'
@@ -245,7 +245,7 @@ The internet was built for communication, not deception, but criminals have turn
 
 Protecting America Through Technology™  
 I am not ahead of the curve. I am building the curve.  
-Author: Troy Williams, PhD  
+Author: Troy Williams
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-09',
       category: 'Financial Fraud'
@@ -280,7 +280,7 @@ Protecting America's financial infrastructure starts with proactive vigilance at
 
 Protecting America Through Technology™  
 I am not ahead of the curve. I am building the curve.  
-Author: Troy Williams, PhD  
+Author: Troy Williams
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-08',
       category: 'Business Security'
@@ -382,7 +382,7 @@ Protect them, deploy them, and demand that every platform you use supports them.
 
 Protecting America Through Technology™  
 I am not ahead of the curve. I am building the curve.  
-Author: Troy Williams, PhD  
+Author: Troy Williams
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-07',
       category: 'Authentication'
@@ -417,7 +417,7 @@ The future of fraud prevention will not be about blocking bad actors after the f
 
 Protecting America Through Technology™  
 I am not ahead of the curve. I am building the curve.  
-Author: Troy Williams, PhD  
+Author: Troy Williams
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-05',
       category: 'Consumer Fraud'
@@ -452,7 +452,7 @@ The Memphis deepfake attack is not just a corporate tragedy but a national wake-
 
 Protecting America Through Technology™  
 I am not ahead of the curve. I am building the curve.  
-Author: Troy Williams, PhD  
+Author: Troy Williams
 Built in Tennessee. By Americans. For Americans.`,
       date: '2025-11-03',
       category: 'Business Fraud'
@@ -483,7 +483,7 @@ Built in Tennessee. By Americans. For Americans.`,
           <DialogTrigger asChild>
             <Button className="bg-[#B22234] hover:bg-[#8B1A28]">
               <Mail className="h-4 w-4 mr-2" />
-              Subscribe to Dr Troy's Security Briefings
+              Subscribe to Troy's Security Briefings
             </Button>
           </DialogTrigger>
           <DialogContent>

@@ -31,7 +31,7 @@ const Pledge = () => {
   return (
     <>
       <Helmet>
-        <title>American Digital Stewardship Pledge | Dr. Troy Williams</title>
+        <title>American Digital Stewardship Pledge | Troy Williams</title>
         <meta name="description" content="Join the American Digital Stewardship Pledge - a commitment to protecting our nation in the digital age through vigilance, verification, and civic responsibility." />
       </Helmet>
       

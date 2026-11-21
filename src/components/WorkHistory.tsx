@@ -68,7 +68,7 @@ const WorkHistory = () => {
                 <div className="space-y-3 text-gray-700">
                   <p className="flex items-start">
                     <span className="text-[#B22234] mr-2">→</span>
-                    As the founder and President of Information Systems Inc, Dr. Troy Williams led one of Tennessee's most trusted private investigation and employment screening agencies for over three decades.
+                    As the founder and President of Information Systems Inc, Troy Williams led one of Tennessee's most trusted private investigation and employment screening agencies for over three decades.
                   </p>
                   <p className="flex items-start">
                     <span className="text-[#B22234] mr-2">→</span>
@@ -80,7 +80,7 @@ const WorkHistory = () => {
                   </p>
                   <p className="flex items-start">
                     <span className="text-[#B22234] mr-2">→</span>
-                    Dr. Williams maintained licensure as a Tennessee Private Investigator and played a direct role in sensitive investigations ranging from fraud detection and corporate risk to legal support services and digital forensics.
+                    Williams maintained licensure as a Tennessee Private Investigator and played a direct role in sensitive investigations ranging from fraud detection and corporate risk to legal support services and digital forensics.
                   </p>
                 </div>
                 <div className="italic text-[#F97316] font-semibold mt-6 border-l-4 border-[#3C3B6E] pl-4 py-2 bg-[#3C3B6E]/5 rounded-r">
@@ -115,7 +115,7 @@ const WorkHistory = () => {
                 <div className="space-y-3 text-gray-700">
                   <p className="flex items-start">
                     <span className="text-[#3C3B6E] mr-2">→</span>
-                    Dr. Troy Williams is the Founder and Chief Intelligence Architect of Cybersmarts.ai, a Tennessee-based nonprofit dedicated to advancing national security through artificial intelligence, cybersecurity innovation, and proactive fraud prevention.
+                    Troy Williams is the Founder and Chief Intelligence Architect of Cybersmarts.ai, a Tennessee-based nonprofit dedicated to advancing national security through artificial intelligence, cybersecurity innovation, and proactive fraud prevention.
                   </p>
                   <p className="flex items-start">
                     <span className="text-[#3C3B6E] mr-2">→</span>
@@ -123,7 +123,7 @@ const WorkHistory = () => {
                   </p>
                   <p className="flex items-start">
                     <span className="text-[#3C3B6E] mr-2">→</span>
-                    At Cybersmarts.ai, Dr. Williams leads the design of national-scale AI systems, regulatory standards, and public education platforms aimed at protecting American citizens, law enforcement, and critical infrastructure from foreign cyber threats, data exploitation, and algorithmic manipulation.
+                    At Cybersmarts.ai, Williams leads the design of national-scale AI systems, regulatory standards, and public education platforms aimed at protecting American citizens, law enforcement, and critical infrastructure from foreign cyber threats, data exploitation, and algorithmic manipulation.
                   </p>
                 </div>
                 <div className="italic text-[#F97316] font-semibold mt-6 border-l-4 border-[#B22234] pl-4 py-2 bg-[#B22234]/5 rounded-r">

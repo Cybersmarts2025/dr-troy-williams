@@ -73,13 +73,13 @@ const PressContactSection = () => {
     
     try {
       // Create press kit content
-      const pressKitContent = `Dr. Troy Williams, PhD – Press Kit
+      const pressKitContent = `Troy Williams – Press Kit
 
 ==============================================
 BIOGRAPHY
 ==============================================
 
-Dr. Troy Williams, PhD, is a cybersecurity engineer, AI scientist, and licensed private investigator with more than 30 years of experience in digital defense, fraud prevention, and sovereign AI development. As the Founder and President of Cybersmarts.ai, Dr. Williams is the inventor of several patented and trademarked systems, including PatriotProof™, FraudDNA™, AISF™, and PPP™. He has authored seven books and numerous whitepapers addressing AI ethics, cybersecurity resilience, and fraud detection. His work aligns with the highest compliance standards, including GDPR, HIPAA, SOC 2, and CCPA.
+Troy Williams is a cybersecurity engineer, AI scientist, and licensed private investigator with more than 30 years of experience in digital defense, fraud prevention, and sovereign AI development. As the Founder and President of Cybersmarts.ai, Williams is the inventor of several patented and trademarked systems, including PatriotProof™, FraudDNA™, AISF™, and PPP™. He has authored seven books and numerous whitepapers addressing AI ethics, cybersecurity resilience, and fraud detection. His work aligns with the highest compliance standards, including GDPR, HIPAA, SOC 2, and CCPA.
 
 ==============================================
 AREAS OF EXPERTISE
@@ -140,7 +140,7 @@ FEATURED TOPICS FOR EXPERT COMMENTARY
       
       toast({
         title: "Press Kit Downloaded",
-        description: "Dr. Troy Williams press kit has been downloaded.",
+        description: "Troy Williams press kit has been downloaded.",
       });
     } catch (error) {
       toast({
@@ -160,7 +160,7 @@ FEATURED TOPICS FOR EXPERT COMMENTARY
           <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-center">Media Inquiries</h2>
           <p className="text-center mb-6 md:mb-8 text-base md:text-lg">
             For press inquiries, expert commentary, or consulting requests on artificial intelligence, 
-            cybersecurity, or national security technology matters, Dr. Williams is available via phone and email only.
+            cybersecurity, or national security technology matters, Williams is available via phone and email only.
           </p>
           
           <div className="grid md:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-8">

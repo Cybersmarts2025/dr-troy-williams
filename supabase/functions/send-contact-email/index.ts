@@ -189,9 +189,9 @@ serve(async (req: Request): Promise<Response> => {
 
     // Confirmation email to sender (optional)
     await resend.emails.send({
-      from: "Dr. Troy Williams <onboarding@resend.dev>",
+      from: "Troy Williams <onboarding@resend.dev>",
       to: [email],
-      subject: "Thank you for contacting Dr. Troy Williams",
+      subject: "Thank you for contacting Troy Williams",
       html: `
         <h1>Thank you for reaching out, ${escapeHtml(name)}!</h1>
         <p>I have received your message and will get back to you as soon as possible.</p>
@@ -199,7 +199,7 @@ serve(async (req: Request): Promise<Response> => {
         <blockquote style="border-left: 4px solid #3C3B6E; padding-left: 16px; margin: 16px 0; color: #666;">
           ${escapeHtml(message).replace(/\n/g, '<br>')}
         </blockquote>
-        <p>Best regards,<br>Dr. Troy Williams</p>
+        <p>Best regards,<br>Troy Williams</p>
       `,
     });
 

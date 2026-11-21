@@ -25,31 +25,31 @@ const FeaturedPressRelease = () => {
             June 18, 2025 - FOR IMMEDIATE RELEASE
           </div>
           <CardTitle className="text-2xl md:text-3xl leading-tight">
-            Dr. Troy Williams, PhD, Pledges to Complete the Unfinished Work of AI and Cybersecurity Pioneers
+            Troy Williams, Pledges to Complete the Unfinished Work of AI and Cybersecurity Pioneers
           </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
           <div className="prose max-w-none">
             <p className="text-lg font-semibold text-[#3C3B6E] mb-4">
               <strong>Tennessee, USA — June 18, 2025</strong> — In an era where artificial intelligence and cybersecurity define global stability, 
-              <strong> Dr. Troy Williams, PhD</strong>—founder of <strong>Cybersmarts.ai LLC</strong>—has declared a bold, historic commitment: 
+              <strong> Troy Williams</strong>—founder of <strong>Cybersmarts.ai LLC</strong>—has declared a bold, historic commitment:
               to <strong>carry forward the legacy of the forefathers of AI, cryptography, and ethical technology</strong> by completing the unsolved challenges they left behind.
             </p>
 
             <p className="mb-4">
               Through his U.S.-patented platforms—<strong>PatriotProof™</strong>, <strong>FraudDNA™</strong>, 
-              <strong> AISF™ (Autonomous Intelligence Security Framework)</strong>, and <strong>PPP™ (Proactive Prevention Platform)</strong>—Dr. Williams 
+              <strong> AISF™ (Autonomous Intelligence Security Framework)</strong>, and <strong>PPP™ (Proactive Prevention Platform)</strong>—Williams
               is strategically advancing the work of legendary pioneers such as <strong>Alan Turing, Norbert Wiener, Claude Shannon, John McCarthy, 
               Marvin Minsky, Whitfield Diffie, Ron Rivest, Geoffrey Hinton, Yoshua Bengio</strong>, and <strong>Yann LeCun</strong>.
             </p>
 
             <blockquote className="border-l-4 border-[#B22234] pl-6 my-6 italic text-lg bg-slate-50 p-4 rounded-r-lg">
               "I don't follow the curve—I am the curve. My legacy is not imitation. It's completion. Every innovation I build is engineered to fulfill what these visionaries started—ethical AI, sovereign security, and zero-compromise resilience for the next American century."
-              <footer className="text-right mt-2 font-semibold">— Dr. Troy Williams</footer>
+              <footer className="text-right mt-2 font-semibold">— Troy Williams</footer>
             </blockquote>
 
             <p className="mb-4">
-              Dr. Williams has identified the <strong>core gaps</strong> left in the research of these giants, including:
+              Williams has identified the <strong>core gaps</strong> left in the research of these giants, including:
             </p>
             
             <ul className="list-disc list-inside mb-6 space-y-2 ml-4">
@@ -70,9 +70,9 @@ const FeaturedPressRelease = () => {
             </p>
 
             <div className="bg-[#3C3B6E] text-white p-6 rounded-lg mb-6">
-              <h3 className="text-xl font-bold mb-3">About Dr. Troy Williams, PhD</h3>
+              <h3 className="text-xl font-bold mb-3">About Troy Williams</h3>
               <p>
-                Dr. Williams is a cybersecurity engineer, AI scientist, and licensed private investigator with over 30 years of experience 
+                Williams is a cybersecurity engineer, AI scientist, and licensed private investigator with over 30 years of experience
                 in national fraud prevention, intelligence-driven innovation, and regulatory compliance. As founder of <strong>Cybersmarts.ai</strong>, 
                 he is the creator of several groundbreaking frameworks including <strong>AISF™, FraudDNA™, PatriotProof™, PPP™, and LegalSmarts.net</strong>.
               </p>

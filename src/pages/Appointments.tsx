@@ -14,10 +14,10 @@ const Appointments = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>Book Appointment | Dr. Troy Williams - Schedule Your Consultation</title>
+        <title>Book Appointment | Troy Williams - Schedule Your Consultation</title>
         <meta 
           name="description" 
-          content="Schedule a consultation with Dr. Troy Williams for cybersecurity, AI strategy, technical advisory, or mentoring sessions." 
+          content="Schedule a consultation with Troy Williams for cybersecurity, AI strategy, technical advisory, or mentoring sessions."
         />
       </Helmet>
       

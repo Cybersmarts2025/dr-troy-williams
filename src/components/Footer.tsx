@@ -10,7 +10,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ 
-  companyName = 'Dr. Troy Williams' 
+  companyName = 'Troy Williams'
 }) => {
   return (
     <footer className="bg-[#3C3B6E] text-white py-8 border-t-4 border-[#B22234]">
@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps> = ({
         <div className="mt-8 mb-6 text-center space-y-3">
           <p className="text-lg font-semibold text-amber-400">Protecting America Through Technology™</p>
           <p className="text-base italic text-white">"I am not ahead of the curve. I am building the curve."</p>
-          <p className="text-sm text-white/90">Author: Troy Williams, PhD</p>
+          <p className="text-sm text-white/90">Author: Troy Williams</p>
           <p className="text-xs text-white/85">Built in Tennessee. By Americans. For Americans.</p>
           <p className="text-xs text-white/85 font-semibold">Independent Civilian Intelligence to Protect Americans.</p>
           <div className="flex items-center justify-center gap-4 pt-2">

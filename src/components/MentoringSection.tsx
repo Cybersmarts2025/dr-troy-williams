@@ -27,7 +27,7 @@ const MentoringSection = () => {
           </h2>
           
           <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Through strategic academic partnerships and hands-on mentorship programs, Dr. Williams develops 
+            Through strategic academic partnerships and hands-on mentorship programs, Williams develops
             the critical thinking and technical expertise needed to defend America's digital infrastructure.
           </p>
         </motion.div>

@@ -24,7 +24,7 @@ const Accessibility = () => {
   return (
     <>
       <Helmet>
-        <title>Accessibility Statement | Dr. Troy Williams</title>
+        <title>Accessibility Statement | Troy Williams</title>
         <meta name="description" content="Accessibility statement and ADA compliance certification for DrTroyWilliams.net. Verified by Verified Safe Cyber Security Solutions." />
       </Helmet>
       
@@ -90,7 +90,7 @@ const Accessibility = () => {
               </CardHeader>
               <CardContent className="prose prose-lg max-w-none">
                 <p className="text-gray-700">
-                  Dr. Troy Williams and Cybersmarts.ai LLC are committed to ensuring digital accessibility for people 
+                  Troy Williams and Cybersmarts.ai LLC are committed to ensuring digital accessibility for people
                   with disabilities. We continually improve the user experience for everyone and apply the relevant 
                   accessibility standards to ensure we provide equal access to all users.
                 </p>

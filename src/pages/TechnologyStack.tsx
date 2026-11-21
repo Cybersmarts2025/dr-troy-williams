@@ -116,7 +116,7 @@ const TechnologyStack = () => {
   return (
     <>
       <Helmet>
-        <title>Technology & System Architecture | Dr. Troy Williams, PhD</title>
+        <title>Technology & System Architecture | Troy Williams</title>
         <meta name="description" content="Comprehensive breakdown of proprietary fraud prevention and identity security technologies including PatriotProof™, FraudDNA™, AISF™, and quantum-secure systems." />
       </Helmet>
       

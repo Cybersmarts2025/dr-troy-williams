@@ -22,14 +22,14 @@ export default function AITools() {
   return (
     <>
       <Helmet>
-        <title>AI Tools | Dr Troy Williams | Cybersmarts.ai</title>
+        <title>AI Tools | Troy Williams | Cybersmarts.ai</title>
         <meta
           name="description"
-          content="Artificial intelligence tools for cybersecurity, fraud prevention, research, and professional image generation developed by Dr Troy Williams."
+          content="Artificial intelligence tools for cybersecurity, fraud prevention, research, and professional image generation developed by Troy Williams."
         />
         <meta
           name="keywords"
-          content="artificial intelligence cybersecurity tools, AI cybersecurity assistant, cybersecurity research AI, professional AI image generation, Dr Troy Williams, Cybersmarts.ai"
+          content="artificial intelligence cybersecurity tools, AI cybersecurity assistant, cybersecurity research AI, professional AI image generation, Troy Williams, Cybersmarts.ai"
         />
       </Helmet>
 

@@ -28,12 +28,12 @@ const sitemapData: SitemapSection[] = [
   {
     title: "Main Pages",
     links: [
-      { to: "/", title: "Home", description: "Welcome to Dr. Troy Williams' official website featuring expertise in AI, cybersecurity, and fraud defense.", icon: Home },
-      { to: "/about", title: "About", description: "Learn about Dr. Troy Williams' background, credentials, and mission.", icon: User },
-      { to: "/master-bio", title: "Master Biography", description: "Complete professional biography and timeline of Dr. Troy Williams through 2027.", icon: User },
+      { to: "/", title: "Home", description: "Welcome to Troy Williams' official website featuring expertise in AI, cybersecurity, and fraud defense.", icon: Home },
+      { to: "/about", title: "About", description: "Learn about Troy Williams' background, credentials, and mission.", icon: User },
+      { to: "/master-bio", title: "Master Biography", description: "Complete professional biography and timeline of Troy Williams through 2027.", icon: User },
       { to: "/timeline", title: "Lifetime Timeline", description: "34-year journey from investigative foundations to national cybersecurity leadership.", icon: Calendar },
       { to: "/credentials", title: "Credentials & Education", description: "Academic qualifications, degrees, and professional licenses.", icon: Award },
-      { to: "/contact", title: "Contact", description: "Get in touch with Dr. Troy Williams for inquiries and collaborations.", icon: Mail },
+      { to: "/contact", title: "Contact", description: "Get in touch with Troy Williams for inquiries and collaborations.", icon: Mail },
     ]
   },
   {
@@ -94,7 +94,7 @@ const sitemapData: SitemapSection[] = [
     links: [
       { to: "/auth", title: "Sign In / Register", description: "Access your account or create a new one.", icon: User },
       { to: "/profile", title: "User Profile", description: "Manage your account settings and preferences.", icon: Settings },
-      { to: "/testimonial", title: "Submit Testimonial", description: "Share your experience working with Dr. Williams.", icon: PenTool },
+      { to: "/testimonial", title: "Submit Testimonial", description: "Share your experience working with Williams.", icon: PenTool },
     ]
   },
 ];
@@ -136,10 +136,10 @@ const Sitemap = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Sitemap | Dr. Troy Williams - Complete Website Navigation</title>
+        <title>Sitemap | Troy Williams - Complete Website Navigation</title>
         <meta 
           name="description" 
-          content="Navigate all pages on Dr. Troy Williams' website. Find information on cybersecurity services, AI tools, publications, and professional programs." 
+          content="Navigate all pages on Troy Williams' website. Find information on cybersecurity services, AI tools, publications, and professional programs."
         />
         <link rel="canonical" href="https://www.DrTroyWilliams.net/sitemap" />
       </Helmet>

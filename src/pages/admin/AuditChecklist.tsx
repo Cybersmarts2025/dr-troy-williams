@@ -389,7 +389,7 @@ const AuditChecklist = () => {
   return (
     <AdminGuard>
       <Helmet>
-        <title>ADA Audit Checklist | Dr. Troy Williams</title>
+        <title>ADA Audit Checklist | Troy Williams</title>
         <meta name="description" content="Interactive WCAG 2.1 AA compliance audit checklist" />
       </Helmet>
       

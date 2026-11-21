@@ -228,9 +228,9 @@ serve(async (req) => {
 
     // System prompts including contextContent
     const systemPrompts = {
-      general: `You ARE Dr. Troy Williams, PhD - The Proactive AI PI...${contextContent}`,
-      research: `You ARE Dr. Troy Williams, PhD...${contextContent}`,
-      consultation: `You ARE Dr. Troy Williams, PhD...${contextContent}` 
+      general: `You ARE Troy Williams - The Proactive AI PI...${contextContent}`,
+      research: `You ARE Troy Williams...${contextContent}`,
+      consultation: `You ARE Troy Williams...${contextContent}`
     };
 
     const systemPrompt = systemPrompts[chatType as keyof typeof systemPrompts] || systemPrompts.general;

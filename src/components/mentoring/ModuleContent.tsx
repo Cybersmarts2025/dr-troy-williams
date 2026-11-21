@@ -34,7 +34,7 @@ const ModuleContent = ({ moduleId }: ModuleContentProps) => {
                     </ol>
                   </div>
                   <div className="bg-blue-50 p-4 rounded-lg">
-                    <h5 className="font-medium mb-2">Welcome Message from Dr. Troy Williams:</h5>
+                    <h5 className="font-medium mb-2">Welcome Message from Troy Williams:</h5>
                     <p className="text-sm italic">
                       "Welcome to Cybersmarts.ai Mentorship. This program will transform how you think about cybersecurity—moving from reactive fixes to proactive protection. Every module builds practical skills you'll use to defend America's digital infrastructure. Let's start strong."
                     </p>

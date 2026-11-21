@@ -98,7 +98,7 @@ export const AmazonBooksSection = () => {
   return (
     <div className="mt-10 pt-8 border-t border-border">
       <div className="flex items-center justify-between mb-2">
-        <h3 className="text-xl font-bold text-foreground text-center flex-1">Books by Dr. Troy Williams</h3>
+        <h3 className="text-xl font-bold text-foreground text-center flex-1">Books by Troy Williams</h3>
         <Button
           variant="outline"
           size="sm"
@@ -127,7 +127,7 @@ export const AmazonBooksSection = () => {
           <div className="relative">
             <img 
               src={STOLEN_NATION_BOOK.coverUrl}
-              alt="Stolen Nation book cover by Dr. Troy Williams"
+              alt="Stolen Nation book cover by Troy Williams"
               className="w-full h-auto"
               loading="lazy"
             />
@@ -140,7 +140,7 @@ export const AmazonBooksSection = () => {
             <p className="text-sm text-muted-foreground mb-1 font-medium line-clamp-2">
               {STOLEN_NATION_BOOK.subtitle}
             </p>
-            <p className="text-xs text-muted-foreground mb-3">By Troy Williams, PhD</p>
+            <p className="text-xs text-muted-foreground mb-3">By Troy Williams</p>
             <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
               {STOLEN_NATION_BOOK.description}
             </p>

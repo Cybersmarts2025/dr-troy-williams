@@ -75,7 +75,7 @@ const TestimonialForm = () => {
       <CardHeader>
         <CardTitle>Share Your Experience</CardTitle>
         <CardDescription>
-          Help others by sharing your experience working with Dr. Troy Williams or using his resources.
+          Help others by sharing your experience working with Troy Williams or using his resources.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -220,7 +220,7 @@ const TestimonialForm = () => {
                   <FormLabel>Your Testimonial</FormLabel>
                   <FormControl>
                     <Textarea 
-                      placeholder="Share your experience working with Dr. Troy Williams..."
+                      placeholder="Share your experience working with Troy Williams..."
                       className="min-h-[120px]"
                       {...field} 
                     />

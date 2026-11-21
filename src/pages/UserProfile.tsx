@@ -79,7 +79,7 @@ const UserProfile = () => {
     <AuthGuard>
       <div className="min-h-screen bg-white flex flex-col">
         <Helmet>
-          <title>User Profile | Dr. Troy Williams</title>
+          <title>User Profile | Troy Williams</title>
           <meta name="description" content="Manage your profile settings" />
         </Helmet>
         <NavBar />

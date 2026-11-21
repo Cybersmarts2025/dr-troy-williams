@@ -9,7 +9,7 @@ const AppointmentFormHeader = () => {
         <Calendar className="h-7 w-7" />
         Book an Appointment
       </h2>
-      <p className="text-gray-600">Schedule a consultation with Dr. Troy Williams</p>
+      <p className="text-gray-600">Schedule a consultation with Troy Williams</p>
     </div>
   );
 };

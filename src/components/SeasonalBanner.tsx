@@ -307,7 +307,7 @@ const getSeasonalConfig = (): SeasonalConfig => {
   if (month === 11) {
     return {
       message: day <= 25 
-        ? "🎄 Merry Christmas from Dr. Troy Williams! Wishing you a safe and joyful holiday season. 🎅"
+        ? "🎄 Merry Christmas from Troy Williams! Wishing you a safe and joyful holiday season. 🎅"
         : "✨ Happy Holidays! Wishing you peace and security as we close out the year. ✨",
       icon: <Snowflake className="h-5 w-5" />,
       bgGradient: "bg-gradient-to-r from-red-700 via-green-700 to-red-700",
@@ -341,7 +341,7 @@ const getSeasonalConfig = (): SeasonalConfig => {
     }
     // Rest of January - show snowfall
     return {
-      message: "❄️ Winter greetings from Dr. Troy Williams! Stay warm and secure. ❄️",
+      message: "❄️ Winter greetings from Troy Williams! Stay warm and secure. ❄️",
       icon: <Snowflake className="h-5 w-5" />,
       bgGradient: "bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600",
       textColor: "text-white",
@@ -484,7 +484,7 @@ const getSeasonalConfig = (): SeasonalConfig => {
 
   // Default - always show a welcome banner
   return {
-    message: "🛡️ Welcome! Dr. Troy Williams is available via phone and email for consulting and media inquiries.",
+    message: "🛡️ Welcome! Troy Williams is available via phone and email for consulting and media inquiries.",
     icon: <Shield className="h-5 w-5" />,
     bgGradient: "bg-gradient-to-r from-[#3C3B6E] via-[#B22234] to-[#3C3B6E]",
     textColor: "text-white",

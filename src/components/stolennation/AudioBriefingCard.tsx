@@ -31,7 +31,7 @@ const AudioBriefingCard = ({ briefing }: AudioBriefingCardProps) => {
   const shareUrl = briefing.slug 
     ? `${window.location.origin}/stolennation/${briefing.slug}`
     : `${window.location.origin}/stolennation`;
-  const shareText = encodeURIComponent(`${briefing.title} - Stolen Nation Intelligence Briefing by Dr. Troy Williams`);
+  const shareText = encodeURIComponent(`${briefing.title} - Stolen Nation Intelligence Briefing by Troy Williams`);
 
   const handleLinkedInShare = (e: React.MouseEvent) => {
     e.preventDefault();

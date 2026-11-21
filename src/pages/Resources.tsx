@@ -14,10 +14,10 @@ const Resources = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Resources | Dr. Troy Williams - AI & Cybersecurity Materials</title>
+        <title>Resources | Troy Williams - AI & Cybersecurity Materials</title>
         <meta 
           name="description" 
-          content="Access research papers, educational materials, and resources on AI, cybersecurity, and defense technology by Dr. Troy Williams." 
+          content="Access research papers, educational materials, and resources on AI, cybersecurity, and defense technology by Troy Williams."
         />
       </Helmet>
       

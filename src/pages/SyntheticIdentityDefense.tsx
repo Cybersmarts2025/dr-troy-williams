@@ -14,7 +14,7 @@ const SyntheticIdentityDefense = () => {
   return (
     <>
       <Helmet>
-        <title>Synthetic Identity Defense System | Dr. Troy Williams, PhD</title>
+        <title>Synthetic Identity Defense System | Troy Williams</title>
         <meta name="description" content="Defending America against synthetic identity engineering with PatriotProof™, FraudDNA™, AISF™, and PPP™. Professional investigation and defense services from The Proactive AI PI." />
       </Helmet>
 
@@ -22,7 +22,7 @@ const SyntheticIdentityDefense = () => {
         name="Synthetic Identity Defense System"
         description="Professional investigation and defense services against synthetic identity engineering using PatriotProof™, FraudDNA™, AISF™, and PPP™. Comprehensive synthetic identity ecosystem investigation, detection of engineered digital humans, and institutional defense roadmap development."
         provider={{
-          name: "Dr. Troy Williams, PhD - The Proactive AI PI",
+          name: "Troy Williams - The Proactive AI PI",
           url: "https://www.drtroywilliams.net"
         }}
         areaServed="United States"
@@ -59,7 +59,7 @@ const SyntheticIdentityDefense = () => {
       <OrganizationSchema
         name="Cybersmarts.ai LLC"
         url="https://www.drtroywilliams.net"
-        description="Leading cybersecurity investigation and artificial intelligence security firm specializing in synthetic identity fraud prevention. Founded by Dr. Troy Williams, PhD, combining cybersecurity engineering, AI science, and licensed private investigation expertise."
+        description="Leading cybersecurity investigation and artificial intelligence security firm specializing in synthetic identity fraud prevention. Founded by Troy Williams, combining cybersecurity engineering, AI science, and licensed private investigation expertise."
       />
 
       <BreadcrumbListSchema

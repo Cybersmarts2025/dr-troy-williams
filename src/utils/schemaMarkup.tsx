@@ -3,14 +3,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 // ============================================
-// BASE CONFIGURATION - Dr. Troy Williams Data
+// BASE CONFIGURATION - Troy Williams Data
 // ============================================
 
 export const DR_TROY_WILLIAMS_DATA = {
   name: "Troy Williams",
-  alternateName: ["Dr. Troy Williams", "Dr. Troy Williams, PhD", "The Proactive AI PI"],
-  honorificPrefix: "Dr.",
-  honorificSuffix: "PhD",
+  alternateName: ["Troy Williams", "The Proactive AI PI"],
   givenName: "Troy",
   familyName: "Williams",
   jobTitles: [
@@ -21,7 +19,7 @@ export const DR_TROY_WILLIAMS_DATA = {
     "National Fraud Prevention Architect",
     "U.S. Sovereign Technology Developer"
   ],
-  description: "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator and independent researcher, he is dedicated to securing America's digital future through sovereign technology. His research and publications are independently developed and published.",
+  description: "Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator and independent researcher, he is dedicated to securing America's digital future through sovereign technology. His research and publications are independently developed and published.",
   url: "https://www.DrTroyWilliams.net",
   image: "https://www.DrTroyWilliams.net/lovable-uploads/troy-williams-headshot-transparent.png",
   sameAs: [
@@ -45,14 +43,6 @@ export const DR_TROY_WILLIAMS_DATA = {
     { name: "ScamAtlas™", description: "Interactive threat intelligence mapping system" }
   ],
   patent: "PCT/US25/43982 - Synthetic Identity Detection Methodology",
-  education: [
-    { name: "Doctoral-level research in artificial intelligence and cybersecurity", institution: "", level: "Doctoral" },
-    { name: "Master of Science in IT Management", institution: "Western Governors University", level: "Graduate", year: "2020" },
-    { name: "Bachelor of Science in Cybersecurity & Information Assurance", institution: "Western Governors University", level: "Undergraduate", year: "2019" },
-    { name: "Prompt Engineering Certification", institution: "Vanderbilt University", level: "Professional" },
-    { name: "Financial Fraud & Courtroom Ethics Training", institution: "SBI Seminars", level: "Professional" },
-    { name: "Licensed Private Investigator", institution: "State of Tennessee", level: "License" }
-  ],
   organization: {
     name: "Cybersmarts.ai LLC",
     url: "https://www.DrTroyWilliams.net"
@@ -86,7 +76,6 @@ interface ComprehensivePersonSchemaProps {
 
 export const DrTroyWilliamsSchema = ({
   includeTrademarks = true,
-  includeEducation = true,
   includeAwards = true,
   customData
 }: ComprehensivePersonSchemaProps = {}) => {
@@ -100,8 +89,6 @@ export const DrTroyWilliamsSchema = ({
     "givenName": data.givenName,
     "familyName": data.familyName,
     "alternateName": data.alternateName,
-    "honorificPrefix": data.honorificPrefix,
-    "honorificSuffix": data.honorificSuffix,
     "jobTitle": data.jobTitles,
     "description": data.description,
     "url": data.url,
@@ -128,32 +115,6 @@ export const DrTroyWilliamsSchema = ({
     "nationality": { "@type": "Country", "name": "United States" }
   };
 
-  if (includeEducation) {
-    // Only include non-doctoral credentials with institutions
-    personSchema.hasCredential = data.education
-      .filter(edu => edu.level !== "Doctoral" && edu.institution)
-      .map(edu => ({
-        "@type": "EducationalOccupationalCredential",
-        "name": edu.name,
-        "credentialCategory": edu.level === "License" ? "Professional License" : 
-          edu.level === "Professional" ? "Professional Certification" : `${edu.level} Degree`,
-        "educationalLevel": edu.level,
-        ...(edu.year && { "dateCreated": edu.year }),
-        "recognizedBy": {
-          "@type": edu.level === "License" ? "GovernmentOrganization" : "EducationalOrganization",
-          "name": edu.institution
-        }
-      }));
-
-    // Only include WGU for mentorship context (non-doctoral)
-    personSchema.alumniOf = [...new Set(data.education.map(edu => edu.institution))]
-      .filter(inst => inst && inst !== "State of Tennessee" && inst !== "")
-      .filter(inst => inst === "Western Governors University")
-      .map(inst => ({
-        "@type": "EducationalOrganization",
-        "name": inst
-      }));
-  }
 
   if (includeTrademarks) {
     personSchema.owns = data.trademarks.map(tm => ({
@@ -234,7 +195,7 @@ export const PageSchema = ({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${baseUrl}/#website`,
-    "name": "Dr. Troy Williams - Cybersecurity & AI Expert",
+    "name": "Troy Williams - Cybersecurity & AI Expert",
     "url": baseUrl,
     "description": DR_TROY_WILLIAMS_DATA.description,
     "publisher": { "@id": `${baseUrl}/#person` },
@@ -894,14 +855,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 // ============================================
-// BASE CONFIGURATION - Dr. Troy Williams Data
+// BASE CONFIGURATION - Troy Williams Data
 // ============================================
 
 export const DR_TROY_WILLIAMS_DATA = {
   name: "Troy Williams",
-  alternateName: ["Dr. Troy Williams", "Dr. Troy Williams, PhD", "The Proactive AI PI"],
-  honorificPrefix: "Dr.",
-  honorificSuffix: "PhD",
+  alternateName: ["Troy Williams", "The Proactive AI PI"],
   givenName: "Troy",
   familyName: "Williams",
   jobTitles: [
@@ -912,7 +871,7 @@ export const DR_TROY_WILLIAMS_DATA = {
     "National Fraud Prevention Architect",
     "U.S. Sovereign Technology Developer"
   ],
-  description: "Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator and independent researcher, he is dedicated to securing America's digital future through sovereign technology. His research and publications are independently developed and published.",
+  description: "Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. As a Licensed Tennessee Private Investigator and independent researcher, he is dedicated to securing America's digital future through sovereign technology. His research and publications are independently developed and published.",
   url: "https://www.DrTroyWilliams.net",
   image: "https://www.DrTroyWilliams.net/assets/troy-williams-headshot-transparent.png",
   sameAs: [
@@ -936,14 +895,6 @@ export const DR_TROY_WILLIAMS_DATA = {
     { name: "ScamAtlas™", description: "Interactive threat intelligence mapping system" }
   ],
   patent: "PCT/US25/43982 - Synthetic Identity Detection Methodology",
-  education: [
-    { name: "Doctoral-level research in artificial intelligence and cybersecurity", institution: "", level: "Doctoral" },
-    { name: "Master of Science in IT Management", institution: "Western Governors University", level: "Graduate", year: "2020" },
-    { name: "Bachelor of Science in Cybersecurity & Information Assurance", institution: "Western Governors University", level: "Undergraduate", year: "2019" },
-    { name: "Prompt Engineering Certification", institution: "Vanderbilt University", level: "Professional" },
-    { name: "Financial Fraud & Courtroom Ethics Training", institution: "SBI Seminars", level: "Professional" },
-    { name: "Licensed Private Investigator", institution: "State of Tennessee", level: "License" }
-  ],
   organization: {
     name: "Cybersmarts.ai LLC",
     url: "https://www.DrTroyWilliams.net"
@@ -977,7 +928,6 @@ interface ComprehensivePersonSchemaProps {
 
 export const DrTroyWilliamsSchema = ({
   includeTrademarks = true,
-  includeEducation = true,
   includeAwards = true,
   customData
 }: ComprehensivePersonSchemaProps = {}) => {
@@ -991,8 +941,6 @@ export const DrTroyWilliamsSchema = ({
     "givenName": data.givenName,
     "familyName": data.familyName,
     "alternateName": data.alternateName,
-    "honorificPrefix": data.honorificPrefix,
-    "honorificSuffix": data.honorificSuffix,
     "jobTitle": data.jobTitles,
     "description": data.description,
     "url": data.url,
@@ -1019,32 +967,6 @@ export const DrTroyWilliamsSchema = ({
     "nationality": { "@type": "Country", "name": "United States" }
   };
 
-  if (includeEducation) {
-    // Only include non-doctoral credentials with institutions
-    personSchema.hasCredential = data.education
-      .filter(edu => edu.level !== "Doctoral" && edu.institution)
-      .map(edu => ({
-        "@type": "EducationalOccupationalCredential",
-        "name": edu.name,
-        "credentialCategory": edu.level === "License" ? "Professional License" : 
-          edu.level === "Professional" ? "Professional Certification" : `${edu.level} Degree`,
-        "educationalLevel": edu.level,
-        ...(edu.year && { "dateCreated": edu.year }),
-        "recognizedBy": {
-          "@type": edu.level === "License" ? "GovernmentOrganization" : "EducationalOrganization",
-          "name": edu.institution
-        }
-      }));
-
-    // Only include WGU for mentorship context (non-doctoral)
-    personSchema.alumniOf = [...new Set(data.education.map(edu => edu.institution))]
-      .filter(inst => inst && inst !== "State of Tennessee" && inst !== "")
-      .filter(inst => inst === "Western Governors University")
-      .map(inst => ({
-        "@type": "EducationalOrganization",
-        "name": inst
-      }));
-  }
 
   if (includeTrademarks) {
     personSchema.owns = data.trademarks.map(tm => ({
@@ -1125,7 +1047,7 @@ export const PageSchema = ({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${baseUrl}/#website`,
-    "name": "Dr. Troy Williams - Cybersecurity & AI Expert",
+    "name": "Troy Williams - Cybersecurity & AI Expert",
     "url": baseUrl,
     "description": DR_TROY_WILLIAMS_DATA.description,
     "publisher": { "@id": `${baseUrl}/#person` },

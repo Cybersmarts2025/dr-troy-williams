@@ -15,10 +15,10 @@ const Consultation = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>Consultation Request | Dr. Troy Williams - Expert Cybersecurity & AI Guidance</title>
+        <title>Consultation Request | Troy Williams - Expert Cybersecurity & AI Guidance</title>
         <meta 
           name="description" 
-          content="Request expert consultation from Dr. Troy Williams for cybersecurity assessments, AI strategy, technical due diligence, and more." 
+          content="Request expert consultation from Troy Williams for cybersecurity assessments, AI strategy, technical due diligence, and more."
         />
       </Helmet>
       
