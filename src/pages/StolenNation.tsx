@@ -11,20 +11,20 @@ const StolenNation = () => {
   return (
     <>
       <Helmet>
-        <title>Stolen Nation - National Intelligence Briefings | Dr. Troy Williams</title>
-        <meta name="description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Dr. Troy Williams." />
+        <title>Stolen Nation - National Intelligence Briefings | Troy Williams</title>
+        <meta name="description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Troy Williams." />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://drtroywilliams.com/stolennation" />
-        <meta property="og:title" content="Stolen Nation - National Intelligence Briefings | Dr. Troy Williams" />
-        <meta property="og:description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Dr. Troy Williams." />
+        <meta property="og:title" content="Stolen Nation - National Intelligence Briefings | Troy Williams" />
+        <meta property="og:description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Troy Williams." />
         <meta property="og:image" content="https://drtroywilliams.com/lovable-uploads/troy-williams-headshot-transparent.png" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://drtroywilliams.com/stolennation" />
-        <meta property="twitter:title" content="Stolen Nation - National Intelligence Briefings | Dr. Troy Williams" />
+        <meta property="twitter:title" content="Stolen Nation - National Intelligence Briefings | Troy Williams" />
         <meta property="twitter:description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans." />
         <meta property="twitter:image" content="https://drtroywilliams.com/lovable-uploads/troy-williams-headshot-transparent.png" />
       </Helmet>
@@ -70,20 +70,20 @@ const StolenNation = () => {
   return (
     <>
       <Helmet>
-        <title>Stolen Nation - National Intelligence Briefings | Dr. Troy Williams</title>
-        <meta name="description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Dr. Troy Williams." />
+        <title>Stolen Nation - National Intelligence Briefings | Troy Williams</title>
+        <meta name="description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Troy Williams." />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://drtroywilliams.com/stolennation" />
-        <meta property="og:title" content="Stolen Nation - National Intelligence Briefings | Dr. Troy Williams" />
-        <meta property="og:description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Dr. Troy Williams." />
+        <meta property="og:title" content="Stolen Nation - National Intelligence Briefings | Troy Williams" />
+        <meta property="og:description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans. Independent civilian intelligence from Troy Williams." />
         <meta property="og:image" content="https://drtroywilliams.com/assets/troy-williams-headshot-transparent.png" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://drtroywilliams.com/stolennation" />
-        <meta property="twitter:title" content="Stolen Nation - National Intelligence Briefings | Dr. Troy Williams" />
+        <meta property="twitter:title" content="Stolen Nation - National Intelligence Briefings | Troy Williams" />
         <meta property="twitter:description" content="Access critical national intelligence briefings on AI threats, cyber warfare, and fraud targeting Americans." />
         <meta property="twitter:image" content="https://drtroywilliams.com/assets/troy-williams-headshot-transparent.png" />
       </Helmet>

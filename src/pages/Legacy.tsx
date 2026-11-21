@@ -18,14 +18,14 @@ const Legacy = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <Helmet>
-        <title>Legacy & Mission | Dr. Troy Williams - Defining the Future of AI & Cybersecurity</title>
-        <meta name="description" content="Discover Dr. Troy Williams' mission to complete the unfinished work of AI pioneers and build sovereign, ethical technology for America's digital future." />
+        <title>Legacy & Mission | Troy Williams - Defining the Future of AI & Cybersecurity</title>
+        <meta name="description" content="Discover Troy Williams' mission to complete the unfinished work of AI pioneers and build sovereign, ethical technology for America's digital future." />
       </Helmet>
       
       {/* Schema.org markup */}
       <WebPageSchema 
-        name="Legacy & Mission | Dr. Troy Williams"
-        description="Dr. Troy Williams' legacy statement and mission to advance AI and cybersecurity through sovereign, ethical innovation."
+        name="Legacy & Mission | Troy Williams"
+        description="Troy Williams' legacy statement and mission to advance AI and cybersecurity through sovereign, ethical innovation."
         url="https://drtroywilliams.com/legacy"
       />
       
@@ -37,10 +37,10 @@ const Legacy = () => {
       />
       
       <PersonSchema 
-        name="Dr. Troy Williams"
+        name="Troy Williams"
         jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority"
-        description="Dr. Troy Williams dedicates his life's work to defining a new era of sovereign, ethical technology built on unyielding principles."
-        alumniOf={["Capitol Technology University", "Western Governors University"]}
+        description="Troy Williams dedicates his life's work to defining a new era of sovereign, ethical technology built on unyielding principles."
+
         sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]}
       />
       
@@ -66,14 +66,14 @@ const Legacy = () => {
             
             <Card className="border-2 border-[#B22234] bg-gradient-to-br from-white to-red-50 mb-12">
               <CardHeader className="bg-gradient-to-r from-[#3C3B6E] to-[#B22234] text-white">
-                <CardTitle className="text-2xl md:text-3xl">Legacy Statement of Dr. Troy Williams, PhD</CardTitle>
+                <CardTitle className="text-2xl md:text-3xl">Legacy Statement of Troy Williams</CardTitle>
               </CardHeader>
               <CardContent className="p-8">
                 <blockquote className="text-xl md:text-2xl leading-relaxed italic text-[#1A1F2C] font-medium">
                   "I dedicate my life's work to defining a new era of sovereign, ethical technology—built not to follow fleeting trends but to lead with unyielding principles. My legacy is a future where fraud is not merely reacted to but proactively prevented, where national security stands fortified by American-made innovation, and where artificial intelligence serves humanity without ever compromising privacy, trust, or liberty. I will leave behind more than systems; I will leave a resilient infrastructure of truth—technology that empowers, protects, and endures."
                 </blockquote>
                 <footer className="text-right mt-6 text-lg font-bold text-[#B22234]">
-                  — Dr. Troy Williams, PhD
+                  — Troy Williams
                 </footer>
               </CardContent>
             </Card>
@@ -154,7 +154,7 @@ const Legacy = () => {
               </CardHeader>
               <CardContent className="p-8">
                 <p className="text-lg mb-6 text-center text-gray-700">
-                  Dr. Williams is strategically advancing the unfinished work of legendary technology pioneers:
+                  Williams is strategically advancing the unfinished work of legendary technology pioneers:
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">

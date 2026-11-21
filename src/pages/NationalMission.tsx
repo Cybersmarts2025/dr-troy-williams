@@ -81,7 +81,7 @@ const NationalMission = () => {
   return (
     <>
       <Helmet>
-        <title>National Mission | Dr. Troy Williams, PhD</title>
+        <title>National Mission | Troy Williams</title>
         <meta name="description" content="Protecting America through technology: quantum-era fraud prevention, synthetic identity elimination, and national defense infrastructure from 1993 to 2027." />
       </Helmet>
       
@@ -125,7 +125,7 @@ const NationalMission = () => {
                   protects the vulnerable, and ensures our nation's digital sovereignty 
                   for generations to come."
                 </blockquote>
-                <p className="text-muted-foreground">— Dr. Troy Williams, PhD</p>
+                <p className="text-muted-foreground">— Troy Williams</p>
               </CardContent>
             </Card>
           </motion.div>

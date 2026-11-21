@@ -29,7 +29,7 @@ const Cybersecurity = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>AI-Driven Cybersecurity: The Future of Digital Defense - Dr. Troy Williams</title>
+        <title>AI-Driven Cybersecurity: The Future of Digital Defense - Troy Williams</title>
         <meta 
           name="description" 
           content="Comprehensive analysis of AI applications in cybersecurity, exploring how artificial intelligence can proactively secure digital environments through intelligent automation." 
@@ -74,7 +74,7 @@ const Cybersecurity = () => {
 
             <div className="my-8 p-6 bg-[#3C3B6E]/5 rounded-lg border border-[#3C3B6E]/10">
               <p className="italic text-[#3C3B6E]">
-                Led by Dr. Troy Williams and embedded within the Cybersmarts.ai ecosystem, this research explores how artificial intelligence can proactively secure digital environments through intelligent automation, threat prediction, and autonomous response models. The goal is not just to improve cybersecurity — but to redefine it.
+                Led by Troy Williams and embedded within the Cybersmarts.ai ecosystem, this research explores how artificial intelligence can proactively secure digital environments through intelligent automation, threat prediction, and autonomous response models. The goal is not just to improve cybersecurity — but to redefine it.
               </p>
             </div>
 

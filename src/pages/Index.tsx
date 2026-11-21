@@ -52,26 +52,26 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Helmet>
-        <title>Dr. Troy Williams – AI Scientist | Cybersecurity Expert | U.S. Technology Authority</title>
-        <meta name="author" content="Dr. Troy Williams, PhD" />
+        <title>Troy Williams – AI Scientist | Cybersecurity Expert | U.S. Technology Authority</title>
+        <meta name="author" content="Troy Williams" />
         <meta name="copyright" content="© 2025 Cybersmarts.ai LLC. All rights reserved." />
         <meta 
           name="description" 
-          content="Dr. Troy Williams, PhD is the inventor of patented cybersecurity and AI platforms including AISF™, PPP™, FraudDNA™, and PatriotProof™. Protecting America through technology." 
+          content="Troy Williams is the inventor of patented cybersecurity and AI platforms including AISF™, PPP™, FraudDNA™, and PatriotProof™. Protecting America through technology."
         />
-        <meta property="og:title" content="Dr. Troy Williams, PhD | Inventor & Trademark Owner" />
+        <meta property="og:title" content="Troy Williams | Inventor & Trademark Owner" />
         <meta property="og:url" content="https://www.drtroywilliams.net" />
         <meta property="og:description" content="AI Scientist, Cybersecurity Expert, and inventor of revolutionary fraud prevention technologies." />
         
         <link rel="canonical" href="https://www.DrTroyWilliams.net/" />
       </Helmet>
       
-      {/* Schema.org markup for Dr. Troy Williams */}
+      {/* Schema.org markup for Troy Williams */}
       <PersonSchema 
-        name="Dr. Troy Williams"
+        name="Troy Williams"
         jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority"
-        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. His research and publications are independently developed and published."
-        alumniOf={["Western Governors University"]}
+        description="Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation. His research and publications are independently developed and published."
+
         sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]}
       />
       
@@ -128,7 +128,7 @@ const Index = () => {
                     "I want my inventions to define a new era of sovereign, ethical technology—built not to follow trends, but to lead with principles. My legacy is a future where fraud is proactively prevented, national security is fortified through American-made innovation, and artificial intelligence serves humanity without compromising privacy, trust, or liberty. I intend to leave behind not just systems, but a resilient infrastructure of truth."
                   </blockquote>
                   <p className="text-center text-[#1A1F2C] font-semibold">
-                    — Dr. Troy Williams, PhD
+                    — Troy Williams
                   </p>
                   <div className="text-center">
                     <Button asChild className="bg-[#B22234] hover:bg-[#9B0000] text-white">

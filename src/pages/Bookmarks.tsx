@@ -21,10 +21,10 @@ const Bookmarks = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>My Bookmarks | Dr. Troy Williams</title>
+        <title>My Bookmarks | Troy Williams</title>
         <meta 
           name="description" 
-          content="View and manage your saved articles and resources from Dr. Troy Williams." 
+          content="View and manage your saved articles and resources from Troy Williams."
         />
       </Helmet>
       

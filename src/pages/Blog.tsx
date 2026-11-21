@@ -134,7 +134,7 @@ const Blog = () => {
         "description": post.excerpt,
         "author": {
           "@type": "Person",
-          "name": "Dr. Troy Williams"
+          "name": "Troy Williams"
         },
         "datePublished": post.date,
         "keywords": post.tags.join(", "),
@@ -145,10 +145,10 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>AI & Cybersecurity Blog | Dr. Troy Williams</title>
+        <title>AI & Cybersecurity Blog | Troy Williams</title>
         <meta 
           name="description" 
-          content="Expert commentary and analysis on cybersecurity, AI policy, fraud prevention, and defense technology by Dr. Troy Williams." 
+          content="Expert commentary and analysis on cybersecurity, AI policy, fraud prevention, and defense technology by Troy Williams."
         />
         
         {/* Output schema.org JSON-LD */}
@@ -156,11 +156,11 @@ const Blog = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            "name": "AI & Cybersecurity Blog by Dr. Troy Williams",
+            "name": "AI & Cybersecurity Blog by Troy Williams",
             "description": "Expert commentary and analysis on cybersecurity, AI policy, fraud prevention, and defense technology.",
             "author": {
               "@type": "Person",
-              "name": "Dr. Troy Williams",
+              "name": "Troy Williams",
               "jobTitle": "AI Scientist, Cybersecurity Expert",
               "url": "https://legalsmarts.net"
             },
@@ -171,8 +171,8 @@ const Blog = () => {
 
       {/* Schema.org markup for WebPage */}
       <WebPageSchema 
-        name="AI & Cybersecurity Blog | Dr. Troy Williams"
-        description="Expert commentary and analysis on cybersecurity, AI policy, fraud prevention, and defense technology by Dr. Troy Williams."
+        name="AI & Cybersecurity Blog | Troy Williams"
+        description="Expert commentary and analysis on cybersecurity, AI policy, fraud prevention, and defense technology by Troy Williams."
       />
       
       {/* Schema.org markup for BreadcrumbList */}

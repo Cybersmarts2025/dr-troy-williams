@@ -26,7 +26,7 @@ const NewsletterSection = () => {
           <h2 id="newsletter-heading" className="text-3xl font-bold">Subscribe to Our Newsletter</h2>
         </div>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Stay updated on the latest in AI, cybersecurity, and defense technology with insights from Dr. Troy Williams.
+          Stay updated on the latest in AI, cybersecurity, and defense technology with insights from Troy Williams.
         </p>
         <form onSubmit={handleSubscribe} className="max-w-md mx-auto">
           <div className="flex flex-col gap-4">

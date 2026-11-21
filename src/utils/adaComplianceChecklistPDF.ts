@@ -412,7 +412,7 @@ export const generateADAComplianceChecklistPDF = (): void => {
   // Footer
   doc.setFontSize(8);
   doc.setTextColor(128, 128, 128);
-  doc.text('Dr. Troy Williams | Protecting America Through Technology™', pageWidth / 2, pageHeight - 10, { align: 'center' });
+  doc.text('Troy Williams | Protecting America Through Technology™', pageWidth / 2, pageHeight - 10, { align: 'center' });
 
   // Save the PDF
   doc.save(`ADA-WCAG-Compliance-Checklist-${new Date().toISOString().split('T')[0]}.pdf`);

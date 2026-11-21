@@ -68,7 +68,7 @@ const MediaFeaturesSection = ({ features, onMetadataFetched }: MediaFeaturesSect
                 <TableRow>
                   <TableCell><code>description</code></TableCell>
                   <TableCell>Short description of the content</TableCell>
-                  <TableCell>"Dr. Troy Williams discusses..."</TableCell>
+                  <TableCell>"Troy Williams discusses..."</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell><code>link</code></TableCell>

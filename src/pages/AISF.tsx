@@ -12,17 +12,17 @@ const AISF = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50">
       <Helmet>
-        <title>AISF™ - Autonomous Intelligence Security Framework | Dr. Troy Williams</title>
+        <title>AISF™ - Autonomous Intelligence Security Framework | Troy Williams</title>
         <meta 
           name="description" 
-          content="Explore the Autonomous Intelligence Security Framework (AISF™) - A groundbreaking framework for proactive AI-driven security systems by Dr. Troy Williams." 
+          content="Explore the Autonomous Intelligence Security Framework (AISF™) - A groundbreaking framework for proactive AI-driven security systems by Troy Williams."
         />
       </Helmet>
       
       {/* Schema.org markup for this webpage */}
       <WebPageSchema 
         name="AISF™ - Autonomous Intelligence Security Framework"
-        description="The Autonomous Intelligence Security Framework (AISF™) is a pioneering research initiative led by Dr. Troy Williams to define a new national standard for artificial intelligence security, privacy, and operational integrity."
+        description="The Autonomous Intelligence Security Framework (AISF™) is a pioneering research initiative led by Troy Williams to define a new national standard for artificial intelligence security, privacy, and operational integrity."
         url="https://drtroywilliams.com/aisf"
       />
       
@@ -53,7 +53,7 @@ const AISF = () => {
 
           <div className="prose max-w-none mb-12">
             <p className="text-lg mb-8">
-              The Autonomous Intelligence Security Framework (AISF™) is a pioneering research initiative led by Dr. Troy Williams to define a new national standard for artificial intelligence security, privacy, and operational integrity. This framework represents a paradigm shift from reactive defense models to autonomous, proactive, and self-regulating AI systems — purpose-built to secure critical infrastructure, financial systems, legal processes, and government operations in real time.
+              The Autonomous Intelligence Security Framework (AISF™) is a pioneering research initiative led by Troy Williams to define a new national standard for artificial intelligence security, privacy, and operational integrity. This framework represents a paradigm shift from reactive defense models to autonomous, proactive, and self-regulating AI systems — purpose-built to secure critical infrastructure, financial systems, legal processes, and government operations in real time.
             </p>
             <p className="text-lg mb-12">
               AISF™ is not just a theoretical model — it is a living, adaptive framework capable of embedding intelligence into the very core of AI deployments. It enables systems to detect anomalies, defend themselves against threats, and self-correct when biases, privacy risks, or compliance violations are detected — without waiting for human intervention.

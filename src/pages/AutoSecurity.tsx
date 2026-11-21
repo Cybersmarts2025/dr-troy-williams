@@ -193,7 +193,7 @@ const AutoSecurity = () => {
     <AdminGuard>
       <div className="min-h-screen bg-background">
         <Helmet>
-          <title>Auto Security Dashboard - Dr. Troy Williams</title>
+          <title>Auto Security Dashboard - Troy Williams</title>
           <meta name="description" content="Comprehensive automated security monitoring and remediation dashboard" />
         </Helmet>
 

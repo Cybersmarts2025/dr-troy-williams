@@ -14,10 +14,10 @@ const TestimonialSubmission = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Submit Testimonial | Dr. Troy Williams</title>
+        <title>Submit Testimonial | Troy Williams</title>
         <meta 
           name="description" 
-          content="Share your experience working with Dr. Troy Williams and help others understand the value of his expertise." 
+          content="Share your experience working with Troy Williams and help others understand the value of his expertise."
         />
       </Helmet>
       
@@ -31,7 +31,7 @@ const TestimonialSubmission = () => {
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold mb-4">Share Your Experience</h1>
               <p className="text-xl text-muted-foreground">
-                Your feedback helps others understand the value of Dr. Troy Williams' expertise and services.
+                Your feedback helps others understand the value of Troy Williams' expertise and services.
               </p>
             </div>
             

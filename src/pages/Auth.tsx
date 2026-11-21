@@ -109,16 +109,16 @@ const Auth = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f8f9fa] via-white to-[#e9ecef]">
       <Helmet>
-        <title>{activeTab === 'login' ? 'Sign In' : 'Sign Up'} | Dr. Troy Williams</title>
+        <title>{activeTab === 'login' ? 'Sign In' : 'Sign Up'} | Troy Williams</title>
         <meta 
           name="description" 
-          content="Authenticate to access Dr. Troy Williams' exclusive content and publications."
+          content="Authenticate to access Troy Williams' exclusive content and publications."
         />
       </Helmet>
 
       <WebPageSchema
-        name={`${activeTab === 'login' ? 'Sign In' : 'Sign Up'} | Dr. Troy Williams`}
-        description="Authentication page for Dr. Troy Williams' website"
+        name={`${activeTab === 'login' ? 'Sign In' : 'Sign Up'} | Troy Williams`}
+        description="Authentication page for Troy Williams' website"
         url={`https://drtroywilliams.com/auth`}
       />
 

@@ -95,7 +95,7 @@ const ContentImport = () => {
             day: 'numeric' 
           }),
           likes: 0,
-          author: "Dr. Troy Williams"
+          author: "Troy Williams"
         };
 
         setProgress(prev => ({ ...prev, completed: i + 1, current: post.title }));

@@ -15,10 +15,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Contact Dr. Troy Williams | AI & Cybersecurity Expert</title>
+        <title>Contact Troy Williams | AI & Cybersecurity Expert</title>
         <meta 
           name="description" 
-          content="Get in touch with Dr. Troy Williams for consulting, speaking engagements, or collaboration opportunities in AI, cybersecurity, and defense technology." 
+          content="Get in touch with Troy Williams for consulting, speaking engagements, or collaboration opportunities in AI, cybersecurity, and defense technology."
         />
       </Helmet>
       

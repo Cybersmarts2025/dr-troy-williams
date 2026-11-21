@@ -10,17 +10,17 @@ const Certifications = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Professional Certifications | Dr. Troy Williams – AI Scientist & Cybersecurity Expert</title>
+        <title>Professional Certifications | Troy Williams – AI Scientist & Cybersecurity Expert</title>
         <meta 
           name="description" 
-          content="Comprehensive portfolio of Dr. Troy Williams' professional certifications spanning cybersecurity, AI/ML, cloud technologies, fraud investigation, and advanced academic credentials—representing over three decades of expertise." 
+          content="Comprehensive portfolio of Troy Williams' professional certifications spanning cybersecurity, AI/ML, cloud technologies, fraud investigation, and advanced academic credentials—representing over three decades of expertise."
         />
         <link rel="canonical" href="https://www.DrTroyWilliams.net/certifications" />
       </Helmet>
 
       {/* Schema Markup */}
       <PersonSchema
-        name="Dr. Troy Williams"
+        name="Troy Williams"
         jobTitle="AI Scientist & Cybersecurity Expert"
         description="AI Scientist and Cybersecurity Expert with over 80 professional certifications spanning three decades of excellence in cybersecurity, artificial intelligence, cloud technologies, and investigative practices."
         sameAs={[
@@ -30,8 +30,8 @@ const Certifications = () => {
       />
       
       <WebPageSchema
-        name="Professional Certifications - Dr. Troy Williams"
-        description="Comprehensive portfolio of Dr. Troy Williams' professional certifications spanning cybersecurity, AI/ML, cloud technologies, fraud investigation, and advanced academic credentials—representing over three decades of expertise."
+        name="Professional Certifications - Troy Williams"
+        description="Comprehensive portfolio of Troy Williams' professional certifications spanning cybersecurity, AI/ML, cloud technologies, fraud investigation, and advanced academic credentials—representing over three decades of expertise."
         url="https://www.DrTroyWilliams.net/certifications"
       />
       

@@ -28,7 +28,7 @@ const researchProfiles: ResearchProfile[] = [
   },
   {
     name: "SSRN",
-    description: "Inspiring Conversations with Dr Troy Williams PhD - Featured publication",
+    description: "Inspiring Conversations with Troy Williams - Featured publication",
     url: "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6aboratory",
     icon: FileText,
     metrics: "Citations: 2 | Downloads: Active"
@@ -51,7 +51,7 @@ const researchProfiles: ResearchProfile[] = [
 
 const books = [
   {
-    title: "Inspiring Conversations with Dr Troy Williams PhD",
+    title: "Inspiring Conversations with Troy Williams",
     year: "2024",
     description: "A comprehensive exploration of cybersecurity, artificial intelligence, and the future of digital identity protection.",
     status: "Published",
@@ -107,7 +107,7 @@ const technicalPapers = [
 
 const apaPublications = [
   {
-    citation: "Williams, T. (2024). Inspiring Conversations with Dr Troy Williams PhD. Self-published. Available at ResearchGate and SSRN.",
+    citation: "Williams, T. (2024). Inspiring Conversations with Troy Williams. Self-published. Available at ResearchGate and SSRN.",
     type: "Book"
   },
   {
@@ -132,10 +132,10 @@ const ResearchFootprint = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Research Footprint | Dr. Troy Williams - Academic Publications & Profiles</title>
+        <title>Research Footprint | Troy Williams - Academic Publications & Profiles</title>
         <meta 
           name="description" 
-          content="Explore Dr. Troy Williams' research footprint including publications on ResearchGate, SSRN, Google Scholar, books, whitepapers, and technical papers on cybersecurity and AI." 
+          content="Explore Troy Williams' research footprint including publications on ResearchGate, SSRN, Google Scholar, books, whitepapers, and technical papers on cybersecurity and AI."
         />
         <link rel="canonical" href="https://www.DrTroyWilliams.net/research-footprint" />
       </Helmet>

@@ -11,7 +11,7 @@ const YouTubeSection = () => {
   const videos = [
     {
       id: "bmx_J5T7MnM",
-      title: "Cybersecurity Fundamentals with Dr. Troy Williams"
+      title: "Cybersecurity Fundamentals with Troy Williams"
     },
     {
       id: "TGAaPyptaW8",
@@ -162,7 +162,7 @@ const YouTubeSection = () => {
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-[#3C3B6E]">{video.title}</h3>
-                    <p className="text-sm text-gray-600">Dr. Troy Williams</p>
+                    <p className="text-sm text-gray-600">Troy Williams</p>
                   </div>
                 </CardContent>
               </Card>
@@ -170,23 +170,7 @@ const YouTubeSection = () => {
           ))}
         </motion.div>
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true, amount: 0.1 }}
-          className="text-center mt-10"
-        >
-          <a 
-            href="https://www.youtube.com/@DrTroyWilliamsPhD" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#B22234] text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#9B0000] transition-colors"
-          >
-            <Youtube className="h-5 w-5" />
-            <span>View More on YouTube</span>
-          </a>
-        </motion.div>
+
       </div>
     </section>
   );

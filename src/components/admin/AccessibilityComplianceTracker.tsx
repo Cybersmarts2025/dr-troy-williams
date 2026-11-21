@@ -131,7 +131,7 @@ const AccessibilityComplianceTracker = () => {
       
       doc.setFontSize(12);
       doc.setFont('helvetica', 'normal');
-      doc.text('Dr. Troy Williams - DrTroyWilliams.net', 14, 32);
+      doc.text('Troy Williams - DrTroyWilliams.net', 14, 32);
       doc.text(`Generated: ${currentDate}`, 14, 40);
       
       doc.setTextColor(0, 0, 0);

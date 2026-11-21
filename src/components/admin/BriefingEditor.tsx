@@ -200,7 +200,7 @@ const BriefingEditor = ({ briefing, onSuccess }: BriefingEditorProps) => {
                 <Input
                   id="seo_title"
                   {...register("seo_title", { required: "SEO title is required" })}
-                  placeholder="Stolen Nation | Fake DMV Text Scams | Dr. Troy Williams, PhD – The AI PI"
+                  placeholder="Stolen Nation | Fake DMV Text Scams | Troy Williams – The AI PI"
                 />
                 {errors.seo_title && (
                   <p className="text-sm text-destructive mt-1">{errors.seo_title.message}</p>

@@ -17,7 +17,7 @@ const ContactCTA = () => {
         Want to connect or collaborate?
       </h3>
       <p className="mb-6 text-gray-700">
-        Contact Dr. Williams for mentoring opportunities or student support.
+        Contact Troy Williams for mentoring opportunities or student support.
       </p>
       <Button 
         variant="usaRed" 

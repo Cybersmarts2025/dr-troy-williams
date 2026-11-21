@@ -11,7 +11,7 @@ const ScamAtlas = () => {
   return (
     <>
       <Helmet>
-        <title>ScamAtlas™ - National Fraud Intelligence Map | Dr. Troy Williams</title>
+        <title>ScamAtlas™ - National Fraud Intelligence Map | Troy Williams</title>
         <meta name="description" content="ScamAtlas empowers citizens with visibility into nationwide fraud patterns and AI-driven deception campaigns affecting Americans." />
       </Helmet>
       

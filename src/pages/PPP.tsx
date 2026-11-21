@@ -12,17 +12,17 @@ const PPP = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50">
       <Helmet>
-        <title>PPP™ - Proactive Prevention Platform | Dr. Troy Williams</title>
+        <title>PPP™ - Proactive Prevention Platform | Troy Williams</title>
         <meta 
           name="description" 
-          content="Discover the Proactive Prevention Platform (PPP™) - A novel approach to fraud prevention using predictive AI models by Dr. Troy Williams." 
+          content="Discover the Proactive Prevention Platform (PPP™) - A novel approach to fraud prevention using predictive AI models by Troy Williams."
         />
       </Helmet>
       
       {/* Schema.org markup for this webpage */}
       <WebPageSchema 
         name="PPP™ - Proactive Prevention Platform"
-        description="The Proactive Prevention Platform (PPP™) is a revolutionary AI-powered defense framework engineered to eliminate fraud before it occurs, developed by Dr. Troy Williams."
+        description="The Proactive Prevention Platform (PPP™) is a revolutionary AI-powered defense framework engineered to eliminate fraud before it occurs, developed by Troy Williams."
         url="https://drtroywilliams.com/ppp"
       />
       
@@ -53,7 +53,7 @@ const PPP = () => {
 
           <div className="prose max-w-none mb-12">
             <p className="text-lg mb-8">
-              The Proactive Prevention Platform (PPP™) is a revolutionary AI-powered defense framework engineered to eliminate fraud before it occurs. Developed by Dr. Troy Williams as a core component of the national security-aligned Cybersmarts.ai ecosystem, PPP™ redefines what it means to secure data, identity, and digital systems in real time.
+              The Proactive Prevention Platform (PPP™) is a revolutionary AI-powered defense framework engineered to eliminate fraud before it occurs. Developed by Troy Williams as a core component of the national security-aligned Cybersmarts.ai ecosystem, PPP™ redefines what it means to secure data, identity, and digital systems in real time.
             </p>
             <p className="text-lg mb-12">
               Where legacy fraud systems operate reactively—detecting after damage is done—PPP™ leverages predictive modeling, behavioral pattern recognition, and intent analysis to stop fraud attempts midstream. It's more than protection. It's anticipation.

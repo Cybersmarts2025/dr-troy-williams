@@ -65,7 +65,7 @@ export const useBlogPostForm = (postId?: string, initialData?: BlogPostFormData)
           day: 'numeric' 
         }),
         likes: 0,
-        author: "Dr. Troy Williams" // Default author
+        author: "Troy Williams" // Default author
       };
       
       let result: any;

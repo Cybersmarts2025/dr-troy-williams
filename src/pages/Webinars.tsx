@@ -65,10 +65,10 @@ const Webinars = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>Webinars | Dr. Troy Williams - Educational Sessions on AI & Cybersecurity</title>
+        <title>Webinars | Troy Williams - Educational Sessions on AI & Cybersecurity</title>
         <meta 
           name="description" 
-          content="Join Dr. Troy Williams for educational webinars on cybersecurity, AI, and defense technology. Register for upcoming sessions." 
+          content="Join Troy Williams for educational webinars on cybersecurity, AI, and defense technology. Register for upcoming sessions."
         />
       </Helmet>
       
@@ -84,7 +84,7 @@ const Webinars = () => {
               Educational Webinars
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join Dr. Troy Williams for exclusive webinars covering the latest in cybersecurity, AI, and defense technology.
+              Join Troy Williams for exclusive webinars covering the latest in cybersecurity, AI, and defense technology.
             </p>
           </div>
 

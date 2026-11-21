@@ -84,7 +84,7 @@ const BooksList = ({ books, isLoading, onDelete }: BooksListProps) => {
         <BookSchema
           key={`schema-${book.id}`}
           title={book.title}
-          author="Dr. Troy Williams"
+          author="Troy Williams"
           description={book.description || undefined}
           url={book.amazon_url}
           publisher="Cybersmarts.ai"

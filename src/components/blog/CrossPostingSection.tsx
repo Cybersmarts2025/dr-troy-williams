@@ -9,7 +9,7 @@ const CrossPostingSection = () => {
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold mb-4">Follow on Other Platforms</h2>
         <p className="text-lg max-w-2xl mx-auto">
-          Dr. Williams regularly publishes content on these professional platforms.
+          Williams regularly publishes content on these professional platforms.
           Follow to stay connected and join the discussion.
         </p>
       </div>

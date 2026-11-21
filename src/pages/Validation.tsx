@@ -44,7 +44,7 @@ const Validation = () => {
   const academicVerification = [
     {
       title: "SSRN Publication",
-      description: "\"Inspiring Conversations with Dr Troy Williams PhD\" - Peer-reviewed academic publication available on Social Science Research Network.",
+      description: "\"Inspiring Conversations with Troy Williams\" - Peer-reviewed academic publication available on Social Science Research Network.",
       status: "verified",
       statusText: "Verified",
       icon: FileText,
@@ -195,8 +195,8 @@ const Validation = () => {
   return (
     <>
       <Helmet>
-        <title>Verification & Press Archive | Dr. Troy Williams, PhD</title>
-        <meta name="description" content="Verified credentials, press coverage, academic publications, and official recognition for Dr. Troy Williams, PhD." />
+        <title>Verification & Press Archive | Troy Williams</title>
+        <meta name="description" content="Verified credentials, press coverage, academic publications, and official recognition for Troy Williams." />
       </Helmet>
       
       <NavBar />
@@ -216,7 +216,7 @@ const Validation = () => {
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Independent verification sources, press coverage, academic publications, 
-              and official recognition documenting Dr. Troy Williams' credentials and contributions.
+              and official recognition documenting Troy Williams' credentials and contributions.
             </p>
           </motion.div>
 

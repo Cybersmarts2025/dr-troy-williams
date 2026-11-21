@@ -30,7 +30,7 @@ const IntellectualProperty = () => {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Dr. Troy Williams, PhD",
+    "name": "Troy Williams",
     "jobTitle": "Inventor, AI Scientist, Cybersecurity Engineer",
     "affiliation": {
       "@type": "Organization",
@@ -96,13 +96,13 @@ const IntellectualProperty = () => {
   return (
     <>
       <Helmet>
-        <title>Trademarked Technologies and Intellectual Property Created by Dr. Troy Williams, PhD</title>
-        <meta name="author" content="Dr. Troy Williams, PhD" />
+        <title>Trademarked Technologies and Intellectual Property Created by Troy Williams</title>
+        <meta name="author" content="Troy Williams" />
         <meta name="copyright" content="© 2025 Cybersmarts.ai LLC. All rights reserved." />
-        <meta name="description" content="Dr. Troy Williams, PhD is the inventor of patented cybersecurity and AI platforms including AISF™, PPP™, FraudDNA™, and PatriotProof™." />
-        <meta property="og:title" content="Dr. Troy Williams, PhD | Inventor & Trademark Owner" />
+        <meta name="description" content="Troy Williams is the inventor of patented cybersecurity and AI platforms including AISF™, PPP™, FraudDNA™, and PatriotProof™." />
+        <meta property="og:title" content="Troy Williams | Inventor & Trademark Owner" />
         <meta property="og:url" content="https://www.drtroywilliams.net/ip" />
-        <meta property="og:description" content="View all trademarked technologies developed by Dr. Troy Williams, PhD and owned by Cybersmarts.ai LLC." />
+        <meta property="og:description" content="View all trademarked technologies developed by Troy Williams and owned by Cybersmarts.ai LLC." />
         <script type="application/ld+json">
           {JSON.stringify(schemaData)}
         </script>
@@ -120,7 +120,7 @@ const IntellectualProperty = () => {
                 </h1>
               </div>
               <p className="text-xl opacity-90">
-                Created by Dr. Troy Williams, PhD
+                Created by Troy Williams
               </p>
             </div>
           </div>
@@ -135,7 +135,7 @@ const IntellectualProperty = () => {
                 <h2 className="text-3xl font-bold text-foreground">Inventor Biography</h2>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Dr. Troy Williams, PhD, is the inventor and founder of all technologies listed below, 
+                Troy Williams is the inventor and founder of all technologies listed below,
                 developed under Cybersmarts.ai LLC and protected by U.S. intellectual property laws.
               </p>
             </div>
@@ -183,7 +183,7 @@ const IntellectualProperty = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   All systems are trademarked and registered to Cybersmarts.ai LLC and are enforced 
                   through federal IP and cybersecurity statutes. Created, patented, and controlled 
-                  by Dr. Troy Williams, PhD.
+                  by Troy Williams.
                 </p>
               </div>
             </div>

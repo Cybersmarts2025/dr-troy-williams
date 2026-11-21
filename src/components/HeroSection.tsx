@@ -39,7 +39,7 @@ const HeroSection = () => {
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl bg-white">
               <img 
                 src="/lovable-uploads/troy-williams-headshot-transparent.png"
-                alt="Dr. Troy Williams - The AI PI" 
+                alt="Troy Williams - The AI PI"
                 className="w-full h-full object-cover" 
               />
             </div>
@@ -59,7 +59,7 @@ const HeroSection = () => {
               </div>
               
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-[#3C3B6E] leading-tight">
-                Dr. Troy Williams
+                Troy Williams
               </h1>
               
               <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#B22234] mb-6">
@@ -202,7 +202,7 @@ const HeroSection = () => {
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl bg-white">
               <img 
                 src="/assets/troy-williams-headshot-transparent.png"
-                alt="Dr. Troy Williams - The AI PI" 
+                alt="Troy Williams - The AI PI"
                 className="w-full h-full object-cover" 
               />
             </div>
@@ -222,7 +222,7 @@ const HeroSection = () => {
               </div>
               
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-[#3C3B6E] leading-tight">
-                Dr. Troy Williams
+                Troy Williams
               </h1>
               
               <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#B22234] mb-6">

@@ -24,21 +24,21 @@ const Press = () => {
   const { toast } = useToast();
   const [features, setFeatures] = useState<MediaFeature[]>([{
     outlet: "Nashville Voyager Magazine",
-    title: "Inspiring Conversations with Dr. Troy Williams, PhD — Founder of Cybersmarts.ai LLC",
+    title: "Inspiring Conversations with Troy Williams — Founder of Cybersmarts.ai LLC",
     date: "October 14, 2025",
-    description: "Dr. Troy Williams shares the story behind Cybersmarts.ai LLC and his proprietary U.S.-built systems — PatriotProof™, FraudDNA™, AISF™, and PPP™ — engineered to Protect America Through Technology™.",
+    description: "Troy Williams shares the story behind Cybersmarts.ai LLC and his proprietary U.S.-built systems — PatriotProof™, FraudDNA™, AISF™, and PPP™ — engineered to Protect America Through Technology™.",
     link: "https://nashvillevoyager.com/interview/inspiring-conversations-with-dr-troy-williams-of-cybersmarts-ai-llc",
     logo: "https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
   }, {
     outlet: "CNN",
     title: "AI in National Defense: Securing America's Digital Borders",
     date: "April 15, 2024",
-    description: "Dr. Troy Williams addresses how artificial intelligence is revolutionizing national security measures and protecting critical infrastructure from foreign threats.",
+    description: "Troy Williams addresses how artificial intelligence is revolutionizing national security measures and protecting critical infrastructure from foreign threats.",
     link: "#",
     logo: "https://via.placeholder.com/200x100/cccccc/333333?text=CNN"
   }, {
     outlet: "Forbes",
-    title: "The Future of Cybersecurity: Interview with Dr. Troy Williams",
+    title: "The Future of Cybersecurity: Interview with Troy Williams",
     date: "March 3, 2024",
     description: "An in-depth discussion on proactive cybersecurity strategies and the evolving landscape of digital threats facing American businesses.",
     link: "#",
@@ -54,14 +54,14 @@ const Press = () => {
     outlet: "60 Minutes",
     title: "The AI Revolution: Security Implications",
     date: "January 12, 2024",
-    description: "Dr. Williams explains the national security implications of advanced AI systems and the importance of ethical frameworks in technology development.",
+    description: "Williams explains the national security implications of advanced AI systems and the importance of ethical frameworks in technology development.",
     link: "#",
     logo: "https://via.placeholder.com/200x100/cccccc/333333?text=60+Minutes"
   }, {
     outlet: "Cybersecurity Today",
     title: "Proactive Prevention: The New Paradigm in Digital Defense",
     date: "December 3, 2023",
-    description: "A feature on Dr. Williams' Proactive Prevention Platform and its application in protecting critical infrastructure from advanced cyber threats.",
+    description: "A feature on Williams' Proactive Prevention Platform and its application in protecting critical infrastructure from advanced cyber threats.",
     link: "#",
     logo: "https://via.placeholder.com/200x100/cccccc/333333?text=Cybersecurity+Today"
   }]);
@@ -134,28 +134,28 @@ const Press = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Press & Media | Dr. Troy Williams - AI & Cybersecurity Expert</title>
-        <meta name="description" content="Press releases, interviews, and media appearances of Dr. Troy Williams - trusted authority in AI, cybersecurity, and digital investigation technology." />
+        <title>Press & Media | Troy Williams - AI & Cybersecurity Expert</title>
+        <meta name="description" content="Press releases, interviews, and media appearances of Troy Williams - trusted authority in AI, cybersecurity, and digital investigation technology." />
       </Helmet>
       
       {/* Schema.org markup */}
-      <WebPageSchema name="Press & Media | Dr. Troy Williams" description="Media appearances, interviews and press coverage featuring Dr. Troy Williams, AI and cybersecurity expert." />
+      <WebPageSchema name="Press & Media | Troy Williams" description="Media appearances, interviews and press coverage featuring Troy Williams, AI and cybersecurity expert." />
       
       <PersonSchema 
-        name="Dr. Troy Williams" 
+        name="Troy Williams"
         jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority" 
-        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation." 
-        alumniOf={["Capitol Technology University", "Western Governors University"]} 
+        description="Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation."
+
         sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]} 
       />
 
       {/* Add schema markup for Nashville Voyager feature */}
       <NewsArticleSchema
-        headline="Inspiring Conversations with Dr. Troy Williams, PhD — Founder of Cybersmarts.ai LLC"
-        description="Exclusive Nashville Voyager interview with Dr. Troy Williams, PhD — Founder and President of Cybersmarts.ai LLC — published October 14, 2025, covering AI ethics, cybersecurity innovation, and America's technological resilience."
+        headline="Inspiring Conversations with Troy Williams — Founder of Cybersmarts.ai LLC"
+        description="Exclusive Nashville Voyager interview with Troy Williams — Founder and President of Cybersmarts.ai LLC — published October 14, 2025, covering AI ethics, cybersecurity innovation, and America's technological resilience."
         image="https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
         datePublished="October 14, 2025"
-        author="Dr. Troy Williams"
+        author="Troy Williams"
         publisher={{
           name: "Nashville Voyager Magazine",
           logo: "https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
@@ -165,7 +165,7 @@ const Press = () => {
       
       {/* Add schema markup for the press release */}
       <NewsArticleSchema
-        headline="Dr. Troy Williams, PhD, Pledges to Complete the Unfinished Work of AI and Cybersecurity Pioneers"
+        headline="Troy Williams, Pledges to Complete the Unfinished Work of AI and Cybersecurity Pioneers"
         description="Tennessee-based AI scientist and cybersecurity expert commits to advancing the work of technology pioneers through sovereign, ethical innovation."
         image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800"
         datePublished="June 18, 2025"
@@ -240,21 +240,21 @@ const Press = () => {
   const { toast } = useToast();
   const [features, setFeatures] = useState<MediaFeature[]>([{
     outlet: "Nashville Voyager Magazine",
-    title: "Inspiring Conversations with Dr. Troy Williams, PhD — Founder of Cybersmarts.ai LLC",
+    title: "Inspiring Conversations with Troy Williams — Founder of Cybersmarts.ai LLC",
     date: "October 14, 2025",
-    description: "Dr. Troy Williams shares the story behind Cybersmarts.ai LLC and his proprietary U.S.-built systems — PatriotProof™, FraudDNA™, AISF™, and PPP™ — engineered to Protect America Through Technology™.",
+    description: "Troy Williams shares the story behind Cybersmarts.ai LLC and his proprietary U.S.-built systems — PatriotProof™, FraudDNA™, AISF™, and PPP™ — engineered to Protect America Through Technology™.",
     link: "https://nashvillevoyager.com/interview/inspiring-conversations-with-dr-troy-williams-of-cybersmarts-ai-llc",
     logo: "https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
   }, {
     outlet: "CNN",
     title: "AI in National Defense: Securing America's Digital Borders",
     date: "April 15, 2024",
-    description: "Dr. Troy Williams addresses how artificial intelligence is revolutionizing national security measures and protecting critical infrastructure from foreign threats.",
+    description: "Troy Williams addresses how artificial intelligence is revolutionizing national security measures and protecting critical infrastructure from foreign threats.",
     link: "#",
     logo: "https://via.placeholder.com/200x100/cccccc/333333?text=CNN"
   }, {
     outlet: "Forbes",
-    title: "The Future of Cybersecurity: Interview with Dr. Troy Williams",
+    title: "The Future of Cybersecurity: Interview with Troy Williams",
     date: "March 3, 2024",
     description: "An in-depth discussion on proactive cybersecurity strategies and the evolving landscape of digital threats facing American businesses.",
     link: "#",
@@ -270,14 +270,14 @@ const Press = () => {
     outlet: "60 Minutes",
     title: "The AI Revolution: Security Implications",
     date: "January 12, 2024",
-    description: "Dr. Williams explains the national security implications of advanced AI systems and the importance of ethical frameworks in technology development.",
+    description: "Williams explains the national security implications of advanced AI systems and the importance of ethical frameworks in technology development.",
     link: "#",
     logo: "https://via.placeholder.com/200x100/cccccc/333333?text=60+Minutes"
   }, {
     outlet: "Cybersecurity Today",
     title: "Proactive Prevention: The New Paradigm in Digital Defense",
     date: "December 3, 2023",
-    description: "A feature on Dr. Williams' Proactive Prevention Platform and its application in protecting critical infrastructure from advanced cyber threats.",
+    description: "A feature on Williams' Proactive Prevention Platform and its application in protecting critical infrastructure from advanced cyber threats.",
     link: "#",
     logo: "https://via.placeholder.com/200x100/cccccc/333333?text=Cybersecurity+Today"
   }]);
@@ -350,28 +350,28 @@ const Press = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Press & Media | Dr. Troy Williams - AI & Cybersecurity Expert</title>
-        <meta name="description" content="Press releases, interviews, and media appearances of Dr. Troy Williams - trusted authority in AI, cybersecurity, and digital investigation technology." />
+        <title>Press & Media | Troy Williams - AI & Cybersecurity Expert</title>
+        <meta name="description" content="Press releases, interviews, and media appearances of Troy Williams - trusted authority in AI, cybersecurity, and digital investigation technology." />
       </Helmet>
       
       {/* Schema.org markup */}
-      <WebPageSchema name="Press & Media | Dr. Troy Williams" description="Media appearances, interviews and press coverage featuring Dr. Troy Williams, AI and cybersecurity expert." />
+      <WebPageSchema name="Press & Media | Troy Williams" description="Media appearances, interviews and press coverage featuring Troy Williams, AI and cybersecurity expert." />
       
       <PersonSchema 
-        name="Dr. Troy Williams" 
+        name="Troy Williams"
         jobTitle="AI Scientist, Cybersecurity Expert, U.S. Technology Authority" 
-        description="Dr. Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation." 
-        alumniOf={["Capitol Technology University", "Western Governors University"]} 
+        description="Troy Williams has over 32 years of experience at the intersection of cybersecurity, artificial intelligence, fraud prevention, and private investigation."
+
         sameAs={["https://www.linkedin.com/in/cybersmarts/", "https://twitter.com/troywilliams"]} 
       />
 
       {/* Add schema markup for Nashville Voyager feature */}
       <NewsArticleSchema
-        headline="Inspiring Conversations with Dr. Troy Williams, PhD — Founder of Cybersmarts.ai LLC"
-        description="Exclusive Nashville Voyager interview with Dr. Troy Williams, PhD — Founder and President of Cybersmarts.ai LLC — published October 14, 2025, covering AI ethics, cybersecurity innovation, and America's technological resilience."
+        headline="Inspiring Conversations with Troy Williams — Founder of Cybersmarts.ai LLC"
+        description="Exclusive Nashville Voyager interview with Troy Williams — Founder and President of Cybersmarts.ai LLC — published October 14, 2025, covering AI ethics, cybersecurity innovation, and America's technological resilience."
         image="https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
         datePublished="October 14, 2025"
-        author="Dr. Troy Williams"
+        author="Troy Williams"
         publisher={{
           name: "Nashville Voyager Magazine",
           logo: "https://nashvillevoyager.com/wp-content/uploads/2025/09/nashvillevoyager-logo.png"
@@ -381,7 +381,7 @@ const Press = () => {
       
       {/* Add schema markup for the press release */}
       <NewsArticleSchema
-        headline="Dr. Troy Williams, PhD, Pledges to Complete the Unfinished Work of AI and Cybersecurity Pioneers"
+        headline="Troy Williams, Pledges to Complete the Unfinished Work of AI and Cybersecurity Pioneers"
         description="Tennessee-based AI scientist and cybersecurity expert commits to advancing the work of technology pioneers through sovereign, ethical innovation."
         image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800"
         datePublished="June 18, 2025"

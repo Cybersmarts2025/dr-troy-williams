@@ -53,7 +53,7 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{post.title} | Dr. Troy Williams Blog</title>
+        <title>{post.title} | Troy Williams Blog</title>
         <meta name="description" content={post.excerpt} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />

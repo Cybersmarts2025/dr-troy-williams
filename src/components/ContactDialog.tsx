@@ -75,7 +75,7 @@ const ContactDialog = ({
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Contact Dr. Troy Williams</DialogTitle>
+          <DialogTitle>Contact Troy Williams</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">

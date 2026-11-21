@@ -110,14 +110,14 @@ const EnhancedAppointmentForm = () => {
 
     const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Dr. Troy Williams//Appointment//EN
+PRODID:-//Troy Williams//Appointment//EN
 BEGIN:VEVENT
 UID:appointment-${Date.now()}@drtroywilliams.net
 DTSTAMP:${formatDate(new Date())}
 DTSTART:${formatDate(startDateTime)}
 DTEND:${formatDate(endDateTime)}
-SUMMARY:${data.appointment_type} with Dr. Troy Williams
-DESCRIPTION:Appointment scheduled with Dr. Troy Williams\\n\\nType: ${data.appointment_type}\\nDuration: ${data.duration_minutes} minutes\\n\\nMessage: ${data.message || 'No additional message'}
+SUMMARY:${data.appointment_type} with Troy Williams
+DESCRIPTION:Appointment scheduled with Troy Williams\\n\\nType: ${data.appointment_type}\\nDuration: ${data.duration_minutes} minutes\\n\\nMessage: ${data.message || 'No additional message'}
 ORGANIZER:mailto:appointments@drtroywilliams.net
 ATTENDEE:mailto:${data.email}
 END:VEVENT
@@ -143,7 +143,7 @@ END:VCALENDAR`;
           <Calendar className="h-7 w-7" />
           Book an Appointment
         </h2>
-        <p className="text-gray-600">Schedule a consultation with Dr. Troy Williams</p>
+        <p className="text-gray-600">Schedule a consultation with Troy Williams</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

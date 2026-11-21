@@ -122,10 +122,10 @@ const JobReady360 = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Job Ready 360™ | Career Acceleration System by Dr. Troy Williams</title>
+        <title>Job Ready 360™ | Career Acceleration System by Troy Williams</title>
         <meta 
           name="description" 
-          content="Job Ready 360™ - A complete career acceleration system for WGU alumni by Dr. Troy Williams. Strategic, results-driven path from uncertain to confident and job-ready." 
+          content="Job Ready 360™ - A complete career acceleration system for WGU alumni by Troy Williams. Strategic, results-driven path from uncertain to confident and job-ready."
         />
         <link rel="canonical" href="https://www.DrTroyWilliams.net/job-ready-360" />
       </Helmet>
@@ -266,7 +266,7 @@ const JobReady360 = () => {
                 <p className="text-lg leading-relaxed">
                   I understand the hiring landscape from every angle. As a cybersecurity engineer, 
                   artificial intelligence scientist, licensed private investigator, background screening 
-                  company owner, and WGU alumni mentor, I see what works and what fails.
+                  company owner, and mentor, I see what works and what fails.
                 </p>
                 <p className="text-lg leading-relaxed">
                   I built Job Ready 360™ so WGU students and alumni no longer have to guess.
@@ -359,7 +359,7 @@ const JobReady360 = () => {
                 >
                   <Link to="/contact">
                     <Mail className="h-5 w-5 mr-2" />
-                    Contact Dr. Williams
+                    Contact Troy Williams
                   </Link>
                 </Button>
                 <Button 
@@ -382,12 +382,12 @@ const JobReady360 = () => {
           </div>
         </section>
 
-        {/* About Dr. Williams */}
+        {/* About Williams */}
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4 max-w-5xl">
             <Card>
               <CardHeader className="text-center">
-                <CardTitle className="text-2xl md:text-3xl mb-4">About Dr. Troy Williams, PhD</CardTitle>
+                <CardTitle className="text-2xl md:text-3xl mb-4">About Troy Williams</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center space-y-2 text-muted-foreground">
@@ -396,7 +396,7 @@ const JobReady360 = () => {
                   <p>Artificial Intelligence Scientist</p>
                   <p>Licensed Private Investigator</p>
                   <p>Background Screening Expert</p>
-                  <p>WGU Alumni Mentor</p>
+                  <p>Career Mentor</p>
                 </div>
                 
                 <div className="text-center pt-6 border-t mt-6">

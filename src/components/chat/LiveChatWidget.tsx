@@ -18,7 +18,7 @@ const LiveChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: 'Hello! I\'m here to help you with any questions about Dr. Troy Williams\' services. How can I assist you today?',
+      content: 'Hello! I\'m here to help you with any questions about Troy Williams\' services. How can I assist you today?',
       sender: 'bot',
       timestamp: new Date(),
     }
@@ -63,26 +63,26 @@ const LiveChatWidget = () => {
     const input = userInput.toLowerCase();
     
     if (input.includes('appointment') || input.includes('schedule') || input.includes('meeting')) {
-      return 'I can help you schedule an appointment with Dr. Williams. Please visit our appointments page or provide your preferred date and time, and I\'ll assist you further.';
+      return 'I can help you schedule an appointment with Williams. Please visit our appointments page or provide your preferred date and time, and I\'ll assist you further.';
     }
     
     if (input.includes('cybersecurity') || input.includes('security')) {
-      return 'Dr. Williams is a leading cybersecurity expert with over 32 years of experience. He offers consulting services, training, and strategic advisory for organizations of all sizes.';
+      return 'Williams is a leading cybersecurity expert with over 32 years of experience. He offers consulting services, training, and strategic advisory for organizations of all sizes.';
     }
     
     if (input.includes('ai') || input.includes('artificial intelligence')) {
-      return 'Dr. Williams specializes in AI security, ethics, and governance. He can help your organization implement AI safely and effectively while maintaining security standards.';
+      return 'Williams specializes in AI security, ethics, and governance. He can help your organization implement AI safely and effectively while maintaining security standards.';
     }
     
     if (input.includes('book') || input.includes('stolen nation')) {
-      return 'Dr. Williams is the author of "Stolen Nation" which explores digital sovereignty and national security threats. You can find more information about his books on our website.';
+      return 'Williams is the author of "Stolen Nation" which explores digital sovereignty and national security threats. You can find more information about his books on our website.';
     }
     
     if (input.includes('price') || input.includes('cost') || input.includes('fee')) {
       return 'Pricing varies based on the type and scope of services. I recommend scheduling a consultation to discuss your specific needs and receive a customized quote.';
     }
     
-    return 'Thank you for your question. For detailed information about Dr. Williams\' services, I recommend visiting our services pages or scheduling a consultation. Is there anything specific you\'d like to know?';
+    return 'Thank you for your question. For detailed information about Williams\' services, I recommend visiting our services pages or scheduling a consultation. Is there anything specific you\'d like to know?';
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

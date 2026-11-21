@@ -110,7 +110,7 @@ const ConsultationForm = () => {
           <Briefcase className="h-7 w-7" />
           Request a Consultation
         </h2>
-        <p className="text-gray-600">Get expert guidance from Dr. Troy Williams on your cybersecurity and AI projects</p>
+        <p className="text-gray-600">Get expert guidance from Troy Williams on your cybersecurity and AI projects</p>
       </div>
 
       <Form {...form}>

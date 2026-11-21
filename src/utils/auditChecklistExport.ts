@@ -299,7 +299,7 @@ export const generateFilledAuditPDF = (data: AuditData): void => {
   // Footer
   doc.setFontSize(8);
   doc.setTextColor(128, 128, 128);
-  doc.text('Dr. Troy Williams | Protecting America Through Technology™', pageWidth / 2, pageHeight - 10, { align: 'center' });
+  doc.text('Troy Williams | Protecting America Through Technology™', pageWidth / 2, pageHeight - 10, { align: 'center' });
 
   // Save
   const filename = `ADA-Audit-Report-${data.auditInfo.websiteUrl?.replace(/[^a-z0-9]/gi, '-') || 'website'}-${new Date().toISOString().split('T')[0]}.pdf`;

@@ -113,7 +113,7 @@ const BlogSearch = ({ onSearch, totalResults }: BlogSearchProps) => {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="">All Authors</SelectItem>
-                    <SelectItem value="Dr. Troy Williams">Dr. Troy Williams</SelectItem>
+                    <SelectItem value="Troy Williams">Troy Williams</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
